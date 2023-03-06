@@ -186,6 +186,368 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/44974.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/44974.html" class="post-title-link" itemprop="url">Android LiveData 源码分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-14 16:26:32" itemprop="dateCreated datePublished" datetime="2019-01-14T16:26:32+08:00">2019-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-28 20:45:02" itemprop="dateModified" datetime="2023-02-28T20:45:02+08:00">2023-02-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h2><p>本次推出 Android  Architecture Components 系列文章，目前写好了四篇，主要是关于 lifecycle，livedata 的使用和源码分析，其余的 Navigation， Paging library，Room，WorkMannager 等春节结束之后会更新，欢迎关注我的公众号，有更新的话会第一时间会在公众号上面通知。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660746">Android lifecycle 使用详解</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660760">Android LiveData 使用详解</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660766">Android lifecyle 源码解剖</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660776">Android livedata 源码解剖</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/ArchiteComponentsSample">github sample 地址： ArchiteComponentsSample</a></p>
+<p><strong>Android 技术人，一位不羁的码农。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/81273649f00c4d30340a268b8613286b.png" alt="Android 技术人"></p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在前面三篇博客中，我们已经介绍了 lifecycle 的使用及原理，livedata ,ViewModel 的常用用法，今天，让我们一起来学习 livedata  的原理。</p>
+<p>我们先来回顾一下 LiveData  的特点：</p>
+<p>LiveData 是一个可以被观察的数据持有类，它可以感知 Activity、Fragment或Service 等组件的生命周期。</p>
+<ol>
+<li>它可以做到在组件处于激活状态的时候才会回调相应的方法，从而刷新相应的 UI。</li>
+<li>不用担心发生内存泄漏</li>
+<li>当 config 导致 activity 重新创建的时候，不需要手动取处理数据的储存和恢复。内部已经帮我们封装好了。</li>
+<li>当 Actiivty 不是处于激活状态的时候，如果你想 livedata setValue 之后立即回调 obsever 的 onChange 方法，而不是等到 Activity 处于激活状态的时候才回调 obsever 的 onChange 方法，你可以使用 observeForever 方法，但是你必须在 onDestroy 的时候 removeObserver</li>
+</ol>
+<p>下面，让我们一步步解剖它</p>
+<hr>
+<h2 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h2><p>我们知道 livedata 的使用很简单，它是采用观察者模式实现的</p>
+<ol>
+<li>添加观察者</li>
+<li>在数据改变的时候设置 value，这样会回调 Observer 的 onChanged 方法</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">MutableLiveData</span>&lt;<span class="title class_">String</span>&gt; nameEvent = mTestViewModel.<span class="title function_">getNameEvent</span>();</span><br><span class="line">nameEvent.<span class="title function_">observe</span>(<span class="variable language_">this</span>, <span class="keyword">new</span> <span class="title class_">Observer</span>&lt;<span class="title class_">String</span>&gt;() &#123;</span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    public <span class="keyword">void</span> <span class="title function_">onChanged</span>(<span class="params">@Nullable <span class="built_in">String</span> s</span>) &#123;</span><br><span class="line">        <span class="title class_">Log</span>.<span class="title function_">i</span>(<span class="variable constant_">TAG</span>, <span class="string">&quot;onChanged: s = &quot;</span> + s);</span><br><span class="line">        mTvName.<span class="title function_">setText</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="observe-方法"><a href="#observe-方法" class="headerlink" title="observe 方法"></a>observe 方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@<span class="title class_">MainThread</span></span><br><span class="line">public <span class="keyword">void</span> <span class="title function_">observe</span>(<span class="params">@NonNull LifecycleOwner owner, @NonNull Observer&lt;T&gt; observer</span>) &#123;</span><br><span class="line">    <span class="comment">// 判断是否已经销毁</span></span><br><span class="line">    <span class="keyword">if</span> (owner.<span class="title function_">getLifecycle</span>().<span class="title function_">getCurrentState</span>() == <span class="variable constant_">DESTROYED</span>) &#123;</span><br><span class="line">        <span class="comment">// ignore</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">LifecycleBoundObserver</span> wrapper = <span class="keyword">new</span> <span class="title class_">LifecycleBoundObserver</span>(owner, observer);</span><br><span class="line">    <span class="title class_">ObserverWrapper</span> existing = mObservers.<span class="title function_">putIfAbsent</span>(observer, wrapper);</span><br><span class="line">	<span class="comment">// observer 已经添加过了，并且缓存的 observer 跟 owner 的 observer 不一致，状态异常，抛出异常</span></span><br><span class="line">    <span class="keyword">if</span> (existing != <span class="literal">null</span> &amp;&amp; !existing.<span class="title function_">isAttachedTo</span>(owner)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Cannot add the same observer&quot;</span></span><br><span class="line">                + <span class="string">&quot; with different lifecycles&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 已经添加过 Observer 了，返回回去</span></span><br><span class="line">    <span class="keyword">if</span> (existing != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 添加 observer</span></span><br><span class="line">    owner.<span class="title function_">getLifecycle</span>().<span class="title function_">addObserver</span>(wrapper);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>首先，我们先来看一下它的 observe 方法，首先通过 owner.getLifecycle().getCurrentState() 获取状态，判断是否已经被销毁，如果已经被销毁，直接返回。接着用 LifecycleBoundObserver 包装起来。然后从缓存的 mObservers 中读取 observer，如果有，证明已经添加过了。</p>
+<p>observe 方法，小结起来就是</p>
+<ol>
+<li>判断是否已经销毁，如果销毁，直接移除</li>
+<li>用 LifecycleBoundObserver 包装传递进来的 observer</li>
+<li>是否已经添加过，添加过，直接返回</li>
+<li>将包装后的 LifecycleBoundObserver 添加进去</li>
+</ol>
+<p>因此，当 owner 你（Activity 或者 fragment） 生命周期变化的时候，会回调 LifecycleBoundObserver 的 onStateChanged 方法，onStateChanged 方法又会回调  observer 的 onChange 方法</p>
+<h3 id="LifecycleBoundObserver"><a href="#LifecycleBoundObserver" class="headerlink" title="LifecycleBoundObserver"></a>LifecycleBoundObserver</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LifecycleBoundObserver</span> <span class="keyword">extends</span> <span class="title class_ inherited__">ObserverWrapper</span> implements <span class="title class_">GenericLifecycleObserver</span> &#123;</span><br><span class="line">    @<span class="title class_">NonNull</span> final <span class="title class_">LifecycleOwner</span> mOwner;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">LifecycleBoundObserver</span>(@<span class="title class_">NonNull</span> <span class="title class_">LifecycleOwner</span> owner, <span class="title class_">Observer</span>&lt;T&gt; observer) &#123;</span><br><span class="line">        <span class="variable language_">super</span>(observer);</span><br><span class="line">        mOwner = owner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    boolean <span class="title function_">shouldBeActive</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> mOwner.<span class="title function_">getLifecycle</span>().<span class="title function_">getCurrentState</span>().<span class="title function_">isAtLeast</span>(<span class="variable constant_">STARTED</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    public <span class="keyword">void</span> <span class="title function_">onStateChanged</span>(<span class="params">LifecycleOwner source, Lifecycle.Event event</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mOwner.<span class="title function_">getLifecycle</span>().<span class="title function_">getCurrentState</span>() == <span class="variable constant_">DESTROYED</span>) &#123;</span><br><span class="line">            <span class="title function_">removeObserver</span>(mObserver);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">activeStateChanged</span>(<span class="title function_">shouldBeActive</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    boolean <span class="title function_">isAttachedTo</span>(<span class="params">LifecycleOwner owner</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> mOwner == owner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">detachObserver</span>(<span class="params"></span>) &#123;</span><br><span class="line">        mOwner.<span class="title function_">getLifecycle</span>().<span class="title function_">removeObserver</span>(<span class="variable language_">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们来看一下 LifecycleBoundObserver，继承 ObserverWrapper，实现了 GenericLifecycleObserver 接口。而 GenericLifecycleObserver 接口又实现了 LifecycleObserver 接口。 它包装了我们外部的 observer，有点类似于代理模式。</p>
+<p>GenericLifecycleObserver#onStateChanged</p>
+<p>Activity 回调周期变化的时候，会回调 onStateChanged ，会先判断 mOwner.getLifecycle().getCurrentState() 是否已经 destroy 了，如果。已经 destroy，直接移除观察者。<strong>这也就是为什么我们不需要手动 remove observer 的原因</strong>。</p>
+<p>如果不是销毁状态，会调用 activeStateChanged 方法 ，携带的参数为 shouldBeActive() 返回的值。<br>而当 lifecycle 的 state 为 started 或者 resume 的时候，shouldBeActive 方法的返回值为 true，即表示激活。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">activeStateChanged</span><span class="params">(<span class="type">boolean</span> newActive)</span> &#123;</span><br><span class="line">   <span class="keyword">if</span> (newActive == mActive) &#123;</span><br><span class="line">       <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// immediately set active state, so we&#x27;d never dispatch anything to inactive</span></span><br><span class="line">   <span class="comment">// owner</span></span><br><span class="line">   mActive = newActive;</span><br><span class="line">   <span class="type">boolean</span> <span class="variable">wasInactive</span> <span class="operator">=</span> LiveData.<span class="built_in">this</span>.mActiveCount == <span class="number">0</span>;</span><br><span class="line">   LiveData.<span class="built_in">this</span>.mActiveCount += mActive ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">   <span class="keyword">if</span> (wasInactive &amp;&amp; mActive) &#123;</span><br><span class="line">       onActive();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (LiveData.<span class="built_in">this</span>.mActiveCount == <span class="number">0</span> &amp;&amp; !mActive) &#123;</span><br><span class="line">       onInactive();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (mActive) &#123;</span><br><span class="line">       dispatchingValue(<span class="built_in">this</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>}</p>
+<p>activeStateChanged 方法中，，当 newActive 为 true，并且不等于上一次的值，会增加 LiveData 的 mActiveCount 计数。接着可以看到，onActive 会在 mActiveCount 为 1 时触发，onInactive 方法则只会在 mActiveCount 为 0 时触发。<strong>即回调 onActive 方法的时候活跃的 observer 恰好为 1，回调 onInactive 方法的时候，没有一个 Observer 处于激活状态。</strong></p>
+<p>当 mActive 为 true 时，会促发 dispatchingValue 方法。</p>
+<p>dispatchingValue</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dispatchingValue</span><span class="params">(<span class="meta">@Nullable</span> ObserverWrapper initiator)</span> &#123;</span><br><span class="line">   <span class="comment">// 如果正在处理，直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (mDispatchingValue) &#123;</span><br><span class="line">        mDispatchInvalidated = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mDispatchingValue = <span class="literal">true</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        mDispatchInvalidated = <span class="literal">false</span>;</span><br><span class="line">		<span class="comment">// initiator 不为 null，调用 considerNotify 方法</span></span><br><span class="line">        <span class="keyword">if</span> (initiator != <span class="literal">null</span>) &#123;</span><br><span class="line">            considerNotify(initiator);</span><br><span class="line">            initiator = <span class="literal">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// 为 null 的时候，遍历所有的 obsever，进行分发</span></span><br><span class="line">            <span class="keyword">for</span> (Iterator&lt;Map.Entry&lt;Observer&lt;T&gt;, ObserverWrapper&gt;&gt; iterator =</span><br><span class="line">                    mObservers.iteratorWithAdditions(); iterator.hasNext(); ) &#123;</span><br><span class="line">                considerNotify(iterator.next().getValue());</span><br><span class="line">                <span class="keyword">if</span> (mDispatchInvalidated) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (mDispatchInvalidated);</span><br><span class="line">	<span class="comment">// 分发完成，设置为 false</span></span><br><span class="line">    mDispatchingValue = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 mDispatchingValue, mDispatchInvalidated 只在 dispatchingValue 方法中使用，显然这两个变量是为了防止重复分发相同的内容。当 initiator 不为 null，只处理当前 observer，为 null 的时候，遍历所有的 obsever，进行分发</p>
+<p>considerNotify 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">private void considerNotify(ObserverWrapper observer) &#123;</span><br><span class="line">   // 如果状态不是在活跃中，直接返回</span><br><span class="line">    if (!observer.mActive) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    // Check latest state b4 dispatch. Maybe it changed state but we didn&#x27;t get the event yet.</span><br><span class="line">    //</span><br><span class="line">    // we still first check observer.active to keep it as the entrance for events. So even if</span><br><span class="line">    // the observer moved to an active state, if we&#x27;ve not received that event, we better not</span><br><span class="line">    // notify for a more predictable notification order.</span><br><span class="line">    if (!observer.shouldBeActive()) &#123;</span><br><span class="line">        observer.activeStateChanged(false);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">    if (observer.mLastVersion &gt;= mVersion) &#123;</span><br><span class="line">	// 数据已经是最新，返回</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">	// 将上一次的版本号置为最新版本号</span><br><span class="line">    observer.mLastVersion = mVersion;</span><br><span class="line">    //noinspection unchecked</span><br><span class="line">	// 调用外部的 mObserver 的 onChange 方法</span><br><span class="line">    observer.mObserver.onChanged((T) mData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>如果状态不是在活跃中，直接返回，这也就是为什么当我们的 Activity 处于 onPause， onStop， onDestroy 的时候，不会回调 observer 的 onChange 方法的原因。</li>
+<li>判断数据是否是最新，如果是最新，返回，不处理</li>
+<li>数据不是最新，回调 mObserver.onChanged 方法。并将 mData 传递过去</li>
+</ol>
+<h3 id="setValue"><a href="#setValue" class="headerlink" title="setValue"></a>setValue</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="title class_">MainThread</span></span><br><span class="line">protected <span class="keyword">void</span> <span class="title function_">setValue</span>(<span class="params">T value</span>) &#123;</span><br><span class="line">    <span class="title function_">assertMainThread</span>(<span class="string">&quot;setValue&quot;</span>);</span><br><span class="line">    mVersion++;</span><br><span class="line">    mData = value;</span><br><span class="line">    <span class="title function_">dispatchingValue</span>(<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>setValue 方法中，首先，断言是主线程，接着  mVersion + 1; 并将 value 赋值给 mData，接着调用 dispatchingValue 方法。dispatchingValue 传递 null，代表处理所有 的 observer。</p>
+<p><strong>这个时候如果我们依附的 activity 处于 onPause 或者 onStop 的时候，虽然在 dispatchingValue 方法中直接返回，不会调用 observer 的 onChange 方法。但是当所依附的 activity 重新回到前台的时候，会促发  LifecycleBoundObserver onStateChange 方法，onStateChange 又会调用 dispatchingValue 方法，在该方法中，因为 mLastVersion &lt; mVersion。所以会回调 obsever 的 onChange 方法，这也就是 LiveData 设计得比较巧妙的一个地方</strong></p>
+<p>同理，当 activity 处于后台的时候，您多次调用 livedata 的 setValue 方法，最终只会回调 livedata observer 的 onChange 方法一次。</p>
+<h3 id="postValue"><a href="#postValue" class="headerlink" title="postValue"></a>postValue</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">protected <span class="keyword">void</span> <span class="title function_">postValue</span>(<span class="params">T value</span>) &#123;</span><br><span class="line">   boolean postTask;</span><br><span class="line">   <span class="comment">// 锁住</span></span><br><span class="line">   synchronized (mDataLock) &#123;</span><br><span class="line">      <span class="comment">// 当前没有人在处理 post 任务</span></span><br><span class="line">       postTask = mPendingData == <span class="variable constant_">NOT_SET</span>;</span><br><span class="line">       mPendingData = value;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (!postTask) &#123;</span><br><span class="line">       <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="title class_">AppToolkitTaskExecutor</span>.<span class="title function_">getInstance</span>().<span class="title function_">postToMainThread</span>(mPostValueRunnable);</span><br><span class="line">&#125;</span><br><span class="line">private final <span class="title class_">Runnable</span> mPostValueRunnable = <span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">   @<span class="title class_">Override</span></span><br><span class="line">   public <span class="keyword">void</span> <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">       <span class="title class_">Object</span> newValue;</span><br><span class="line">       synchronized (mDataLock) &#123;</span><br><span class="line">           newValue = mPendingData;</span><br><span class="line">		   <span class="comment">// 处理完毕之后将 mPendingData 置为 NOT_SET</span></span><br><span class="line">           mPendingData = <span class="variable constant_">NOT_SET</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//noinspection unchecked</span></span><br><span class="line">       <span class="title function_">setValue</span>((T) newValue);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>首先，采用同步机制，通过 postTask &#x3D; mPendingData &#x3D;&#x3D; NOT_SET 有没有人在处理任务。 true，没人在处理任务， false ，有人在处理任务，有人在处理任务的话，直接返回</li>
+<li>调用  AppToolkitTaskExecutor.getInstance().postToMainThread 到主线程执行 mPostValueRunnable 任务。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MainThread</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">observeForever</span><span class="params">(<span class="meta">@NonNull</span> Observer&lt;T&gt; observer)</span> &#123;</span><br><span class="line">    <span class="type">AlwaysActiveObserver</span> <span class="variable">wrapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AlwaysActiveObserver</span>(observer);</span><br><span class="line">    <span class="type">ObserverWrapper</span> <span class="variable">existing</span> <span class="operator">=</span> mObservers.putIfAbsent(observer, wrapper);</span><br><span class="line">    <span class="keyword">if</span> (existing != <span class="literal">null</span> &amp;&amp; existing <span class="keyword">instanceof</span> LiveData.LifecycleBoundObserver) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Cannot add the same observer&quot;</span></span><br><span class="line">                + <span class="string">&quot; with different lifecycles&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (existing != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    wrapper.activeStateChanged(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">AlwaysActiveObserver</span> <span class="keyword">extends</span> <span class="title class_">ObserverWrapper</span> &#123;</span><br><span class="line"></span><br><span class="line">    AlwaysActiveObserver(Observer&lt;T&gt; observer) &#123;</span><br><span class="line">        <span class="built_in">super</span>(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">shouldBeActive</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>因为 AlwaysActiveObserver 没有实现 GenericLifecycleObserver 方法接口，所以在 Activity o生命周期变化的时候，不会回调 onStateChange 方法。从而也不会主动 remove 掉 observer。因为我们的 obsever 被 remove 掉是依赖于 Activity 生命周期变化的时候，回调 GenericLifecycleObserver 的 onStateChange 方法。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>liveData 当我们 addObserver 的时候，会用 LifecycleBoundObserver 包装 observer，而 LifecycleBoundObserver 可以感应生命周期，当 activity 生命周期变化的时候，如果不是处于激活状态，判断是否需要 remove 生命周期，需要 remove，不需要，直接返回</li>
+<li>当处于激活状态的时候，会判断是不是 mVersion最新版本，不是的话需要将上一次缓存的数据通知相应的 observer，并将 mLastVsersion 置为最新</li>
+<li>当我们调用 setValue 的时候，mVersion +1，如果处于激活状态，直接处理，如果不是处理激活状态，返回，等到下次处于激活状态的时候，在进行相应的处理</li>
+<li>如果你想 livedata setValue 之后立即回调数据，而不是等到生命周期变化的时候才回调数据，你可以使用 observeForever 方法，但是你必须在 onDestroy 的时候 removeObserver。因为 AlwaysActiveObserver 没有实现 GenericLifecycleObserver 接口，不能感应生命周期。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6010e8b1224400ad1cf93012b51df699.png"></p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>Android  Architecture Components    已经写了四篇文章了，其余的 Navigation， Paging library，Room，WorkMannager 等春节结束之后再更新了，欢迎关注我的公众号，有更新的话会第一时间在公众好上面更新。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/16331.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/16331.html" class="post-title-link" itemprop="url">Android LiveData 使用详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-13 16:26:32" itemprop="dateCreated datePublished" datetime="2019-01-13T16:26:32+08:00">2019-01-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-28 20:45:02" itemprop="dateModified" datetime="2023-02-28T20:45:02+08:00">2023-02-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h2><p>本次推出 Android  Architecture Components 系列文章，目前写好了四篇，主要是关于 lifecycle，livedata 的使用和源码分析，其余的 Navigation， Paging library，Room，WorkMannager 等春节结束之后会更新，欢迎关注我的公众号，有更新的话会第一时间会在公众号上面通知。</p>
+<p>目录大概如下</p>
+<blockquote>
+<p>1 LiveData 基本使用<br>2 自定义 Livedata<br>3  Livedata 共享数据<br>4 Livedata  小结</p>
+</blockquote>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660746">Android lifecycle 使用详解</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660760">Android LiveData 使用详解</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660766">Android lifecyle 源码解剖</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660776">Android livedata 源码解剖</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/ArchiteComponentsSample">github sample 地址： ArchiteComponentsSample</a></p>
+<p><strong>程序员徐公，一位不羁的码农。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4e6df41528ff27a085a266dd18b707a8.png"></p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇博客中，我们讲解了 lifecycle 的使用及优点。这篇博客让我们一起来了解一下 LiveData 是怎样使用的？</p>
+<hr>
+<h2 id="为什么要引进-LiveData"><a href="#为什么要引进-LiveData" class="headerlink" title="为什么要引进 LiveData"></a>为什么要引进 LiveData</h2><p>LiveData 是一个可以被观察的数据持有类，它可以感知 Activity、Fragment或Service 等组件的生命周期。简单来说，他主要有一下优点。</p>
+<ol>
+<li><strong>它可以做到在组件处于激活状态的时候才会回调相应的方法，从而刷新相应的 UI</strong>。</li>
+<li><strong>不用担心发生内存泄漏</strong></li>
+<li><strong>当 config 导致 activity 重新创建的时候，不需要手动取处理数据的储存和恢复。它已经帮我们封装好了</strong>。</li>
+<li>当 Actiivty 不是处于激活状态的时候，如果你想 livedata setValue 之后立即回调  obsever 的 onChange 方法，而不是等到 Activity 处于激活状态的时候才回调 obsever 的 onChange 方法，你可以使用 observeForever 方法，但是你必须在 onDestroy 的时候 removeObserver。</li>
+</ol>
+<p>回想一下，在你的项目中，是不是经常会碰到这样的问题，当网络请求结果回来的时候，你经常需要判断 Activity 或者 Fragment 是否已经 Destroy， 如果不是 destroy，才更新 UI。</p>
+<p>而当你如果使用 Livedata 的话，因为它是在 Activity 处于 onStart 或者 onResume 的状态时，他才会进行相应的回调，因而可以很好得处理这个问题，不必写一大堆的 activity.isDestroyed()。接下来，让我们一起来看一下 LiveData  的使用</p>
+<hr>
+<h2 id="LiveData-使用"><a href="#LiveData-使用" class="headerlink" title="LiveData 使用"></a>LiveData 使用</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><ol>
+<li>引入相关的依赖包</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ViewModel and LiveData</span></span><br><span class="line">implementation <span class="string">&quot;android.arch.lifecycle:extensions:1.1.0&quot;</span></span><br><span class="line"><span class="comment">// alternatively, just ViewModel</span></span><br><span class="line">implementation <span class="string">&quot;android.arch.lifecycle:viewmodel:1.1.0&quot;</span></span><br><span class="line"><span class="comment">// alternatively, just LiveData</span></span><br><span class="line">implementation <span class="string">&quot;android.arch.lifecycle:livedata:1.1.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在代码中使用</li>
+</ol>
+<p>LiveData 是一个抽象类，它的实现子类有 <strong>MutableLiveData</strong> ，<strong>MediatorLiveData</strong>。在实际使用中，用得比较多的是 MutableLiveData。他常常结合 ViewModel 一起使用。下面，让我们一起来看一下怎样使用它？</p>
+<p>首先，我们先写一个类继承我们的 ViewModel，里面持有 mNameEvent。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> <span class="title class_">TestViewModel</span> <span class="keyword">extends</span> <span class="title class_ inherited__">ViewModel</span> &#123;</span><br><span class="line"></span><br><span class="line">    private <span class="title class_">MutableLiveData</span>&lt;<span class="title class_">String</span>&gt; mNameEvent = <span class="keyword">new</span> <span class="title class_">MutableLiveData</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public <span class="title class_">MutableLiveData</span>&lt;<span class="title class_">String</span>&gt; <span class="title function_">getNameEvent</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> mNameEvent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着，我们在 Activity 中创建  ViewModel，并监听 ViewModel 里面 mNameEvent 数据的变化，当数据改变的时候，我们打印相应的 log，并设置给 textView，显示在界面上。这样我们就完成了对 mNameEvent 数据源的观察。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mTestViewModel = ViewModelProviders.of(<span class="built_in">this</span>).get(TestViewModel.class);</span><br><span class="line">MutableLiveData&lt;String&gt; nameEvent = mTestViewModel.getNameEvent();</span><br><span class="line">nameEvent.observe(<span class="built_in">this</span>, <span class="keyword">new</span> <span class="title class_">Observer</span>&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onChanged</span><span class="params">(<span class="meta">@Nullable</span> String s)</span> &#123;</span><br><span class="line">        Log.i(TAG, <span class="string">&quot;onChanged: s = &quot;</span> + s);</span><br><span class="line">        mTvName.setText(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>最后当我们数据源改变的时候，我们需要调用 livedata 的 setValue 或者 postvalue 方法。他们之间的区别是， 调用 setValue 方法，Observer 的 onChanged 方法会在调用 serValue 方法的线程回调。而<br>postvalue 方法，Observer 的 onChanged 方法将会在主线程回调。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mTestViewModel.<span class="title function_">getNameEvent</span>().<span class="title function_">setValue</span>(name);</span><br></pre></td></tr></table></figure>
+
+<p>可能部分同学有这样的疑问了，<strong>我们的 ViewModel 是通过 ViewModelProviders.of(this).get(TestViewModel.class); 方法创建出来的，如果我们要携带参数，怎么办？</strong></p>
+<p>其实，官方也替我们考虑好了，同样是调用 ViewModelProvider of(@NonNull Fragment fragment, @Nullable Factory factory) 方法，只不过，需要多传递一个 factory 参数。</p>
+<p>Factory 是一个接口，它只有一个 create 方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Factory</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates a new instance of the given &#123;<span class="doctag">@code</span> Class&#125;.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> modelClass a &#123;<span class="doctag">@code</span> Class&#125; whose instance is requested</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> &lt;T&gt;        The type parameter for the ViewModel.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> a newly created ViewModel</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    &lt;T <span class="keyword">extends</span> <span class="title class_">ViewModel</span>&gt; T <span class="title function_">create</span><span class="params">(<span class="meta">@NonNull</span> Class&lt;T&gt; modelClass)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在实际当中，我们的做法是：实现 Factory 接口，重写 create 方法，在create 方法里面调用相应的构造函数，返回相应的实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestViewModel</span> <span class="keyword">extends</span> <span class="title class_">ViewModel</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String mKey;</span><br><span class="line">    <span class="keyword">private</span> MutableLiveData&lt;String&gt; mNameEvent = <span class="keyword">new</span> <span class="title class_">MutableLiveData</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> MutableLiveData&lt;String&gt; <span class="title function_">getNameEvent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mNameEvent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TestViewModel</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        mKey = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Factory</span> <span class="keyword">implements</span> <span class="title class_">ViewModelProvider</span>.Factory &#123;</span><br><span class="line">        <span class="keyword">private</span> String mKey;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">Factory</span><span class="params">(String key)</span> &#123;</span><br><span class="line">            mKey = key;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> &lt;T <span class="keyword">extends</span> <span class="title class_">ViewModel</span>&gt; T <span class="title function_">create</span><span class="params">(Class&lt;T&gt; modelClass)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (T) <span class="keyword">new</span> <span class="title class_">TestViewModel</span>(mKey);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getKey</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mKey;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ViewModelProviders.of(this, new TestViewModel.Factory(mkey)).get(TestViewModel.class)</p>
+<hr>
+<h2 id="自定义-Livedata"><a href="#自定义-Livedata" class="headerlink" title="自定义 Livedata"></a>自定义 Livedata</h2><p>Livedata 主要有几个方法</p>
+<ol>
+<li>observe</li>
+<li>onActive</li>
+<li>onInactive </li>
+<li>observeForever</li>
+</ol>
+<p> void observe (LifecycleOwner owner,     Observer<t> observer)</t></p>
+<blockquote>
+<p>Adds the given observer to the observers list within the lifespan of the given owner. The events are dispatched on the main thread. If LiveData already has data set, it will be delivered to the observer.</p>
+</blockquote>
+<p>void onActive ()</p>
+<blockquote>
+<p>Called when the number of active observers change to 1 from 0.<br>This callback can be used to know that this LiveData is being used thus should be kept up to date.</p>
+</blockquote>
+<p>当回调该方法的时候，表示该 liveData 正在背使用，因此应该保持最新</p>
+<p> void onInactive ()</p>
+<blockquote>
+<p>Called when the number of active observers change from 1 to 0.<br>This does not mean that there are no observers left, there may still be observers but their lifecycle states aren’t STARTED or RESUMED (like an Activity in the back stack).<br>You can check if there are observers via hasObservers().</p>
+</blockquote>
+<p>当该方法回调时，表示他所有的 obervers 没有一个状态处理 STARTED 或者 RESUMED，注意，这不代表没有 observers。</p>
+<p>Void observeForever </p>
+<p>跟 observe 方法不太一样的是，它在 Activity 处于 onPause ，onStop， onDestroy 的时候，都可以回调 obsever 的 onChange 方法，但是有一点需要注意的是，我们必须手动 remove obsever，否则会发生内存泄漏。</p>
+<p>这里我们以观察网络状态变化为例子讲解</p>
+<ol>
+<li>首先我们自定义一个 Class NetworkLiveData，继承 LiveData，重写它的 onActive 方法和 onInactive 方法</li>
+<li>在 onActive 方法中，我们注册监听网络变化的广播，即ConnectivityManager.CONNECTIVITY_ACTION。在 onInactive 方法的时候，我们注销广播。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NetworkLiveData</span> <span class="keyword">extends</span> <span class="title class_">LiveData</span>&lt;NetworkInfo&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Context mContext;</span><br><span class="line">    <span class="keyword">static</span> NetworkLiveData mNetworkLiveData;</span><br><span class="line">    <span class="keyword">private</span> NetworkReceiver mNetworkReceiver;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> IntentFilter mIntentFilter;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">TAG</span> <span class="operator">=</span> <span class="string">&quot;NetworkLiveData&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">NetworkLiveData</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">        mContext = context.getApplicationContext();</span><br><span class="line">        mNetworkReceiver = <span class="keyword">new</span> <span class="title class_">NetworkReceiver</span>();</span><br><span class="line">        mIntentFilter = <span class="keyword">new</span> <span class="title class_">IntentFilter</span>(ConnectivityManager.CONNECTIVITY_ACTION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> NetworkLiveData <span class="title function_">getInstance</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (mNetworkLiveData == <span class="literal">null</span>) &#123;</span><br><span class="line">            mNetworkLiveData = <span class="keyword">new</span> <span class="title class_">NetworkLiveData</span>(context);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mNetworkLiveData;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onActive</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onActive();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onActive:&quot;</span>);</span><br><span class="line">        mContext.registerReceiver(mNetworkReceiver, mIntentFilter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onInactive</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onInactive();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onInactive: &quot;</span>);</span><br><span class="line">        mContext.unregisterReceiver(mNetworkReceiver);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">NetworkReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">            <span class="type">ConnectivityManager</span> <span class="variable">manager</span> <span class="operator">=</span> (ConnectivityManager) context</span><br><span class="line">                    .getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">            <span class="type">NetworkInfo</span> <span class="variable">activeNetwork</span> <span class="operator">=</span> manager.getActiveNetworkInfo();</span><br><span class="line">            getInstance(context).setValue(activeNetwork);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，当我们想监听网络变化的时候，我们只需要调用相应的 observe 方法即可，方便又快捷。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">NetworkLiveData</span>.<span class="title function_">getInstance</span>(<span class="variable language_">this</span>).<span class="title function_">observe</span>(<span class="variable language_">this</span>, <span class="keyword">new</span> <span class="title class_">Observer</span>&lt;<span class="title class_">NetworkInfo</span>&gt;() &#123;</span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    public <span class="keyword">void</span> <span class="title function_">onChanged</span>(<span class="params">@Nullable NetworkInfo networkInfo</span>) &#123;</span><br><span class="line">        <span class="title class_">Log</span>.<span class="title function_">d</span>(<span class="variable constant_">TAG</span>, <span class="string">&quot;onChanged: networkInfo=&quot;</span> +networkInfo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.jianshu.com/p/4b7945475a6f">https://www.jianshu.com/p/4b7945475a6f</a></p>
+<h2 id="共享数据"><a href="#共享数据" class="headerlink" title="共享数据"></a>共享数据</h2><h3 id="Fragment-Activity-之间共享数据"><a href="#Fragment-Activity-之间共享数据" class="headerlink" title="Fragment Activity 之间共享数据"></a>Fragment Activity 之间共享数据</h3><p>我们回过头来再来看一下 ViewModelProvider 的 of 方法，他主要有四个方法，分别是</p>
+<ol>
+<li>ViewModelProvider of(@NonNull Fragment fragment)</li>
+<li>ViewModelProvider of(@NonNull FragmentActivity activity)</li>
+<li>ViewModelProvider of(@NonNull Fragment fragment, @Nullable Factory factory)</li>
+<li>ViewModelProvider of(@NonNull FragmentActivity activity, @Nullable Factory factory)</li>
+</ol>
+<p>1,2 方法之间的主要区别是传入 Fragment 或者 FragmentActivity。而我们知道，通过 ViewModel of 方法创建的 ViewModel 实例， 对于同一个 fragment 或者 fragmentActivity 实例，ViewModel 实例是相同的，因而我们可以利用该特点，在 Fragment 中创建  ViewModel  的时候，传入的是 Fragment 所依附的 Activity。因而他们的 ViewModel 实例是相同的，从而可以做到共享数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// LiveDataSampleActivity(TestFragment 依赖的 Activity）</span></span><br><span class="line">mTestViewModel = <span class="title class_">ViewModelProviders</span>.<span class="title function_">of</span>(<span class="variable language_">this</span>, <span class="keyword">new</span> <span class="title class_">TestViewModel</span>.<span class="title class_">Factory</span>(mkey)).<span class="title function_">get</span>(<span class="title class_">TestViewModel</span>.<span class="property">class</span>);</span><br><span class="line"><span class="title class_">MutableLiveData</span>&lt;<span class="title class_">String</span>&gt; nameEvent = mTestViewModel.<span class="title function_">getNameEvent</span>();</span><br><span class="line">nameEvent.<span class="title function_">observe</span>(<span class="variable language_">this</span>, <span class="keyword">new</span> <span class="title class_">Observer</span>&lt;<span class="title class_">String</span>&gt;() &#123;</span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    public <span class="keyword">void</span> <span class="title function_">onChanged</span>(<span class="params">@Nullable <span class="built_in">String</span> s</span>) &#123;</span><br><span class="line">        <span class="title class_">Log</span>.<span class="title function_">i</span>(<span class="variable constant_">TAG</span>, <span class="string">&quot;onChanged: s = &quot;</span> + s);</span><br><span class="line">        mTvName.<span class="title function_">setText</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// TestFragment 中</span></span><br><span class="line">mViewModel = <span class="title class_">ViewModelProviders</span>.<span class="title function_">of</span>(mActivity).<span class="title function_">get</span>(<span class="title class_">TestViewModel</span>.<span class="property">class</span>);</span><br><span class="line">mViewModel.<span class="title function_">getNameEvent</span>().<span class="title function_">observe</span>(<span class="variable language_">this</span>, <span class="keyword">new</span> <span class="title class_">Observer</span>&lt;<span class="title class_">String</span>&gt;() &#123;</span><br><span class="line">    @<span class="title class_">Override</span></span><br><span class="line">    public <span class="keyword">void</span> <span class="title function_">onChanged</span>(<span class="params">@Nullable <span class="built_in">String</span> s</span>) &#123;</span><br><span class="line">        <span class="title class_">Log</span>.<span class="title function_">d</span>(<span class="variable constant_">TAG</span>, <span class="string">&quot;onChanged: s =&quot;</span> + s + <span class="string">&quot; mViewModel.getKey() =&quot;</span> + mViewModel.<span class="title function_">getKey</span>());</span><br><span class="line">        mTvName.<span class="title function_">setText</span>(s);</span><br><span class="line">        boolean result = mViewModel == ((<span class="title class_">LiveDataSampleActivity</span>) mListener).<span class="property">mTestViewModel</span>;</span><br><span class="line">        <span class="title class_">Log</span>.<span class="title function_">d</span>(<span class="variable constant_">TAG</span>, <span class="string">&quot;onChanged: s result =&quot;</span> + result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样，LiveDataSampleActivity 和 TestFragment 中的 ViewModel 是同一个实例。即 Activity 和 Fragment 共享数据。</p>
+<h3 id="全局共享数据"><a href="#全局共享数据" class="headerlink" title="全局共享数据"></a>全局共享数据</h3><p>说到全局共享数据，我们想一下我们的应用全景，比如说我的账户数据，这个对于整个 App 来说，肯定是全局共享的。有时候，当我们的数据变化的时候，我们需要通知我们相应的界面，刷新 UI。如果用传统的方式来实现，那么我们一般才采取观察者的方式来实现，这样，当我们需要观察数据的时候，我们需要添加 observer，在界面销毁的时候，我们需要移除 observer。</p>
+<p>但是，如果我们用 LiveData 来实现的话，它内部逻辑都帮我们封装好了，我们只需要保证 AccountLiveData 是单例的就ok，在需要观察的地方调用 observer 方法即可。也不需要手动移除 observer，不会发生内存泄漏，方便快捷。</p>
+<p>这里 AccountLiveData 的实现就不贴出来了，可以参考上面的 NetworkLiveData 实现</p>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这里说一点关于 LiveData 与 ViewModel 的应用场景，我尽量说得通俗一点，不要说得那么官方，这样对新手很难理解。</p>
+<p>觉得不错的，请点个赞，让我们看到你们的欢呼声。你们的支持就是我写作的最大动力。</p>
+<ol>
+<li>LiveData 内部已经实现了观察者模式，如果你的数据要同时通知几个界面，可以采取这种方式</li>
+<li>我们知道 LiveData 数据变化的时候，会回调 Observer 的 onChange 方法，但是回调的前提是 lifecycleOwner（即所依附的 Activity 或者 Fragment） 处于 started 或者 resumed 状态，它才会回调，否则，必须等到 lifecycleOwner 切换到前台的时候，才回调。</li>
+<li>因此，这对性能方面确实是一个不小的提升。但是，对于你想做一些类似与在后台工作的（黑科技）， liveData 就不太适合了，你可以使用 observeForever  方法，或者自己实现观察者模式去吧。</li>
+</ol>
+<p><strong>Lifecycle，LiveData， ViewModel 的基本使用到此已经讲解完毕，想了解他们的实现原理的话可以阅读这两篇文章。</strong></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660766">Android lifecyle 源码解剖</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/86660776">Android livedata 源码解剖</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/ArchiteComponentsSample">github sample 地址： ArchiteComponentsSample</a></p>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mp.weixin.qq.com/s/xWYe-uxgXTPuitYcLgXYNg">Android 启动优化（一） - 有向无环图</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mp.weixin.qq.com/s/ShfxD_Z7M_NuWYNodn-vqA">Android 启动优化（二） - 拓扑排序的原理以及解题思路</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mp.weixin.qq.com/s/YRUpf9jKEwIHV0A4FqltXg">Android 启动优化（三）- AnchorTask 开源了</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mp.weixin.qq.com/s/6RKco9JTm6ZrFyw99k9Rlg">Android 启动优化（四）- AnchorTask 是怎么实现的</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mp.weixin.qq.com/s/0MsJa0ZepWkPUs-ymnVb-w">Android 启动优化（五）- AnchorTask 1.0.0 版本正式发布了</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mp.weixin.qq.com/s/7_dQd2wGZYKWf9kHNlv2fg">Android 启动优化（六）- 深入理解布局优化</a></p>
+<p>这几篇文章从 0 到 1，讲解 DAG 有向无环图是怎么实现的，以及在 Android 启动优化的应用。</p>
+<p><strong>推荐理由：现在挺多文章一谈到启动优化，动不动就聊拓扑结构，这篇文章从数据结构到算法、到设计都给大家说清楚了，开源项目也有非常强的借鉴意义。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20210414231709248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dkdXR4aWFveHU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/5201.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1995,278 +2357,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/37597.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/37597.html" class="post-title-link" itemprop="url">Git-命令行教程及实例教程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-12-11 16:19:33" itemprop="dateCreated datePublished" datetime="2016-12-11T16:19:33+08:00">2016-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-28 20:45:02" itemprop="dateModified" datetime="2023-02-28T20:45:02+08:00">2023-02-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>783</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>前言：前几天在写博客  <a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53576018">手把手教你用Hexo + github 搭建自己博客</a><br>的时候，经常需要用到一些git操作，截了好多图，于是就想干脆整理成一系列的git 教程，总结如下</strong></p>
-<ul>
-<li><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53573286">Git下载及配置环境变量</a></li>
-<li><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53573339">Git 命令行教程及实例教程</a></li>
-<li><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53573399">Git ssh 配置及使用</a></li>
-<li><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53573426"> git ssh 配置多个账户</a></li>
-</ul>
-<hr>
-<p>下载Git安装文件：</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://git-scm.com/downloads">GIt官网下载地址：</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github-cloud.s3.amazonaws.com/releases/23216272/84b33b96-87f5-11e5-8f91-32080286239e.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAISTNZFOVBIJMK3TQ/20161210/us-east-1/s3/aws4_request&X-Amz-Date=20161210T033734Z&X-Amz-Expires=300&X-Amz-Signature=912c155bbe0fe970ca7b948f5f0d5e8c68c712b7fb8006062f53c8638c62c7b6&X-Amz-SignedHeaders=host&actor_id=14971673&response-content-disposition=attachment;%20filename=Git-2.6.3-64-bit.exe&response-content-type=application/octet-stream">Git-2.6.3-64-bit.exe</a></p>
-<p>然后就进入了Git的安装界面，如图：</p>
-<p><img src="http://ww2.sinaimg.cn/large/9fe4afa0gw1fampzoik7ej20e70b1q5o.jpg"></p>
-<p>Git安装界面</p>
-<p><img src="http://ww1.sinaimg.cn/large/9fe4afa0gw1faljmdsfd9j20dv0atq4u.jpg"></p>
-<p>和Node.js一样，大部分设置都只需要保持默认，但是出于我们操作方便考虑，建议PATH选项按照下图选择：</p>
-<p>Git PATH设置</p>
-<p><img src="http://ww4.sinaimg.cn/large/9fe4afa0gw1faljmop0mbj20dz0atwhi.jpg"></p>
-<p>这是对上图的解释，不需要了解请直接跳过 Git的默认设置下，出于安全考虑，只有在Git Bash中才能进行Git的相关操作。按照上图进行的选择，将会使得Git安装程序在系统PATH中加入Git的相关路径，使得你可以在CMD界面下调用Git，不用打开Git Bash了。<br>一样的，我们来检查一下Git是不是安装正确了，打开命令行，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
-
-<p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。</p>
-<p><img src="http://ww2.sinaimg.cn/large/9fe4afa0gw1faljp87tpkj20it0cbdgo.jpg"></p>
-<p><img src="http://ww1.sinaimg.cn/large/9fe4afa0gw1faljm42qvnj20dz0atwh2.jpg"></p>
-<p>Git安装界面</p>
-<p><img src="http://ww1.sinaimg.cn/large/9fe4afa0gw1faljmdsfd9j20dv0atq4u.jpg"></p>
-<p>大部分设置都只需要保持默认，但是出于我们操作方便考虑，建议PATH选项按照下图选择：</p>
-<p>Git PATH设置</p>
-<p><img src="http://ww4.sinaimg.cn/large/9fe4afa0gw1faljmop0mbj20dz0atwhi.jpg"></p>
-<p>这是对上图的解释，不需要了解请直接跳过 Git的默认设置下，出于安全考虑，只有在Git Bash中才能进行Git的相关操作。按照上图进行的选择，将会使得Git安装程序在系统PATH中加入Git的相关路径，使得你可以在CMD界面下调用Git，不用打开Git Bash了。<br>一样的，我们来检查一下Git是不是安装正确了，打开命令行，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
-
-<p>如果结果如下图所示，则说明安装正确，可以进行下一步了，如果不正确，则需要回头检查自己的安装过程。</p>
-<p><img src="http://ww2.sinaimg.cn/large/9fe4afa0gw1faljp87tpkj20it0cbdgo.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/null.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/null.html" class="post-title-link" itemprop="url">Android 启动系统相机，相册，裁剪图片及6.0权限管理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-12-08 14:10:13" itemprop="dateCreated datePublished" datetime="2016-12-08T14:10:13+08:00">2016-12-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-18 22:16:02" itemprop="dateModified" datetime="2021-04-18T22:16:02+08:00">2021-04-18</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>12k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在日常开发中，我们经常需要用到上传图片的 功能，这个时候通常有两种做法，第一种，从相机获取，第二种，从相册获取。今天这篇博客主要讲解利用系统的Intent怎样获取？</p>
-<p>主要内容如下</p>
-<ul>
-<li>怎样通过相机获取我们的图片</li>
-<li>怎样启动相册获取我们想要的图片</li>
-<li>在Android 6.0中的动态权限处理】</li>
-<li>调用系统Intent和自定义相册的优缺点对比</li>
-</ul>
-<h2 id="怎样通过相机获取我们的图片"><a href="#怎样通过相机获取我们的图片" class="headerlink" title="怎样通过相机获取我们的图片"></a>怎样通过相机获取我们的图片</h2><p>总共有两种方式，</p>
-<h3 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h3><p>第一步，通过 MediaStore.ACTION_IMAGE_CAPTURE 启动我们的相机</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">pIntent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(MediaStore.ACTION_IMAGE_CAPTURE);<span class="comment">//调用摄像头action</span></span><br><span class="line">startActivityForResult(pIntent, INTENT_CODE_IMAGE_CAPTURE1);<span class="comment">//requestcode</span></span><br></pre></td></tr></table></figure>
-
-<p>第二步，在onActivityResult进行处理，，核心代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onActivityResult</span><span class="params">(<span class="type">int</span> requestCode, <span class="type">int</span> resultCode, Intent data)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">        <span class="keyword">case</span> INTENT_CODE_IMAGE_CAPTURE1:</span><br><span class="line">            <span class="keyword">if</span> (resultCode == RESULT_OK) &#123;</span><br><span class="line">                <span class="type">Bundle</span> <span class="variable">pBundle</span> <span class="operator">=</span> data.getExtras(); <span class="comment">//从intent对象中获取数据，</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (pBundle != <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="type">Bitmap</span> <span class="variable">pBitmap</span> <span class="operator">=</span> (Bitmap) pBundle.get(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">                    <span class="keyword">if</span> (pBitmap != <span class="literal">null</span>) &#123;</span><br><span class="line">                        mIv.setImageBitmap(pBitmap);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="第二种-方式"><a href="#第二种-方式" class="headerlink" title="第二种 方式"></a>第二种 方式</h3><p>第一步，通过 MediaStore.ACTION_IMAGE_CAPTURE 启动相机，并指定 MediaStore.EXTRA_OUTPUT ，intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mFile)); 传入我们的URI，这样，最终返回的信息会存储在我们的mFile中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">startCameraWithHighBitmap</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//确定存储拍照得到的图片文件路径</span></span><br><span class="line">    <span class="keyword">if</span> (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">        mFile = <span class="keyword">new</span> <span class="title class_">File</span>(Environment.getExternalStorageDirectory(),</span><br><span class="line">                getName());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;请插入sd卡&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        mFile.createNewFile();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();</span><br><span class="line">    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">    <span class="comment">//加载Uri型的文件路径</span></span><br><span class="line">    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mFile));</span><br><span class="line">    <span class="comment">//向onActivityResult发送intent，requestCode为INTENT_CODE_IMAGE_CAPTURE2</span></span><br><span class="line">    startActivityForResult(intent, INTENT_CODE_IMAGE_CAPTURE2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>第二步：在onActivityResult进行处理，并对图片进行相应的压缩，防止在大图片的情况下发生OOM</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> INTENT_CODE_IMAGE_CAPTURE2:</span><br><span class="line">    <span class="keyword">if</span> (resultCode == RESULT_OK) &#123;</span><br><span class="line">        <span class="type">Bitmap</span> <span class="variable">bitmap</span> <span class="operator">=</span> ImageZip.decodeSampledBitmapFromFile(mFile.getAbsolutePath(),</span><br><span class="line">                mWidth, mHeight);</span><br><span class="line">        mIv.setImageBitmap(bitmap);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title function_">decodeSampledBitmapFromFile</span><span class="params">(String pathName, <span class="type">int</span> reqWidth, <span class="type">int</span> reqHeight)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> BitmapFactory.<span class="type">Options</span> <span class="variable">options</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BitmapFactory</span>.Options();</span><br><span class="line">        options.inJustDecodeBounds = <span class="literal">true</span>;</span><br><span class="line">        BitmapFactory.decodeFile(pathName, options);</span><br><span class="line">        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);</span><br><span class="line">        options.inJustDecodeBounds = <span class="literal">false</span>;</span><br><span class="line">        <span class="type">Bitmap</span> <span class="variable">src</span> <span class="operator">=</span> BitmapFactory.decodeFile(pathName, options);</span><br><span class="line"><span class="comment">//        return createScaleBitmap(src, reqWidth, reqHeight, options.inSampleSize);</span></span><br><span class="line">        <span class="keyword">return</span> src;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">calculateInSampleSize</span><span class="params">(BitmapFactory.Options options,</span></span><br><span class="line"><span class="params">                                         <span class="type">int</span> reqWidth, <span class="type">int</span> reqHeight)</span> &#123;</span><br><span class="line">    <span class="comment">// 源图片的高度和宽度</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> options.outHeight;</span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">width</span> <span class="operator">=</span> options.outWidth;</span><br><span class="line">    <span class="type">int</span> <span class="variable">inSampleSize</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">halfHeight</span> <span class="operator">=</span> height / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">halfWidth</span> <span class="operator">=</span> width / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// Calculate the largest inSampleSize value that is a power of 2 and keeps both</span></span><br><span class="line">        <span class="comment">// height and width larger than the requested height and width.</span></span><br><span class="line">        <span class="keyword">while</span> ((halfHeight / inSampleSize) &gt; reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) &#123;</span><br><span class="line">            inSampleSize *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inSampleSize;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="两种方法的区别"><a href="#两种方法的区别" class="headerlink" title="两种方法的区别"></a>两种方法的区别</h3><p>第一种方法获取的bitmap是被缩放的bitmap，第二种方法获取的bitmap是完整的bitmap，实际使用中根据需求情况决定使用哪一种方法。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.android.com/reference/android/provider/MediaStore.html#ACTION_IMAGE_CAPTURE">官网参考地址</a></p>
-<hr>
-<h2 id="怎样启动相册获取我们想要的图片"><a href="#怎样启动相册获取我们想要的图片" class="headerlink" title="怎样启动相册获取我们想要的图片"></a>怎样启动相册获取我们想要的图片</h2><p>第一步，通过 Intent.ACTION_GET_CONTENT 这个Intent，并设置相应的type，启动相册。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(Intent.ACTION_GET_CONTENT, <span class="literal">null</span>);</span><br><span class="line">i.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, <span class="string">&quot;image/*&quot;</span>);</span><br><span class="line">startActivityForResult(i, INTENT_CODE_IMAGE_GALLERY1);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> 第二步，在onActivityResult中对返回的uri数据进行处理</p>
-<ul>
-<li>需要注意的是：这里我们需要注意是不是MIUI系统，如果不是MIUI系统，我们只需要进行一下处理，就OK了</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">setPhotoForNormalSystem</span><span class="params">(Intent data)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">filePath</span> <span class="operator">=</span> getRealPathFromURI(data.getData());</span><br><span class="line">    <span class="type">Bitmap</span> <span class="variable">bitmap</span> <span class="operator">=</span> ImageZip.decodeSampledBitmapFromFile(filePath, mWidth, mHeight);</span><br><span class="line">    mIv.setImageBitmap(bitmap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 解析Intent.getdata()得到的uri为String型的filePath</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> contentUri</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getRealPathFromURI</span><span class="params">(Uri contentUri)</span> &#123;</span><br><span class="line">    String[] proj = &#123;MediaStore.Audio.Media.DATA&#125;;</span><br><span class="line">    <span class="type">Cursor</span> <span class="variable">cursor</span> <span class="operator">=</span> managedQuery(contentUri, proj, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">    <span class="type">int</span> <span class="variable">column_index</span> <span class="operator">=</span> cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);</span><br><span class="line">    cursor.moveToFirst();</span><br><span class="line">    <span class="keyword">return</span> cursor.getString(column_index);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果是MIUI系统，我们需要进行一下处理</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private void setPhotoForMiuiSystem(Intent data) &#123;</span><br><span class="line">    Uri localUri = data.getData();</span><br><span class="line">    String scheme = localUri.getScheme();</span><br><span class="line">    String imagePath = &quot;&quot;;</span><br><span class="line">    if (&quot;content&quot;.equals(scheme)) &#123;</span><br><span class="line">        String[] filePathColumns = &#123;MediaStore.Images.Media.DATA&#125;;</span><br><span class="line">        Cursor c = getContentResolver().query(localUri, filePathColumns, null, null, null);</span><br><span class="line">        c.moveToFirst();</span><br><span class="line">        int columnIndex = c.getColumnIndex(filePathColumns[0]);</span><br><span class="line">        imagePath = c.getString(columnIndex);</span><br><span class="line">        c.close();</span><br><span class="line">    &#125; else if (&quot;file&quot;.equals(scheme)) &#123;//小米4选择云相册中的图片是根据此方法获得路径</span><br><span class="line">        imagePath = localUri.getPath();</span><br><span class="line">    &#125;</span><br><span class="line">    Bitmap bitmap = ImageZip.decodeSampledBitmapFromFile(imagePath, mWidth, mHeight);</span><br><span class="line">    mIv.setImageBitmap(bitmap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>在代码中的体现如下，即判断是否是MIUI系统，对于不同的系统采用不同的方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onActivityResult</span><span class="params">(<span class="type">int</span> requestCode, <span class="type">int</span> resultCode, Intent data)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">if</span> (resultCode != RESULT_OK) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">        <span class="keyword">case</span> INTENT_CODE_IMAGE_GALLERY1:</span><br><span class="line">            <span class="keyword">if</span> (SystemUtils.isMIUI()) &#123;</span><br><span class="line">                setPhotoForMiuiSystem(data);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                setPhotoForNormalSystem(data);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="Android6-0动态权限管理"><a href="#Android6-0动态权限管理" class="headerlink" title="Android6.0动态权限管理"></a>Android6.0动态权限管理</h2><p>我们知道在Android6.0以上的系统，有一些权限需要动态授予 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">group:android.permission-group.CONTACTS</span><br><span class="line">  permission:android.permission.WRITE_CONTACTS</span><br><span class="line">  permission:android.permission.GET_ACCOUNTS</span><br><span class="line">  permission:android.permission.READ_CONTACTS</span><br><span class="line"></span><br><span class="line">group:android.permission-group.PHONE</span><br><span class="line">  permission:android.permission.READ_CALL_LOG</span><br><span class="line">  permission:android.permission.READ_PHONE_STATE</span><br><span class="line">  permission:android.permission.CALL_PHONE</span><br><span class="line">  permission:android.permission.WRITE_CALL_LOG</span><br><span class="line">  permission:android.permission.USE_SIP</span><br><span class="line">  permission:android.permission.PROCESS_OUTGOING_CALLS</span><br><span class="line">  permission:com.android.voicemail.permission.ADD_VOICEMAIL</span><br><span class="line"></span><br><span class="line">group:android.permission-group.CALENDAR</span><br><span class="line">  permission:android.permission.READ_CALENDAR</span><br><span class="line">  permission:android.permission.WRITE_CALENDAR</span><br><span class="line"></span><br><span class="line">group:android.permission-group.CAMERA</span><br><span class="line">  permission:android.permission.CAMERA</span><br><span class="line"></span><br><span class="line">group:android.permission-group.SENSORS</span><br><span class="line">  permission:android.permission.BODY_SENSORS</span><br><span class="line"></span><br><span class="line">group:android.permission-group.LOCATION</span><br><span class="line">  permission:android.permission.ACCESS_FINE_LOCATION</span><br><span class="line">  permission:android.permission.ACCESS_COARSE_LOCATION</span><br><span class="line"></span><br><span class="line">group:android.permission-group.STORAGE</span><br><span class="line">  permission:android.permission.READ_EXTERNAL_STORAGE</span><br><span class="line">  permission:android.permission.WRITE_EXTERNAL_STORAGE</span><br><span class="line"></span><br><span class="line">group:android.permission-group.MICROPHONE</span><br><span class="line">  permission:android.permission.RECORD_AUDIO</span><br><span class="line"></span><br><span class="line">group:android.permission-group.SMS</span><br><span class="line">  permission:android.permission.READ_SMS</span><br><span class="line">  permission:android.permission.RECEIVE_WAP_PUSH</span><br><span class="line">  permission:android.permission.RECEIVE_MMS</span><br><span class="line">  permission:android.permission.RECEIVE_SMS</span><br><span class="line">  permission:android.permission.SEND_SMS</span><br><span class="line">  permission:android.permission.READ_CELL_BROADCASTS</span><br></pre></td></tr></table></figure>
-
-<p>我们这里容易 得知读取相机需要的权限有，写sd卡权限，读取camera权限，这两个权限都需要动态授予。</p>
-<h3 id="这里我们以检查是否授予camera权限为例子讲解"><a href="#这里我们以检查是否授予camera权限为例子讲解" class="headerlink" title="这里我们以检查是否授予camera权限为例子讲解"></a>这里我们以检查是否授予camera权限为例子讲解</h3><p>第一步，在启动相机的时候检查时候已经授予camera权限，没有的话 ，请求camera权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">if (ContextCompat.checkSelfPermission(this, permission)</span><br><span class="line">        != PackageManager.PERMISSION_GRANTED) &#123;//还没有授予权限</span><br><span class="line">    if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) &#123;</span><br><span class="line">        Toast.makeText(this, &quot;您已禁止该权限，需要重新开启。&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        ActivityCompat.requestPermissions(this, new String[]&#123;permission&#125;,</span><br><span class="line">                request_camera2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;// 已经授予权限</span><br><span class="line">    startCameraWithHighBitmap();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private void startCameraWithHighBitmap() &#123;</span><br><span class="line">    //确定存储拍照得到的图片文件路径</span><br><span class="line">    if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">        mFile = new File(Environment.getExternalStorageDirectory(),</span><br><span class="line">                getName());</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Toast.makeText(this, &quot;请插入sd卡&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        mFile.createNewFile();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Intent intent = new Intent();</span><br><span class="line">    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">    //加载Uri型的文件路径</span><br><span class="line">    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mFile));</span><br><span class="line">    //向onActivityResult发送intent，requestCode为INTENT_CODE_IMAGE_CAPTURE2</span><br><span class="line">    startActivityForResult(intent, INTENT_CODE_IMAGE_CAPTURE2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>第二步:重写onRequestPermissionsResult方法，判断是否授权成功，成功的话启动相机，核心代码如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,</span><br><span class="line">                                       @NonNull int[] grantResults) &#123;</span><br><span class="line">    super.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    switch (requestCode) &#123;</span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        case request_camera2:</span><br><span class="line">            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                startCameraWithHighBitmap();</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // Permission Denied</span><br><span class="line">                Toast.makeText(this, &quot;Permission Denied&quot;, Toast</span><br><span class="line">                        .LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>至于检查sd卡写权限的，这里不再阐述，有兴趣的话，可以下载源码看一下。</p>
-<p>关于Android6.0动态获取权限的，可以参考这一篇博客<a target="_blank" rel="external nofollow noopener noreferrer" href="http://gudong.name/%E6%8A%80%E6%9C%AF/2015/11/10/android_m_permission.html">在Android 6.0 设备上动态获取权限</a></p>
-<hr>
-<h2 id="调用系统Intent和自定义相册的优缺点对比"><a href="#调用系统Intent和自定义相册的优缺点对比" class="headerlink" title="调用系统Intent和自定义相册的优缺点对比"></a>调用系统Intent和自定义相册的优缺点对比</h2><h3 id="调用系统Intent启动相册"><a href="#调用系统Intent启动相册" class="headerlink" title="调用系统Intent启动相册"></a>调用系统Intent启动相册</h3><p>优点： 代码简洁</p>
-<p>缺点：对于不同的手机厂商，room往往被修改了，有时候调用系统的Intent，会有一些一项不到的bug， 不能实现多张图片的选择</p>
-<h3 id="自定义相册"><a href="#自定义相册" class="headerlink" title="自定义相册"></a>自定义相册</h3><p>优点： 实现的样式可以自己定制，可以实现多张图片的选择等</p>
-<p>缺点： 代码量稍微多一些</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>综上所述，对于本地相册的功能，本人还是强烈推荐自己实现，因为采用系统的，灵活性差，更重要的是，经常会有一些 莫名其妙的bug</p>
-<p>这里给大家推荐两种实现方式，一个是鸿洋大神以前写的，一个是GitHub的开源库。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/lmj623565791/article/details/39943731">Android 超高仿微信图片选择器 图片该这么加载</a></p>
-<p>Android仿微信图片上传，可以选择多张图片，缩放预览，拍照上传等</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zfdang/android-multiple-images-selector">android-multiple-images-selector</a></p>
-<hr>
-<h2 id="裁剪图片"><a href="#裁剪图片" class="headerlink" title="裁剪图片"></a>裁剪图片</h2><p>关于裁剪图片的Intent，网上的大多数做法是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Intent <span class="title function_">cropPic</span><span class="params">(Uri imageUri)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.android.camera.action.CROP&quot;</span>);</span><br><span class="line"></span><br><span class="line">    intent.putExtra(<span class="string">&quot;crop&quot;</span>, <span class="string">&quot;true&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置x,y的比例，截图方框就按照这个比例来截 若设置为0,0，或者不设置 则自由比例截图</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;aspectX&quot;</span>, <span class="number">2</span>);</span><br><span class="line">    intent.putExtra(<span class="string">&quot;aspectY&quot;</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 裁剪区的宽和高 其实就是裁剪后的显示区域 若裁剪的比例不是显示的比例，</span></span><br><span class="line">    <span class="comment">// 则自动压缩图片填满显示区域。若设置为0,0 就不显示。若不设置，则按原始大小显示</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;outputX&quot;</span>, <span class="number">200</span>);</span><br><span class="line">    intent.putExtra(<span class="string">&quot;outputY&quot;</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不知道有啥用。。可能会保存一个比例值 需要相关文档啊</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;scale&quot;</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// true的话直接返回bitmap，可能会很占内存 不建议</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;return-data&quot;</span>, <span class="literal">false</span>);</span><br><span class="line">    <span class="comment">// 上面设为false的时候将MediaStore.EXTRA_OUTPUT即&quot;output&quot;关联一个Uri</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;output&quot;</span>, imageUri);</span><br><span class="line">    <span class="comment">// 看参数即可知道是输出格式</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;outputFormat&quot;</span>, Bitmap.CompressFormat.JPEG.toString());</span><br><span class="line">    <span class="comment">// 面部识别 这里用不上</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;noFaceDetection&quot;</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> intent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>当你运行代码的时候，部分设备会报错，大致的意思是：com.android.camera.action.CROP 的Activity  not found</p>
-<p>解决方法，我们可以捕获一下异常，防止发生崩溃，并弹出吐司提醒用户不支持裁剪功能。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> IntentUtils.cropPic(Uri.fromFile(mF));</span><br><span class="line">    startActivityForResult(intent,req_crop);</span><br><span class="line">&#125;<span class="keyword">catch</span>(ActivityNotFoundException a)&#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">errorMessage</span> <span class="operator">=</span> <span class="string">&quot;Your device doesn&#x27;t support the crop action!&quot;</span>;</span><br><span class="line">    <span class="type">Toast</span> <span class="variable">toast</span> <span class="operator">=</span> Toast.makeText(<span class="built_in">this</span>, errorMessage, Toast.LENGTH_SHORT);</span><br><span class="line">    toast.show();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>当然，github上面有两个比较好的开源库</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jdamcd/android-crop">android-crop</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/edmodo/cropper">cropper</a></p>
-<hr>
-<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53411790">文章首发地址CSDN：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53411790">http://blog.csdn.net/gdutxiaoxu/article/details/53411790</a></strong></p>
-<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="http://download.csdn.net/detail/gdutxiaoxu/9698246">源码下载地址：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="http://download.csdn.net/detail/gdutxiaoxu/9698246">http://download.csdn.net/detail/gdutxiaoxu/9698246</a></strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2336,7 +2426,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2396,12 +2486,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">406k</span>
+    <span title="站点总字数">414k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:09</span>
+    <span title="站点阅读时长">6:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
