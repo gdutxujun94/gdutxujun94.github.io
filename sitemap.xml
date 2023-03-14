@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.junxu666.top/p/40130.html</loc>
+    
+    <lastmod>2023-03-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.junxu666.top/p/46415.html</loc>
     
     <lastmod>2023-03-14</lastmod>
@@ -830,6 +839,13 @@
   
   <url>
     <loc>https://blog.junxu666.top/tags/Beyond-compare/</loc>
+    <lastmod>2023-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.junxu666.top/tags/GoLand/</loc>
     <lastmod>2023-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
