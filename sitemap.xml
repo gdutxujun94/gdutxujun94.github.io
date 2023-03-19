@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.junxu666.top/p/57317.html</loc>
+    <loc>https://blog.junxu666.top/p/2.html</loc>
     
     <lastmod>2023-03-19</lastmod>
     
@@ -13,7 +13,7 @@
   <url>
     <loc>https://blog.junxu666.top/p/1.html</loc>
     
-    <lastmod>2023-03-18</lastmod>
+    <lastmod>2023-03-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,16 @@
   <url>
     <loc>https://blog.junxu666.top/p/0.html</loc>
     
-    <lastmod>2023-03-18</lastmod>
+    <lastmod>2023-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.junxu666.top/p/57317.html</loc>
+    
+    <lastmod>2023-03-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://blog.junxu666.top/p/6619.html</loc>
-    
-    <lastmod>2023-03-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.junxu666.top/p/2.html</loc>
     
     <lastmod>2023-03-17</lastmod>
     
