@@ -7447,9 +7447,9 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
-    <url>/p/2.html</url>
-    <content><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>传统的班级综合测评管理系统，一开始都是手工记录，然后将手工记录的文档进行存档；随着电脑的普及，班级综合测评管理演变成了手工记录后，输入电脑进行存档。这两种管理方式，对教师来说工作量大，不单要教授课程，后期的班级综合测评管理还需要花费大量时间。而且这种班级综合测评管理的方式，容易出现遗失或因为失误输入错误的信息等等。在这些基础上，我把用Springboot为框架的班级综合测评管理系统作为我的毕业设计，希望可以解决传统班级综合测评管理系统中出现的问题，简化教师的工作，也可以方便管理员进行系统化、电子化的管理。</p>
+    <title>Java 毕业设计，基于 SpringBoot 开发的班级综合测评系统研究与实现</title>
+    <url>/p/2807.html</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>传统的班级综合测评管理系统，一开始都是手工记录，然后将手工记录的文档进行存档；随着电脑的普及，班级综合测评管理演变成了手工记录后，输入电脑进行存档。这两种管理方式，对教师来说工作量大，不单要教授课程，后期的班级综合测评管理还需要花费大量时间。而且这种班级综合测评管理的方式，容易出现遗失或因为失误输入错误的信息等等。在这些基础上，我把用Springboot为框架的班级综合测评管理系统作为我的毕业设计，希望可以解决传统班级综合测评管理系统中出现的问题，简化教师的工作，也可以方便管理员进行系统化、电子化的管理。</p>
 <h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>开发语言：Java</p>
 <p>框架：springboot</p>
 <p>JDK版本：JDK1.8</p>
@@ -7505,6 +7505,9 @@
 <h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
 ]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
   </entry>
   <entry>
     <title>Java SprintBoot 部署教程</title>
