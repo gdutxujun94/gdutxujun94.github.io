@@ -6213,8 +6213,6 @@
     <title>毕业设计咨询</title>
     <url>/p/57317.html</url>
     <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="毕业设计咨询"><a href="#毕业设计咨询" class="headerlink" title="毕业设计咨询"></a>毕业设计咨询</h1><p><strong>代码都是我和朋友开发的，测试过的，还有视频演示和文档的。</strong>可以保证正常运行。</p>
-<p>源码+部署教程+论文，一套 200 - 1000，有需要的话，可以添加我<strong>微信咨询，非诚勿扰</strong>。vx xiaoxu_9411</p>
-<p>如果需要答疑的话，需要额外收费</p>
 <p><img src="https://img-1257365285.cos.ap-beijing.myqcloud.com//202303191703-64ca.png"></p>
 <p><strong>微信 xiaoxu_9411</strong></p>
 <p><img src="https://img-1257365285.cos.ap-beijing.myqcloud.com//2023031721-092efa2.png" alt="image-20230317212026275"></p>
@@ -6244,9 +6242,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/p/0.html</url>
-    <content><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png" alt="image-20230318225935236"></p>
+    <title>Java 毕业设计，基于 SpringBoot 开发的学生成绩管理系统</title>
+    <url>/p/36460.html</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png" alt="image-20230318225935236"></p>
 <p>学生成绩管理系统，基于 SpringBoot 开发的，功能完整，包括源码和部署教程。</p>
 <p>为用户随时随地查看学生成绩信息提供了便捷的方法，更重要的是大大的简化了管理员管理学生成绩信息的方式方法，更提供了其他想要了解学生成绩信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统学生成绩管理方法，这样的电子信息管理更为简洁方便，在学生成绩管理维护信息反馈和处理学生成绩管理意见方面也有得天独厚的</p>
 <h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p>
@@ -6259,9 +6257,9 @@
 <p>Maven包：Maven3.3.9</p>
 <p>浏览器：谷歌浏览器</p>
 <h1 id="3-系统流程分析"><a href="#3-系统流程分析" class="headerlink" title="3. 系统流程分析"></a>3. 系统流程分析</h1><p>系统登录流程图，如图所示：</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-0621.png" alt="image-20230318230347954"></h3><p>添加信息流程图，如图所示：</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-0621.png" alt="image-20230318230347954"></h3><p>添加信息流程图，如图所示：</p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-424f.png" alt="image-20230318230357794"> </p>
-<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><p>删除信息流程图，如图所示：</p>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><p>删除信息流程图，如图所示：</p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ea85.png" alt="image-20230318230412281"></p>
 <h1 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4 系统设计"></a>4 系统设计</h1><h2 id="4-1-系统设计主要功能"><a href="#4-1-系统设计主要功能" class="headerlink" title="4.1 系统设计主要功能"></a>4.1 系统设计主要功能</h2><p>通过市场调研及咨询研究，了解了使用者及管理者的使用需求，于是制定了管理员、学生和教师等模块。其功能结构图如下图4-1所示：</p>
 <p>​                                                                                             <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-53c4503.png" alt="image-20230318225715442"></p>
@@ -6738,11 +6736,14 @@
 <h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p>大学生体质测试管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击查看<a href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/90bda718d3bc9e51222a8eeda424c435.png" alt="image-20230318230216724"></p>
 ]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
   </entry>
   <entry>
-    <title></title>
-    <url>/p/1.html</url>
-    <content><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-5e82.png" alt="image-20230318232308154"></p>
+    <title>Java 毕业设计，基于 SpringBoot 开发的家乡特色菜系统的研究与实现</title>
+    <url>/p/64078.html</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-5e82.png" alt="image-20230318232308154"></p>
 <p>家乡特色推荐系统，基于 SpringBoot 开发的，功能完整，包括源码和部署教程。可用于毕业设计和课程设计</p>
 <p>本次设计任务是要设计一个家乡特色推荐系统，通过这个系统能够满足家乡特色文章的管理功能。系统的主要功能包括首页，个人中心，用户管理，文章分类管理，文章分享管理，系统管理等。</p>
 <p>管理员可以根据系统给定的账号进行登录，登录后可以进入家乡特色推荐系统，对所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
@@ -7441,6 +7442,9 @@
 <h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p>家乡特色菜管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击查看<a href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/90bda718d3bc9e51222a8eeda424c435.png" alt="image-20230318230216724"></p>
 ]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
   </entry>
   <entry>
     <title></title>
@@ -7501,5 +7505,36 @@
 <h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Java SprintBoot 部署教程</title>
+    <url>/p/49037.html</url>
+    <content><![CDATA[<p><a href="https://blog.junxu666.top/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">更多毕业设计</a></p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h2 id="Java-配置教程"><a href="#Java-配置教程" class="headerlink" title="Java 配置教程"></a>Java 配置教程</h2><p>Java配置环境链接： <a href="https://pan.baidu.com/s/1PMNIxHDu1SfYlng3BP58zg?pwd=qpke">https://pan.baidu.com/s/1PMNIxHDu1SfYlng3BP58zg?pwd=qpke</a> </p>
+<p>提取码: qpke </p>
+<h2 id="部署教程"><a href="#部署教程" class="headerlink" title="部署教程"></a>部署教程</h2><p><strong>如果您要学会调试运行，一定要去看运行教学</strong></p>
+<p>springboot程序运行教学地址：</p>
+<p>链接: <a href="https://pan.baidu.com/s/1MjF9VkFhFLliiSkYTk8SaQ?pwd=v2u4">https://pan.baidu.com/s/1MjF9VkFhFLliiSkYTk8SaQ?pwd=v2u4</a> </p>
+<p>提取码: v2u4 </p>
+<p><strong>部署教程：</strong></p>
+<p><strong>链接: <a href="https://pan.baidu.com/s/10tI5APDy4as14lDRskt4Yw?pwd=xsf5">https://pan.baidu.com/s/10tI5APDy4as14lDRskt4Yw?pwd=xsf5</a></strong></p>
+<p><strong>提取码: xsf5</strong>  </p>
+<h2 id="运行地址："><a href="#运行地址：" class="headerlink" title="运行地址："></a>运行地址：</h2><p>后台路径地址：localhost:8080&#x2F;项目名称&#x2F;admin&#x2F;dist&#x2F;index.html</p>
+<p>前台路径地址：localhost:8080&#x2F;项目名称&#x2F;front&#x2F;index.html （无前台不需要输入）</p>
+<p>管理员账号：abo   </p>
+<p>管理员密码：abo</p>
+]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
   </entry>
 </search>
