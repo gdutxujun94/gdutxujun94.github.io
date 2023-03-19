@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1. 简介 学生成绩管理系统，基于 SpringBoot 开发的，功能完整，包括源码和部署教程。 为用户随时随地查看学生成绩信息提供了便捷的方法，更重要的是大大的简化了管理员管理学生成绩信息的方式方法，更提供了其他想要了解学生成绩信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统学生成绩管理方法，这样的电子信息管理更为简洁方便，在学生成绩管理维护信息反馈和处理学生成绩管理意见方面也有得天独厚的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员徐公">
+<meta property="og:url" content="https://blog.junxu666.top/p/0.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="1. 简介 学生成绩管理系统，基于 SpringBoot 开发的，功能完整，包括源码和部署教程。 为用户随时随地查看学生成绩信息提供了便捷的方法，更重要的是大大的简化了管理员管理学生成绩信息的方式方法，更提供了其他想要了解学生成绩信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统学生成绩管理方法，这样的电子信息管理更为简洁方便，在学生成绩管理维护信息反馈和处理学生成绩管理意见方面也有得天独厚的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-0621.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-424f.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ea85.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-53c4503.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-e026c38.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-285d0c0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-5db88cb.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-87b9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-4a39.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-7342.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ca1b.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-910a.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-6642.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-beac.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-68ae.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-779e.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/90bda718d3bc9e51222a8eeda424c435.png">
+<meta property="article:published_time" content="2023-03-18T14:50:27.856Z">
+<meta property="article:modified_time" content="2023-03-18T15:21:44.622Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/0.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-18 22:50:27 / 修改时间：23:21:44" itemprop="dateCreated datePublished" datetime="2023-03-18T22:50:27+08:00">2023-03-18</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png" alt="image-20230318225935236"></p>
+<p>学生成绩管理系统，基于 SpringBoot 开发的，功能完整，包括源码和部署教程。</p>
+<p>为用户随时随地查看学生成绩信息提供了便捷的方法，更重要的是大大的简化了管理员管理学生成绩信息的方式方法，更提供了其他想要了解学生成绩信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统学生成绩管理方法，这样的电子信息管理更为简洁方便，在学生成绩管理维护信息反馈和处理学生成绩管理意见方面也有得天独厚的</p>
+<h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-系统流程分析"><a href="#3-系统流程分析" class="headerlink" title="3. 系统流程分析"></a>3. 系统流程分析</h1><p>系统登录流程图，如图所示：</p>
+<h3 id><a href="#" class="headerlink" title></a><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-0621.png" alt="image-20230318230347954"></h3><p>添加信息流程图，如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-424f.png" alt="image-20230318230357794"> </p>
+<h3 id="-1"><a href="#-1" class="headerlink" title></a></h3><p>删除信息流程图，如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ea85.png" alt="image-20230318230412281"></p>
+<h1 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4 系统设计"></a>4 系统设计</h1><h2 id="4-1-系统设计主要功能"><a href="#4-1-系统设计主要功能" class="headerlink" title="4.1 系统设计主要功能"></a>4.1 系统设计主要功能</h2><p>通过市场调研及咨询研究，了解了使用者及管理者的使用需求，于是制定了管理员、学生和教师等模块。其功能结构图如下图4-1所示：</p>
+<p>​                                                                                             <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-53c4503.png" alt="image-20230318225715442"></p>
+<h2 id="4-2-数据库设计"><a href="#4-2-数据库设计" class="headerlink" title="4.2 数据库设计"></a>4.2 数据库设计</h2><h3 id="4-2-1-数据库设计规范"><a href="#4-2-1-数据库设计规范" class="headerlink" title="4.2.1 数据库设计规范"></a>4.2.1 数据库设计规范</h3><p>数据可设计要遵循职责分离原则，即在设计时应该要考虑系统独立性，即每个系统之间互不干预不能混乱数据表和系统关系。</p>
+<p>数据库命名也要遵循一定规范，否则容易混淆，数据库字段名要尽量做到与表名类似，多使用小写英文字母和下划线来命名并尽量使用简单单词。</p>
+<h3 id="4-2-2-E-R图"><a href="#4-2-2-E-R图" class="headerlink" title="4.2.2 E-R图"></a>4.2.2 E-R图</h3><p>综合成绩管理E-R图，如图4-2所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-e026c38.png" alt="image-20230318225734542"></p>
+<p>学生信息E-R图，如图4-3所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-285d0c0.png" alt="image-20230318225754593"></p>
+<p>教师信息E-R图如图4-4所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-5db88cb.png" alt="image-20230318225815822"></p>
+<h3 id="4-2-3-数据表"><a href="#4-2-3-数据表" class="headerlink" title="4.2.3 数据表"></a>4.2.3 数据表</h3><p>本系统采用的是MySQL数据库存储数据，系统中使用到的主要数据表的具体展示部分如下所示。</p>
+<p>表4-1：综合成绩</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>xuehao</td>
+<td>varchar</td>
+<td>200</td>
+<td>学号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xueshengxingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>学生姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>banji</td>
+<td>varchar</td>
+<td>200</td>
+<td>班级</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xueyechengji</td>
+<td>float</td>
+<td></td>
+<td>学业成绩</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>deyuchengji</td>
+<td>float</td>
+<td></td>
+<td>德育成绩</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tiyusuzhi</td>
+<td>float</td>
+<td></td>
+<td>体育素质</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zhiyusuzhi</td>
+<td>float</td>
+<td></td>
+<td>智育素质</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zongfen</td>
+<td>float</td>
+<td></td>
+<td>总分</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xuenian</td>
+<td>varchar</td>
+<td>200</td>
+<td>学年</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dengjishijian</td>
+<td>datetime</td>
+<td></td>
+<td>登记时间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jiaoshigonghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>教师工号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jiaoshixingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>教师姓名</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-2：学生</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>xuehao</td>
+<td>varchar</td>
+<td>200</td>
+<td>学号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mima</td>
+<td>varchar</td>
+<td>200</td>
+<td>密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>touxiang</td>
+<td>varchar</td>
+<td>200</td>
+<td>头像</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xueshengxingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>学生姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingbie</td>
+<td>varchar</td>
+<td>200</td>
+<td>性别</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shoujihaoma</td>
+<td>varchar</td>
+<td>200</td>
+<td>手机号码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>youxiang</td>
+<td>varchar</td>
+<td>200</td>
+<td>邮箱</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>banji</td>
+<td>varchar</td>
+<td>200</td>
+<td>班级</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-3：用户表</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>varchar</td>
+<td>100</td>
+<td>用户名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>varchar</td>
+<td>100</td>
+<td>密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>role</td>
+<td>varchar</td>
+<td>100</td>
+<td>角色</td>
+<td></td>
+<td>管理员</td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>新增时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+</tbody></table>
+<p>表4-4：token表</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>userid</td>
+<td>bigint</td>
+<td></td>
+<td>用户id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>varchar</td>
+<td>100</td>
+<td>用户名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tablename</td>
+<td>varchar</td>
+<td>100</td>
+<td>表名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>role</td>
+<td>varchar</td>
+<td>100</td>
+<td>角色</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>token</td>
+<td>varchar</td>
+<td>200</td>
+<td>密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>新增时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>expiratedtime</td>
+<td>timestamp</td>
+<td></td>
+<td>过期时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+</tbody></table>
+<p>表4-5：教师</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>jiaoshigonghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>教师工号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mima</td>
+<td>varchar</td>
+<td>200</td>
+<td>密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>touxiang</td>
+<td>varchar</td>
+<td>200</td>
+<td>头像</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jiaoshixingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>教师姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingbie</td>
+<td>varchar</td>
+<td>200</td>
+<td>性别</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shoujihaoma</td>
+<td>varchar</td>
+<td>200</td>
+<td>手机号码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>youxiang</td>
+<td>varchar</td>
+<td>200</td>
+<td>邮箱</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zhiwu</td>
+<td>varchar</td>
+<td>200</td>
+<td>职务</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="5-系统实现"><a href="#5-系统实现" class="headerlink" title="5 系统实现"></a>5 系统实现</h1><p>登录，管理员、学生和教师通过输入用户名，密码，选择角色信息，点击登录进入系统操作进行操作，如图5-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png" alt="image-20230318225935236"></p>
+<h2 id="5-1管理员功能模块"><a href="#5-1管理员功能模块" class="headerlink" title="5.1管理员功能模块"></a>5.1管理员功能模块</h2><p>管理员登录进入学生成绩管理系统可以查看首页、个人中心、学生管理、教师管理、班级管理、综合成绩管理等内容进行详细操作，如图5-6所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-87b9.png" alt="image-20230318225951226"></p>
+<p>学生管理，在学生管理页面可以对索引、学号、头像、学生姓名、性别、手机号码、邮箱、班级等内容进行详情，修改或删除等操作，如图5-2所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-4a39.png" alt="image-20230318230015169"></p>
+<p>教师管理，在教师管理页面可以对索引、教师工号、头像、教师姓名、性别、手机号码、邮箱、职务等内容进行详情，修改或删除等操作，如图5-3所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-7342.png" alt="image-20230318230038503"></p>
+<p>综合成绩管理，在综合成绩管理页面可以对索引、学号、学生姓名、班级、学业成绩、德育成绩、体育素质、智育素质、总分、学年、登记时间、教师工号、教师姓名等内容进行详情，修改或删除等操作，如图5-4所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ca1b.png" alt="image-20230318230054743"></p>
+<h2 id="5-2学生功能模块"><a href="#5-2学生功能模块" class="headerlink" title="5.2学生功能模块"></a>5.2学生功能模块</h2><p>学生登录进入学生成绩管理系统可以查看首页、个人中心、综合成绩管理等内容进行详细操作，如图5-5所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-910a.png" alt="image-20230318230119277"></p>
+<p>个人中心，在个人信息页面通过填写学号、头像、学生姓名、性别、手机号码、邮箱、班级等内容进行个人信息修改操作，如图5-6所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-6642.png" alt="image-20230318230133157"></p>
+<h2 id="5-3教师功能模块"><a href="#5-3教师功能模块" class="headerlink" title="5.3教师功能模块"></a>5.3教师功能模块</h2><p>教师登录进入学生成绩管理系统可以查看首页、个人中心、综合成绩管理等内容进行详细操作，如图5-7所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-beac.png" alt="image-20230318230151602"></p>
+<p>个人中心，在个人信息页面通过填写教师工号、头像、教师姓名、性别、手机号码、邮箱、职务等内容进行个人信息修改操作，如图5-8所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-68ae.png" alt="image-20230318230203862"></p>
+<p>综合成绩管理，在综合成绩管理页面可以对索引、学号、学生姓名、班级、学业成绩、德育成绩、体育素质、智育素质、总分、学年、登记时间、教师工号、教师姓名等内容进行详情，修改或删除等操作，如图5-9所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-779e.png" alt="image-20230318230216724"></p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p>大学生体质测试管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/90bda718d3bc9e51222a8eeda424c435.png" alt="image-20230318230216724"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/2.html" rel="prev" title>
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/1.html" rel="next" title>
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">2. 技术栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%B3%BB%E7%BB%9F%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">3. 系统流程分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.0.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">3.0.2.</span> <span class="nav-text"></span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">4 系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 系统设计主要功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 数据库设计规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-E-R%E5%9B%BE"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 E-R图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">4.2.3.</span> <span class="nav-text">4.2.3 数据表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">5 系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1%E7%AE%A1%E7%90%86%E5%91%98%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">5.1.</span> <span class="nav-text">5.1管理员功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2%E5%AD%A6%E7%94%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">5.2.</span> <span class="nav-text">5.2学生功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3%E6%95%99%E5%B8%88%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">5.3.</span> <span class="nav-text">5.3教师功能模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="nav-number">6.</span> <span class="nav-text">源码下载地址</span></a></li></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">446k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:46</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
