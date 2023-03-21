@@ -186,6 +186,262 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/59068.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/59068.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 的智慧养老系统的研究与实现，附源码和教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-21 13:05:55 / 修改时间：20:59:49" itemprop="dateCreated datePublished" datetime="2023-03-21T13:05:55+08:00">2023-03-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><blockquote>
+<p>大家伙，我是程序员徐师兄，6 年大厂经验<br>最近跟朋友合作，捣鼓了这个毕业设计项目，源码都是可以运行起来的，里面包括源码和教程，大家感兴趣的话可以私聊我了解。<br><br><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="-1"><a href="#-1" class="headerlink" title></a></h1><h1 id="1-研究背景"><a href="#1-研究背景" class="headerlink" title="1.研究背景"></a>1.研究背景</h1><p>困扰管理层的许多问题当中,智慧养老平台一定是养老平台不敢忽视的一块。但是管理好智慧养老又面临很多麻烦需要解决,例如有几个方面:第一,往往人数都比较多,如何保证能够管理到每一老人;第二,如何在工作琐碎,记录繁多的情况下将智慧养老的当前情况反应给智慧养老领导相关部门决策等。在此情况下开发一款智慧养老平台，于是乎变得非常合乎时宜。</p>
+<p>经过网上调查和搜集数据,我们可以发现智慧养老方面的系统并不是相当普及,智慧养老方面的可以有许多改进。实际上如今信息化成为一个未来的趋势或者可以说在当前现代化的城市典范中,信息化已经成为主流,开发一个智慧养老平台一方面的可能会更合乎时宜,另一方面来说也可以提高智慧养老方面的效率给相关部门人的工作带来一定的便利。</p>
+<h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-系统分析"><a href="#3-系统分析" class="headerlink" title="3.系统分析"></a>3.系统分析</h1><p>考虑到实际生活中智慧养老平台方面的需要以及对该平台认真的分析,将系统权限按管理员和老人这两类涉及用户划分。</p>
+<p>(a) 管理员；管理员使用本系统涉到的功能主要有：首页、个人中心、老人管理、亲属管理、每日健康管理、既往病史管理、活动分类管理、活动信息管理、商品类型管理、便利店管理、商品购买管理、劳工管理、服务类型管理、服务项目管理、服务购买管理、紧急求助管理、礼品发放管理、积分增加管理、系统管理等功能。管理员用例图如图3-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-4d05.jpg" alt="img"></p>
+<p> (b)老人；进入系统可以实现首页、养老平台、电影信息、个人中心、后台管理等功能。老人用例图如图3-2所示。</p>
+<p><strong><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-4983.jpg" alt="img"></strong></p>
+<h1 id="4系统设计"><a href="#4系统设计" class="headerlink" title="4系统设计"></a>4系统设计</h1><h2 id="4-1-软件功能模块设计"><a href="#4-1-软件功能模块设计" class="headerlink" title="4.1 软件功能模块设计"></a>4.1 软件功能模块设计</h2><p>网站整体功能如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-3c18.jpg" alt="img"></p>
+<p>图 4-1 系统功能模块图</p>
+<h2 id="4-2数据库设计与实现"><a href="#4-2数据库设计与实现" class="headerlink" title="4.2数据库设计与实现"></a>4.2数据库设计与实现</h2><p>在每一个系统中数据库有着非常重要的作用，数据库的设计得好将会增加系统的效率以及系统各逻辑功能的实现。所以数据库的设计我们要从系统的实际需要出发，才能使其更为完美的符合系统功能的实现。</p>
+<h1 id="5系统详细设计"><a href="#5系统详细设计" class="headerlink" title="5系统详细设计"></a>5系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>智慧养老平台，在系统首页可以查看首页、活动信息、便利店、劳工、服务项目、个人中心、后台管理等内容，并进行详细操作；如图5-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-f50f.png" alt="image-20230320212319187"></p>
+<p>活动信息，在活动信息页面中可以查看活动标题、活动分类、开始时间、结束时间、活动地点等内容进行收藏等操作，如图5-2所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-f544.png" alt="image-20230320212542564"></p>
+<p>便利店，在便利店页面可以查看商品名称、生产地、数量、单价、商品分类等内容进行详情或收藏等操作，如图5-3所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-6118.png" alt="image-20230320212606306"></p>
+<p>服务项目，在服务项目页面可以查看项目名称、项目类型、项目价格、劳工姓名等内容进行详情或收藏等操作，如图5-4所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-0e55.png" alt="image-20230320212924499"></p>
+<p>  个人中心，在个人中心页面通过填写老人账号、密码、老人姓名、性别、年龄、图片、老人手机、积分、老人地址等内容进行更新信息等操作，并可以根据我的收藏进行相应的操作，如图5-5所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-22bc.png" alt="image-20230320212628744"></p>
+<p>图5-5个人中心界面图</p>
+<h2 id="5-2后台登录功能"><a href="#5-2后台登录功能" class="headerlink" title="5.2后台登录功能"></a>5.2后台登录功能</h2><p>管理员和老人进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-6所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-0370.png" alt="image-20230320212938061"></p>
+<h3 id="5-2-1管理员功能"><a href="#5-2-1管理员功能" class="headerlink" title="5.2.1管理员功能"></a>5.2.1管理员功能</h3><p>管理员登录系统后，可以对首页、个人中心、老人管理、亲属管理、每日健康管理、既往病史管理、活动分类管理、活动信息管理、商品类型管理、便利店管理、商品购买管理、劳工管理、服务类型管理、服务项目管理、服务购买管理、紧急求助管理、礼品发放管理、积分增加管理、系统管理等功能进行相应的操作管理，如图5-7所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-3a77.png" alt="image-20230320212953466"></p>
+<p>老人管理，在老人管理页面可以对索引、老人账号、老人姓名、性别、年龄、照片、老人手机、积分、老人地址等内容进行详情、礼品发放、积分增加、修改或删除等操作，如图5-8所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-5acc.png" alt="image-20230320213014834"></p>
+<p>亲属管理，在亲属管理页面可以对索引、老人账号、亲属姓名、性别、联系方式、与老人关系等内容进行详情、修改或删除等操作，如图5-9所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-19bd.png" alt="image-20230320213031763"></p>
+<p>每日健康管理，在每日健康管理页面可以对索引、老人账号、老人姓名、性别、年龄、体温、血压、心跳、健康报告、添加时间等内容进行详情、修改或删除等操作，如图5-10所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-cff8.png" alt="image-20230320213050169"></p>
+<p>既往病史管理，在既往病史管理页面可以对索引、老人账号、老人姓名、性别、年龄、登记时间等内容进行详情、修改或删除等操作，如图5-11所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-29fb.png" alt="image-20230320213135047"></p>
+<p>活动信息管理，在活动信息管理页面中可以对索引、活动标题、封面、活动分类、开始时间、结束时间、活动地点等内容进行详情、修改或删除等操作，如图5-12所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-6e7a.png" alt="image-20230320213145806"></p>
+<p>便利店管理，在便利店管理页面中可以对索引、商品编号、商品名称、出生地、数量、单价、商品分类、商品图片等内容进行详情、进货、修改或删除等操作，如图5-13所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-7b45.png" alt="image-20230320213159740"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/10525.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/10525.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 开发的留守儿童系统的研究与实现，附源码和教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-20 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-20T13:05:55+08:00">2023-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-21 20:59:51" itemprop="dateModified" datetime="2023-03-21T20:59:51+08:00">2023-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><blockquote>
+<p>大家伙，我是程序员徐师兄，6 年大厂经验<br>最近跟朋友合作，捣鼓了这个毕业设计项目，源码都是可以运行起来的，里面包括源码和教程，大家感兴趣的话可以私聊我了解。<br><br><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="1-研究背景"><a href="#1-研究背景" class="headerlink" title="1.研究背景"></a>1.研究背景</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-4c82.png" alt="image-20230320232434235"></p>
+<p>以往的留守儿童爱心的管理，一般都是纸质文件来管理留守儿童爱心信息，传统的管理方式已经无法满足现代人们的需求；使用留守儿童爱心网站, 首先可以大幅提高留守儿童爱心信息检索，只需输入留守儿童爱心相关信息就能在数秒内反馈想要的结果；其次可存储大量的留守儿童爱心信息，同时留守儿童爱心信息安全性有更高的保障；这些优点大大提高运营效率并节省运营成本。因此，开发留守儿童爱心网站对留守儿童爱心信息进行有效的管理是很必要的，不仅提高了留守儿童爱心管理效率，增加了用户信息安全性，方便及时反馈信息给管理员，增加了与管理员之间的互动交流，更能提高用户的体验强度。</p>
+<p>本系统为了数据库结构的灵活性所以打算采用MySQL来设计数据库，而java技术，B&#x2F;S架构则保证了较高的平台适应性。本文主要介绍了本系统的开发背景，所要完成的功能和开发的过程，主要说明了系统设计的重点、设计思想。</p>
+<h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-系统分析"><a href="#3-系统分析" class="headerlink" title="3.系统分析"></a>3.系统分析</h1><p>经过大学四年的学习，已经掌握了JAVA、Mysql数据库等方面的编程技巧和方法，对于这些技术该有的软硬件配置也是齐全的，能够满足开发的需要。</p>
+<p>本留守儿童爱心网站采用的是Mysql作为数据库，可以绝对地保证用户数据的安全；可以与Mysql数据库进行无缝连接。</p>
+<p>所以，留守儿童爱心网站在技术上是可以实施的。</p>
+<h1 id="4系统设计"><a href="#4系统设计" class="headerlink" title="4系统设计"></a>4系统设计</h1><p>留守儿童爱心网站的主要功能的结构如图4-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-8266.jpg" alt="img"></p>
+<h1 id="5系统的详细设计与实现"><a href="#5系统的详细设计与实现" class="headerlink" title="5系统的详细设计与实现"></a>5系统的详细设计与实现</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>系统首页的主要功能展示了首页、宣传新闻、志愿活动、爱心捐赠、个人中心、后台管理等信息，进行相应操作。运行结果如图5-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-958a.jpg" alt="img"></p>
+<p>宣传新闻，在宣传新闻页面中可以查看新闻标题、发布时间、发布人等内容进行评论或提交等操作，如图5-2所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-b9ed.png" alt="image-20230320232046837"></p>
+<p>志愿活动，在志愿活动页面可以查看活动名称、活动编号、活动地点、开始时间、结束时间、联系方式等内容进行活动报名等操作；如图5-3所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-88f6.png" alt="image-20230320232102450"></p>
+<p>爱心捐赠，在爱心捐赠页面中可以查看捐赠标题、发布时间、机构名称、 捐赠地点、微信账号、微信用户名等内容进行捐赠内容等操作，如图5-4所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-fb3b.png" alt="image-20230320232112264"></p>
+<p>用户注册，在用户注册页面中通过填写用户账号、密码、确认密码、用户姓名、年龄、用户手机等内容进行注册等操作如图5-6所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-a1b4.png" alt="image-20230320232145736"></p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-7所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-1d94.png" alt="image-20230320232156403"></p>
+<p>管理员登录系统后，可以对首页、个人中心、用户管理、宣传新闻管理、志愿活动管理、爱心捐赠管理、旧物捐赠管理、活动报名管理、系统管理等功能进行相应的操作管理，如图5-8所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-f3a9.png" alt="image-20230320232205112"></p>
+<p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、性别、年龄、头像、用户手机等内容进行详情、修改或删除等操作，如图5-9所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-af8a.png" alt="image-20230320232219156"></p>
+<p>宣传新闻管理，在宣传新闻管理页面可以对索引、新闻标题、封面图片、发布时间、发布人等内容进行详情、查看评论、修改或删除等操作，如图5-10所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-e71d.png" alt="image-20230320232232144"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/64078.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -990,7 +1246,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-03-19 13:05:55 / 修改时间：17:56:18" itemprop="dateCreated datePublished" datetime="2023-03-19T13:05:55+08:00">2023-03-19</time>
+              <time title="创建时间：2023-03-19 13:05:55 / 修改时间：17:56:41" itemprop="dateCreated datePublished" datetime="2023-03-19T13:05:55+08:00">2023-03-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2279,295 +2535,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/5233.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/5233.html" class="post-title-link" itemprop="url">Altium Designer 22 中文版最新激活码，激活、破解教程，永久激活，亲测可用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-09 00:00:08" itemprop="dateCreated datePublished" datetime="2023-03-09T00:00:08+08:00">2023-03-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-13 23:02:28" itemprop="dateModified" datetime="2023-03-13T23:02:28+08:00">2023-03-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A1%AC%E4%BB%B6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件常用软件</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>altium designer22</strong>是一款由Altium开发团队全新推出的简单易用，与时俱进，功能强大的PCB设计软件，可以方便用户快速完成各类原理图的设计操作。用户可以完全掌控设计过程，提高整个设计团队的生产力和工作效率，节省总体成本、缩短产品上市时间，助您一直处于新科技的最前沿。</p>
-<p>相比于旧版，新版altium designer22添加了许多的功能以及进行了全面的优化，它包括了强大的功能，能够可帮助确保用户的PCB设计已准备好进行制造，即使是最复杂的电路板，也可以毫不费力地优化您的设计，其中新的PCB技术感知功能也能够使用户轻松地对影响设计制造的关键PCB特征进行建模，总而言之就是使用新版软件，用户现在可以将各种新的电路板特性建模到您的设计中，包括沉孔&#x2F;埋头孔、IPC-4561通孔类型等。在这里可以完美的支持自定义多边形、电路板开孔、实时规则检查、设计复用以及尺寸自动测量，甚至还为用户配备了直观高效的用户界面，帮助你更好的实现自己的设计工作。</p>
-<p>ps：小编带来的是<strong>altium designer22中文版</strong>，内附有补丁文件，能够完美的激活软件，详细的教程请参考本文操作步骤，需要的朋友可下载试试！</p>
-<h3 id="软件特色"><a href="#软件特色" class="headerlink" title="软件特色"></a>软件特色</h3><p>1、设计环境：通过设计过程的各个方面互连，显着提高生产力，包括原理图，PCB，文档和模拟。<br>2、制造设计：学习并应用设计制造(DFM)方法，确保您的PCB设计每次都能正常运行，可靠且可制造。<br>3、切换很容易：使用业内最强大的翻译工具轻松迁移您的遗留信息-如果没有这些翻译工具，我们的成长将无法实现。<br>4、刚柔结合设计：以全3D设计刚柔结合并确认3D组件，外壳组件和PCB间隙满足所有机械要求。<br>5、PCB设计：通过受控元件放置和原理图与PCB之间的完全同步，轻松地在电路板布局上操纵物体。<br>6、原理图设计：通过一个内聚，易于导航的用户界面中的分层原理图和设计重用，更快，更高效地设计顶级电子设备。<br>7、制造业产出：体验管理数据的优雅，并通过无缝，简化的文档功能为发布做好准备。<br>8、互联的多板装配：多板之间的连接关系管理和增强的3D引擎使您可以实时呈现设计模型和多板装配情况 – 显示更快速，更直观，更逼真。<br>9、时尚的用户界面体验：全新的，紧凑的用户界面提供了一个全新而直观的环境，并进行了优化，可以实现无与伦比的设计工作流可视化。<br>10、强大的PCB设计：利用64位CPU的架构优势和多线程任务优化使您能够比以前更快地设计和发布大型复杂的电路板。<br>11、快速、高质量的布线：视觉约束和用户指导的互动结合使您能够跨板层进行复杂的拓扑结构布线 – 以计算机的速度布线，以人的智慧保证质量。<br>12、实时的BOM管理：链接到BOM的最新供应商元件信息使您能够根据自己的时间表做出有根据的设计决策<br>13、简化的PCB文档处理流程：在一个单一的，紧密的设计环境中记录所有装配和制造视图，并通过链接的源数据进行一键更新。</p>
-<h3 id="altium-designer22安装教程"><a href="#altium-designer22安装教程" class="headerlink" title="altium designer22安装教程"></a>altium designer22安装教程</h3><h3 id="下载地址："><a href="#下载地址：" class="headerlink" title="下载地址："></a>下载地址：</h3><p>公众号<strong>硬件工程师</strong>，回复 <strong>altium designer</strong>，即可获取。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030700-f02d6f.png" alt="image-20230307000909729"></p>
-<p>提示：安装全过程必须断掉电脑网络，否则容易出现安装失败的问题！！！</p>
-<p>1、在本站下载解压，得到补丁文件和原程序</p>
-<p>2、双击运行”Installer.Exe”程序进入软件安装向导，点击next进行下一步。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031322-83331c.jpeg" alt="img"></p>
-<p>3、在Select language栏下拉列表中选择“Chinese”语言，然后勾选安装许可协议，再点击Next。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-223aa0.jpeg" alt="img"></p>
-<p>4、按默认目录进行安装，当然，用户也可自行选择软件安装路径，然后耐心等到软件安装，直到显示完成，记住这里取消勾选不要运行软件，直接退出向导即可；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-77d6f5.jpeg" alt="img"></p>
-<p>5、接下来将补丁文件下的“shfolder.dll”复制到源程序安装目录下；<br>安装目录【C:\Program Files\Altium\AD22】</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-d07ba2.jpeg" alt="img"></p>
-<p>6、因为没有在创建桌面快捷方式，所以可以在电脑左下角搜索并打开软件，点击界面中的【Add standalone license file】；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-78426c.jpeg" alt="img"></p>
-<p>7、将会弹出一个窗口，然后打开软件初始安装包ad211 unis licewnses文件夹，找到AD20-Sandy.alf文件，单击选中它后再点击打开；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-83f1fe.jpeg" alt="img"></p>
-<p>8、软件将会自动显示软件许可有效期至2030年，表示已经成功激活，可免费使用所有功能；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-403c86.jpeg" alt="img"></p>
-<p>9、接下来进行汉化，点击右上角的齿轮图标，找到General页面，勾选“Use localized resources”，将会弹出一个界面，依次选择OK就可以了；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-5a9726.jpeg" alt="img"></p>
-<p>10、至此，以上就是altium designer22中文破解版软件安装教程，希望能对用户有帮助。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-38d7eb.jpeg" alt="img"></p>
-<h3 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h3><p>1、当我们在软件中找不到所需要的元件的时候,就的需要自己去画,我们以下面的器件为例；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-fe53d4.jpeg" alt="img"></p>
-<p>2、首先新建一个原理图库</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-c5891b.jpeg" alt="img"></p>
-<p>3、找到画笔画出一个器件大小的矩形框</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-9c78a4.jpeg" alt="img"></p>
-<p>4、添加引脚</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-525d32.jpeg" alt="img"></p>
-<p>5、按Tab键修改参数</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-4e65be.jpeg" alt="img"></p>
-<p>6、第一个引脚就画出来了</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-adc114.jpeg" alt="img"></p>
-<p>7、重复以上继续画其他的引脚</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-daf475.jpeg" alt="img"></p>
-<p>8、点击保存</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-39f0a6.jpeg" alt="img"></p>
-<p>9、点击库</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-915149.jpeg" alt="img"></p>
-<p>10、找到刚刚保存的原理图库</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-ba2093.jpeg" alt="img"></p>
-<p>11、放到原理图，完成器件的绘制</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-3a8230.jpeg" alt="img"></p>
-<h3 id="怎么删除元件？"><a href="#怎么删除元件？" class="headerlink" title="怎么删除元件？"></a>怎么删除元件？</h3><p>1、进入altium designer首页，点击File。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-6a0a64.jpeg" alt="img"></p>
-<p>2、进入FILe菜单，点击open，打开你要修改的pcb文件。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-50f792.jpeg" alt="img"></p>
-<p>3、进入pcb文件编辑界面，点击菜单tools。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-f59324.jpeg" alt="img"></p>
-<p>4、进入tools工具栏点击UN-Route–all。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-af77d0.jpeg" alt="img"></p>
-<p>5、系统提示是否重布线，包括以前锁定的规则，点击yes。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-e57d3d.jpeg" alt="img"></p>
-<p>6、布线全部删除，元件保持原来的位置。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-326fb9.jpeg" alt="img"></p>
-<ul>
-<li><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-bd2c1f.jpeg" alt="img"></li>
-</ul>
-<h2 id="软件下载地址："><a href="#软件下载地址：" class="headerlink" title="软件下载地址："></a>软件下载地址：</h2><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-<p>在微信公众号 【<strong>硬件工程师</strong>】，回复 <strong>altium designer</strong> 即可获取下载地址</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030700-f02d6f.png" alt="image-20230307000909729"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/6619.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6619.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 的大学生体质测试管理系统，附源码和论文</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-08 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-08T13:05:55+08:00">2023-03-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-17 22:20:33" itemprop="dateModified" datetime="2023-03-17T22:20:33+08:00">2023-03-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本次设计任务是要设计一个大学生体质测试管理系统，通过这个系统能够满足大学生体质测试管理系统功能。系统的主要功能包括首页、个人中心、用户管理、教师管理、体质测试管理、测试报告管理、测试成绩管理、留言板、系统管理等功能。</p>
-<p>管理员可以根据系统给定的账号进行登录，登录后可以进入大学生体质测试管理系统对大学生体质测试所有模块进行管理。包括查看和修改自己的个人信息以及登录密码，用户信息等。</p>
-<p>该系统为每一个用户都分配了一个用户账号，用户通过账号的登录可以在系统中查看大学生体质测试信息及对个人信息进行修改等功能</p>
-<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><h2 id="系统首页模块"><a href="#系统首页模块" class="headerlink" title="系统首页模块"></a>系统首页模块</h2><p>大学生体质测试管理系统，在系统首页可以查看首页、体质测试、公告资讯、留言板、个人中心、后台管理等内容进行详细操作，如图5-1所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-913c263.jpg" alt="img"></p>
-<p>体质测试，在体质测试页面可以查看测试名称、测试编号、测试说明、测试文件、发布日期、教师工号等内容进行测试等操作，如图5-2所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-a59780a.jpg" alt="img"></p>
-<p>用户注册，通过填写用户账号、密码、确认密码、用户姓名、班级、联系方式等内容进行注册等操作，如图5-3所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-2724673.png" alt="image-20230317205150346"></p>
-<p>个人中心，在个人中心页面通过填写用户账号、密码、用户姓名、性别、班级、联系方式、图片等内容进行更新信息等操作；如图5-4所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-6a776c2.jpg" alt="img"></p>
-<h2 id="管理员功能模块"><a href="#管理员功能模块" class="headerlink" title="管理员功能模块"></a>管理员功能模块</h2><p>管理员登录，管理员通过输入用户，密码，选择角色等信息进行系统登录，如图5-5所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-92be09f.png" alt="image-20230317205208469"></p>
-<p>管理员登录进入大学生体质测试管理系统可以查看首页、个人中心、用户管理、教师管理、体质测试管理、测试报告管理、测试成绩管理、留言板、系统管理等内容进行详细操作，如图5-6所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-200827b.png" alt="image-20230317205224419"></p>
-<p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、性别、班级、联系方式、头像等内容详情、修改或删除等操作，如图5-7所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-cd7e4fa.png" alt="image-20230317205236107"></p>
-<p>体质测试管理，在体质测试管理页面可以对索引、测试编号、测试名称、测试文件、图片、发布日期、教师工号、教师姓名等内容进行详情、修改或删除等操作，如图5-8所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-02f0cb6.png" alt="image-20230317205250642"></p>
-<p>教师管理，在教师管理页面可以对教师工号、教师姓名、性别、职称、联系电话、头像等内容进行详情、修改或删除等操作，如图5-9所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-90afac1.jpg" alt="img"></p>
-<p>测试报告管理，在测试报告管理页面可以对索引、测试编号、测试名称、教师工号、教师姓名、报告文件、提交日期、用户账号、用户姓名、班级等内容进行详情、修改或删除等详细的操作，如图5-10所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-216bb91.jpg" alt="img"></p>
-<p>测试成绩管理，在测试成绩管理页面可以对索引、测试编号、、测试名称、教师工号、教师姓名、测试评分、测试评级、评分时间、用户账号、用户姓名、班级等内容进行详情、修改或删除等详细的操作，如图5-11所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-062394c.png" alt="image-20230317205311842"></p>
-<p>留言板，在留言板页面可以对索引、用户名、留言内容、留言图片、回复内容、回复图片等内容进行详情、修改、回复或删除等操作，如图5-12所示。</p>
-<p>![image-20230317205320908](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230317205320908.png)</p>
-<p>系统管理，在公告资讯页面中可以对索引、标题、图片等内容进行详情、修改或删除等操作，也可以对轮播图管理进行相应的操作，如图5-13所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-04bbf5e.jpg" alt="img"></p>
-<h2 id="用户功能模块"><a href="#用户功能模块" class="headerlink" title="用户功能模块"></a>用户功能模块</h2><p>用户进入大学生体质测试管理系统可以查看首页、个人中心、测试报告管理、测试成绩管理等内容进行详细操作，如图5-14所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-664ea83.jpg" alt="img"></p>
-<p>测试报告管理，在测试报告管理页面中可以对索引、测试编号、测试名称、教师工号、教师姓名、报告文件、提交日期、用户账号、用户姓名、班级等内容进行详情或删除等详细的操作，如图5-15所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-22f9d30.png" alt="image-20230317205336485"></p>
-<h2 id="教师功能模块"><a href="#教师功能模块" class="headerlink" title="教师功能模块"></a>教师功能模块</h2><p>教师注册，通过填写教师工号、密码、确认密码、教师姓名、职称、联系电话等内容进行注册，如图5-16所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-f378ae9.png" alt="image-20230317205348250"></p>
-<p>进入教师页面中可以查看首页、个人中心、体质测试管理、测试报告管理、测试成绩管理等内容进行相应的操作，如图5-17所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-927cf46.jpg" alt="img"></p>
-<p>体质测试管理，在体质测试管理页面中可以对索引、测试编号、测试名称、测试文件、图片、发布日期、教师工号、教师姓名等内容进行详细等操作，如图5-18所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-f64885b.png" alt="image-20230317205408348"></p>
-<p>测试报告管理，在测试报告管理页面中可以对索引、测试编号、测试名称、教师工号、教师姓名、报告文件、提交日期、用户账号、用户姓名、班级等内容进行详细等操作，如图5-19所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-69a7548.jpg" alt="img"></p>
-<h1 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h1><p>本系统使用MYSQL 作为系统的数据库，设计用户注册表、文件上传的表等等。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-ee331fb.png" alt="image-20230317222012165"></p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-bb83d18.png" alt="image-20230317222027521"></p>
-<h1 id="部分源码"><a href="#部分源码" class="headerlink" title="部分源码"></a>部分源码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 测试报告</span><br><span class="line"> * </span><br><span class="line"> * @author </span><br><span class="line"> * @email </span><br><span class="line"> * @date 2022-03-11 14:04:32</span><br><span class="line"> */</span><br><span class="line">public interface CeshibaogaoDao extends BaseMapper&lt;CeshibaogaoEntity&gt; &#123;</span><br><span class="line">	</span><br><span class="line">	List&lt;CeshibaogaoVO&gt; selectListVO(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line">	CeshibaogaoVO selectVO(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line">	List&lt;CeshibaogaoView&gt; selectListView(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line"></span><br><span class="line">	List&lt;CeshibaogaoView&gt; selectListView(Pagination page,@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line">	CeshibaogaoView selectView(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p>大学生体质测试管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击这里咨询</p>
-<p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">计算机毕业设计</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2637,7 +2604,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2697,12 +2664,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">447k</span>
+    <span title="站点总字数">450k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:46</span>
+    <span title="站点阅读时长">6:49</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
