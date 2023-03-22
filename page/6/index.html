@@ -186,6 +186,202 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/62072.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/62072.html" class="post-title-link" itemprop="url">AsyncTask 使用及封装实践</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-18 23:47:15" itemprop="dateCreated datePublished" datetime="2021-04-18T23:47:15+08:00">2021-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-28 21:00:41" itemprop="dateModified" datetime="2023-02-28T21:00:41+08:00">2023-02-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52000680">IntentService使用及源码分析</a> </p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52060291">HandlerThread源码分析</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/57409326">AsyncTask使用及封装实践</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/57416380">AsyncTask源码分析</a></p>
+<p>这篇博客主要是讲解AsyncTask的使用及封装实践，对于新手们还是有很大的参考意义的，尤其是AsyncTask的封装实践这部分。对于老鸟们，你们可以跳过了。同时需要声明的一点是，下面下载的例子只是进行简单的下载而已，并没有支持断点续传下载。需要的话请自行到github上面找相应的库，因为这并不是本篇博客的重点。</p>
+<p>这篇博客主要讲解以下问题：</p>
+<ul>
+<li>AsyncTask的简单使用</li>
+<li>AsyncTask的封装使用</li>
+<li>AsyncTask使用注意事项</li>
+</ul>
+<hr>
+<h2 id="AsyncTask的使用例子"><a href="#AsyncTask的使用例子" class="headerlink" title="AsyncTask的使用例子"></a>AsyncTask的使用例子</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>AsyncTask ，异步任务。没错，就想字面上理解的那样。它允许我们在子线程执行耗时任务，在UI 线程更新操作（如更新进度条等）。简单来说，就是帮我们做好了子线程与UI 线程的通讯，我们只需要调用响应的方法实现即可。底层是用Handler消息机制实现的。</p>
+<p>在Android开发中，我们经常需要下载各种东西，为了给用户较好的体验，我们经常需要显示下载进度。今天我们用以这个为例子，来教大家怎样使用AsyncTak。当然，github上面有很多开源库，实现断点下载，文件重命名等。不过这些不是本篇博客的重点。</p>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/4c5a1691828bd45549e1c3ca1824118a.gif"></p>
+<h3 id="AsyncTask的主要几个方法"><a href="#AsyncTask的主要几个方法" class="headerlink" title="AsyncTask的主要几个方法"></a>AsyncTask的主要几个方法</h3><ul>
+<li>Void onPreExecute()</li>
+</ul>
+<p>在task 任务开始执行的时候调用，在doInBackground(Params… params)方法之前调用，在主线程中执行</p>
+<ul>
+<li>Result doInBackground(Params… params)</li>
+</ul>
+<p>主要用来执行耗时操作，在子线程中执行，Params为我们参数的类型。而Result这个泛型，是我们返回的类型（<strong>可以是Integer，Long，String等等类型，只要不是八种基本类型就OK</strong>），同时 Result 的类型将作为 onPostExecute(Result result)的参数。</p>
+<ul>
+<li>Void onProgressUpdate(Progress… values)</li>
+</ul>
+<p> Runs on the UI thread after publishProgress(Progress…) is invoked. 当我们调用 publishProgress（）方法的时候，会调用 onProgressUpdate（）这个方法</p>
+<ul>
+<li><p>Void onPostExecute(Result result)<br> 在doInBackground（）方法执行完毕之后，会调用这个方法，是在主线程中执行的。<strong>但如果我们手动调用了cancelled()方法，那么这个方法将不会被调用。</strong></p>
+</li>
+<li><p>void onCancelled()</p>
+</li>
+</ul>
+<p>在Task 任务取消的时候会调用</p>
+<ul>
+<li>execute(Params… params)</li>
+</ul>
+<p>Executes the task with the specified parameters.当我们调用这个方法的时候，会执行任务</p>
+<ul>
+<li>executeOnExecutor(Executor exec, Params… params)</li>
+</ul>
+<p>在指定的线程池里面执行Task</p>
+<p><strong>需要注意的是，Params，Progress，Result 并不是一种特定的类型，它其实是泛型，它支持除了八种基本类型之外的类型，跟普通的泛型一样。</strong></p>
+<h3 id="AsyncTask使用的几个步骤"><a href="#AsyncTask使用的几个步骤" class="headerlink" title="AsyncTask使用的几个步骤"></a>AsyncTask使用的几个步骤</h3><p>这里我们以下载一个apk为例讲解</p>
+<ol>
+<li>写一个类继承AsyncTask，并传入Params，Progress，Result 。三个参数的类型。</li>
+</ol>
+<p>比如我们传入的 Params，Progress，Result 的参数的类型分别为 Void, FileInfo, FileInfo，那我们可以这样写。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private class MyDownloadTask extends AsyncTask&lt;Void, FileInfo, FileInfo&gt;&#123;</span><br><span class="line">     </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>那Void, FileInfo, FileInfo，这几个参数的类型在哪里体现出来呢？</p>
+<p>请看下面注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">private class MyDownloadTask extends AsyncTask&lt;Void, FileInfo, FileInfo&gt; &#123;</span><br><span class="line"></span><br><span class="line">   ---</span><br><span class="line">  </span><br><span class="line">   // 方法参数的类型为Void，跟我们传入的Void一致，返回类型为 FileInfo ，跟我们传入Result的类型FileInfo一致</span><br><span class="line">    @Override</span><br><span class="line">    protected FileInfo doInBackground(Void... params) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   // 方法参数类型为FileInfo，跟我们传入Progress的类型FileInfo一致</span><br><span class="line">    @Override</span><br><span class="line">    protected void onProgressUpdate(FileInfo... values) &#123;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   // 方法参数FileInfo，跟我们传入Result的类型FileInfo一致</span><br><span class="line">    @Override</span><br><span class="line">    protected void onPostExecute(FileInfo fileInfo) &#123;</span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>如果我们更新进度的话，需要重写 onProgressUpdate（）方法，并在doInBackground（）方法里面调用publishProgress（）方法</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">protected FileInfo doInBackground(Void... params) &#123;</span><br><span class="line">   </span><br><span class="line">   publishProgress(fileInfo);</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected void onProgressUpdate(FileInfo... values) &#123;</span><br><span class="line">    super.onProgressUpdate(values);</span><br><span class="line">    refreshProgress(values[0]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>当我们调用execute(Params… params) 或者 executeOnExecutor(Executor exec, Params… params) 方法的时候，Task将被防盗相应的 Executor 执行。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyDownloadTask myDownloadTask = new MyDownloadTask(mDownloadUrl, mDstPath);</span><br><span class="line">myDownloadTask.execute();</span><br></pre></td></tr></table></figure>
+
+<p>完整的Task代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">private class MyDownloadTask extends AsyncTask&lt;Void, FileInfo, FileInfo&gt; &#123;</span><br><span class="line"></span><br><span class="line">    String mDownLoadUrl;</span><br><span class="line">    String mDstPath;</span><br><span class="line"></span><br><span class="line">    public MyDownloadTask(String downloadUrl, String dstPath) &#123;</span><br><span class="line">        this.mDownLoadUrl = downloadUrl;</span><br><span class="line">        this.mDstPath = dstPath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onPreExecute() &#123;</span><br><span class="line">        super.onPreExecute();</span><br><span class="line">        start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected FileInfo doInBackground(Void... params) &#123;</span><br><span class="line">        //url字符串，检查网址是否已http:// 开头</span><br><span class="line">        mDownLoadUrl = (mDownLoadUrl.startsWith(&quot;http://&quot;)) ? mDownLoadUrl : &quot;http://&quot; +</span><br><span class="line">                mDownLoadUrl;</span><br><span class="line">        Log.d(TAG, &quot;doInBackground: mDownLoadUrl=&quot; + mDownLoadUrl);</span><br><span class="line">        Log.d(TAG, &quot;doInBackground: mDstPath=&quot; + mDstPath);</span><br><span class="line">        URL url = null;</span><br><span class="line">        FileInfo fileInfo = null;</span><br><span class="line">        int contentLength = -1;</span><br><span class="line">        int downloadLength = 0;</span><br><span class="line">        OutputStream output = null;</span><br><span class="line">        InputStream istream = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            url = new URL(mDownLoadUrl);</span><br><span class="line">            //打开到url的连接</span><br><span class="line">            HttpURLConnection connection = (HttpURLConnection) url.openConnection();</span><br><span class="line">            contentLength = connection.getContentLength();</span><br><span class="line">            Log.i(TAG, &quot;doInBackground: contentLength=&quot; + contentLength);</span><br><span class="line">            //O部分，大体来说就是先检查文件夹是否存在，不存在则创建</span><br><span class="line">            istream = connection.getInputStream();</span><br><span class="line">            String filename = mDownLoadUrl.substring(mDownLoadUrl.lastIndexOf(&quot;/&quot;) + 1);</span><br><span class="line"></span><br><span class="line">            File dir = new File(mDstPath);</span><br><span class="line">            if (!dir.exists()) &#123;</span><br><span class="line">                dir.mkdir();</span><br><span class="line">            &#125;</span><br><span class="line">            File file = new File(mDstPath + filename);</span><br><span class="line">            // 如果存在同名文件，重命名</span><br><span class="line">            if (file.exists()) &#123;</span><br><span class="line">                file = FileUtils.rename(file.getPath());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            output = new FileOutputStream(file);</span><br><span class="line">            byte[] buffer = new byte[1024 * 4];</span><br><span class="line">            int count = 0;</span><br><span class="line">            int len = -1;</span><br><span class="line">            while ((len = istream.read(buffer)) != -1) &#123;</span><br><span class="line">                output.write(buffer, 0, len);</span><br><span class="line">                downloadLength += len;</span><br><span class="line"></span><br><span class="line">                if (count == 10) &#123;</span><br><span class="line">                    fileInfo = new FileInfo(contentLength, downloadLength, file, file.getPath</span><br><span class="line">                            (), file.getName());</span><br><span class="line">                    publishProgress(fileInfo);</span><br><span class="line">                    count = 0;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            //                有可能count还没有走到10</span><br><span class="line">            fileInfo = new FileInfo(contentLength, downloadLength, file, file.getPath(), file</span><br><span class="line">                    .getName());</span><br><span class="line">            publishProgress(fileInfo);</span><br><span class="line">            output.flush();</span><br><span class="line">            output.close();</span><br><span class="line">            istream.close();</span><br><span class="line"></span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            try &#123;</span><br><span class="line">                IOUtils.close(output);</span><br><span class="line">                IOUtils.close(istream);</span><br><span class="line">            &#125; catch (IOException e1) &#123;</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                IOUtils.close(output);</span><br><span class="line">                IOUtils.close(istream);</span><br><span class="line">            &#125; catch (IOException e1) &#123;</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return fileInfo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onProgressUpdate(FileInfo... values) &#123;</span><br><span class="line">        super.onProgressUpdate(values);</span><br><span class="line">        refreshProgress(values[0]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onPostExecute(FileInfo fileInfo) &#123;</span><br><span class="line">        super.onPostExecute(fileInfo);</span><br><span class="line">        downloadfinish(fileInfo);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCancelled() &#123;</span><br><span class="line">        super.onCancelled();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void start() &#123;</span><br><span class="line">    mTvDownloadText.setText(&quot;开始下载&quot;);</span><br><span class="line">    mProgressBar.setMax(100);</span><br><span class="line">    mProgressBar.setProgress(0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void downloadfinish(FileInfo fileInfo) &#123;</span><br><span class="line">    Log.i(TAG, &quot;onPostExecute: 下载完成=&quot; + fileInfo.mPath);</span><br><span class="line">    Toast.makeText(MainActivity.this, &quot;下载完成&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void refreshProgress(FileInfo value) &#123;</span><br><span class="line">    FileInfo fileInfo = value;</span><br><span class="line">    if (fileInfo != null) &#123;</span><br><span class="line">        mProgressBar.setMax((int) fileInfo.mLength);</span><br><span class="line">        mProgressBar.setProgress((int) fileInfo.mDownloadLength);</span><br><span class="line">        mDownText = fileInfo.mFile.getName() + &quot;下载了&quot; + fileInfo.mDownloadLength + &quot;总长度是&quot; +</span><br><span class="line">                fileInfo.mLength;</span><br><span class="line">        mTvDownloadText.setText(mDownText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="AsyncTask的封装使用"><a href="#AsyncTask的封装使用" class="headerlink" title="AsyncTask的封装使用"></a>AsyncTask的封装使用</h2><p>前面我们讲完了AsyncTask的基本使用，不知道你有没有发现，其实代码耦合性是挺高的，</p>
+<ul>
+<li>我们直接在 onProgressUpdata(),onPostExecute()方法里面更新我们的界面，即我们的AsyncTask访问了我们Activity里面的控件，那如果我们修改了Activity的控件，我们岂不是又要去阅读AsyncTask的代码，去做相应的修改。</li>
+<li>下一次我们如果要下载别的东西，按照我们前面的代码，我们又要重新复制一份，这样无疑是做了很多重复的工作。</li>
+</ul>
+<p>说到这样，我相信大多数人的第一感觉就是把AsyncTask提取为外部类，封装起来。是的，确实，我们就是要把AsyncTask提取为外部类。那提取为歪不累之后呢？我们要访问Activity里面的空间，要怎样访问呢？</p>
+<ol>
+<li>在Activity里面定义静态方法</li>
+<li>把需要访问的View对象通过构造函数传递进来</li>
+<li>采用接口回调机制</li>
+</ol>
+<p>前面说到的三种方法，是可以做到AsyncTask与外界进行通讯的。但第一第二中方法明显不行。原因如下：</p>
+<ul>
+<li>第一种方法定义静态方法，那View对象也必须定义为static变量，这static变量的级别比较高，不易被垃圾回收机制回收，易发生没存泄露。</li>
+<li>第二种方法，把需要访问的View对象通过构造函数传递进来。如果需要访问的对象少的话，勉强可以接受，如果多的话，那岂不是要定义很多成员变量。不过最致命的还算是代码耦合性太高了。还不如AsyncTask直接作为内部类。</li>
+</ul>
+<p>好了，说了这么多，下面我们一起来看怎样使用接口回调机制来进行解耦。</p>
+<h3 id="AsyncTask-使用接口回调机制来进行解耦"><a href="#AsyncTask-使用接口回调机制来进行解耦" class="headerlink" title="AsyncTask 使用接口回调机制来进行解耦"></a>AsyncTask 使用接口回调机制来进行解耦</h3><ol>
+<li>使用接口回调机制，首先我们必须有一个接口</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface DownloadListener &#123;</span><br><span class="line"></span><br><span class="line">    void onStart();</span><br><span class="line">    void onProgress(FileInfo fileInfo);</span><br><span class="line">    void onFinish(FileInfo FileInfo);</span><br><span class="line">    void onPaused(FileInfo fileInfo);</span><br><span class="line">    void onCancled();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>将DownLoadTask提取为一个外部类，并将需要传递的参数传递进来</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class DownloadTask extends AsyncTask&lt;Void,FileInfo,FileInfo&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private  String mDownloadUrl;</span><br><span class="line">    private final String mDstPath;</span><br><span class="line">    private final String mFileName;</span><br><span class="line">    private final DownloadListener mDownloadListener;</span><br><span class="line"></span><br><span class="line">    public DownloadTask(String downloadUrl, String dstPath, String fileName, DownloadListener downloadListener)&#123;</span><br><span class="line">        mDownloadUrl = downloadUrl;</span><br><span class="line">        mDstPath = dstPath;</span><br><span class="line">        mFileName = fileName;</span><br><span class="line">        mDownloadListener = downloadListener;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在相应的地方调用我们接口的方法</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">public class DownloadTask extends AsyncTask&lt;Void,FileInfo,FileInfo&gt; &#123;</span><br><span class="line"></span><br><span class="line">    ----</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onPreExecute() &#123;</span><br><span class="line">        super.onPreExecute();</span><br><span class="line">        mDownloadListener.onStart();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected FileInfo doInBackground(Void... params) &#123;</span><br><span class="line">    </span><br><span class="line">       ----</span><br><span class="line">            int len = -1;</span><br><span class="line">            while ((len = istream.read(buffer)) != -1) &#123;</span><br><span class="line">                output.write(buffer, 0, len);</span><br><span class="line">                downloadLength += len;</span><br><span class="line"></span><br><span class="line">                if (count == 10) &#123;</span><br><span class="line">                    fileInfo = new FileInfo(contentLength, downloadLength, file, file.getPath</span><br><span class="line">                            (), file.getName());</span><br><span class="line">                    publishProgress(fileInfo);</span><br><span class="line">                    count = 0;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            //                有可能count还没有走到10</span><br><span class="line">            fileInfo = new FileInfo(contentLength, downloadLength, file, file.getPath(), file</span><br><span class="line">                    .getName());</span><br><span class="line">            publishProgress(fileInfo);</span><br><span class="line">            output.flush();</span><br><span class="line">            output.close();</span><br><span class="line">            istream.close();</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">       </span><br><span class="line">        return fileInfo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onProgressUpdate(FileInfo... values) &#123;</span><br><span class="line">        super.onProgressUpdate(values);</span><br><span class="line">        mDownloadListener.onProgress(values[0]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onPostExecute(FileInfo fileInfo) &#123;</span><br><span class="line">        super.onPostExecute(fileInfo);</span><br><span class="line">        mDownloadListener.onFinish(fileInfo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCancelled() &#123;</span><br><span class="line">        super.onCancelled();</span><br><span class="line">        mDownloadListener.onCancled();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以后我们要下载东西，只需要调用下面的方法即可。同时，如果产品再更改需求，比如，从显示一个进度条ProgressDialog对话框，改成显示一个ProgressBar，我们只需要在<br>onProgress（）里面做相应的修改就好了，在也不用去阅读DownloadTask里面的代码呢？减少了代码的耦合性，是不是瞬间感觉世界很美好呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mDownloadTask = new DownloadTask(mDownloadUrl, mDstPath, null, new</span><br><span class="line">        DownloadListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onStart() &#123;</span><br><span class="line">          start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onProgress(FileInfo fileInfo) &#123;</span><br><span class="line">        refreshProgress(fileInfo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onFinish(FileInfo fileInfo) &#123;</span><br><span class="line">        downloadfinish(fileInfo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onPaused(FileInfo fileInfo) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCancled() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">mDownloadTask.execute();</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="AsyncTask使用的注意事项"><a href="#AsyncTask使用的注意事项" class="headerlink" title="AsyncTask使用的注意事项"></a>AsyncTask使用的注意事项</h2><ul>
+<li>The AsyncTask class must be loaded on the UI thread. This is done automatically as of JELLY_BEAN.</li>
+<li>The task instance must be created on the UI thread.（AsyncTask必须在UI 线程里面初始化</li>
+<li>execute(Params…) must be invoked on the UI thread.</li>
+<li>Do not call onPreExecute(), onPostExecute(Result), doInBackground(Params…), onProgressUpdate(Progress…) manually.（不要手动地调用 onPreExecute(), onPostExecute(Result), doInBackground(Params…), onProgressUpdate(Progress…) 这些方法）</li>
+<li>The task can be executed only once (an exception will be thrown if a second execution is attempted.) （Task任务只能被执行一次，否则会抛出异常）</li>
+</ul>
+<hr>
+<p>相关知识点推荐：</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52000680"><strong>IntentService使用及源码分析</strong></a> </p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52060291"><strong>HandlerThread源码分析</strong></a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/57409326"><strong>AsyncTask使用及封装实践</strong></a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/57416380"><strong>AsyncTask源码分析</strong></a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://download.csdn.net/detail/gdutxiaoxu/9764362"><strong>Demo下载地址</strong></a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/3688.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1226,215 +1422,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/19912.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/19912.html" class="post-title-link" itemprop="url">面试官，https 真的安全吗，可以抓包吗，如何防止抓包</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-18 16:26:32" itemprop="dateCreated datePublished" datetime="2019-05-18T16:26:32+08:00">2019-05-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-28 20:45:02" itemprop="dateModified" datetime="2023-02-28T20:45:02+08:00">2023-02-28</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>@[toc]<br> <strong>往期文章</strong></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/97885526">Android 面试必备 - http 与 https 协议</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/97618598">Android 面试必备 - 计算机网络基本知识（TCP，UDP，Http，https）</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/98475465">Android 面试必备 - 线程</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://xujun.blog.csdn.net/article/details/98896053">Android 面试必备 - JVM 及 类加载机制</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://xujun.blog.csdn.net/article/details/99006458">Android 面试必备 - 系统、App、Activity 启动过程</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu/article/details/107349652">面试官系列- 你真的了解 http 吗</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://xujun.blog.csdn.net/article/details/107393249">面试官问， https 真的安全吗，可以抓包吗，如何防止抓包吗</a></p>
-<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/Android_interview">Android_interview github 地址</a></strong></p>
-<blockquote>
-<p> 我的 CSDN 博客:<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/gdutxiaoxu">https://blog.csdn.net/gdutxiaoxu</a> <br><br> 我的掘金：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://juejin.im/user/58aa8508570c35006bbd9e03">https://juejin.im/user/58aa8508570c35006bbd9e03</a>  <br><br> github: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/">https://github.com/gdutxiaoxu/</a>  <br><br> 微信公众号：徐公码字(stormjun94)  <br><br> 知乎：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.zhihu.com/people/xujun94">https://www.zhihu.com/people/xujun94</a>  <br></p>
-</blockquote>
-<p><strong>有兴趣的话可以关注我的公众号 徐公码字（stormjun94),第一时间会在上面更新</strong></p>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMDUwMjAzLWMxMmNjNGUyYjEwMWI5NGE?x-oss-process=image/format,png" alt="image"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>转眼间，2020 年已过去一大半了，2020 年很难，各企业裁员的消息蛮多的，降职，不发年终奖等等。2020 年确实是艰难的一年。然而生活总是要继续，时间不给你丧的机会！如果我们能坚持下来，不断提高自己，说不定会有新的机会。</p>
-<p>面试中，网络（http， https， tcp， udp）， jvm， 类加载机制等这些基础的知识点是高频出现的，每个程序员都能说上好多。但不一定说到重点，以及理解背后的原理。</p>
-<p>我在面试的过程中也经常被问到，于是总结记录了下来。千万不要小瞧这些基础，有时候，你算法，项目经验都过了，但是基础答得不太好。结果可能会通过，但这肯定会影响你的评级，这是特别吃亏的。所以，不如花点时间背一下，理解一下背后的原理。</p>
-<p>举一个简单的例子， https 连接过程是怎样的，使用了了哪种加密方式，可以抓包吗，怎样防止抓包，你是否能够对答如下。</p>
-<p>废话不多说，开始进入正文。</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们知道，http 通信存在以下问题：</p>
-<ul>
-<li>通信使用明文可能会被窃听</li>
-<li>不验证通信方的身份可能遭遇伪装</li>
-<li>无法证明报文的完整型，可能已遭篡改</li>
-</ul>
-<p>使用 https 可以解决数据安全问题，但是你真的理解 https 吗？</p>
-<p><strong>当面试官连续对你发出灵魂追问的时候，你能对答如流吗</strong></p>
-<ol>
-<li>什么是 https，为什么需要 https</li>
-<li>https 的连接过程</li>
-<li>https 的加密方式是怎样的，对称加密和非对称加密，为什么要这样设计？内容传输为什么要使用对称机密</li>
-<li>https 是绝对安全的吗</li>
-<li>https 可以抓包吗</li>
-</ol>
-<p>如果你能对答自如，恭喜你，https 你已经掌握得差不多了，足够应付面试了。</p>
-<h2 id="什么是-https"><a href="#什么是-https" class="headerlink" title="什么是 https"></a>什么是 https</h2><p>简单来说， https 是 http + ssl，对 http  通信内容进行加密，是HTTP的安全版，是使用TLS&#x2F;SSL加密的HTTP协议</p>
-<p>Https的作用：</p>
-<ol>
-<li>内容加密 建立一个信息安全通道，来保证数据传输的安全；</li>
-<li>身份认证 确认网站的真实性</li>
-<li>数据完整性 防止内容被第三方冒充或者篡改</li>
-</ol>
-<h3 id="什么是SSL"><a href="#什么是SSL" class="headerlink" title="什么是SSL"></a>什么是SSL</h3><p>SSL 由 Netscape 公司于1994年创建，它旨在通过Web创建安全的Internet通信。它是一种标准协议，用于加密浏览器和服务器之间的通信。它允许通过Internet安全轻松地传输账号密码、银行卡、手机号等私密信息。</p>
-<p>SSL证书就是遵守SSL协议，由受信任的CA机构颁发的数字证书。</p>
-<p>SSL&#x2F;TLS的工作原理:</p>
-<p>需要理解SSL&#x2F;TLS的工作原理，我们需要掌握加密算法。加密算法有两种：对称加密和非对称加密：</p>
-<p><strong>对称加密</strong>：通信双方使用相同的密钥进行加密。特点是加密速度快，但是缺点是需要保护好密钥，如果密钥泄露的话，那么加密就会被别人破解。常见的对称加密有AES，DES算法。</p>
-<p><strong>非对称加密</strong>：它需要生成两个密钥：公钥(Public Key)和私钥(Private Key)。</p>
-<p>公钥顾名思义是公开的，任何人都可以获得，而私钥是私人保管的。相信大多程序员已经对这种算法很熟悉了：我们提交代码到github的时候，就可以使用SSH key：在本地生成私钥和公钥，私钥放在本地.ssh目录中，公钥放在github网站上，这样每次提交代码，不用麻烦的输入用户名和密码了，github会根据网站上存储的公钥来识别我们的身份。</p>
-<p>公钥负责加密，私钥负责解密；或者，私钥负责加密，公钥负责解密。这种加密算法安全性更高，但是计算量相比对称加密大很多，加密和解密都很慢。常见的非对称算法有RSA。</p>
-<h2 id="https-的连接过程"><a href="#https-的连接过程" class="headerlink" title="https 的连接过程"></a>https 的连接过程</h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMDUwMjAzLTJhYTQyNTg5ZDY4YmMxODYucG5n?x-oss-process=image/format,png" alt="image.png"></p>
-<p>https 的连接过程大概分为两个阶段，证书验证阶段和数据传输阶段</p>
-<h3 id="证书验证阶段"><a href="#证书验证阶段" class="headerlink" title="证书验证阶段"></a>证书验证阶段</h3><p>大概分为三个步骤</p>
-<ol>
-<li>浏览器发起请求</li>
-<li>服务器接收到请求之后，会返回证书，包括公钥</li>
-<li>浏览器接收到证书之后，会检验证书是否合法，不合法的话，会弹出告警提示（怎样验证合法，下文会详细解析，这里先忽略）</li>
-</ol>
-<h3 id="数据传输阶段"><a href="#数据传输阶段" class="headerlink" title="数据传输阶段"></a>数据传输阶段</h3><p>证书验证合法之后</p>
-<ol>
-<li>浏览器会生成一个随机数，</li>
-<li>使用公钥进行加密，发送给服务端</li>
-<li>服务器收到浏览器发来的值，使用私钥进行解密</li>
-<li>解析成功之后，使用对称加密算法进行加密，传输给客户端</li>
-</ol>
-<p>之后双方通信就使用第一步生成的随机数进行加密通信。</p>
-<h2 id="https-的加密方式是怎样的，对称加密和非对称加密，为什么要这样设计"><a href="#https-的加密方式是怎样的，对称加密和非对称加密，为什么要这样设计" class="headerlink" title="https 的加密方式是怎样的，对称加密和非对称加密，为什么要这样设计"></a>https 的加密方式是怎样的，对称加密和非对称加密，为什么要这样设计</h2><p>从上面我们可以知道，https 加密是采用对称加密和非对称机密一起结合的。</p>
-<p>在证书验证阶段，使用非对称加密。<br>在数据传输阶段，使用对称机密。</p>
-<p>这样设计有一个好处，能最大程度得兼顾安全效率。</p>
-<p>在证书验证阶段，使用非对称加密，需要公钥和私钥，假如浏览器的公钥泄漏了，我们还是能够确保随机数的安全，因为加密的数据只有用私钥才能解密。这样能最大程度确保随机数的安全。</p>
-<p>在内容传输阶段，使用对称机密，可以大大提高加解密的效率。</p>
-<h3 id="内容传输为什么要使用对称机密"><a href="#内容传输为什么要使用对称机密" class="headerlink" title="内容传输为什么要使用对称机密"></a>内容传输为什么要使用对称机密</h3><ol>
-<li>对称加密效率比较高</li>
-<li>一对公私钥只能实现单向的加解密。只有服务端保存了私钥。如果使用非对称机密，相当于客户端必须有自己的私钥，这样设计的话，每个客户端都有自己的私钥，这很明显是不合理的，因为私钥是需要申请的。</li>
-</ol>
-<h2 id="https-是绝对安全的吗"><a href="#https-是绝对安全的吗" class="headerlink" title="https 是绝对安全的吗"></a>https 是绝对安全的吗</h2><p>不是绝对安全的，可以通过中间人攻击。</p>
-<h3 id="什么是中间人攻击"><a href="#什么是中间人攻击" class="headerlink" title="什么是中间人攻击"></a>什么是中间人攻击</h3><p>中间人攻击是指攻击者与通讯的两端分别创建独立的联系，并交换其所收到的数据，使通讯的两端认为他们正在通过一个私密的连接与对方直接对话，但事实上整个会话都被攻击者完全控制。</p>
-<p>HTTPS 使用了 SSL 加密协议，是一种非常安全的机制，目前并没有方法直接对这个协议进行攻击，一般都是在建立 SSL 连接时，拦截客户端的请求，利用中间人获取到 CA证书、非对称加密的公钥、对称加密的密钥；有了这些条件，就可以对请求和响应进行拦截和篡改。</p>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMDUwMjAzLTM1ZjE1YzFhNjllZTZiMDYucG5n?x-oss-process=image/format,png" alt="image.png"></p>
-<p>过程原理：</p>
-<ol>
-<li>本地请求被劫持（如DNS劫持等），所有请求均发送到中间人的服务器</li>
-<li>中间人服务器返回中间人自己的证书</li>
-<li>客户端创建随机数，通过中间人证书的公钥对随机数加密后传送给中间人，然后凭随机数构造对称加密对传输内容进行加密传输</li>
-<li>中间人因为拥有客户端的随机数，可以通过对称加密算法进行内容解密</li>
-<li>中间人以客户端的请求内容再向正规网站发起请求</li>
-<li>因为中间人与服务器的通信过程是合法的，正规网站通过建立的安全通道返回加密后的数据</li>
-<li>中间人凭借与正规网站建立的对称加密算法对内容进行解密</li>
-<li>中间人通过与客户端建立的对称加密算法对正规内容返回的数据进行加密传输</li>
-<li>客户端通过与中间人建立的对称加密算法对返回结果数据进行解密</li>
-</ol>
-<p>由于缺少对证书的验证，所以客户端虽然发起的是 HTTPS 请求，但客户端完全不知道自己的网络已被拦截，传输内容被中间人全部窃取。</p>
-<h3 id="https-是如何防止中间人攻击的"><a href="#https-是如何防止中间人攻击的" class="headerlink" title="https 是如何防止中间人攻击的"></a>https 是如何防止中间人攻击的</h3><p>在https中需要证书，证书的作用是为了防止”中间人攻击”的。 如果有个中间人M拦截客户端请求,然后M向客户端提供自己的公钥，M再向服务端请求公钥,作为”中介者” 这样客户端和服务端都不知道,信息已经被拦截获取了。这时候就需要证明服务端的公钥是正确的.</p>
-<p>怎么证明呢?</p>
-<p>就需要权威第三方机构来公正了.这个第三方机构就是CA. 也就是说CA是专门对公钥进行认证，进行担保的，也就是专门给公钥做担保的担保公司。 全球知名的CA也就100多个，这些CA都是全球都认可的，比如VeriSign、GlobalSign等，国内知名的CA有WoSign。</p>
-<h3 id="浏览器是如何确保CA证书的合法性？"><a href="#浏览器是如何确保CA证书的合法性？" class="headerlink" title="浏览器是如何确保CA证书的合法性？"></a>浏览器是如何确保CA证书的合法性？</h3><p>一、证书包含什么信息？</p>
-<p>颁发机构信息、公钥、公司信息、域名、有效期、指纹……</p>
-<p>二、证书的合法性依据是什么？</p>
-<p>首先，权威机构是要有认证的，不是随便一个机构都有资格颁发证书，不然也不叫做权威机构。另外，证书的可信性基于信任制，权威机构需要对其颁发的证书进行信用背书，只要是权威机构生成的证书，我们就认为是合法的。所以权威机构会对申请者的信息进行审核，不同等级的权威机构对审核的要求也不一样，于是证书也分为免费的、便宜的和贵的。</p>
-<p>三、浏览器如何验证证书的合法性？</p>
-<p>浏览器发起HTTPS请求时，服务器会返回网站的SSL证书，浏览器需要对证书做以下验证：</p>
-<ol>
-<li>验证域名、有效期等信息是否正确。证书上都有包含这些信息，比较容易完成验证；</li>
-<li>判断证书来源是否合法。每份签发证书都可以根据验证链查找到对应的根证书，操作系统、浏览器会在本地存储权威机构的根证书，利用本地根证书可以对对应机构签发证书完成来源验证；</li>
-<li>判断证书是否被篡改。需要与CA服务器进行校验；</li>
-<li>判断证书是否已吊销。通过CRL（Certificate Revocation List 证书注销列表）和 OCSP（Online Certificate Status Protocol 在线证书状态协议）实现，其中 OCSP 可用于第3步中以减少与CA服务器的交互，提高验证效率。</li>
-</ol>
-<p>以上任意一步都满足的情况下浏览器才认为证书是合法的。</p>
-<h2 id="https-可以抓包吗"><a href="#https-可以抓包吗" class="headerlink" title="https 可以抓包吗"></a>https 可以抓包吗</h2><p>HTTPS 的数据是加密的，常规下抓包工具代理请求后抓到的包内容是加密状态，无法直接查看。</p>
-<p>但是，我们可以通过抓包工具来抓包。它的原理其实是模拟一个中间人。</p>
-<p>通常 HTTPS 抓包工具的使用方法是会生成一个证书，用户需要手动把证书安装到客户端中，然后终端发起的所有请求通过该证书完成与抓包工具的交互，然后抓包工具再转发请求到服务器，最后把服务器返回的结果在控制台输出后再返回给终端，从而完成整个请求的闭环。</p>
-<p>关于 httpps 抓包的原理可以看这一篇文章。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://juejin.im/post/5cc313755188252d6f11b463">Android平台HTTPS抓包解决方案及问题分析</a></p>
-<p><strong>有人可能会问了，既然 HTTPS 不能防抓包，那 HTTPS 有什么意义？</strong></p>
-<p>HTTPS 可以防止用户在不知情的情况下通信链路被监听，对于主动授信的抓包操作是不提供防护的，因为这个场景用户是已经对风险知情。要防止被抓包，需要采用应用级的安全防护，例如采用私有的对称加密，同时做好移动端的防反编译加固，防止本地算法被破解。</p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="如何防止抓包？"><a href="#如何防止抓包？" class="headerlink" title="如何防止抓包？"></a>如何防止抓包？</h3><p>对于HTTPS API接口，如何防止抓包呢？既然问题出在证书信任问题上，那么解决方法就是在我们的APP中预置证书。在TLS&#x2F;SSL握手时，用预置在本地的证书中的公钥校验服务器的数字签名，只有签名通过才能成功握手。由于数字签名是使用私钥生成的，而私钥只掌握在我们手上，中间人无法伪造一个有效的签名，因此攻击失败，无法抓包。</p>
-<p>同时，为了防止预置证书被替换，在证书存储上，可以将证书进行加密后进行「嵌入存储」，如嵌入在图片中或一段语音中。这涉及到信息隐写的领域，这个话题我们有空了详细说。</p>
-<p>关于 Android 中Https 请求如何防止中间人攻击和Charles抓包，可以看一下这一篇文章。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.jianshu.com/p/1dd77e56cc3c">Android中Https请求如何防止中间人攻击和Charles抓包原理</a></p>
-<h3 id="预置证书-x2F-公钥更新问题"><a href="#预置证书-x2F-公钥更新问题" class="headerlink" title="预置证书&#x2F;公钥更新问题"></a>预置证书&#x2F;公钥更新问题</h3><p>这样做虽然解决了抓包问题，但是也带来了另外一个问题：我们购买的证书都是有有效期的，到期前需要对证书进行更新。主要有两种方式：</p>
-<p>提供预置证书更新接口。在当前证书快过期时，APP请求获取新的预置证书，这过渡时期，两个证书同时有效，直到安全完成证书切换。这种方式有一定的维护成本，且不易测试。<br>在APP中只预埋公钥，这样只要私钥不变，即使证书更新也不用更新该公钥。但是，这样不太符合周期性更新私钥的安全审计需求。一个折中的方法是，一次性预置多个公钥，只要任意一个公钥验证通过即可。考虑到我们的证书一般购买周期是3-5年，那么3个公钥，可以使用9-15年，同时，我们在此期间还可以发布新版本废弃老公钥，添加新公钥，这样可以使公钥一直更新下去。</p>
-<hr>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>开头说到的几个问题，你能对答如流了吗</p>
-<ol>
-<li>什么是 https，为什么需要 https</li>
-<li>https 的连接过程</li>
-<li>https 的加密方式是怎样的，对称加密和非对称加密，为什么要这样设计？内容传输为什么要使用对称机密</li>
-<li>https 是绝对安全的吗</li>
-<li>https 可以抓包吗</li>
-</ol>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMDUwMjAzLTU5YmRkYTdhMmU3OTQ1MDg?x-oss-process=image/format,png" alt="image"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1504,7 +1491,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1517,7 +1504,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1564,12 +1551,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">456k</span>
+    <span title="站点总字数">457k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:55</span>
+    <span title="站点阅读时长">6:56</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
