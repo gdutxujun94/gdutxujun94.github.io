@@ -186,105 +186,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/0.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/0.html" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-03-21 22:04:40 / 修改时间：22:58:02" itemprop="dateCreated datePublished" datetime="2023-03-21T22:04:40+08:00">2023-03-21</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h1><p>由于 python 自带的源下载速度非常慢，特别是安装一些库的时候，甚至有时会失败。</p>
-<p>因此，建议将下载源替换成国内的，下载速度会快很多。总共有两种方法</p>
-<ul>
-<li>代码替换 （推荐使用这一种）</li>
-<li>手动替换</li>
-</ul>
-<h1 id="代码替换"><a href="#代码替换" class="headerlink" title="代码替换"></a>代码替换</h1><h3 id="设置阿里源-推荐这个"><a href="#设置阿里源-推荐这个" class="headerlink" title="设置阿里源(推荐这个)"></a>设置阿里源(推荐这个)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip config set global.index-url https://mirrors.aliyun.com/pypi/simple </span><br><span class="line"></span><br><span class="line">pip config set install.trusted-host mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="设置清华大学的"><a href="#设置清华大学的" class="headerlink" title="设置清华大学的"></a>设置清华大学的</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/</span><br><span class="line">pip config set install.trusted-host pypi.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="手动替换"><a href="#手动替换" class="headerlink" title="手动替换"></a>手动替换</h1><h2 id="windows-替换"><a href="#windows-替换" class="headerlink" title="windows 替换"></a>windows 替换</h2><p>首先在 windows 当前用户家的目录下，创建一个 pip 文件夹，然后创建一个pip.ini文件，修改文件内容为如下；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[global] </span><br><span class="line">index-url = http://mirrors.aliyun.com/pypi/simple/ </span><br><span class="line">[install] </span><br><span class="line">trusted-host=mirrors.aliyun.com </span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>记得一定是pip.ini，如果没有开后缀的同学，记得把文件后缀打开，再修改文件的后缀为ini即可。</li>
-<li>用户家目录为</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:Users****   # **** 就是当前登录用户名， 比如登录用户名是Luke， 那么就是C:/Users/junxu  </span><br></pre></td></tr></table></figure>
-
-<h2 id="Mac-替换"><a href="#Mac-替换" class="headerlink" title="Mac 替换"></a>Mac 替换</h2><p>会在目录下自动生成，不同系统，目录可能不同，所以使用命令行最靠谱<br>~&#x2F;.config&#x2F;pip&#x2F;pip.conf</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://mirrors.aliyun.com/pypi/simple</span><br><span class="line"></span><br><span class="line">[install]</span><br><span class="line">trusted-host = mirrors.aliyun.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="国内源列表（推荐用阿里云的）"><a href="#国内源列表（推荐用阿里云的）" class="headerlink" title="国内源列表（推荐用阿里云的）"></a>国内源列表（推荐用阿里云的）</h1><p>阿里云： <a target="_blank" rel="external nofollow noopener noreferrer" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>中国科技大学： <a target="_blank" rel="external nofollow noopener noreferrer" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>豆瓣： <a target="_blank" rel="external nofollow noopener noreferrer" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a><br>清华大学： <a target="_blank" rel="external nofollow noopener noreferrer" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a><br>中国科学技术大学： <a target="_blank" rel="external nofollow noopener noreferrer" href="http://pypi.mirrors.ustc.edu.cn/simple/">http://pypi.mirrors.ustc.edu.cn/simple/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/59068.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -447,7 +348,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-22 23:19:04" itemprop="dateModified" datetime="2023-03-22T23:19:04+08:00">2023-03-22</time>
+                <time title="修改时间：2023-03-22 23:24:57" itemprop="dateModified" datetime="2023-03-22T23:24:57+08:00">2023-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -498,10 +399,10 @@
 </ul>
 <p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-008a.webp" alt="Rider破解"></p>
 <h2 id="2-下载破解工具"><a href="#2-下载破解工具" class="headerlink" title="2.下载破解工具"></a>2.下载破解工具</h2><blockquote>
-<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-87f4.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
 </blockquote>
 <p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>Rider</strong>，会自动将激活码和破解补丁发送给你</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230211154134.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-1809.png"></p>
 <ul>
 <li>先把Rider关闭退出。</li>
 <li>打开下载好的激活包（下载后记得不要删掉，然后安装的路径尽量不要带中文路径、删掉就会失效的）</li>
@@ -546,10 +447,10 @@
 <li>然后就成了，时间是假的，已经永久激活了，而且是官网最新版本哦，如果你重新更新了，再执行上面的操作即可。</li>
 </ul>
 <h2 id="激活补丁下载地址"><a href="#激活补丁下载地址" class="headerlink" title="激活补丁下载地址"></a>激活补丁下载地址</h2><blockquote>
-<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-87f4.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
 </blockquote>
 <p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>Rider</strong>，会自动将激活码和破解补丁发送给你</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230211154134.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-1809.png"></p>
 
       
     </div>
@@ -2573,6 +2474,110 @@
 <p><img src="https://chenjunan.top/img/goland/20220826144711.webp" alt="GoLand破解"></p>
 <h2 id="软件下载地址："><a href="#软件下载地址：" class="headerlink" title="软件下载地址："></a>软件下载地址：</h2><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
 <p>在微信公众号 【<strong>徐公</strong>】，回复 <strong>goland</strong> 即可获取下载地址</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/020220230219163502.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/58663.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/58663.html" class="post-title-link" itemprop="url">termius macos 破解版，激活版下载，永久激活，亲测可用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-11 15:33:52" itemprop="dateCreated datePublished" datetime="2023-03-11T15:33:52+08:00">2023-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-12 11:00:01" itemprop="dateModified" datetime="2023-03-12T11:00:01+08:00">2023-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>675</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>termius 是一款非常值得推荐的 SSH&#x2F;SFTP 跨平台终端工具，其十分亮眼的功能是可以上传文件夹，这是其他几款终端工具都不具备的，比如说 macOS 自带的终端、号称 21 世纪最强终端的 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://tobebetterjavaer.com/gongju/warp.html">wrapopen in new window</a>、完全开源的 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://tobebetterjavaer.com/gongju/tabby.html">tabbyopen in new window</a>、<a target="_blank" rel="external nofollow noopener noreferrer" href="https://tobebetterjavaer.com/gongju/windterm.html">WindTermopen in new window</a>。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031210-7aaabe.png" alt="img"></p>
+<p>不过，termius 分为基础版和 Pro版，基础版不收费，但功能少，Pro 版功能多但收费。</p>
+<p>于是怎么破解它就很关键了，之前折腾了 1 个小时，终于搞定，这里记录一下，免得以后再需要的时候找不到方法。</p>
+<p>首先，需要下载绿色版的 termius。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031210-ab3ae7.png" alt="img"></p>
+<p>这里设置一个门槛，需要微信搜索 <strong>徐公</strong>关注我的公众号，在后台回复 <strong>termius</strong> 获取。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/020220230219163502.png"></p>
+<p>下载后安装，如果打开的时候提示不安全，根据提示信息去谷歌一下就行了。执行命令如下。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xattr -r -d com.apple.quarantine /Applications/Termius.app</span><br></pre></td></tr></table></figure>
+
+<p>需要输入本机密码给权限。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031210-0d2893.png" alt="img"></p>
+<p>完事后重新打开 termius，如果提示有付费的问题，直接关闭重新开一下就好了，不用管，不是必选项。</p>
+<h2 id="激活码获取"><a href="#激活码获取" class="headerlink" title="激活码获取"></a>激活码获取</h2><p>PS: 密钥没有直接贴出来，是为了拒绝一部分白嫖党，因为有的人即便是你帮了他他还骂你，所以我把密钥放在了公众号里，这样我既可以帮助到那些信赖我的人，同时也可以给公众号涨涨粉，两全其美，不丢人。</p>
+<p>需要的小伙伴，扫描下方公众号二维码，或者关注公众号： <strong>徐公</strong>，回复关键字：<strong>termius</strong> 即可免费无套路获取，持续更新中~</p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/020220230219163502.png"></p>
 
       
