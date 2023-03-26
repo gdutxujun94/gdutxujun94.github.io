@@ -31,31 +31,31 @@
 </blockquote>
 <h2 id="第一步-下载最新的-Pycharm-2022-2-3-版本安装包"><a href="#第一步-下载最新的-Pycharm-2022-2-3-版本安装包" class="headerlink" title="第一步: 下载最新的 Pycharm 2022.2.3 版本安装包"></a>第一步: 下载最新的 Pycharm 2022.2.3 版本安装包</h2><p>我们先从 Pycharm 官网下载 Pycharm 2022.2.3 版本的安装包，下载链接如下：</p>
 <p><a href="https://www.jetbrains.com/pycharm/download/other.html">Pycharm  官网下载地址</a></p>
-<p><img src="https://img-blog.csdnimg.cn/4cb13c3fab344b538328fb9ec8a055e5.png" alt="在这里插入图片描述"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-990b.png" alt="在这里插入图片描述"></p>
 <p>选择 Pucharm 专业版本，点击下载，然后等待其下载完成即可。</p>
 <h2 id="第三步-开始安装-Pycharm-2022-2-3-版本"><a href="#第三步-开始安装-Pycharm-2022-2-3-版本" class="headerlink" title="第三步: 开始安装 Pycharm 2022.2.3 版本"></a>第三步: 开始安装 Pycharm 2022.2.3 版本</h2><p>2.安装目录默认为 <code>C:\Program Files\JetBrains\PyCharm 2022.2.3</code>, 这里建议安装到其他盘，不要转到 C 盘里面，点击 Browser 即可选择:</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d181704e64fe0472287b79cf39305c1f.png" alt="Pycharm 2022.2.3安装第一步"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-e065.jpeg" alt="Pycharm 2022.2.3安装第一步"></p>
 <p>3.勾选创建桌面快捷方式，这边方便后续打开 Pycharm：</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/661664959ec4cd6877a0beb59a1e6432.png" alt="Pycharm 2022.2.3安装第二步"></p>
 <p>4.点击 <code>Install</code> ：</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/18b3fef3467f6096c7e1d8b4be8dab8d.png" alt="Pycharm 2022.2.3安装第三步"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-9c68.jpeg" alt="Pycharm 2022.2.3安装第三步"></p>
 <p>5.安装完成后，勾选 <code>Run Pycharm</code>，点击 <code>Finish</code> 运行软件:</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/707e10bdb8ac6b78a942e1ab07e39cfb.png" alt="Pycharm 2022.2.3安装第四步"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-1be5.jpeg" alt="Pycharm 2022.2.3安装第四步"></p>
 <p>Pycharm 运行成功后，会弹出下面的对话框，提示我们需要先登录 JetBrains 账户才能使用：</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/2576ec49478ed91df390d02923a900c1.png" alt="Pycharm 2022.2.3 弹出对话框，提示需要登录账户"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-c4f1.jpeg" alt="Pycharm 2022.2.3 弹出对话框，提示需要登录账户"></p>
 <p>这里我们先不管，<strong>先点击 <code>Exit</code> 退出，准备开始引入激活补丁</strong>。</p>
 <h2 id="第四步：清空-Pycharm-以前使用过的激活方式【非常重要】"><a href="#第四步：清空-Pycharm-以前使用过的激活方式【非常重要】" class="headerlink" title="第四步：清空 Pycharm 以前使用过的激活方式【非常重要】"></a>第四步：清空 Pycharm 以前使用过的激活方式【非常重要】</h2><p>开始激活前，如果你之前破解过老版本的 Pycharm，可能做过以下几种操作，则需要恢复原样，如果没有，直接跳过看下面步骤即可。</p>
 <h3 id="1、动过-hosts-文件，添加的配置需要删除"><a href="#1、动过-hosts-文件，添加的配置需要删除" class="headerlink" title="1、动过 hosts 文件，添加的配置需要删除"></a>1、动过 hosts 文件，添加的配置需要删除</h3><p><strong>手动为 Pycharm 修改过 hosts 文件，那么添加的配置，记得要删除；</strong></p>
 <h3 id="2、引用过其他的破解补丁，或者执行过安装脚本"><a href="#2、引用过其他的破解补丁，或者执行过安装脚本" class="headerlink" title="2、引用过其他的破解补丁，或者执行过安装脚本"></a>2、引用过其他的破解补丁，或者执行过安装脚本</h3><p><strong>1. 引用过的补丁也要移除掉等, 不然可能会与本文提供的补丁有冲突，出现各种奇奇怪怪的问题。</strong></p>
 <p><strong>2. 之前版本中, 我提供过通过安装脚本来引用补丁，如果你有使用过，脚本会添加相关环境变量，这些环境变量也需要清空，查看脚本文件夹，执行 <code>uninstall-\*</code> 脚本即可。</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/692fc2c10e4247be994929491ff3cfbe.png" alt="在这里插入图片描述"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-4d52.png" alt="在这里插入图片描述"></p>
 <h2 id="第五步：开始激活"><a href="#第五步：开始激活" class="headerlink" title="第五步：开始激活"></a>第五步：开始激活</h2><h3 id="下载激活脚本"><a href="#下载激活脚本" class="headerlink" title="下载激活脚本"></a>下载激活脚本</h3><p>先通过网盘下载好激活补丁，解压后，打开文件夹如下：</p>
-<p><img src="https://img-blog.csdnimg.cn/f9af99254e524258b140cf3a4709343c.png" alt="在这里插入图片描述"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-66f8.png" alt="在这里插入图片描述"></p>
 <blockquote>
 <p><strong>注意：激活脚本文末获取！</strong></p>
 </blockquote>
 <p>打开文件夹后，目录如下，<code>ja-netfilter.jar</code> 为激活补丁：</p>
-<p><img src="https://img-blog.csdnimg.cn/e57382a103d546ee9220ca541d4d7071.png" alt="在这里插入图片描述"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-8c12.png" alt="在这里插入图片描述"></p>
 <blockquote>
 <p><strong>注意：激活脚本文末获取！</strong></p>
 </blockquote>
@@ -80,7 +80,7 @@
 <p>PS: 有部分小伙伴反应，重启 Pycharm 填入激活码依然无法激活，重启系统才行，如果有小伙伴遇到这种情况，不妨试试看~</p>
 </blockquote>
 <p>点击激活后，就可以看到激活成功辣，又可以开心的 coding 了~：</p>
-<p><img src="https://img2023.cnblogs.com/blog/1001668/202302/1001668-20230207112358991-2111786806.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-7165.png"></p>
 <h2 id="一切按照教程来的，激活还是出错，提示-Key-is-invalid？"><a href="#一切按照教程来的，激活还是出错，提示-Key-is-invalid？" class="headerlink" title="一切按照教程来的，激活还是出错，提示 Key is invalid？"></a>一切按照教程来的，激活还是出错，提示 <code>Key is invalid</code>？</h2><ul>
 <li>1、部分小伙伴不仔细看教程，激活过程中只复制了 <code>ja-netfilter.jar</code> 一个文件，结果输入激活码时报 <code>Key is invalid</code>, 注意是所在的整个文件夹都需要复制，然后再引用补丁，而不是仅仅复制一个 <code>ja-netfilter.jar</code> 文件；</li>
 <li>2、配置文件中，引用补丁必须以 <code>-javaagent:</code> 开头，后面跟着补丁的绝对路径，开头不能丢，否则无法引用破解补丁成功；</li>
@@ -99,7 +99,7 @@
 </blockquote>
 <h2 id="激活成功后，补丁文件夹能不能删掉或者移动？"><a href="#激活成功后，补丁文件夹能不能删掉或者移动？" class="headerlink" title="激活成功后，补丁文件夹能不能删掉或者移动？"></a>激活成功后，补丁文件夹能不能删掉或者移动？</h2><p>前文中的环境变量，小伙伴也看到了，对应了你放置补丁位置的路径，删除掉或者移动，再打开 Pycharm 就找不到对应文件了，激活也就失效了。放着吃灰就行，别动它。</p>
 <h2 id="激活补丁下载地址"><a href="#激活补丁下载地址" class="headerlink" title="激活补丁下载地址"></a>激活补丁下载地址</h2><blockquote>
-<p>PS: 破解补丁页面提取人数过多，导致分享的百度网盘链接容易被封：<img src="https://img-blog.csdnimg.cn/img_convert/713e3cc737b92d94d01148761e55a64d.jpeg" alt="Pycharm 2022.2.3破解补丁分享失败">蛋疼ing，为限制人数，目前暂不提供页面直接提取，**<a href="https://note.youdao.com/s/X6AovF9T">点击获取</a>**</p>
+<p>PS: 破解补丁页面提取人数过多，导致分享的百度网盘链接容易被封：<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-caf5.jpeg" alt="Pycharm 2022.2.3破解补丁分享失败">蛋疼ing，为限制人数，目前暂不提供页面直接提取，**<a href="https://note.youdao.com/s/X6AovF9T">点击获取</a>**</p>
 </blockquote>
 <p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>Pycharm</strong>，会自动将激活码发送给你<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0202020220230219163502-20230219204318099.png"></p>
 <p><a href="https://note.youdao.com/s/X6AovF9T**">点击获取</a>:note.youdao.com&#x2F;s&#x2F;X6AovF9T</p>
@@ -5303,9 +5303,9 @@
 <p><strong>申明：本教程 Pycharm 破解补丁、激活码均收集于网络，请勿商用，仅供个人学习使用，如有侵权，请联系作者删除。若条件允许，希望大家购买正版 ！</strong></p>
 </blockquote>
 <blockquote>
-<p><strong>PS: 本教程最新更新时间: 2023年2月2日~</strong></p>
+<p><strong>PS: 本教程最新更新时间: 2023年3月25日~</strong></p>
 </blockquote>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-5c16.jpeg" alt="Pycharm 2022.3 破解激活教程"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-3c4f.png" alt="image-20230326180735237"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者几乎试了网上几乎所有的 Pycharm 破解方案，废了好大气力，汇总了目前网上比较靠谱的三种破解方案（<strong>这三种都是笔者亲测成功的</strong>），小伙伴们任选其一即可：</p>
 <ul>
 <li><strong>第一种【推荐】：👉激活脚本 + 激活码（全自动模式）</strong>，<strong>即本文教程所写，这种方法适合最新的几个版本，具体步骤跟着本文教程一步一步来，运行一下激活脚本，一分钟即可搞定，超级简单</strong>。无图无真相，下面是我激活成功后的截图：</li>
@@ -5323,8 +5323,8 @@
 <li><strong>本教程适用 Windows&#x2F;Mac&#x2F;Linux 系统，文中以 Windows 系统为例做讲解，其他系统同样参考着本教程来就行。</strong></li>
 </ul>
 <h2 id="第一步：下载-Pycharm-安装包"><a href="#第一步：下载-Pycharm-安装包" class="headerlink" title="第一步：下载 Pycharm 安装包"></a>第一步：下载 Pycharm 安装包</h2><p>访问 Pycharm 官网，下载 Pycharm 2022.3 版本的安装包，下载链接如下 :</p>
-<p><a href="https://www.jetbrains.com/pycharm/download">https://www.jetbrains.com/pycharm/download</a></p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166996402182925" alt="下载 Pycharm 2022.3 安装包"></p>
+<p><a href="https://www.jetbrains.com/pycharm/download/other.html">https://www.jetbrains.com/pycharm/download/other.html</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-46c5.png" alt="image-20230326180636779"></p>
 <p>打开页面后，点击 <code>Download</code> 按钮, 等待 Pycharm 专业版下载完毕。</p>
 <h2 id="第二步：安装-Pycharm-2022-3-版本"><a href="#第二步：安装-Pycharm-2022-3-版本" class="headerlink" title="第二步：安装 Pycharm 2022.3 版本"></a>第二步：安装 Pycharm 2022.3 版本</h2><p>如果电脑之前有安装老版本 Pycharm， 需要先卸载。卸载完成后，双击刚刚下载好的 Pycharm <code>2022.3</code> 版本安装包。弹框会提示选择安装路径，我这里直接选择的默认安装路径</p>
 <p><code>C:\Program Files\JetBrains\IntelliJ Pycharm 2022.3</code> , 然后点击 <code>Next</code> 按钮：</p>
