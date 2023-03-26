@@ -5313,7 +5313,7 @@
 <blockquote>
 <p><strong>PS: 此方法和下面的第二种方法的补丁原理都是暴力拦截了 Pycharm 的剩余使用期网络请求，实际上等于永久激活，至于激活到哪天，在之前的 <code>2021.3.3</code> <code>2021.3.2</code> 等老版本中是可以手动配置的，比如改成激活到 2099 年。可能是太高调了，最新的版本只能显示到 2025 年, 其实效果还是一样的, 都是永久激活，可放心食用。</strong></p>
 </blockquote>
-<p>![image-20230326182109403](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230326182109403.png)</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303261803-315e.png" alt="image-20230326182109403"></p>
 <ul>
 <li><strong>第二种：👉<a href="https://www.exception.site/essay/pycharm-pojie-jihuoma">破解补丁 + 激活码（需手动引用补丁）</a>，相比较第一种直接执行一个脚本就行了，这种方式需要手动引用破解补丁，再输入激活码。此法同样仅适用于最新的几个版本。</strong></li>
 <li><strong>第三种</strong>：👉 **<a href="https://www.exception.site/essay/how-to-free-use-idea-202022-by-resigter-code">无限重置 Pycharm 30 天试用期（适合比较老的版本）</a>**；</li>
