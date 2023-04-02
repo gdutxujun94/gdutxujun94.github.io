@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="最近ChatGPT一直是人们热议的一个话题。它完成100万的用户积累仅用了五天，而Facebook用了10个月，Twitter甚至用了两年。  这个数据也从侧面说明了ChatGPT的受欢迎程度。 在使用过程中人们发现，有的人可以通过ChatGPT得到高质量的回答，而有些人得到的内容确实非常的普通。 其实，想让ChatGPT得到一个好的高质量的回答并不是问出来的，而应该是提示引导出来的。 如何提示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高效使用ChatGPT大探索：打造高效生产力的秘密武器">
+<meta property="og:url" content="https://blog.junxu666.top/p/65084.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="最近ChatGPT一直是人们热议的一个话题。它完成100万的用户积累仅用了五天，而Facebook用了10个月，Twitter甚至用了两年。  这个数据也从侧面说明了ChatGPT的受欢迎程度。 在使用过程中人们发现，有的人可以通过ChatGPT得到高质量的回答，而有些人得到的内容确实非常的普通。 其实，想让ChatGPT得到一个好的高质量的回答并不是问出来的，而应该是提示引导出来的。 如何提示">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/693cda96e225bbab1b84baf9720f788c.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/7f97c0ffb7ced6cea845c33ae8ac3ae2.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/174d2fb811b5a51f3ac60bb93bebe4e7.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/a9676c1a159ec24f62ed9958c4f524eb.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/cad4692ec61ad53eb0cabb0b7c501023.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d05d3e212e3d627ed395457fbb42e086.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4604b3d109afa0e1c7fbf7200295c61b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ff7fa37e79cd8fcf5a5e51ce942a5a43.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2632c30fdb231c1872c9e319cdda00ff.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f31fa16290664b760d4da48b7b8e73ed.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ec67b4ab0af88915fa2b43fa3fe0adba.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/fa2c25bb09406b371ab6ce1f280600d4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/cfcdab56420941bff5ab67489cbfbfac.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/77864ae4aa197f36fb25930684289f74.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b7db877fbebdb8b59bdd9322759d139d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/e88507e7357467d9a56c18e30300194f.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/7fd9fdc5a5c92df475243ac276c4cc82.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d9eb756792bce665a076e2fab44a98d1.webp?x-oss-process=image/format,png">
+<meta property="article:published_time" content="2023-04-02T06:05:55.000Z">
+<meta property="article:modified_time" content="2023-04-02T07:06:28.237Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/693cda96e225bbab1b84baf9720f788c.png">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/65084.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>高效使用ChatGPT大探索：打造高效生产力的秘密武器 | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/65084.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高效使用ChatGPT大探索：打造高效生产力的秘密武器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-04-02 14:05:55 / 修改时间：15:06:28" itemprop="dateCreated datePublished" datetime="2023-04-02T14:05:55+08:00">2023-04-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ChatGpt/" itemprop="url" rel="index"><span itemprop="name">ChatGpt</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><p>最近ChatGPT一直是人们热议的一个话题。它完成100万的用户积累仅用了五天，而Facebook用了10个月，Twitter甚至用了两年。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/693cda96e225bbab1b84baf9720f788c.png" alt="img"></p>
+<p>这个数据也从侧面说明了ChatGPT的受欢迎程度。</p>
+<p>在使用过程中人们发现，有的人可以通过ChatGPT得到高质量的回答，而有些人得到的内容确实非常的普通。</p>
+<p>其实，想让ChatGPT得到一个好的高质量的回答并不是问出来的，而应该是提示引导出来的。</p>
+<p>如何提示AI生成高质量的你想要的结果已经催生了一个热门的新职业叫AI提示工程师（Prompt Engineer）。硅谷最近放出了大量30万美元年薪的高薪职位招聘AI提示工程师。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7f97c0ffb7ced6cea845c33ae8ac3ae2.jpeg" alt="img"></p>
+<p>所以如果你想利用ChatGPT增强自己或企业的竞争力，就要学会如何提示ChatGPT，从而得到更高质量的内容。</p>
+<p>这篇文章，我们就带大家一起来学习下如何高效使用ChatGPT。</p>
+<h2 id="ChatGPT的优缺点"><a href="#ChatGPT的优缺点" class="headerlink" title="ChatGPT的优缺点"></a>ChatGPT的优缺点</h2><p>在学习高效使用ChatGPT之前，有必要了解一下ChatGPT这款AI工具有哪些优缺点。</p>
+<p>先来看一下ChatGPT的优点：</p>
+<ul>
+<li>使用方便：只要具备上网环境，ChatGPT可以从任何地方访问。对话中输入你的诉求，很快便会得到一个不错的答案。</li>
+<li>个性化学习：ChatGPT有自我学习和理解的能力，并能相应地调整对话或问题的难度。这可以使学习体验更加个性化和有效。</li>
+<li>节省时间：用户可以通过ChatGPT快速获取答案，让他们继续进行其他任务或了解更多有关主题的信息，从而节省时间。</li>
+<li>创造新的就业机会：比如开文讲到的提升工程师，当然也有人对于它的到来持恐惧的心态，因为AI人工智能的高度发展可能预示着很多人类的岗位会被替代掉，从而造成实业。同时我们也必须预见到AI人工智能时代的到来，同时会为我们创造大量的物质财富，从而提升整个人类的物质文化生活水平。</li>
+</ul>
+<p>ChatGPT的缺点：</p>
+<ul>
+<li>缺乏人际互动：虽然ChatGPT可以进行对话并提供信息，但它缺乏提供个性化反馈或与人类进行实时对话的能力。</li>
+<li>对技术的依赖：ChatGPT依赖技术来运行，这意味着它可能并不总是可用的，或者可能会遇到技术困难。</li>
+<li>知识有限：ChatGPT的知识仅限于其接受过培训的信息。它可能无法获取最新信息，也无法提供对某个主题的全面理解。</li>
+<li>信息过时和内容创新缺乏：需要注意是，ChatGPT是使用2021的数据进行训练的，因此对有新闻价值或新鲜内容的搜索性能来说，它会提供过时的信息。同样，由于它基于现有内容生成文本，所以它很难提供一些新的观点。</li>
+</ul>
+<h2 id="如何高效使用CHATGPT"><a href="#如何高效使用CHATGPT" class="headerlink" title="如何高效使用CHATGPT"></a>如何高效使用CHATGPT</h2><h3 id="1-头脑风暴"><a href="#1-头脑风暴" class="headerlink" title="1. 头脑风暴"></a>1. 头脑风暴</h3><p>向ChatGPT提出一个简单的问题，就可以生成关于任何主题的各种数据和见解。这样，比如，“给我20个关于人工智能的文章的想法”，然后立即得到答案。头脑风暴是一个激发想法和思路的好方法，当然在使用它们之前，你应该仔细检查它的反应。</p>
+<p>我还尝试了让ChatGPT用头脑风暴的方式来其品牌名或域名，确实非常有效：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/174d2fb811b5a51f3ac60bb93bebe4e7.png" alt="img"></p>
+<h3 id="2-获得内容初稿"><a href="#2-获得内容初稿" class="headerlink" title="2. 获得内容初稿"></a>2. 获得内容初稿</h3><p>假设你着急要写一个新闻稿或者一篇博客文章，但又没有足够的时间来做这项工作。这时就可以用到ChatGPT。</p>
+<p>例如：</p>
+<p>这样，很快你就得到一篇文章初稿，在此基础上进行内容编辑，可以很快完成文章写作。</p>
+<p>注意：请不要照搬ChatGPT写的博客文章，现在搜索引擎应该可以在一定程度上识别AI内容，这样对你的网站SEO以及网站本身都是不利的，严重的可能带来惩罚，比如取消收录等等。</p>
+<h3 id="3-解决代码问题"><a href="#3-解决代码问题" class="headerlink" title="3. 解决代码问题"></a>3. 解决代码问题</h3><p>对早期语言模型的主要改进之一是ChatGPT理解和生成代码的能力。可以告诉ChatGPT修复代码中的错误并获得调试帮助。</p>
+<h3 id="4-创建标题"><a href="#4-创建标题" class="headerlink" title="4. 创建标题"></a>4. 创建标题</h3><p>好的标题对于任何内容的成功都非常重要。所以，你可以让ChatGPT帮你为某个话题生成多个标题然后从中选择一个最满意的。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a9676c1a159ec24f62ed9958c4f524eb.png" alt="img"></p>
+<h3 id="5-尝试不同的提示格式"><a href="#5-尝试不同的提示格式" class="headerlink" title="5. 尝试不同的提示格式"></a>5. 尝试不同的提示格式</h3><p>通过探索模型对一系列问题的反应。给它提问、命令或陈述，看看它对每种输入类型的反应。</p>
+<p>比如，在ChatGPT的使用指南中有提到一些提示格式：</p>
+<ul>
+<li>展示和讲述。通过说明、示例或两者的结合，明确你想要什么。如果你想让模型按照字母顺序对一系列项目进行排序，或者按照情感对一个段落进行分类，那么向它展示你想要的东西。</li>
+<li>提供质量数据。如果你试图构建分类器或使模型遵循某个模式，请确保有足够的示例。一定要校对你的例子——这个模型通常足够聪明，能够识破基本的拼写错误，并给你一个答案，但它也可能会假设这是故意的，这种情况会影响你的答案。</li>
+<li>问题排除。如果无法使ChatGPT按预期执行，可以遵循这个检查表：Is it clear what the intended generation should be? 2. Are there enough examples? 3. Did you check your examples for mistakes? (The API won’t tell you directly)  4. Are you using temperature and top_p correctly?</li>
+</ul>
+<p>你可以从<a target="_blank" rel="external nofollow noopener noreferrer" href="https://platform.openai.com/docs/guides/completion/prompt-design">官方网站</a>了解到更多提示格式，帮助你更有效的使用ChatGPT.</p>
+<h3 id="6-使用ChatGPT寻求帮助"><a href="#6-使用ChatGPT寻求帮助" class="headerlink" title="6. 使用ChatGPT寻求帮助"></a>6. 使用ChatGPT寻求帮助</h3><p>ChatGPT是一个很棒的资源，无论是想将其作为主要工具，还是想向其提问以用于调查。</p>
+<p>以往，人们在需要获取某个主题的信息时，谷歌和维基百科是首先求助的两个地方。现在你可以在你的武器库中添加另一个强大的资源：ChatGPT。</p>
+<h3 id="7-与其他NLP工具结合"><a href="#7-与其他NLP工具结合" class="headerlink" title="7. 与其他NLP工具结合"></a>7. 与其他NLP工具结合</h3><p>ChatGPT可以通过包括用于NLP（自然语言处理）的若干其他技术和资源来改进。得益于实体识别、情感分析和关键词提取工具，程序员可以创建更高级、功能更丰富的软件。</p>
+<h3 id="8-重新设计文本"><a href="#8-重新设计文本" class="headerlink" title="8. 重新设计文本"></a>8. 重新设计文本</h3><p>你可以用ChatGPT对一段文字进行加工或编辑，比如：加长，缩短，以及重写。</p>
+<p>例如，我们可以提供一篇文章，然后让ChatGPT来写一个元描述。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/cad4692ec61ad53eb0cabb0b7c501023.png" alt="img"></p>
+<h2 id="如何为一些特定目的有效使用CHATGPT"><a href="#如何为一些特定目的有效使用CHATGPT" class="headerlink" title="如何为一些特定目的有效使用CHATGPT"></a>如何为一些特定目的有效使用CHATGPT</h2><h3 id="1-用ChatGPT生成图标ICON"><a href="#1-用ChatGPT生成图标ICON" class="headerlink" title="1. 用ChatGPT生成图标ICON"></a>1. 用ChatGPT生成图标ICON</h3><p>例如，我在ChatGPT中输入“生成汽车图标的SVG代码”：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d05d3e212e3d627ed395457fbb42e086.png" alt="img"></p>
+<p>然后，把代码复制到免费的<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.freecodeformat.com/svg-editor.php">SVG编辑器</a>中：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4604b3d109afa0e1c7fbf7200295c61b.png" alt="img"></p>
+<p>点击按钮，便可以看到ChatGPT帮你生成的图标了：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ff7fa37e79cd8fcf5a5e51ce942a5a43.png" alt="img"></p>
+<p>最后，你可以将这个SVG代码复制到你的网页中要显示图表的位置。</p>
+<h3 id="2-用ChatGPT生成Excel函数"><a href="#2-用ChatGPT生成Excel函数" class="headerlink" title="2. 用ChatGPT生成Excel函数"></a>2. 用ChatGPT生成Excel函数</h3><p>例如，我有这样一个Excel表格：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2632c30fdb231c1872c9e319cdda00ff.png" alt="img"></p>
+<p>现在我想提取第二列网址中的中间部分作为第三列“网站名”的内容。这时让我们自己写一个Excel函数可能很难。</p>
+<p>我们可以把任务交给ChatGPT, 在对话框中输入一个命令“在Excel中写一个函数，提取B2单元格内第一个句号和第二个句号中间的文本内容。”ChatGPT就会帮你生成这段函数：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/f31fa16290664b760d4da48b7b8e73ed.png" alt="img"></p>
+<p>我们把生成的函数复制到刚才的Excel表格中，看看能否得到我们想要的结果：</p>
+<p>可以看到，ChatGPT生成的Excel函数精准的帮我们把需要的内容提取出来了。</p>
+<h3 id="3-用ChatGPT生成节日祝福语"><a href="#3-用ChatGPT生成节日祝福语" class="headerlink" title="3. 用ChatGPT生成节日祝福语"></a>3. 用ChatGPT生成节日祝福语</h3><p>假如，单位新年聚餐时，领导让你讲几句话。要说什么呢？</p>
+<p>可以让ChatGPT来帮你，可以输入“假设你在参加新年单位聚餐，领导让你说几句话，按照以下格式写一段新年祝福语：1. 描绘当下感受。2.表达感谢。3. 最后向单位领导、同事以及公司说祝福语。”</p>
+<p>看一下ChatGPT的回答：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ec67b4ab0af88915fa2b43fa3fe0adba.png" alt="img"></p>
+<p>如果不满意，还可以继续让ChatGPT生成更多版本。</p>
+<h3 id="4-用ChatGPT帮助生成AI生成图像描述"><a href="#4-用ChatGPT帮助生成AI生成图像描述" class="headerlink" title="4. 用ChatGPT帮助生成AI生成图像描述"></a>4. 用ChatGPT帮助生成AI生成图像描述</h3><p>我们知道AI工具输出内容的质量高低，很大程度上取决于你如何提示AI工具，这同样适用于AI生成图像的工具。</p>
+<p>下面我们就来看一下如何用ChatGPT帮助生成图像描述。</p>
+<p>例如，我们让ChatGPT帮助生成朱自清《荷塘月色》的景象描述：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/fa2c25bb09406b371ab6ce1f280600d4.png" alt="img"></p>
+<p>然后将这段描述复制到AI生成图片的工具中，便可以得到一个质量不错的图片：</p>
+<h3 id="5-用ChatGPT模拟求职面试"><a href="#5-用ChatGPT模拟求职面试" class="headerlink" title="5. 用ChatGPT模拟求职面试"></a>5. 用ChatGPT模拟求职面试</h3><p>找到一份理想工作的前提就是通过面试。那么如何为面试做好充分的准备呢？</p>
+<p>ChatGPT可以帮你。</p>
+<p>为了和ChatGPT进行模拟面试。请参考这个模板：</p>
+<p>假设你是一家外贸企业的面试官，通过不断问问题来进行一场市场部经理的模拟面试，在这个场景里，我的角色是面试者，你需要根据岗位描述不断问有挑战性的问题来监测我的能力，但必须在我回答之后才能开始下一个问题，下面是这个岗位的描述：</p>
+<p>【需求描述】</p>
+<ul>
+<li>市场策略和计划：负责制定市场策略和计划，包括市场营销和销售计划，以及市场推广和品牌建设。</li>
+<li>业务拓展：负责开拓新的客户和市场，维护和拓展现有客户，实现销售业绩的增长和市场份额的提升。</li>
+<li>市场调研和分析：进行市场调研和竞争分析，收集并分析市场数据和信息，以制定有效的市场策略和计划。</li>
+<li>品牌管理：负责企业品牌的建设和管理，包括品牌定位、品牌传播、品牌形象塑造等。</li>
+<li>团队管理：负责市场部门的管理和团队建设，包括员工招聘、培训和绩效管理等。</li>
+<li>与其他部门协作：与其他部门（如生产、采购、财务等）紧密合作，以确保公司的整体运营顺畅和有效。</li>
+<li>经营分析和报告：分析市场和销售数据，撰写经营报告和市场分析报告，为企业决策提供支持和建议。</li>
+<li>活动策划和执行：负责企业市场活动的策划和执行，包括展会、推广活动、宣传活动等。</li>
+<li>市场部门预算管理：负责市场部门的预算管理，确保预算的合理性和有效性。</li>
+<li>与客户关系管理：维护和建立客户关系，提高客户满意度和忠诚度，促进销售业绩的提升。</li>
+</ul>
+<p>【职位要求】</p>
+<ul>
+<li>教育背景：大学本科或以上学历，市场营销、国际贸易、商务英语等相关专业。</li>
+<li>工作经验：有5年以上外贸企业市场部门管理经验，熟悉国际贸易、市场营销等领域。</li>
+<li>语言能力：良好的英语口语和书写能力，能够熟练使用英语进行商务沟通和谈判。</li>
+<li>技能要求：具备市场营销、销售管理、品牌建设、团队管理等方面的专业知识和技能。</li>
+<li>沟通能力：具备良好的沟通能力和人际交往能力，能够有效地与客户和团队成员沟通。</li>
+<li>领导能力：有较强的领导能力和团队建设能力，能够有效地组织和管理团队工作。</li>
+<li>分析能力：具备较强的数据分析能力和市场研究能力，能够通过数据分析和市场调研为公司制定市场策略和计划提供支持。</li>
+<li>知识储备：对国际贸易政策、国内外市场趋势、行业发展动态等方面有较深入的了解和认识。</li>
+<li>职业素养：具备高度的职业素养和商业道德，能够积极履行职责，为公司创造价值。</li>
+<li>适应能力：能够适应外贸企业的工作节奏和文化氛围，具备较强的抗压能力和团队协作精神。</li>
+</ul>
+<p>请开始你对我的第一个问题。</p>
+<p>下面，打开你的ChatGPT将以上的这段模板内容复制进去（注:你可以根据自己的需求替换具体内容）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/cfcdab56420941bff5ab67489cbfbfac.png" alt="img"></p>
+<p>然后就开始一问一答的模拟面试。通过这种模拟面试为你真实的面试准备好各种素材的应对内容，从而更有把握的获得更好的职位机会。</p>
+<p>注：如果发现ChatGPT跑题了，要及时在会话中把它拽回模拟面试场景。只需要告诉它“请继续模拟面试问题”</p>
+<h3 id="6-用ChatGPT练英语口语"><a href="#6-用ChatGPT练英语口语" class="headerlink" title="6. 用ChatGPT练英语口语"></a>6. 用ChatGPT练英语口语</h3><p>我们平常用的ChatGPT都是基于文本的内容，如何通过语音和ChatGPT对话，从而进行英语口语训练呢？</p>
+<p>首先，你需要安装一款谷歌浏览器插件“<a target="_blank" rel="external nofollow noopener noreferrer" href="https://chrome.google.com/webstore/detail/voice-control-for-chatgpt/eollffkcakegifhacjnlnegohfdlidhn/related">Voice Control For ChatGPT</a>”。</p>
+<p>然后，你就可以使用ChatGPT练英语口语了。</p>
+<h3 id="7-用ChatGPT起名字"><a href="#7-用ChatGPT起名字" class="headerlink" title="7. 用ChatGPT起名字"></a>7. 用ChatGPT起名字</h3><p>中国人比较注重根据五行命格为宝宝取名，所以也催生了很多起名网站而且大部分需要付费。其实完全可以用ChatGPT来帮你免费起名字，例如：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/77864ae4aa197f36fb25930684289f74.png" alt="img"></p>
+<h3 id="8-用ChatGPT写商业计划书"><a href="#8-用ChatGPT写商业计划书" class="headerlink" title="8. 用ChatGPT写商业计划书"></a>8. 用ChatGPT写商业计划书</h3><p>这种情况下，你要给ChatGPT虚拟一个场景，比如：</p>
+<p>你的角色是商业咨询专家，你需要为客户写一个商业计划书，用于融资，客户知道关于这个项目的所有信息，但不知道如何写商业计划书，你的任务是通过不断问问题，获得关于这个项目的商业计划书所需要的所有信息，然后生成商业计划书，你必须在客户回答后才能问下一个问题，明白了吗？</p>
+<p>然后进入ChatGPT, 输入上面的内容，并开始回答ChatGPT的一些列问题，最后便可以生成一份商业计划书。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b7db877fbebdb8b59bdd9322759d139d.png" alt="img"></p>
+<h3 id="9-用ChatGPT优化求职简历"><a href="#9-用ChatGPT优化求职简历" class="headerlink" title="9. 用ChatGPT优化求职简历"></a>9. 用ChatGPT优化求职简历</h3><p>比如你想求职SEO优化师的工作，可以先问一下ChatGPT一个优秀的SEO优化师的简历应该有什么样的特点？</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/e88507e7357467d9a56c18e30300194f.png" alt="img"></p>
+<p>然后，让它评价你的建立并给出修改意见。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7fd9fdc5a5c92df475243ac276c4cc82.png" alt="img"></p>
+<p>你甚至可以要求它根据修改意见修改你的简历。</p>
+<h3 id="10-使用ChatGPT写推广邮件"><a href="#10-使用ChatGPT写推广邮件" class="headerlink" title="10. 使用ChatGPT写推广邮件"></a>10. 使用ChatGPT写推广邮件</h3><p>例如，你的网站新发布了一篇关于<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/google-analytics/">谷歌分析如何安装</a>的指南文章，你需要向你的受众写一封推广邮件，让他们来阅读这篇文章。你可以请ChatGPT来帮助你写推广邮件内容：</p>
+<h3 id="11-使用ChatGPT创建网站和APP"><a href="#11-使用ChatGPT创建网站和APP" class="headerlink" title="11.使用ChatGPT创建网站和APP"></a>11.使用ChatGPT创建网站和APP</h3><p>ChatGPT的编码技巧是众所周知的。如果你是一个程序员，可以用ChatGPT开发任何类型的有用工具，包括但不限于：</p>
+<ul>
+<li>单位转换器</li>
+<li>贷款偿还计算器</li>
+</ul>
+<p>等等。</p>
+<h3 id="12-使用ChatGPT生成视频脚本"><a href="#12-使用ChatGPT生成视频脚本" class="headerlink" title="12. 使用ChatGPT生成视频脚本"></a>12. 使用ChatGPT生成视频脚本</h3><p>这个我们在文章“<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/how-make-money-with-chatgpt/">如何用ChatGPT赚钱</a>”讲过，这里不再赘述。</p>
+<h3 id="13-使用ChatGPT进行搜索引擎优化"><a href="#13-使用ChatGPT进行搜索引擎优化" class="headerlink" title="13. 使用ChatGPT进行搜索引擎优化"></a>13. 使用ChatGPT进行搜索引擎优化</h3><p>对于ChatGPT在SEO中的应用，包括：</p>
+<ul>
+<li>对关键词按照<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/search-intent/">搜索意图</a>分类：提供一组关键词给ChatGPT, 它可以帮助你按照不同的搜索意图对关键词进行分类。</li>
+<li>为内容生成<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/title-tag/">标题标签</a>：你可以提供一段内容，然后要求ChatGPT生成不同版本的少于55个字符的标题标签。</li>
+<li>用ChatGPT写<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/meta-description-guide/">元描述</a>：这个跟标题标签类似，注意长度限制155个字符即可。</li>
+<li>改写内容避免<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/duplicate-content-guide/">重复内容</a>。</li>
+<li>根据内容生成FAQ</li>
+<li>生成内容摘要</li>
+<li>为页面内容生成结构化数据</li>
+<li>生成<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/robots-txt-guide/">robots.txt</a>规则</li>
+<li>回复<a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.helpareporter.com/">HARO</a>请求获取链接</li>
+</ul>
+<h3 id="14-在WordPress网站中使用ChatGPT"><a href="#14-在WordPress网站中使用ChatGPT" class="headerlink" title="14. 在WordPress网站中使用ChatGPT"></a>14. 在WordPress网站中使用ChatGPT</h3><ul>
+<li>在wordPress网站中使用基于ChatGPT的聊天机器人插件</li>
+<li>使用ChatGPT为WordPress网站生成定制插件</li>
+</ul>
+<h3 id="15-用ChatGPT写跨境电商产品文案"><a href="#15-用ChatGPT写跨境电商产品文案" class="headerlink" title="15. 用ChatGPT写跨境电商产品文案"></a>15. 用ChatGPT写跨境电商产品文案</h3><p>很多电商的产品描述太短无法达到SEO的标准，如果找专业的人血可能花费巨大。</p>
+<p>你可以免费使用ChatGPTA来写电商产品描述。</p>
+<p>首先，在谷歌中找到排名靠前的几个竞争对手，以及他们关于产品描述的关键词。</p>
+<p>然后，给ChatGPT发指令，例如：</p>
+<p>Write 300 words product description for Black Panther Mens Costume includes with Jumpsuit muscle padding, Attached gauntlets, Boot tops. Mask.</p>
+<p>第三步，我们一直线上的一些AI内容监测工具可以发现你的内容是否是AI产生的。当然你也逃不过谷歌的审核。所以你必须讲这些内容重新润色，或者使用重写工具进行重写。确保AI监测工具检查不出是AI内容即可。</p>
+<p>最后，用Grammlarly工具检查语法错误。然后就可以直接使用产品描述内容了。</p>
+<h3 id="16-用ChatGPT分析Excel表格中的数据"><a href="#16-用ChatGPT分析Excel表格中的数据" class="headerlink" title="16. 用ChatGPT分析Excel表格中的数据"></a>16. 用ChatGPT分析Excel表格中的数据</h3><p>这个操作比较简单，可以直接把Excel表格中的数据复制到ChatGPT中，并告诉ChatGPT“做一下这些数据的分析，将结果告诉我”。</p>
+<p>你便可以很快得到一个数据分析总结。</p>
+<h2 id="ChatGPT收费版和免费版对比"><a href="#ChatGPT收费版和免费版对比" class="headerlink" title="ChatGPT收费版和免费版对比"></a>ChatGPT收费版和免费版对比</h2><p>大家知道ChatGPT已经推出了Plus付费版。所以我们需要了解付费和免费版对比有什么区别，以便我们更高效的使用这款工具。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d9eb756792bce665a076e2fab44a98d1.webp?x-oss-process=image/format,png" alt="img"></p>
+<ul>
+<li>使用效率和回复速度：付费版相应速度略快一点。尤其是免费版会经常有出错情况的出现。而付费版一般不会出现出错的情况。</li>
+<li>打开ChatGPT窗口长时间不用的情况下，Plus版本不会出现掉线的问题，可以直接输入问题与ChatGPT对话。而免费版会掉线，你需要重新刷新或登录才可以使用。</li>
+<li>Plus版本提供多种模式的选择，一种是标准模式，还有一种是Turbo模式，它是为速度而优化的，所以它的相应速度更快。</li>
+<li>当平台负载过得的时候，免费版可能需要排队等候，而付费版可以直接访问。</li>
+<li>付费版可以在未来享受更多的新功能。</li>
+<li>回答内容质量：两个版本相差不大，只是表达方式略有却别。</li>
+</ul>
+<p>大家可以根据这些对比，来确定继续使用ChatGPT的免费版还是购买付费版使用。</p>
+<h2 id="其他AI工具列表："><a href="#其他AI工具列表：" class="headerlink" title="其他AI工具列表："></a>其他AI工具列表：</h2><h3 id="文本AI工具"><a href="#文本AI工具" class="headerlink" title="文本AI工具"></a>文本AI工具</h3><ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.notion.so/product/ai">Notion AI</a>：一款类似ChatGPT的工具，优点是预制了各种提示模板。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.copy.ai/">Copy.ai</a>: 优化拷贝的文章。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://cowriter.com/">Cowriter</a>：AI作家帮助用户加速写作寻找灵感。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://outplayhq.com/en-us">Outplay</a>：AI生成销售话术。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://beta.character.ai/">Character AI</a>:和AI生成的人物聊天对话。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://writesonic.com/">Writesonic</a>:AI作家</li>
+</ul>
+<h3 id="AI视频："><a href="#AI视频：" class="headerlink" title="AI视频："></a>AI视频：</h3><ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://runwayml.com/">Runway</a>:提供先进的视频编辑能力</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dreamfaceapp.com/">DreamFace</a>:AI艺术生成器</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.synthesia.io/">Synthesia</a>:根据输入的关键词创建AI视频</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.d-id.com/">D-ID</a>:可以生成视频解说数字人。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.getmunch.com/">Munch</a>:AI抓取并剪辑视频</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://fliki.ai/">Fliki</a>：文本转视频的AI工具</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://pollinations.ai/">Pollinations</a>:定制个性化AI视频</li>
+</ul>
+<h3 id="AI音频："><a href="#AI音频：" class="headerlink" title="AI音频："></a>AI音频：</h3><ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://poly.ai/">PolyAI</a>: AI客服语音助手</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.lalal.ai/">LALAL AI</a>: 智能去除BGM, 保留人声。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.papercup.com/">Papercup</a>: AI制作配音。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mubert.com/">Mubert</a>: AI自动生成免版权背景音乐</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://murf.ai/">Murf</a>:AI一键变声</li>
+</ul>
+<h3 id="AI图片："><a href="#AI图片：" class="headerlink" title="AI图片："></a>AI图片：</h3><ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://pebblely.com/">Pebblely</a>:可以帮助快速生成电商产品图片。而且40张免费。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://convert.leiapix.com/">LeiaPix</a>：可以帮助生成3D动态照片。可免费使用。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.midjourney.com/">Midjourney</a>: 最流行的AI生成图片工具之一。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.artbreeder.com/">Arbreeder</a>: AI头像合成。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dreamlike.art/">Dreamlike.</a>art:AI艺术生成器</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://stockimg.ai/">Stockimg.AI</a>:生成图像，海报等设计材料</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://getimg.ai/">Getimg</a>: 用关键词生成图片的AI工具</li>
+</ul>
+<h2 id="ChatGPT相关资源："><a href="#ChatGPT相关资源：" class="headerlink" title="ChatGPT相关资源："></a>ChatGPT相关资源：</h2><ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://kdocs.cn/l/cawtM5EUz0BT">ChatGPT注册教程</a>: 解决手机无法接收验证码问题（亲测有效）。</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xnbeast.com/how-make-money-with-chatgpt/">如何用ChatGPT赚钱</a>：介绍了通过ChatGPT盈利和变现的16种方法。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/0.html" rel="prev" title>
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ChatGPT%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">ChatGPT的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8CHATGPT"><span class="nav-number">2.</span> <span class="nav-text">如何高效使用CHATGPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4"><span class="nav-number">2.1.</span> <span class="nav-text">1. 头脑风暴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%8E%B7%E5%BE%97%E5%86%85%E5%AE%B9%E5%88%9D%E7%A8%BF"><span class="nav-number">2.2.</span> <span class="nav-text">2. 获得内容初稿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A7%A3%E5%86%B3%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98"><span class="nav-number">2.3.</span> <span class="nav-text">3. 解决代码问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E6%A0%87%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">4. 创建标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%B0%9D%E8%AF%95%E4%B8%8D%E5%90%8C%E7%9A%84%E6%8F%90%E7%A4%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.5.</span> <span class="nav-text">5. 尝试不同的提示格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%BD%BF%E7%94%A8ChatGPT%E5%AF%BB%E6%B1%82%E5%B8%AE%E5%8A%A9"><span class="nav-number">2.6.</span> <span class="nav-text">6. 使用ChatGPT寻求帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%B8%8E%E5%85%B6%E4%BB%96NLP%E5%B7%A5%E5%85%B7%E7%BB%93%E5%90%88"><span class="nav-number">2.7.</span> <span class="nav-text">7. 与其他NLP工具结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1%E6%96%87%E6%9C%AC"><span class="nav-number">2.8.</span> <span class="nav-text">8. 重新设计文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%B8%BA%E4%B8%80%E4%BA%9B%E7%89%B9%E5%AE%9A%E7%9B%AE%E7%9A%84%E6%9C%89%E6%95%88%E4%BD%BF%E7%94%A8CHATGPT"><span class="nav-number">3.</span> <span class="nav-text">如何为一些特定目的有效使用CHATGPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%94%A8ChatGPT%E7%94%9F%E6%88%90%E5%9B%BE%E6%A0%87ICON"><span class="nav-number">3.1.</span> <span class="nav-text">1. 用ChatGPT生成图标ICON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%94%A8ChatGPT%E7%94%9F%E6%88%90Excel%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">2. 用ChatGPT生成Excel函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%94%A8ChatGPT%E7%94%9F%E6%88%90%E8%8A%82%E6%97%A5%E7%A5%9D%E7%A6%8F%E8%AF%AD"><span class="nav-number">3.3.</span> <span class="nav-text">3. 用ChatGPT生成节日祝福语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%94%A8ChatGPT%E5%B8%AE%E5%8A%A9%E7%94%9F%E6%88%90AI%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.4.</span> <span class="nav-text">4. 用ChatGPT帮助生成AI生成图像描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%94%A8ChatGPT%E6%A8%A1%E6%8B%9F%E6%B1%82%E8%81%8C%E9%9D%A2%E8%AF%95"><span class="nav-number">3.5.</span> <span class="nav-text">5. 用ChatGPT模拟求职面试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%94%A8ChatGPT%E7%BB%83%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD"><span class="nav-number">3.6.</span> <span class="nav-text">6. 用ChatGPT练英语口语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E7%94%A8ChatGPT%E8%B5%B7%E5%90%8D%E5%AD%97"><span class="nav-number">3.7.</span> <span class="nav-text">7. 用ChatGPT起名字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E7%94%A8ChatGPT%E5%86%99%E5%95%86%E4%B8%9A%E8%AE%A1%E5%88%92%E4%B9%A6"><span class="nav-number">3.8.</span> <span class="nav-text">8. 用ChatGPT写商业计划书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E7%94%A8ChatGPT%E4%BC%98%E5%8C%96%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86"><span class="nav-number">3.9.</span> <span class="nav-text">9. 用ChatGPT优化求职简历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E4%BD%BF%E7%94%A8ChatGPT%E5%86%99%E6%8E%A8%E5%B9%BF%E9%82%AE%E4%BB%B6"><span class="nav-number">3.10.</span> <span class="nav-text">10. 使用ChatGPT写推广邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E4%BD%BF%E7%94%A8ChatGPT%E5%88%9B%E5%BB%BA%E7%BD%91%E7%AB%99%E5%92%8CAPP"><span class="nav-number">3.11.</span> <span class="nav-text">11.使用ChatGPT创建网站和APP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E4%BD%BF%E7%94%A8ChatGPT%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91%E8%84%9A%E6%9C%AC"><span class="nav-number">3.12.</span> <span class="nav-text">12. 使用ChatGPT生成视频脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E4%BD%BF%E7%94%A8ChatGPT%E8%BF%9B%E8%A1%8C%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96"><span class="nav-number">3.13.</span> <span class="nav-text">13. 使用ChatGPT进行搜索引擎优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E5%9C%A8WordPress%E7%BD%91%E7%AB%99%E4%B8%AD%E4%BD%BF%E7%94%A8ChatGPT"><span class="nav-number">3.14.</span> <span class="nav-text">14. 在WordPress网站中使用ChatGPT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E7%94%A8ChatGPT%E5%86%99%E8%B7%A8%E5%A2%83%E7%94%B5%E5%95%86%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%88"><span class="nav-number">3.15.</span> <span class="nav-text">15. 用ChatGPT写跨境电商产品文案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E7%94%A8ChatGPT%E5%88%86%E6%9E%90Excel%E8%A1%A8%E6%A0%BC%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">3.16.</span> <span class="nav-text">16. 用ChatGPT分析Excel表格中的数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChatGPT%E6%94%B6%E8%B4%B9%E7%89%88%E5%92%8C%E5%85%8D%E8%B4%B9%E7%89%88%E5%AF%B9%E6%AF%94"><span class="nav-number">4.</span> <span class="nav-text">ChatGPT收费版和免费版对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96AI%E5%B7%A5%E5%85%B7%E5%88%97%E8%A1%A8%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">其他AI工具列表：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%ACAI%E5%B7%A5%E5%85%B7"><span class="nav-number">5.1.</span> <span class="nav-text">文本AI工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AI%E8%A7%86%E9%A2%91%EF%BC%9A"><span class="nav-number">5.2.</span> <span class="nav-text">AI视频：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AI%E9%9F%B3%E9%A2%91%EF%BC%9A"><span class="nav-number">5.3.</span> <span class="nav-text">AI音频：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AI%E5%9B%BE%E7%89%87%EF%BC%9A"><span class="nav-number">5.4.</span> <span class="nav-text">AI图片：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChatGPT%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">ChatGPT相关资源：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">487k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">7:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
