@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）  您好，我是程序员徐师兄，感谢您阅读本文，欢迎一键三连哦。  目前有各类成品java毕设，需要请看文末联系方式 。javaweb，ssh，ssm，springboot等等项目框架，源码丰富，欢迎咨询。 😁   1.Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。 2.Python 毕业设计专栏，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员徐公">
+<meta property="og:url" content="https://blog.junxu666.top/p/0.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）  您好，我是程序员徐师兄，感谢您阅读本文，欢迎一键三连哦。  目前有各类成品java毕设，需要请看文末联系方式 。javaweb，ssh，ssm，springboot等等项目框架，源码丰富，欢迎咨询。 😁   1.Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。 2.Python 毕业设计专栏，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/3d4a3be02e680e914b41cd79ab7e4d22.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b34135944bcefd34b9bf51880335a56f.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d78d90378dc5f17325b956abd7bbef17.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/364cfed89bdb58917590529cdc13ab72.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0726a5e61bf3b72e5977b1fbd0814586.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/05e80d1c7bb35a326b2eb9a28e367355.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/036fba096eb338fb029bd53c3ce9e377.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/902b4719e1e3ff880dac6ad1d2d9a4b8.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b1c9007aa51d4c412a0b1e295c3f3869.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/8de137041f571576c1ef6212bff94202.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d9c502b281635435d0a0ecab5beb975d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/43b0efeaf155c1388159cd0a85924172.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/57c0b8b97cf69566de246bbc6c2565f8.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/cf6f6e4c34e2f480bedd8b4aff9f81a3.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b1ab7d4b5930194dc16b8c2fc39e33cd.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/979fcfe1324729b8503cbcb794185eb7.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/2c5df8d2ec19d13ec2b2a22aef464291.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/91462c274809940c2032138e1ee7afdc.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png">
+<meta property="article:published_time" content="2023-04-05T07:58:13.120Z">
+<meta property="article:modified_time" content="2023-04-05T07:58:13.120Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/3d4a3be02e680e914b41cd79ab7e4d22.png">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/0.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-05 15:58:13" itemprop="dateCreated datePublished" datetime="2023-04-05T15:58:13+08:00">2023-04-05</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）"><a href="#基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）" class="headerlink" title="基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）"></a>基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）</h1><blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。  目前有各类成品java毕设，需要请看文末联系方式 。javaweb，ssh，ssm，springboot等等项目框架，源码丰富，<a href="https://blog.junxu666.top/p/57317.html">欢迎咨询</a>。<br> 😁 </p>
+<p> 1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h2 id="开发环境："><a href="#开发环境：" class="headerlink" title="开发环境："></a>开发环境：</h2><h3 id="后端："><a href="#后端：" class="headerlink" title="后端："></a>后端：</h3><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<h3 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h3><p>nodejs，vue</p>
+<h3 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h3><p>mysql</p>
+<h2 id="系统架构："><a href="#系统架构：" class="headerlink" title="系统架构："></a>系统架构：</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/3d4a3be02e680e914b41cd79ab7e4d22.png"></p>
+<h3 id="管理员："><a href="#管理员：" class="headerlink" title="管理员："></a>管理员：</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/b34135944bcefd34b9bf51880335a56f.png"></p>
+<h3 id="用户用例："><a href="#用户用例：" class="headerlink" title="用户用例："></a>用户用例：</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/d78d90378dc5f17325b956abd7bbef17.png"></p>
+<h2 id="主要功能："><a href="#主要功能：" class="headerlink" title="主要功能："></a>主要功能：</h2><h3 id="用户功能模块"><a href="#用户功能模块" class="headerlink" title="用户功能模块"></a>用户功能模块</h3><p>用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块并进行操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/364cfed89bdb58917590529cdc13ab72.png"></p>
+<p>民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行详情查看操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/0726a5e61bf3b72e5977b1fbd0814586.png"></p>
+<p>房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行详情、修改、删除等操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/05e80d1c7bb35a326b2eb9a28e367355.png"></p>
+<p>房间退订管理：通过房间退订管理列表可以获取退订编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、退订时间、备注、账号、姓名、手机、是否支付、审核回复、审核状态等信息，进行详情、修改、删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/036fba096eb338fb029bd53c3ce9e377.png"></p>
+<h3 id="管理员功能模块"><a href="#管理员功能模块" class="headerlink" title="管理员功能模块"></a>管理员功能模块</h3><p>管理员通过用户名和密码、角色填写完成后进行登录，如图5-5所示。管理员登录成功后进入到系统操作界面，可以对首页、个人中心、用户管理、商家管理、民宿信息管理、房间类型管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理、系统管理等功能模块进行相对应操作。</p>
+<p>管理员商家管理：通过商家管理列表可以获取商家编号、密码、商家名称、联系电话、头像、备注等内容，可以进行修改或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/902b4719e1e3ff880dac6ad1d2d9a4b8.png"></p>
+<p>管理员用户管理：通过用户管理列表可以获取账号、密码、姓名、性别、手机、邮箱、图片、备注等信息，进行删除或修改操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b1c9007aa51d4c412a0b1e295c3f3869.png"></p>
+<p>管理员民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行修改或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8de137041f571576c1ef6212bff94202.png"></p>
+<p>管理员房间类型管理：通过房间类型管理列表可以获取索引、房间类型、操作等信息，进行详情、修改或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d9c502b281635435d0a0ecab5beb975d.png"></p>
+<p>管理员房间信息管理：通过房间信息管理列表可以获取商家编号、民宿编号、房间类型、图片、房间设施、房间价格、收取金额等信息，进行详情、查看或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/43b0efeaf155c1388159cd0a85924172.png"></p>
+<p>管理员房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行备注或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/57c0b8b97cf69566de246bbc6c2565f8.png"></p>
+<h3 id="商家用户功能模块"><a href="#商家用户功能模块" class="headerlink" title="商家用户功能模块"></a>商家用户功能模块</h3><p>商家用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/cf6f6e4c34e2f480bedd8b4aff9f81a3.png"></p>
+<p>商家用户民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行查询、新增、删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b1ab7d4b5930194dc16b8c2fc39e33cd.png"></p>
+<h3 id="前台首页功能模块"><a href="#前台首页功能模块" class="headerlink" title="前台首页功能模块"></a>前台首页功能模块</h3><p>前台首页，在系统首页可以查看首页、民宿信息、房间信息、个人中心、后台管理、在线客服等内容</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/979fcfe1324729b8503cbcb794185eb7.png"></p>
+<p>用户登录，在登录页面通过填写账号、密码等信息完成登录，如图5-15所示。在民宿信息页面通过查看商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息进行购买操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2c5df8d2ec19d13ec2b2a22aef464291.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/91462c274809940c2032138e1ee7afdc.png"></p>
+<p>以上就是项目的一些基本信息了。</p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/1902.html" rel="prev" title="Java 毕业设计，基于Java+SpringBoot+vue的租房网站设计与实现（毕业设计，附源码，教程）">
+      <i class="fa fa-chevron-left"></i> Java 毕业设计，基于Java+SpringBoot+vue的租房网站设计与实现（毕业设计，附源码，教程）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/11867.html" rel="next" title="Java 毕业设计，基于 SpringBoot+Vue 的学生就业管理信息系统（毕业设计，附源码，教程）">
+      Java 毕业设计，基于 SpringBoot+Vue 的学生就业管理信息系统（毕业设计，附源码，教程） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Espringboot-vue%E6%B0%91%E5%AE%BF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88Java-%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%EF%BC%8C%E9%99%84%E6%BA%90%E7%A0%81%EF%BC%8C%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">开发环境：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">后端：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">前端：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据库：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">系统架构：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">管理员：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%94%A8%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">用户用例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">主要功能：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.1.</span> <span class="nav-text">用户功能模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.2.</span> <span class="nav-text">管理员功能模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%86%E5%AE%B6%E7%94%A8%E6%88%B7%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.3.</span> <span class="nav-text">商家用户功能模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E5%8F%B0%E9%A6%96%E9%A1%B5%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.4.</span> <span class="nav-text">前台首页功能模块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">源码下载地址</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">524k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">7:56</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

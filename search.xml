@@ -10390,6 +10390,9 @@
 <h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
 <p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+<h1 id="源码下载地址-1"><a href="#源码下载地址-1" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
 ]]></content>
       <categories>
         <category>毕业设计</category>
@@ -10435,36 +10438,36 @@
 <blockquote>
 <h1 id="三、系统设计（部分）"><a href="#三、系统设计（部分）" class="headerlink" title="三、系统设计（部分）"></a>三、系统设计（部分）</h1></blockquote>
 <h2 id="3-1、主要功能模块设计"><a href="#3-1、主要功能模块设计" class="headerlink" title="3.1、主要功能模块设计"></a>3.1、主要功能模块设计</h2><p>本系统有管理员；首页、个人中心、用户管理、房屋类型管理、房屋信息管理、预约看房管理、在线签约管理、租赁评价管理、交流论坛、系统管理，用户；首页、个人中心、预约看房管理、在线签约管理、租赁评价管理、我的收藏管理，前台首页；首页、房屋信息、交流论坛、房屋资讯、个人中心、后台管理、在线客服等功能。</p>
-<p><img src="https://img-blog.csdnimg.cn/3c76e2848b53486a88023e5fe1ed7fc3.jpeg"></p>
-<h2 id="3-2、系统登录设计"><a href="#3-2、系统登录设计" class="headerlink" title="3.2、系统登录设计"></a>3.2、系统登录设计</h2><p><img src="https://img-blog.csdnimg.cn/5a13d658a3e741bbb3ad3963afc928dd.jpeg"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-a259.png"></p>
+<h2 id="3-2、系统登录设计"><a href="#3-2、系统登录设计" class="headerlink" title="3.2、系统登录设计"></a>3.2、系统登录设计</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-032f.png"></p>
 <blockquote>
 <h1 id="四、数据库设计（部分）"><a href="#四、数据库设计（部分）" class="headerlink" title="四、数据库设计（部分）"></a>四、数据库设计（部分）</h1></blockquote>
 <p>数据库的功能就是对系统中所有的数据进行存储和管理。所有的数据可以在数据库中产时间的进行存储，方便用户的使用。而且所有的数据库中的数据也应该具有一定的共享性，任何的系统可以对一些数据进行使用，同时还应该保持一定的独立性，每一个数据库中的数据都有很强的安全性，可以被很好的存放到数据库，没有进行身份的验证是不能对这些数据进行查看和使用的。数据库的设计需要明确每一个实体之间的联系，系统的E-R图如下图所示：：</p>
 <p>管理员实体主要存储管理信息包括用户名、密码、角色。管理员信息属性图如图4-4所示。</p>
-<p><img src="https://img-blog.csdnimg.cn/aacacc6f5068437eb52bd2e33cf8483f.jpeg"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-6564.png"></p>
 <p>在线签约信息实体图如图4-5所示：</p>
 <p><img src="https://img-blog.csdnimg.cn/9c9241ea9ce946f4964329c7cef6606b.jpeg"></p>
 <blockquote>
 <h1 id="五、运行截图"><a href="#五、运行截图" class="headerlink" title="五、运行截图"></a>五、运行截图</h1></blockquote>
 <h2 id="5-1、-管理员-登录"><a href="#5-1、-管理员-登录" class="headerlink" title="5.1、 管理员 登录"></a>5.1、 <strong>管理员</strong> <strong>登录</strong></h2><p>管理员输入个人的用户名、密码、角色登录系统，这时候系统的数据库就会在进行查找相关的信息，如果我们输入的用户名、密码、角色不正确，数据库就会提示出错误的信息提示，同时会提示管理员重新输入自己的用户名、密码、角色，直到账号密码输入成功后，会提登录成功的信息。网站管理员登录效果图如图5-1所示：</p>
-<p><img src="https://img-blog.csdnimg.cn/4e492b1dc6c84b7cadbd5d5ecb32e232.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-9a08.png"></p>
 <p>图5-1管理员登录界面</p>
 <h2 id="5-2、管理员功能模块"><a href="#5-2、管理员功能模块" class="headerlink" title="5.2、管理员功能模块"></a><strong>5.2、管理员功能模块</strong></h2><h3 id="5-2-1、用户管理"><a href="#5-2-1、用户管理" class="headerlink" title="5.2.1、用户管理"></a>5.2.1、用户管理</h3><p>管理员对用户管理进行详情、删除、修改操作。程序成效图如下图5-2所示:</p>
 <p><img src="https://img-blog.csdnimg.cn/d7071306ff1f434c890a5d0a490ee17c.png"></p>
-<h3 id="5-2-2、房屋类型管理"><a href="#5-2-2、房屋类型管理" class="headerlink" title="5.2.2、房屋类型管理"></a>5.2.2、房屋类型管理</h3><p><img src="https://img-blog.csdnimg.cn/cab58e1c1af44369b7864fad8f613808.png"></p>
+<h3 id="5-2-2、房屋类型管理"><a href="#5-2-2、房屋类型管理" class="headerlink" title="5.2.2、房屋类型管理"></a>5.2.2、房屋类型管理</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-95ef.png"></p>
 <p>图5-3房屋类型管理界面</p>
 <h3 id="5-2-3、房屋信息管理"><a href="#5-2-3、房屋信息管理" class="headerlink" title="5.2.3、房屋信息管理"></a>5.2.3、房屋信息管理</h3><p><img src="https://img-blog.csdnimg.cn/4e188944704c433e92964ff289a5a3f5.png"></p>
 <p>图5-4房屋信息管理界面</p>
-<h3 id="5-2-4、房屋资讯"><a href="#5-2-4、房屋资讯" class="headerlink" title="5.2.4、房屋资讯"></a>5.2.4、房屋资讯</h3><p><img src="https://img-blog.csdnimg.cn/425aed25311a41fe9e3b1028523b1c58.png"></p>
+<h3 id="5-2-4、房屋资讯"><a href="#5-2-4、房屋资讯" class="headerlink" title="5.2.4、房屋资讯"></a>5.2.4、房屋资讯</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-835f.png"></p>
 <p>图5-5房屋资讯界面</p>
-<h3 id="5-2-5预约看房管理"><a href="#5-2-5预约看房管理" class="headerlink" title="5.2.5预约看房管理"></a>5.2.5预约看房管理</h3><p><img src="https://img-blog.csdnimg.cn/bf85116e584c4ce8a385666c7306eace.png"></p>
+<h3 id="5-2-5预约看房管理"><a href="#5-2-5预约看房管理" class="headerlink" title="5.2.5预约看房管理"></a>5.2.5预约看房管理</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-7c31.png"></p>
 <p>图5-6预约看房管理界面</p>
-<h3 id="5-2-6在线签约管理"><a href="#5-2-6在线签约管理" class="headerlink" title="5.2.6在线签约管理"></a>5.2.6在线签约管理</h3><p><img src="https://img-blog.csdnimg.cn/89112346421a4cd5b98846aac160c10a.png"></p>
+<h3 id="5-2-6在线签约管理"><a href="#5-2-6在线签约管理" class="headerlink" title="5.2.6在线签约管理"></a>5.2.6在线签约管理</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-5427.png"></p>
 <p>图5-7在线签约管理界面</p>
-<h3 id="5-2-7交流论坛"><a href="#5-2-7交流论坛" class="headerlink" title="5.2.7交流论坛"></a>5.2.7交流论坛</h3><p><img src="https://img-blog.csdnimg.cn/61cfd708b1654765982da18f479d380a.png"></p>
+<h3 id="5-2-7交流论坛"><a href="#5-2-7交流论坛" class="headerlink" title="5.2.7交流论坛"></a>5.2.7交流论坛</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-3913.png"></p>
 <p>图5-8交流论坛界面</p>
 <h2 id="5-3、-用户-功能模块"><a href="#5-3、-用户-功能模块" class="headerlink" title="5.3、 用户 功能模块"></a><strong>5.3、</strong> <strong>用户</strong> <strong>功能模块</strong></h2><p>用户进入系统可以对首页、个人中心、预约看房管理、在线签约管理、租赁评价管理、我的收藏管理进行相对应操作。程序成效图如下图5-9所示:</p>
-<p><img src="https://img-blog.csdnimg.cn/1a39a2189aac4004b016fc712bad9c1e.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-1436.png"></p>
 <h3 id="5-3-预约看房管理"><a href="#5-3-预约看房管理" class="headerlink" title="5.3.预约看房管理"></a>5.3.预约看房管理</h3><p><img src="https://img-blog.csdnimg.cn/9e0b61070ee444ab80414edb0a8ca0b8.png"></p>
 <p>图5-10预约看房管理界面</p>
 <h3 id="5-3-2在线签约管理"><a href="#5-3-2在线签约管理" class="headerlink" title="5.3.2在线签约管理"></a>5.3.2在线签约管理</h3><p><img src="https://img-blog.csdnimg.cn/8d0510d400994fbdbd0e6b4b3f90d4ed.png"></p>
@@ -10475,7 +10478,7 @@
 <p><img src="https://img-blog.csdnimg.cn/0c047f4101a2409593a561c6e7f74699.png"></p>
 <h3 id="5-4-1、用户登录、用户注册"><a href="#5-4-1、用户登录、用户注册" class="headerlink" title="5.4.1、用户登录、用户注册"></a>5.4.1、用户登录、用户注册</h3><p><img src="https://img-blog.csdnimg.cn/d396c26771b149b7bd2b8cf3942f37b2.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/e970254317e743a9b3f8124d518cb435.png"></p>
-<h3 id="5-4-2、个人中心"><a href="#5-4-2、个人中心" class="headerlink" title="5.4.2、个人中心"></a>5.4.2、个人中心</h3><p><img src="https://img-blog.csdnimg.cn/8a9d306eefb0496b9954beb6bf33e2fb.png"></p>
+<h3 id="5-4-2、个人中心"><a href="#5-4-2、个人中心" class="headerlink" title="5.4.2、个人中心"></a>5.4.2、个人中心</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-2527.png"></p>
 <h3 id="5-4-3、预约看房"><a href="#5-4-3、预约看房" class="headerlink" title="5.4.3、预约看房"></a>5.4.3、预约看房</h3><p><img src="https://img-blog.csdnimg.cn/d7849d92ef264197ab93130a3d393e6b.png"></p>
 <blockquote>
 <h1 id="七、代码参考"><a href="#七、代码参考" class="headerlink" title="七、代码参考"></a>七、代码参考</h1></blockquote>
@@ -10495,6 +10498,592 @@
 <p>私信我即可打包获取200多个项目源码+论文+演示视频~</p>
 <p><img src="https://img-blog.csdnimg.cn/184bf013586d4a818988a7ff2717fcb8.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/d3518ccf233a4cccaccbd7c02e41d23f.png"></p>
+]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>300 套 SpringBoot+Vue 毕业设计题目推荐，附源码和教程，保证可用</title>
+    <url>/p/41316.html</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p><a href="https://blog.csdn.net/JasonXu94/article/details/130177195?spm=1001.2014.3001.5501">npm，yarn使用，npm ,yarn 更换使用国内镜像源</a></p>
+<p><a href="https://blog.csdn.net/JasonXu94/article/details/130123572?spm=1001.2014.3001.5501">idea运行SSM项目及启动（tomcat），详细图解</a></p>
+<p><a href="https://blog.csdn.net/JasonXu94/article/details/130123375?spm=1001.2014.3001.5501">SSM 框架原理简介及解析</a></p>
+<p>大家好，我是程序员徐师兄，六年大厂经验，最近，有部分小伙伴问我，快毕业了，毕业设计有什么选题推荐吗？</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-42bb.png" alt="在这里插入图片描述"></p>
+<p>其实，计算机专业的毕业设计有许多课题可以选择，假如你想要获得比较好的分数成绩的话，或者是想要新颖一点，那就需要重点的学习和参考一下各种新的开发技术，如目前的spring boot mysql ssm框架等，安卓，小程序方面。</p>
+<p>虽然对本科生的毕业设计没有明确的创新要求，但如果能将新技术与行业相结合，将会在毕业设计的过程中获得更多的收获。</p>
+<p>目前，大数据的技术体系已经成熟，在毕业设计的过程中，可以专注于网站，系统，小程序，安卓方面的相关的主题。网站，系统，小程序，安卓的工业应用场景很多。例如，网站，系统，小程序，安卓等诸多领域有大量的整合点，也有很多成熟的案例可以参与。也比较容易答辩。</p>
+<p>更多的选题也可以参考下面为大家准备的，都有源码+数据库</p>
+<h2 id="SpringBoot-Vue-毕业设计题目推荐"><a href="#SpringBoot-Vue-毕业设计题目推荐" class="headerlink" title="SpringBoot+ Vue 毕业设计题目推荐"></a>SpringBoot+ Vue 毕业设计题目推荐</h2><table>
+<thead>
+<tr>
+<th>题目</th>
+<th>技术栈</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基于 SpringBoot+Vue 的医院急诊系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的社区维修平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的校园新闻网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的职称评审管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的在线动漫信息平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的心灵治愈交流平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的论坛管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的闲一品</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的线上教学平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的实验室管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的教师人事档案管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的租房网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的大学生社团活动平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的垃圾分类网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的校园闲置物品租售系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的在线BLOG网</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的家具销售电商平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的简历系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的汉服推广网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的准妈妈孕期交流平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的点餐平台网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的医疗服务系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的校园博客系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的商务安全邮箱邮件收发</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的springcloud房产销售平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的人职匹配推荐系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的Springboot的小区物业管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的旅游管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的口腔管家平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的民宿管理平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的滴答拍摄影项目</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的酒店管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的体质测试数据分析及可视化设计</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的家具网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的交流互动系统(1)</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的某银行OA系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的自习室预订系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的疫情网课管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的考研资讯平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的旅游管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的音乐翻唱与分享平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的旧物置换网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的影城管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的外卖点餐系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的餐厅点餐系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的新生宿舍管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的校园疫情防控系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的幼儿园管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的火车订票管理系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的毕业生信息招聘平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的二手交易平台</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的校园闲置物品交易网站</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的网上商城购物系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的学生毕业离校系统</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+<tr>
+<td>基于 SpringBoot+Vue 的在线答疑系统文件</td>
+<td>SpringBoot+Vue+MySql</td>
+</tr>
+</tbody></table>
+<h2 id="项目效果图"><a href="#项目效果图" class="headerlink" title="项目效果图"></a>项目效果图</h2><h3 id="校园交友"><a href="#校园交友" class="headerlink" title="校园交友"></a>校园交友</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-f99f.png" alt="img"></p>
+<h3 id="幼儿园管理系统"><a href="#幼儿园管理系统" class="headerlink" title="幼儿园管理系统"></a>幼儿园管理系统</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-6e46.png" alt="image-20230415153854963"></p>
+<h3 id="酒店管理系统"><a href="#酒店管理系统" class="headerlink" title="酒店管理系统"></a>酒店管理系统</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-c6bd.png" alt="image-20230415153936468"></p>
+<h3 id="智慧外贸平台"><a href="#智慧外贸平台" class="headerlink" title="智慧外贸平台"></a>智慧外贸平台</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/10aef75f8cab55b6d9f2d407dfc356b4.png" alt="image-20230415154111089"></p>
+<h2 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h2><blockquote>
+<p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">200 套 Java 精品项目</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 200 套  精品项目</a></p>
+<p> 3.<a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+</blockquote>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-0f02.png" alt="img"></p>
+]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【毕业设计】基于 Java+ SpringBoot+Vue 的藏区特产销售系统【源码(完整源码请私聊)+论文+包运行成功】</title>
+    <url>/p/13785.html</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><blockquote>
+<p>大家好，我是程序员徐师兄，六年大厂经验, 今天为大家带来的事基于 Java+ SpringBoot+Vue 的藏区特产销售系统，<strong>源码获取方式见文章底部</strong></p>
+</blockquote>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>本次设计任务是要设计一个藏区特产销售平台，通过这个系统能够满足藏区特产销售管理的管理功能。系统的主要包括首页、个人中心、用户管理、特产信息管理、特产分类管理、特产分类管理、特产评分管理、系统管理、订单管理等功能。</p>
+<p>管理员可以根据系统给定的账号进行登录，登录后可以进入藏区特产销售平台对所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
+<p>该系统为每一个用户都分配了一个用户账号，用户通过账号的登录可以在系统中查看藏区特产销售管理信息及对个人信息进行修改等功能。</p>
+<p>![image-20230416232719387](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230416232719387.png)</p>
+<h1 id="2-主要技术"><a href="#2-主要技术" class="headerlink" title="2.主要技术"></a>2.主要技术</h1><table>
+<thead>
+<tr>
+<th>技术名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Springboot</td>
+<td>后端框架</td>
+</tr>
+<tr>
+<td>Vue</td>
+<td>前端框架</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>数据库</td>
+</tr>
+</tbody></table>
+<h1 id="3-功能分析"><a href="#3-功能分析" class="headerlink" title="3 功能分析"></a>3 功能分析</h1><p>考虑到实际生活中在藏区特产销售管理方面的需要以及对该系统认真的分析，将系统权限按管理员和用户这两类涉及用户划分。</p>
+<p>（1）管理员功能需求</p>
+<p>管理员登陆后，主要模块包括首页、个人中心、用户管理、特产信息管理、特产分类管理、特产分类管理、特产评分管理、系统管理、订单管理等功能。管理员用例图如图3-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-b9f2.png" alt="image-20230416232255981"></p>
+<p>（2）用户功能需求</p>
+<p>用户登陆后，主要模块包括首页、特产信息、特产资讯、个人中心、购物车、在线客服等功能。用户用例图如图3-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-a91e.png" alt="image-20230416232246467"></p>
+<h1 id="4-系统分析"><a href="#4-系统分析" class="headerlink" title="4 系统分析"></a>4 系统分析</h1><p>系统设计是把本系统的各项功能需求进行细化，而转换为软件系统表示的一个设计过程，在对目标系统的研究分析之后，做出整个系统平台的总体规划，进而对用例中各个对象进一步地合理精细设计。为降低整个系统的复杂度，而使其更加便于修改，提高代码的可读性，我们会将系统模块化，模块间保持相对独立，且每个模块只完成一个子功能，并且与其他模块通过简单的接口链接，即高内聚低耦合原则，而使整个系统能够拥有一个高性能的结构，这边是系统概要设计最重要的目的。在之前的需求分析的基础上，本藏区特产销售平台结构，如下图4-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-4f8c.png" alt="image-20230416232330164"></p>
+<h1 id="5系统实现"><a href="#5系统实现" class="headerlink" title="5系统实现"></a>5系统实现</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>进入藏区特产销售平台页面中可以查看首页、特产信息、特产资讯、个人中心、购物车、在线客服等内容，进行详细的操作，如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-160c.png" alt="image-20230416231950913"></p>
+<p>图5-1系统首页界面图</p>
+<p>特产信息，在特产信息页面中可以查看特产名称、价格、单次购买、库存、特产类型、规格、点击次数等内容进行购买、评论或收藏等操作如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-bb0f.png" alt="image-20230416232000956"></p>
+<p>图5-2特产信息界面图</p>
+<p>个人中心，在个人中心页面中通过填写账号、密码、姓名、性别、手机、图片、余额等内容进行更新信息等操作，并可以根据我的订单、我的地址或我的收藏进行相应的操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-ed9c.png" alt="image-20230416232022365"></p>
+<p>图5-3个人中心界面图</p>
+<p>购物车，在购物车页面中可以查看购买商品、价格、 数量、总价等内容，进行删除或购买等操作，如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-99d5.png" alt="image-20230416232052434"></p>
+<p>图5-4购物车界面图</p>
+<p>用户注册，在用户注册页面中通过填写账号、密码、确认密码、姓名、手机等内容进行注册等操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-3db1.png" alt="image-20230416232037294"></p>
+<h1 id="六、代码参考"><a href="#六、代码参考" class="headerlink" title="六、代码参考"></a>六、代码参考</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.controller;</span><br><span class="line"></span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Calendar;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line"></span><br><span class="line">import com.utils.ValidatorUtils;</span><br><span class="line">import org.apache.commons.lang3.StringUtils;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.format.annotation.DateTimeFormat;</span><br><span class="line">import org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line">import com.baomidou.mybatisplus.mapper.EntityWrapper;</span><br><span class="line">import com.baomidou.mybatisplus.mapper.Wrapper;</span><br><span class="line">import com.annotation.IgnoreAuth;</span><br><span class="line"></span><br><span class="line">import com.entity.BanjixinxiEntity;</span><br><span class="line">import com.entity.view.BanjixinxiView;</span><br><span class="line"></span><br><span class="line">import com.service.BanjixinxiService;</span><br><span class="line">import com.service.TokenService;</span><br><span class="line">import com.utils.PageUtils;</span><br><span class="line">import com.utils.R;</span><br><span class="line">import com.utils.MD5Util;</span><br><span class="line">import com.utils.MPUtil;</span><br><span class="line">import com.utils.CommonUtil;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 班级信息</span><br><span class="line"> * 后端接口</span><br><span class="line"> * @author </span><br><span class="line"> * @email </span><br><span class="line"> * @date 2021-03-18 15:04:00</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/banjixinxi&quot;)</span><br><span class="line">public class BanjixinxiController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private BanjixinxiService banjixinxiService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 后端列表</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/page&quot;)</span><br><span class="line">    public R page(@RequestParam Map&lt;String, Object&gt; params,BanjixinxiEntity banjixinxi,</span><br><span class="line">		HttpServletRequest request)&#123;</span><br><span class="line">		String tableName = request.getSession().getAttribute(&quot;tableName&quot;).toString();</span><br><span class="line">		if(tableName.equals(&quot;jiaoshi&quot;)) &#123;</span><br><span class="line">			banjixinxi.setGonghao((String)request.getSession().getAttribute(&quot;username&quot;));</span><br><span class="line">		&#125;</span><br><span class="line">        EntityWrapper&lt;BanjixinxiEntity&gt; ew = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">		PageUtils page = banjixinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, banjixinxi), params), params));</span><br><span class="line"></span><br><span class="line">        return R.ok().put(&quot;data&quot;, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 前端列表</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/list&quot;)</span><br><span class="line">    public R list(@RequestParam Map&lt;String, Object&gt; params,BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">        EntityWrapper&lt;BanjixinxiEntity&gt; ew = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">		PageUtils page = banjixinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, banjixinxi), params), params));</span><br><span class="line">        return R.ok().put(&quot;data&quot;, page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">     * 列表</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/lists&quot;)</span><br><span class="line">    public R list( BanjixinxiEntity banjixinxi)&#123;</span><br><span class="line">       	EntityWrapper&lt;BanjixinxiEntity&gt; ew = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">      	ew.allEq(MPUtil.allEQMapPre( banjixinxi, &quot;banjixinxi&quot;)); </span><br><span class="line">        return R.ok().put(&quot;data&quot;, banjixinxiService.selectListView(ew));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	 /**</span><br><span class="line">     * 查询</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/query&quot;)</span><br><span class="line">    public R query(BanjixinxiEntity banjixinxi)&#123;</span><br><span class="line">        EntityWrapper&lt; BanjixinxiEntity&gt; ew = new EntityWrapper&lt; BanjixinxiEntity&gt;();</span><br><span class="line"> 		ew.allEq(MPUtil.allEQMapPre( banjixinxi, &quot;banjixinxi&quot;)); </span><br><span class="line">		BanjixinxiView banjixinxiView =  banjixinxiService.selectView(ew);</span><br><span class="line">		return R.ok(&quot;查询班级信息成功&quot;).put(&quot;data&quot;, banjixinxiView);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /**</span><br><span class="line">     * 后端详情</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span><br><span class="line">    public R info(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">        BanjixinxiEntity banjixinxi = banjixinxiService.selectById(id);</span><br><span class="line">        return R.ok().put(&quot;data&quot;, banjixinxi);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 前端详情</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span><br><span class="line">    public R detail(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">        BanjixinxiEntity banjixinxi = banjixinxiService.selectById(id);</span><br><span class="line">        return R.ok().put(&quot;data&quot;, banjixinxi);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 后端保存</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/save&quot;)</span><br><span class="line">    public R save(@RequestBody BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">    	banjixinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());</span><br><span class="line">    	//ValidatorUtils.validateEntity(banjixinxi);</span><br><span class="line">        banjixinxiService.insert(banjixinxi);</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 前端保存</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/add&quot;)</span><br><span class="line">    public R add(@RequestBody BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">    	banjixinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());</span><br><span class="line">    	//ValidatorUtils.validateEntity(banjixinxi);</span><br><span class="line">        banjixinxiService.insert(banjixinxi);</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 修改</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/update&quot;)</span><br><span class="line">    public R update(@RequestBody BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">        //ValidatorUtils.validateEntity(banjixinxi);</span><br><span class="line">        banjixinxiService.updateById(banjixinxi);//全部更新</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 删除</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/delete&quot;)</span><br><span class="line">    public R delete(@RequestBody Long[] ids)&#123;</span><br><span class="line">        banjixinxiService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 提醒接口</span><br><span class="line">     */</span><br><span class="line">	@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span><br><span class="line">	public R remindCount(@PathVariable(&quot;columnName&quot;) String columnName, HttpServletRequest request, </span><br><span class="line">						 @PathVariable(&quot;type&quot;) String type,@RequestParam Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">		map.put(&quot;column&quot;, columnName);</span><br><span class="line">		map.put(&quot;type&quot;, type);</span><br><span class="line">		</span><br><span class="line">		if(type.equals(&quot;2&quot;)) &#123;</span><br><span class="line">			SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">			Calendar c = Calendar.getInstance();</span><br><span class="line">			Date remindStartDate = null;</span><br><span class="line">			Date remindEndDate = null;</span><br><span class="line">			if(map.get(&quot;remindstart&quot;)!=null) &#123;</span><br><span class="line">				Integer remindStart = Integer.parseInt(map.get(&quot;remindstart&quot;).toString());</span><br><span class="line">				c.setTime(new Date()); </span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(&quot;remindstart&quot;, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			if(map.get(&quot;remindend&quot;)!=null) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(&quot;remindend&quot;).toString());</span><br><span class="line">				c.setTime(new Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(&quot;remindend&quot;, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;BanjixinxiEntity&gt; wrapper = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">		if(map.get(&quot;remindstart&quot;)!=null) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(&quot;remindstart&quot;));</span><br><span class="line">		&#125;</span><br><span class="line">		if(map.get(&quot;remindend&quot;)!=null) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(&quot;remindend&quot;));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		String tableName = request.getSession().getAttribute(&quot;tableName&quot;).toString();</span><br><span class="line">		if(tableName.equals(&quot;jiaoshi&quot;)) &#123;</span><br><span class="line">			wrapper.eq(&quot;gonghao&quot;, (String)request.getSession().getAttribute(&quot;username&quot;));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		int count = banjixinxiService.selectCount(wrapper);</span><br><span class="line">		return R.ok().put(&quot;count&quot;, count);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="七、源码获取"><a href="#七、源码获取" class="headerlink" title="七、源码获取"></a>七、源码获取</h1><blockquote>
+<p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">200 套 Java 精品项目</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 200 套  精品项目</a></p>
+<p> 3.<a href="https://blog.junxu666.top/p/57317.html">源码咨询</a>，叫 v xiaoxu_9411</p>
+</blockquote>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-d969.png" alt="image-20230415160655333"></p>
+]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【毕业设计】基于 Java+ SpringBoot+Vue 的藏区特产销售系统【源码(完整源码请私聊)+论文+包运行成功】</title>
+    <url>/p/13786.html</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>地方废物回收机构的需求和管理上的不断提升，地方废物回收机构管理的潜力将无限扩大，地方废物回收机构管理系统在业界被广泛关注，本系统及对此进行总体分析，将地方废物回收机构信息管理的发展提供参考。地方废物回收机构管理系统对地方废物回收机构有着明显的带动效应，对管理者的帮助更大。</p>
+<p>本系统主要包括管理员和员工两个角色组成；主要包括：首页、个人中心、员工管理、员工请假管理、销假申请管理、工作日志管理、员工工资管理、员工任务管理、任务汇报管理、设备信息管理、设备借用管理、设备归还管理、设备保修管理、维修入库管理、员工打卡管理、员工评价管理、回收价格管理、宿舍信息管理、宿舍入住管理、宿舍搬出管理、管理员管理、系统管理等功能的管理系统。</p>
+<h1 id="3-可行性分析"><a href="#3-可行性分析" class="headerlink" title="3. 可行性分析"></a>3. 可行性分析</h1><p>基于SpringBoot地方废物回收机构管理系统，该系统软件开发仅需要一台普通的计算机便可完成实现开发，其成本很低。另外，作为毕业设计作品来讲，开发成本基本上可以忽略不计，且该系统软件的投入使用，可以实现更加快速高效的地方废物回收机构管理，同时还能实现对人力资源和管理资源的有效节约，该地方废物回收机构管理系统在经济上完全可行。</p>
+<p>（1）管理员功能需求</p>
+<p>管理员登陆后，主要模块包括首页、个人中心、员工管理、员工请假管理、销假申请管理、工作日志管理、员工工资管理、员工任务管理、任务汇报管理、设备信息管理、设备借用管理、设备归还管理、设备报修管理、维修入库管理、员工打卡管理、员工评价管理、回收价格管理、宿舍信息管理、宿舍入住管理、宿舍搬出管理、管理员管理、系统管理等功能。管理员用例图如图3-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-964a.png" alt="image-20230416233407146"></p>
+<p>（2）员工功能需求</p>
+<p>员工登陆后，主要模块包括首页、个人中心、员工请假管理、销假申请管理、工作日志管理、员工工资管理、员工任务管理、任务汇报管理、设备信息管理、设备借用管理、设备归还管理、设备报修管理、维修入库管理、员工打卡管理、员工评价管理、回收价格管理、宿舍入住管理、宿舍搬出管理等功能。员工用例图如图3-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-9670.png" alt="image-20230416233415999"></p>
+<h1 id="四-系统设计"><a href="#四-系统设计" class="headerlink" title="四 系统设计"></a>四 系统设计</h1><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-26d4.png" alt="image-20230416233507173"></p>
+<h1 id="第五章-系统功能实现"><a href="#第五章-系统功能实现" class="headerlink" title="第五章 系统功能实现"></a>第五章 系统功能实现</h1><p>系统登录，管理员和员工登录进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行系统操作，如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-11ba.png" alt="image-20230416233620964"></p>
+<h2 id="5-1管理员功能模块"><a href="#5-1管理员功能模块" class="headerlink" title="5.1管理员功能模块"></a>5.1管理员功能模块</h2><p>管理员登录系统后，可以对首页、个人中心、员工管理、员工请假管理、销假申请管理、工作日志管理、员工工资管理、员工任务管理、任务汇报管理、设备信息管理、设备借用管理、设备归还管理、设备报修管理、维修入库管理、员工打卡管理、员工评价管理、回收价格管理、宿舍信息管理、宿舍入住管理、宿舍搬出管理、管理员管理、系统管理等功能进行相应的操作管理，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-11ba.png"></p>
+<p>员工管理，在员工管理页面可以对索引、员工工号、员工姓名、性别、部门、岗位、入职时间、联系方式、邮箱、身份证、照片等内容进行详情，修改，员工工资，评价或删除等操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-f8e5.png" alt="image-20230416233639688"></p>
+<p>员工请假管理，在员工请假管理页面可以对索引、请假编号、请假类型、员工工号、员工姓名、岗位、部门、请假天数、开始时间、结束时间、申请时间、审核回复、审核状态、审核等信息进行详情，销假申请，修改或删除等操作，如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-e8c0.png"></p>
+<p>销假申请管理，在销假申请管理页面可以对索引、请假编号、请假类型、开始时间、结束时间、请假时长、销假说明、销假时间、员工工号、员工姓名、部门、岗位、审核回复、审核状态、审核等内容进行详情，修改或删除等操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-62ef.png" alt="image-20230416233710238"></p>
+<h1 id="七、源码获取"><a href="#七、源码获取" class="headerlink" title="七、源码获取"></a>七、源码获取</h1><blockquote>
+<p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">200 套 Java 精品项目</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 200 套  精品项目</a></p>
+<p> 3.<a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/83d958070ac986e824d5065e27c0c410.png" alt="image-20230415160655333"></p>
+]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Java 毕业设计，基于 SpringBoot+Vue 的学生就业管理信息系统（毕业设计，附源码，教程）</title>
+    <url>/p/11867.html</url>
+    <content><![CDATA[<blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br> 😁 </p>
+<p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>本次设计任务是要设计一个就业信息管理系统，通过这个系统能够满足就业信息管理功能。系统的主要功能包括：首页，个人中心，学生管理，导师管理，企业管理，招聘信息管理，应聘信息管理，面试邀请管理，就业指导管理，交流论坛，系统管理等。</p>
+<p>管理员可以根据系统给定的账号进行登录，登录后可以进入就业信息管理系统对所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
+<p>该系统为每一个学生，企业和导师都分配了一个账号，他们通过账号的登录可以在系统中查看就业信息及对个人信息进行修改等功能。</p>
+<h2 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h2><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（5.7版本以上即可）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-总体设计"><a href="#3-总体设计" class="headerlink" title="3. 总体设计"></a>3. 总体设计</h1><p>根据就业信息管理系统的功能需求，进行系统设计。</p>
+<p>前台功能：进入系统可以实现首页，招聘信息，交流论坛，公告资讯，个人中心，后台管理等功能进行操作。</p>
+<p>后台由管理员，学生，企业和导师，主要功能包括首页，个人中心，学生管理，导师管理，企业管理，招聘信息管理，应聘信息管理，面试邀请管理，就业指导管理，交流论坛，系统管理等。</p>
+<p>系统对这些功能进行整合，产生的功能结构图如下：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-4c7e.jpg" alt="img"></p>
+<h2 id="4-1前台功能模块"><a href="#4-1前台功能模块" class="headerlink" title="4.1前台功能模块"></a>4.1前台功能模块</h2><p>就业信息管理系统，进入到系统首页，可以查看首页，招聘信息，交流论坛，公告资讯，个人中心，后台管理等内容进行操作，如图4-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-5287.png" alt="image-20230410232708465"></p>
+<p>图4-1系统首页界面图</p>
+<p>学生注册；在学生注册页面中输入学生账号，密码，确认密码，学生姓名，学生电话等内容进行注册操作；如图4-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-5287.png"></p>
+<p>图4-2用户注册界面图</p>
+<p>招聘信息；在招聘信息页面中可以查看招聘编号，发布时间，岗位，岗位要求，薪资，企业账号，企业名称等内容；如图4-3所示。</p>
+<p>![image-20230410232726790](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230410232726790.png)</p>
+<p>图4-3招聘信息界面图</p>
+<p>个人中心；在个人中心页面中输入学生账号，密码，学生姓名，性别，学生电话，图片等内容进行更新信息，并可以根据需要对我的发布进行详细的操作，如图4-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-a22a.png" alt="image-20230410232738869"></p>
+<p>图4-4个人中心界面图</p>
+<h2 id="4-2后台功能模块"><a href="#4-2后台功能模块" class="headerlink" title="4.2后台功能模块"></a>4.2后台功能模块</h2><p>后台登录，通过填写注册时输入的用户名、密码、选择角色等信息进行登录操作，如图4-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-f061.png" alt="image-20230410232755742"></p>
+<p>图4-5后台登录界面图</p>
+<h3 id="4-2-1管理员功能"><a href="#4-2-1管理员功能" class="headerlink" title="4.2.1管理员功能"></a>4.2.1管理员功能</h3><p>管理员登录进入就业信息管理系统可以查看首页，个人中心，学生管理，导师管理，企业管理，招聘信息管理，应聘信息管理，面试邀请管理，就业指导管理，交流论坛，系统管理等功能进行详细操作，如图4-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-f061.png"></p>
+<p>图4-6管理员功能界面图</p>
+<p>学生管理；在学生管理页面中可以查看索引，学生账号，学生姓名，性别，电话，头像等内容，并进行详情，修改和删除等操作；如图4-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-b3e0.png" alt="image-20230410232820388"></p>
+<p>图4-7学生管理界面图</p>
+<p>导师管理；在导师管理页面中可以查看索引，导师账号，导师姓名，性别，导师电话，头像等内容，并进行详情，修改和删除等操作；如图4-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-0258.png" alt="image-20230410232830028"></p>
+<p>企业管理；在企业管理页面中可以查看索引，企业账号，企业名称，企业封面，企业电话，地址等内容，并进行详情，修改或删除等操作；如图4-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-27bc.png" alt="image-20230410232837858"></p>
+<p>图4-9企业管理界面图</p>
+<p>招聘信息管理；在招聘信息管理页面中可以查看索引，照片编号，招聘标题，招聘封面，发布时间，岗位，薪资，企业账号，企业名称等内容，并进行详情，修改和删除等操作；如图4-10所示。</p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Java 毕业设计，基于 SpringBoot+Vue 的智慧外贸系统（毕业设计，附源码，教程）</title>
+    <url>/p/13462.html</url>
+    <content><![CDATA[<blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br> 😁 </p>
+<p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>本系统主要包括管理员，买家和商家三个角色组成；主要包括首页、个人中心、买家管理、商家管理、商品分类管理、商品信息管理、商品预订管理、关单信息管理、送仓申请管理、运单信息管理、出口发票管理、订单信息管理、系统管理等功能的管理系统。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-d95b.png" alt="image-20230410233931590"></p>
+<h2 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h2><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（5.7版本以上即可）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-需求分析"><a href="#3-需求分析" class="headerlink" title="3. 需求分析"></a>3. 需求分析</h1><p>考虑到实际生活中在智慧外贸管理方面的需要以及对该系统认真的分析，将系统权限按管理员，买家和商家这三类涉及用户划分。</p>
+<p>（1）管理员功能需求</p>
+<p>管理员登陆后，主要包括首页、个人中心、买家管理、商家管理、商品分类管理、商品信息管理、商品预订管理、关单信息管理、送仓申请管理、运单信息管理、出口发票管理、订单信息管理、系统管理等功能。管理员用例图如图3-1所示。</p>
+<p>​                                                                                             <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-04cb.png" alt="image-20230410234201711"></p>
+<p>（2）买家功能需求</p>
+<p>买家登陆后，主要包括首页、个人中心、商品预订管理、关单信息管理、送仓申请管理、运单信息管理、出口发票管理、订单信息管理等功能。买家用例图如图3-2所示。</p>
+<p>​                                <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-2f8b.png" alt="image-20230410234216001"></p>
+<p>（3）商家功能需求</p>
+<p>商家登陆后，主要包括首页、个人中心、商品信息管理、商品预订管理、关单信息管理、送仓申请管理、运单信息管理、出口发票管理、订单信息管理等功能。商家用例图如图3-3所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-a3cb.png" alt="image-20230410234226379"></p>
+<h1 id="第四章-系统设计"><a href="#第四章-系统设计" class="headerlink" title="第四章 系统设计"></a>第四章 系统设计</h1><h2 id="4-1功能结构"><a href="#4-1功能结构" class="headerlink" title="4.1功能结构"></a>4.1功能结构</h2><p>为了更好的去理清本系统整体思路，对该系统以结构图的形式表达出来，设计实现该智慧外贸平台的功能结构图如下所示：</p>
+<p>​                                                                                                                            </p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-5c4f.png" alt="image-20230410233826334"></p>
+<h1 id="五章-系统功能实现"><a href="#五章-系统功能实现" class="headerlink" title="五章 系统功能实现"></a>五章 系统功能实现</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>智慧外贸平台，在平台首页可以查看首页、商品信息、公告资讯、个人中心、后台管理等内容，并进行详细操作；如图5-1所示。</p>
+<p>​                               </p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-04a2.png" alt="image-20230410233904713"></p>
+<p>商品信息，在商品信息页面可以查看商品编号、商品名称、商品分类、品牌、规格、图片、价格、产地、发布时间、商家账号、商家姓名、点击次数、商品详情等内容，并进行商品预订，评论或收藏操作，如图5-2所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-4af2.png" alt="image-20230410233913324"></p>
+<p>  个人中心，在个人中心页面通过填写买家账号、密码、买家姓名、性别、买家电话、图片等内容进行更新信息，还可以根据需要对我的收藏进行详细操作，如图5-3所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-d95b.png" alt="image-20230410233931590"></p>
+<h2 id="5-2后台功能模块"><a href="#5-2后台功能模块" class="headerlink" title="5.2后台功能模块"></a>5.2后台功能模块</h2><p>后台登录，用户进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行系统操作，如图5-4所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-c787.png" alt="image-20230410233938716"></p>
+<h3 id="5-2-1管理员功能"><a href="#5-2-1管理员功能" class="headerlink" title="5.2.1管理员功能"></a>5.2.1管理员功能</h3><p>管理员登录系统后，可以对首页、个人中心、买家管理、商家管理、商品分类管理、商品信息管理、商品预订管理、关单信息管理、送仓申请管理、运单信息管理、出口发票管理、订单信息管理、系统管理等功能进行相应的操作管理，如图5-5所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-5af0.png" alt="image-20230410233946048"></p>
+<p>商品信息管理，在商品信息管理页面可以对索引、商品编号、商品名称、商品分类、品牌、规格、图片、价格、产地、发布时间、商家账号、商家姓名等内容进行详情，修改，查看评论或删除操作，如图5-6所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-b290.png" alt="image-20230410233953450"></p>
+<p>关单信息管理，在关单信息管理页面可以对索引、关单编号、商家账号、商家姓名、商品名称、商品分类、关单时间、买家账号、买家姓名等信息进行详情，送仓申请，修改和删除操作，如图5-7所示。</p>
+<p>![image-20230410234000945](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230410234000945.png)</p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304102304-ba93.png" alt="image-20230410233826334"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/p/0.html</url>
+    <content><![CDATA[<h1 id="基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）"><a href="#基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）" class="headerlink" title="基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）"></a>基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）</h1><blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。  目前有各类成品java毕设，需要请看文末联系方式 。javaweb，ssh，ssm，springboot等等项目框架，源码丰富，<a href="https://blog.junxu666.top/p/57317.html">欢迎咨询</a>。<br> 😁 </p>
+<p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h2 id="开发环境："><a href="#开发环境：" class="headerlink" title="开发环境："></a>开发环境：</h2><h3 id="后端："><a href="#后端：" class="headerlink" title="后端："></a>后端：</h3><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<h3 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h3><p>nodejs，vue</p>
+<h3 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h3><p>mysql</p>
+<h2 id="系统架构："><a href="#系统架构：" class="headerlink" title="系统架构："></a>系统架构：</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/3d4a3be02e680e914b41cd79ab7e4d22.png"></p>
+<h3 id="管理员："><a href="#管理员：" class="headerlink" title="管理员："></a>管理员：</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/b34135944bcefd34b9bf51880335a56f.png"></p>
+<h3 id="用户用例："><a href="#用户用例：" class="headerlink" title="用户用例："></a>用户用例：</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/d78d90378dc5f17325b956abd7bbef17.png"></p>
+<h2 id="主要功能："><a href="#主要功能：" class="headerlink" title="主要功能："></a>主要功能：</h2><h3 id="用户功能模块"><a href="#用户功能模块" class="headerlink" title="用户功能模块"></a>用户功能模块</h3><p>用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块并进行操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/364cfed89bdb58917590529cdc13ab72.png"></p>
+<p>民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行详情查看操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/0726a5e61bf3b72e5977b1fbd0814586.png"></p>
+<p>房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行详情、修改、删除等操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/05e80d1c7bb35a326b2eb9a28e367355.png"></p>
+<p>房间退订管理：通过房间退订管理列表可以获取退订编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、退订时间、备注、账号、姓名、手机、是否支付、审核回复、审核状态等信息，进行详情、修改、删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/036fba096eb338fb029bd53c3ce9e377.png"></p>
+<h3 id="管理员功能模块"><a href="#管理员功能模块" class="headerlink" title="管理员功能模块"></a>管理员功能模块</h3><p>管理员通过用户名和密码、角色填写完成后进行登录，如图5-5所示。管理员登录成功后进入到系统操作界面，可以对首页、个人中心、用户管理、商家管理、民宿信息管理、房间类型管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理、系统管理等功能模块进行相对应操作。</p>
+<p>管理员商家管理：通过商家管理列表可以获取商家编号、密码、商家名称、联系电话、头像、备注等内容，可以进行修改或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/902b4719e1e3ff880dac6ad1d2d9a4b8.png"></p>
+<p>管理员用户管理：通过用户管理列表可以获取账号、密码、姓名、性别、手机、邮箱、图片、备注等信息，进行删除或修改操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b1c9007aa51d4c412a0b1e295c3f3869.png"></p>
+<p>管理员民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行修改或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8de137041f571576c1ef6212bff94202.png"></p>
+<p>管理员房间类型管理：通过房间类型管理列表可以获取索引、房间类型、操作等信息，进行详情、修改或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d9c502b281635435d0a0ecab5beb975d.png"></p>
+<p>管理员房间信息管理：通过房间信息管理列表可以获取商家编号、民宿编号、房间类型、图片、房间设施、房间价格、收取金额等信息，进行详情、查看或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/43b0efeaf155c1388159cd0a85924172.png"></p>
+<p>管理员房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行备注或删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/57c0b8b97cf69566de246bbc6c2565f8.png"></p>
+<h3 id="商家用户功能模块"><a href="#商家用户功能模块" class="headerlink" title="商家用户功能模块"></a>商家用户功能模块</h3><p>商家用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/cf6f6e4c34e2f480bedd8b4aff9f81a3.png"></p>
+<p>商家用户民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行查询、新增、删除操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b1ab7d4b5930194dc16b8c2fc39e33cd.png"></p>
+<h3 id="前台首页功能模块"><a href="#前台首页功能模块" class="headerlink" title="前台首页功能模块"></a>前台首页功能模块</h3><p>前台首页，在系统首页可以查看首页、民宿信息、房间信息、个人中心、后台管理、在线客服等内容</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/979fcfe1324729b8503cbcb794185eb7.png"></p>
+<p>用户登录，在登录页面通过填写账号、密码等信息完成登录，如图5-15所示。在民宿信息页面通过查看商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息进行购买操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2c5df8d2ec19d13ec2b2a22aef464291.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/91462c274809940c2032138e1ee7afdc.png"></p>
+<p>以上就是项目的一些基本信息了。</p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java 毕业设计，基于 SpringBoot+Vue 的网上图书商城管理系统（毕业设计，附源码，教程）</title>
+    <url>/p/34944.html</url>
+    <content><![CDATA[<h1 id="基于springboot-vue的在线答疑系统（毕业设计，源码-说明文档）"><a href="#基于springboot-vue的在线答疑系统（毕业设计，源码-说明文档）" class="headerlink" title="基于springboot+vue的在线答疑系统（毕业设计，源码+说明文档）"></a>基于springboot+vue的在线答疑系统（毕业设计，源码+说明文档）</h1><blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br> 😁 </p>
+<p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<p>今天要和大家聊的是一款基于springboot的线答疑系统。</p>
+<p>目前有各类成品java毕设，需要请看文末联系方式 。javaweb，ssh，ssm，springboot等等项目框架，源码丰富，欢迎咨询。</p>
+<h2 id="开发环境："><a href="#开发环境：" class="headerlink" title="开发环境："></a>开发环境：</h2><h3 id="后端："><a href="#后端：" class="headerlink" title="后端："></a>后端：</h3><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3+</p>
+<h3 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h3><p>nodejs，vue</p>
+<h3 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h3><p>mysql</p>
+<h2 id="系统架构："><a href="#系统架构：" class="headerlink" title="系统架构："></a>系统架构：</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-28a2.png"></p>
+<p>系统中的功能模块主要是：</p>
+<p>管理员权限：首页、个人中心、学生管理、教师管理、问题发布管理、疑难解答管理。</p>
+<p>教师权限：首页、个人中心、疑难解答管理、试卷管理、试题管理、考试管理。</p>
+<p>学生权限：首页、个人中心、问题发布管理、疑难解答管理、考试管理等功能部分。</p>
+<h2 id="主要功能："><a href="#主要功能：" class="headerlink" title="主要功能："></a>主要功能：</h2><h3 id="管理员功能模块"><a href="#管理员功能模块" class="headerlink" title="管理员功能模块"></a>管理员功能模块</h3><p>管理员通过后台登录窗口进行输入自己的账号、密码、验证码等信息，进行登录。</p>
+<p>管理员对个人中心进行操作填写原密码、新密码、确认密码并进行添加、删除、修改以及查看。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-5e42.png"></p>
+<h4 id="学生信息管理："><a href="#学生信息管理：" class="headerlink" title="学生信息管理："></a>学生信息管理：</h4><p>管理员通过学生信息可以在线查看学号、密码、姓名、性别、头像、院校、班级、手机等信息，进行详情或修改、删除操作</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-fdbf.png"></p>
+<h4 id="教师管理："><a href="#教师管理：" class="headerlink" title="教师管理："></a>教师管理：</h4><p>管理员通过教师管理可以在线查看工号、密码、 姓名、性别、头像、学院、班级、电话等信息，进行查看或修改、删除操作</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-51f7.png"></p>
+<h3 id="教师后台功能模块"><a href="#教师后台功能模块" class="headerlink" title="教师后台功能模块"></a>教师后台功能模块</h3><p>教师通过后台登录窗口进行输入自己的账号、密码、验证码等信息，进行登录</p>
+<h4 id="个人信息："><a href="#个人信息：" class="headerlink" title="个人信息："></a>个人信息：</h4><p>通过在个人资料管理页面通过查看工号、密码、 姓名、性别、头像、学院、班级、电话可进行查看进行修改、删除等。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/04cbfb9befbaaac712e06a4fb664eedc.png"></p>
+<h4 id="试卷管理："><a href="#试卷管理：" class="headerlink" title="试卷管理："></a>试卷管理：</h4><p>教师通过列表可以获取试卷名称、考试时长（分钟）、试卷状态，进行查看添加、修改等信息操作。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-a4ba.png"></p>
+<h4 id="试题管理："><a href="#试题管理：" class="headerlink" title="试题管理："></a>试题管理：</h4><p>教师通过列表可以获取试卷、试题名称、分值、答案、类型等信息，进行添加、修改、查看等信息操作</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-b8fa.png"></p>
+<h4 id="考试管理："><a href="#考试管理：" class="headerlink" title="考试管理："></a>考试管理：</h4><p>教师通过考试信息列表可以获取选择试卷、试题、类型、选项、答案&#x2F;分数等信息，进行添加、修改、删除查看等信息操作</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/74e52fe770d1335e275c9abf1ab94305.png"></p>
+<h3 id="学生功能模块"><a href="#学生功能模块" class="headerlink" title="学生功能模块"></a>学生功能模块</h3><p>学生通过后台登录窗口进行输入自己的账号、密码等信息，进行登录</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/33a1e9a986d839cd9b9c511b490eb6c9.png"></p>
+<h4 id="问题发布管理："><a href="#问题发布管理：" class="headerlink" title="问题发布管理："></a>问题发布管理：</h4><p>学生通过问题发布管理可以在线查看标题、题目、发布时间、学号、姓名、答案进行详情并添加&#x2F;修改、删除操作</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-e9ad.png"></p>
+<h4 id="疑难解答管理："><a href="#疑难解答管理：" class="headerlink" title="疑难解答管理："></a>疑难解答管理：</h4><p>学生通过疑难解答管理可以在线查看标题、题目、答案、发布时间、学号、姓名、审核回复等信息，进行查看查看提问操作</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-52d1.png"></p>
+<p>考试管理，学生通过考试管理可以在线进行考试&#x2F;查看答案等等操作</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-fbe2.png"></p>
+<p>以上就是项目的一些基本信息了。</p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304051504-d2b1.png"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
 ]]></content>
       <categories>
         <category>毕业设计</category>
