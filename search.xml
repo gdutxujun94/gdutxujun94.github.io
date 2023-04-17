@@ -10453,10 +10453,10 @@
 <p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-9a08.png"></p>
 <p>图5-1管理员登录界面</p>
 <h2 id="5-2、管理员功能模块"><a href="#5-2、管理员功能模块" class="headerlink" title="5.2、管理员功能模块"></a><strong>5.2、管理员功能模块</strong></h2><h3 id="5-2-1、用户管理"><a href="#5-2-1、用户管理" class="headerlink" title="5.2.1、用户管理"></a>5.2.1、用户管理</h3><p>管理员对用户管理进行详情、删除、修改操作。程序成效图如下图5-2所示:</p>
-<p><img src="https://img-blog.csdnimg.cn/d7071306ff1f434c890a5d0a490ee17c.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-3987.png"></p>
 <h3 id="5-2-2、房屋类型管理"><a href="#5-2-2、房屋类型管理" class="headerlink" title="5.2.2、房屋类型管理"></a>5.2.2、房屋类型管理</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-95ef.png"></p>
 <p>图5-3房屋类型管理界面</p>
-<h3 id="5-2-3、房屋信息管理"><a href="#5-2-3、房屋信息管理" class="headerlink" title="5.2.3、房屋信息管理"></a>5.2.3、房屋信息管理</h3><p><img src="https://img-blog.csdnimg.cn/4e188944704c433e92964ff289a5a3f5.png"></p>
+<h3 id="5-2-3、房屋信息管理"><a href="#5-2-3、房屋信息管理" class="headerlink" title="5.2.3、房屋信息管理"></a>5.2.3、房屋信息管理</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-5f47.png"></p>
 <p>图5-4房屋信息管理界面</p>
 <h3 id="5-2-4、房屋资讯"><a href="#5-2-4、房屋资讯" class="headerlink" title="5.2.4、房屋资讯"></a>5.2.4、房屋资讯</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-835f.png"></p>
 <p>图5-5房屋资讯界面</p>
@@ -10468,7 +10468,7 @@
 <p>图5-8交流论坛界面</p>
 <h2 id="5-3、-用户-功能模块"><a href="#5-3、-用户-功能模块" class="headerlink" title="5.3、 用户 功能模块"></a><strong>5.3、</strong> <strong>用户</strong> <strong>功能模块</strong></h2><p>用户进入系统可以对首页、个人中心、预约看房管理、在线签约管理、租赁评价管理、我的收藏管理进行相对应操作。程序成效图如下图5-9所示:</p>
 <p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-1436.png"></p>
-<h3 id="5-3-预约看房管理"><a href="#5-3-预约看房管理" class="headerlink" title="5.3.预约看房管理"></a>5.3.预约看房管理</h3><p><img src="https://img-blog.csdnimg.cn/9e0b61070ee444ab80414edb0a8ca0b8.png"></p>
+<h3 id="5-3-预约看房管理"><a href="#5-3-预约看房管理" class="headerlink" title="5.3.预约看房管理"></a>5.3.预约看房管理</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-cf6c.png"></p>
 <p>图5-10预约看房管理界面</p>
 <h3 id="5-3-2在线签约管理"><a href="#5-3-2在线签约管理" class="headerlink" title="5.3.2在线签约管理"></a>5.3.2在线签约管理</h3><p><img src="https://img-blog.csdnimg.cn/8d0510d400994fbdbd0e6b4b3f90d4ed.png"></p>
 <p>图5-11在线签约管理界面</p>
@@ -10509,12 +10509,13 @@
     <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p><a href="https://blog.csdn.net/JasonXu94/article/details/130177195?spm=1001.2014.3001.5501">npm，yarn使用，npm ,yarn 更换使用国内镜像源</a></p>
 <p><a href="https://blog.csdn.net/JasonXu94/article/details/130123572?spm=1001.2014.3001.5501">idea运行SSM项目及启动（tomcat），详细图解</a></p>
 <p><a href="https://blog.csdn.net/JasonXu94/article/details/130123375?spm=1001.2014.3001.5501">SSM 框架原理简介及解析</a></p>
+<p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
 <p>大家好，我是程序员徐师兄，六年大厂经验，最近，有部分小伙伴问我，快毕业了，毕业设计有什么选题推荐吗？</p>
 <p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-42bb.png" alt="在这里插入图片描述"></p>
 <p>其实，计算机专业的毕业设计有许多课题可以选择，假如你想要获得比较好的分数成绩的话，或者是想要新颖一点，那就需要重点的学习和参考一下各种新的开发技术，如目前的spring boot mysql ssm框架等，安卓，小程序方面。</p>
 <p>虽然对本科生的毕业设计没有明确的创新要求，但如果能将新技术与行业相结合，将会在毕业设计的过程中获得更多的收获。</p>
 <p>目前，大数据的技术体系已经成熟，在毕业设计的过程中，可以专注于网站，系统，小程序，安卓方面的相关的主题。网站，系统，小程序，安卓的工业应用场景很多。例如，网站，系统，小程序，安卓等诸多领域有大量的整合点，也有很多成熟的案例可以参与。也比较容易答辩。</p>
-<p>更多的选题也可以参考下面为大家准备的，都有源码+数据库</p>
+<p>更多的选题也可以参考下面为大家准备的，都有源码+数据库，详情<strong>可以加 v xiaoxu_9411 了解</strong></p>
 <h2 id="SpringBoot-Vue-毕业设计题目推荐"><a href="#SpringBoot-Vue-毕业设计题目推荐" class="headerlink" title="SpringBoot+ Vue 毕业设计题目推荐"></a>SpringBoot+ Vue 毕业设计题目推荐</h2><table>
 <thead>
 <tr>
@@ -10754,7 +10755,7 @@
 <h2 id="项目效果图"><a href="#项目效果图" class="headerlink" title="项目效果图"></a>项目效果图</h2><h3 id="校园交友"><a href="#校园交友" class="headerlink" title="校园交友"></a>校园交友</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-f99f.png" alt="img"></p>
 <h3 id="幼儿园管理系统"><a href="#幼儿园管理系统" class="headerlink" title="幼儿园管理系统"></a>幼儿园管理系统</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-6e46.png" alt="image-20230415153854963"></p>
 <h3 id="酒店管理系统"><a href="#酒店管理系统" class="headerlink" title="酒店管理系统"></a>酒店管理系统</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-c6bd.png" alt="image-20230415153936468"></p>
-<h3 id="智慧外贸平台"><a href="#智慧外贸平台" class="headerlink" title="智慧外贸平台"></a>智慧外贸平台</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/10aef75f8cab55b6d9f2d407dfc356b4.png" alt="image-20230415154111089"></p>
+<h3 id="智慧外贸平台"><a href="#智慧外贸平台" class="headerlink" title="智慧外贸平台"></a>智慧外贸平台</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-2537.png" alt="image-20230415154111089"></p>
 <h2 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h2><blockquote>
 <p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">200 套 Java 精品项目</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 200 套  精品项目</a></p>
 <p> 3.<a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
@@ -10976,8 +10977,8 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
-    <url>/p/0.html</url>
+    <title>基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）</title>
+    <url>/p/33891.html</url>
     <content><![CDATA[<h1 id="基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）"><a href="#基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）" class="headerlink" title="基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）"></a>基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）</h1><blockquote>
 <p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。  目前有各类成品java毕设，需要请看文末联系方式 。javaweb，ssh，ssm，springboot等等项目框架，源码丰富，<a href="https://blog.junxu666.top/p/57317.html">欢迎咨询</a>。<br> 😁 </p>
 <p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
@@ -10992,45 +10993,48 @@
 <p>Maven包：Maven3.3.9</p>
 <h3 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h3><p>nodejs，vue</p>
 <h3 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h3><p>mysql</p>
-<h2 id="系统架构："><a href="#系统架构：" class="headerlink" title="系统架构："></a>系统架构：</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/3d4a3be02e680e914b41cd79ab7e4d22.png"></p>
-<h3 id="管理员："><a href="#管理员：" class="headerlink" title="管理员："></a>管理员：</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/b34135944bcefd34b9bf51880335a56f.png"></p>
-<h3 id="用户用例："><a href="#用户用例：" class="headerlink" title="用户用例："></a>用户用例：</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/d78d90378dc5f17325b956abd7bbef17.png"></p>
+<h2 id="系统架构："><a href="#系统架构：" class="headerlink" title="系统架构："></a>系统架构：</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-f9fc.png"></p>
+<h3 id="管理员："><a href="#管理员：" class="headerlink" title="管理员："></a>管理员：</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-b952.png"></p>
+<h3 id="用户用例："><a href="#用户用例：" class="headerlink" title="用户用例："></a>用户用例：</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-e87c.png"></p>
 <h2 id="主要功能："><a href="#主要功能：" class="headerlink" title="主要功能："></a>主要功能：</h2><h3 id="用户功能模块"><a href="#用户功能模块" class="headerlink" title="用户功能模块"></a>用户功能模块</h3><p>用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块并进行操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/364cfed89bdb58917590529cdc13ab72.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-8f2e.png"></p>
 <p>民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行详情查看操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/0726a5e61bf3b72e5977b1fbd0814586.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-92e4.png"></p>
 <p>房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行详情、修改、删除等操作</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/05e80d1c7bb35a326b2eb9a28e367355.png"></p>
 <p>房间退订管理：通过房间退订管理列表可以获取退订编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、退订时间、备注、账号、姓名、手机、是否支付、审核回复、审核状态等信息，进行详情、修改、删除操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/036fba096eb338fb029bd53c3ce9e377.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-dbfc.png"></p>
 <h3 id="管理员功能模块"><a href="#管理员功能模块" class="headerlink" title="管理员功能模块"></a>管理员功能模块</h3><p>管理员通过用户名和密码、角色填写完成后进行登录，如图5-5所示。管理员登录成功后进入到系统操作界面，可以对首页、个人中心、用户管理、商家管理、民宿信息管理、房间类型管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理、系统管理等功能模块进行相对应操作。</p>
 <p>管理员商家管理：通过商家管理列表可以获取商家编号、密码、商家名称、联系电话、头像、备注等内容，可以进行修改或删除操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-559b.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/902b4719e1e3ff880dac6ad1d2d9a4b8.png"></p>
 <p>管理员用户管理：通过用户管理列表可以获取账号、密码、姓名、性别、手机、邮箱、图片、备注等信息，进行删除或修改操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/b1c9007aa51d4c412a0b1e295c3f3869.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-a3f7.png"></p>
 <p>管理员民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行修改或删除操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/8de137041f571576c1ef6212bff94202.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-3595.png"></p>
 <p>管理员房间类型管理：通过房间类型管理列表可以获取索引、房间类型、操作等信息，进行详情、修改或删除操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d9c502b281635435d0a0ecab5beb975d.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-b72c.png"></p>
 <p>管理员房间信息管理：通过房间信息管理列表可以获取商家编号、民宿编号、房间类型、图片、房间设施、房间价格、收取金额等信息，进行详情、查看或删除操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/43b0efeaf155c1388159cd0a85924172.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-40b7.png"></p>
 <p>管理员房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行备注或删除操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/57c0b8b97cf69566de246bbc6c2565f8.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-6f22.png"></p>
 <h3 id="商家用户功能模块"><a href="#商家用户功能模块" class="headerlink" title="商家用户功能模块"></a>商家用户功能模块</h3><p>商家用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/cf6f6e4c34e2f480bedd8b4aff9f81a3.png"></p>
 <p>商家用户民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行查询、新增、删除操作</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/b1ab7d4b5930194dc16b8c2fc39e33cd.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-6f33.png"></p>
 <h3 id="前台首页功能模块"><a href="#前台首页功能模块" class="headerlink" title="前台首页功能模块"></a>前台首页功能模块</h3><p>前台首页，在系统首页可以查看首页、民宿信息、房间信息、个人中心、后台管理、在线客服等内容</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/979fcfe1324729b8503cbcb794185eb7.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-b407.png"></p>
 <p>用户登录，在登录页面通过填写账号、密码等信息完成登录，如图5-15所示。在民宿信息页面通过查看商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息进行购买操作</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/2c5df8d2ec19d13ec2b2a22aef464291.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/91462c274809940c2032138e1ee7afdc.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-f49c.png"></p>
 <p>以上就是项目的一些基本信息了。</p>
 <h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/dc1a43703e8475d4a0772a8ac95cff61.png"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-559b.png"></p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
 ]]></content>
+      <categories>
+        <category>毕业设计</category>
+      </categories>
   </entry>
   <entry>
     <title>Java 毕业设计，基于 SpringBoot+Vue 的网上图书商城管理系统（毕业设计，附源码，教程）</title>
