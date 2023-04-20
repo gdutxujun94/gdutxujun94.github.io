@@ -6,7 +6,7 @@
   <link href="https://blog.junxu666.top/atom.xml" rel="self"/>
   
   <link href="https://blog.junxu666.top/"/>
-  <updated>2023-04-17T13:48:57.534Z</updated>
+  <updated>2023-04-20T14:29:39.262Z</updated>
   <id>https://blog.junxu666.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>徐师兄精品项目分享</title>
+    <link href="https://blog.junxu666.top/p/48703.html"/>
+    <id>https://blog.junxu666.top/p/48703.html</id>
+    <published>2023-04-20T05:05:55.000Z</published>
+    <updated>2023-04-20T14:29:39.262Z</updated>
+    
+    <content type="html"><![CDATA[<p>嗨喽，大家好，我是程序员徐师兄，大厂 7 年经验，专注于编程，提供毕业设计指导，源码交流，远程部署</p><p><a href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p><blockquote><p>**1、源码获取：叫 v **Albert_HW07 了解</p><p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p><p>😁<br>1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p></blockquote><h1 id="毕业设计咨询"><a href="#毕业设计咨询" class="headerlink" title="毕业设计咨询"></a>毕业设计咨询</h1><p><strong>代码都是我和朋友开发的，测试过的，还有视频演示和文档的。</strong>可以保证正常运行。</p><p><a href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p><p><strong>微信Albert_HW07</strong></p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303280003-7041.png"></p><h1 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h1><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304202204-ebc6.png" alt="俊丰毕业设计 (3)"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;嗨喽，大家好，我是程序员徐师兄，大厂 7 年经验，专注于编程，提供毕业设计指导，源码交流，远程部署&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0&quot;&gt;100 套基</summary>
+      
+    
+    
+    
+    <category term="毕业设计" scheme="https://blog.junxu666.top/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>300 套 SpringBoot+Vue 毕业设计题目推荐，附源码和教程，保证可用</title>
@@ -136,7 +159,7 @@
     <link href="https://blog.junxu666.top/p/33891.html"/>
     <id>https://blog.junxu666.top/p/33891.html</id>
     <published>2023-04-08T05:05:55.000Z</published>
-    <updated>2023-04-17T13:47:36.458Z</updated>
+    <updated>2023-04-17T13:49:12.608Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）"><a href="#基于springboot-vue民宿管理系统（Java-毕业设计，附源码，说明文档）" class="headerlink" title="基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）"></a>基于springboot+vue民宿管理系统（Java 毕业设计，附源码，说明文档）</h1><blockquote><p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。  目前有各类成品java毕设，需要请看文末联系方式 。javaweb，ssh，ssm，springboot等等项目框架，源码丰富，<a href="https://blog.junxu666.top/p/57317.html">欢迎咨询</a>。<br> 😁 </p><p> 1.<a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p></blockquote><h2 id="开发环境："><a href="#开发环境：" class="headerlink" title="开发环境："></a>开发环境：</h2><h3 id="后端："><a href="#后端：" class="headerlink" title="后端："></a>后端：</h3><p>开发语言：Java</p><p>框架：springboot</p><p>JDK版本：JDK1.8</p><p>服务器：tomcat7</p><p>数据库：mysql 5.7+</p><p>数据库工具：Navicat11</p><p>开发软件：eclipse&#x2F;idea</p><p>Maven包：Maven3.3.9</p><h3 id="前端："><a href="#前端：" class="headerlink" title="前端："></a>前端：</h3><p>nodejs，vue</p><h3 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a>数据库：</h3><p>mysql</p><h2 id="系统架构："><a href="#系统架构：" class="headerlink" title="系统架构："></a>系统架构：</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-f9fc.png"></p><h3 id="管理员："><a href="#管理员：" class="headerlink" title="管理员："></a>管理员：</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-b952.png"></p><h3 id="用户用例："><a href="#用户用例：" class="headerlink" title="用户用例："></a>用户用例：</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-e87c.png"></p><h2 id="主要功能："><a href="#主要功能：" class="headerlink" title="主要功能："></a>主要功能：</h2><h3 id="用户功能模块"><a href="#用户功能模块" class="headerlink" title="用户功能模块"></a>用户功能模块</h3><p>用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块并进行操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-8f2e.png"></p><p>民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行详情查看操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-92e4.png"></p><p>房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行详情、修改、删除等操作</p><p><img src="https://img-blog.csdnimg.cn/img_convert/05e80d1c7bb35a326b2eb9a28e367355.png"></p><p>房间退订管理：通过房间退订管理列表可以获取退订编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、退订时间、备注、账号、姓名、手机、是否支付、审核回复、审核状态等信息，进行详情、修改、删除操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-dbfc.png"></p><h3 id="管理员功能模块"><a href="#管理员功能模块" class="headerlink" title="管理员功能模块"></a>管理员功能模块</h3><p>管理员通过用户名和密码、角色填写完成后进行登录，如图5-5所示。管理员登录成功后进入到系统操作界面，可以对首页、个人中心、用户管理、商家管理、民宿信息管理、房间类型管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理、系统管理等功能模块进行相对应操作。</p><p>管理员商家管理：通过商家管理列表可以获取商家编号、密码、商家名称、联系电话、头像、备注等内容，可以进行修改或删除操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-559b.png"></p><p><img src="https://img-blog.csdnimg.cn/img_convert/902b4719e1e3ff880dac6ad1d2d9a4b8.png"></p><p>管理员用户管理：通过用户管理列表可以获取账号、密码、姓名、性别、手机、邮箱、图片、备注等信息，进行删除或修改操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-a3f7.png"></p><p>管理员民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行修改或删除操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-3595.png"></p><p>管理员房间类型管理：通过房间类型管理列表可以获取索引、房间类型、操作等信息，进行详情、修改或删除操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-b72c.png"></p><p>管理员房间信息管理：通过房间信息管理列表可以获取商家编号、民宿编号、房间类型、图片、房间设施、房间价格、收取金额等信息，进行详情、查看或删除操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-40b7.png"></p><p>管理员房间预订管理：通过房间预订管理列表可以获取预定编号、商家编号、民宿名称、房间类型、房间价格、天数、已收金额、预订时间、入住时间、备注、账号、姓名、手机、是否支付等信息，进行备注或删除操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-6f22.png"></p><h3 id="商家用户功能模块"><a href="#商家用户功能模块" class="headerlink" title="商家用户功能模块"></a>商家用户功能模块</h3><p>商家用户点击进入到系统操作界面，可以对首页、个人中心、民宿信息管理、房间信息管理、房间预订管理、房间退订管理、投诉反馈管理、我的收藏管理等功能模块</p><p><img src="https://img-blog.csdnimg.cn/img_convert/cf6f6e4c34e2f480bedd8b4aff9f81a3.png"></p><p>商家用户民宿信息管理：通过民宿信息管理列表可以获取商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息，进行查询、新增、删除操作</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-6f33.png"></p><h3 id="前台首页功能模块"><a href="#前台首页功能模块" class="headerlink" title="前台首页功能模块"></a>前台首页功能模块</h3><p>前台首页，在系统首页可以查看首页、民宿信息、房间信息、个人中心、后台管理、在线客服等内容</p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-b407.png"></p><p>用户登录，在登录页面通过填写账号、密码等信息完成登录，如图5-15所示。在民宿信息页面通过查看商家编号、民宿编号、民宿名称、民宿地址、民宿图片、民宿简介等信息进行购买操作</p><p><img src="https://img-blog.csdnimg.cn/img_convert/2c5df8d2ec19d13ec2b2a22aef464291.png"></p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-f49c.png"></p><p>以上就是项目的一些基本信息了。</p><h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-559b.png"></p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>]]></content>
     
@@ -450,29 +473,6 @@
     
     
     <category term="Rider" scheme="https://blog.junxu666.top/tags/Rider/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 毕业设计，基于 SpringBoot 开发的留守儿童系统的研究与实现，附源码和教程</title>
-    <link href="https://blog.junxu666.top/p/10525.html"/>
-    <id>https://blog.junxu666.top/p/10525.html</id>
-    <published>2023-03-20T05:05:55.000Z</published>
-    <updated>2023-03-23T14:22:16.208Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><blockquote><p>大家伙，我是程序员徐师兄，6 年大厂经验<br>最近跟朋友合作，捣鼓了这个毕业设计项目，源码都是可以运行起来的，里面包括源码和教程，大家感兴趣的话可以私聊我了解。<br><br/><br><a href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br><a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p></blockquote><h1 id="1-研究背景"><a href="#1-研究背景" class="headerlink" title="1.研究背景"></a>1.研究背景</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-4c82.png" alt="image-20230320232434235"></p><p>以往的留守儿童爱心的管理，一般都是纸质文件来管理留守儿童爱心信息，传统的管理方式已经无法满足现代人们的需求；使用留守儿童爱心网站, 首先可以大幅提高留守儿童爱心信息检索，只需输入留守儿童爱心相关信息就能在数秒内反馈想要的结果；其次可存储大量的留守儿童爱心信息，同时留守儿童爱心信息安全性有更高的保障；这些优点大大提高运营效率并节省运营成本。因此，开发留守儿童爱心网站对留守儿童爱心信息进行有效的管理是很必要的，不仅提高了留守儿童爱心管理效率，增加了用户信息安全性，方便及时反馈信息给管理员，增加了与管理员之间的互动交流，更能提高用户的体验强度。</p><p>本系统为了数据库结构的灵活性所以打算采用MySQL来设计数据库，而java技术，B&#x2F;S架构则保证了较高的平台适应性。本文主要介绍了本系统的开发背景，所要完成的功能和开发的过程，主要说明了系统设计的重点、设计思想。</p><h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p><p>框架：springboot</p><p>JDK版本：JDK1.8</p><p>服务器：tomcat7</p><p>数据库：mysql 5.7（一定要5.7版本）</p><p>数据库工具：Navicat11</p><p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p><p>Maven包：Maven3.3.9</p><p>浏览器：谷歌浏览器</p><h1 id="3-系统分析"><a href="#3-系统分析" class="headerlink" title="3.系统分析"></a>3.系统分析</h1><p>经过大学四年的学习，已经掌握了JAVA、Mysql数据库等方面的编程技巧和方法，对于这些技术该有的软硬件配置也是齐全的，能够满足开发的需要。</p><p>本留守儿童爱心网站采用的是Mysql作为数据库，可以绝对地保证用户数据的安全；可以与Mysql数据库进行无缝连接。</p><p>所以，留守儿童爱心网站在技术上是可以实施的。</p><h1 id="4系统设计"><a href="#4系统设计" class="headerlink" title="4系统设计"></a>4系统设计</h1><p>留守儿童爱心网站的主要功能的结构如图4-1所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-8266.jpg" alt="img"></p><h1 id="5系统的详细设计与实现"><a href="#5系统的详细设计与实现" class="headerlink" title="5系统的详细设计与实现"></a>5系统的详细设计与实现</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>系统首页的主要功能展示了首页、宣传新闻、志愿活动、爱心捐赠、个人中心、后台管理等信息，进行相应操作。运行结果如图5-1所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-958a.jpg" alt="img"></p><p>宣传新闻，在宣传新闻页面中可以查看新闻标题、发布时间、发布人等内容进行评论或提交等操作，如图5-2所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-b9ed.png" alt="image-20230320232046837"></p><p>志愿活动，在志愿活动页面可以查看活动名称、活动编号、活动地点、开始时间、结束时间、联系方式等内容进行活动报名等操作；如图5-3所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-88f6.png" alt="image-20230320232102450"></p><p>爱心捐赠，在爱心捐赠页面中可以查看捐赠标题、发布时间、机构名称、 捐赠地点、微信账号、微信用户名等内容进行捐赠内容等操作，如图5-4所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-fb3b.png" alt="image-20230320232112264"></p><p>用户注册，在用户注册页面中通过填写用户账号、密码、确认密码、用户姓名、年龄、用户手机等内容进行注册等操作如图5-6所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-a1b4.png" alt="image-20230320232145736"></p><h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-7所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-1d94.png" alt="image-20230320232156403"></p><p>管理员登录系统后，可以对首页、个人中心、用户管理、宣传新闻管理、志愿活动管理、爱心捐赠管理、旧物捐赠管理、活动报名管理、系统管理等功能进行相应的操作管理，如图5-8所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-f3a9.png" alt="image-20230320232205112"></p><p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、性别、年龄、头像、用户手机等内容进行详情、修改或删除等操作，如图5-9所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-af8a.png" alt="image-20230320232219156"></p><p>宣传新闻管理，在宣传新闻管理页面可以对索引、新闻标题、封面图片、发布时间、发布人等内容进行详情、查看评论、修改或删除等操作，如图5-10所示。</p><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-e71d.png" alt="image-20230320232232144"></p><h1 id="6、源码获取"><a href="#6、源码获取" class="headerlink" title="6、源码获取"></a>6、源码获取</h1><blockquote><p><strong>1、源码获取： 查看<a href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></strong> </p><p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p><p>😁<br>1.<a href="https://blog.csdn.net/u014534808/category_12245313.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;大家伙，我是程序员徐师兄，6 年大厂经验&lt;br&gt;最近跟朋友合作，捣鼓了这个毕业设计项目，源码都是可以运行起来的，里面包括源码和教程</summary>
-      
-    
-    
-    
-    <category term="毕业设计" scheme="https://blog.junxu666.top/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
-    
     
   </entry>
   
