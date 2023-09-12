@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="酷狗一面 自我介绍 房间耗时优化是怎么优化的，起始点和结束点，总结一下 top 3 问题（记得闭环，说一下报表监控） 第三方依赖和 base 库 变化是怎么实现的 冒号协议是怎么做的 组件化有接触过嘛，怎么实现的，为什么要 API 层。 EventBus 存在的问题 Java GC 讲一下。可达性分析存在的缺点 监控一个方法，怎么实现？ 1 内联 2 map （tree 算法） 图片加载机制。多张">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员徐公">
+<meta property="og:url" content="https://blog.junxu666.top/p/5.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="酷狗一面 自我介绍 房间耗时优化是怎么优化的，起始点和结束点，总结一下 top 3 问题（记得闭环，说一下报表监控） 第三方依赖和 base 库 变化是怎么实现的 冒号协议是怎么做的 组件化有接触过嘛，怎么实现的，为什么要 API 层。 EventBus 存在的问题 Java GC 讲一下。可达性分析存在的缺点 监控一个方法，怎么实现？ 1 内联 2 map （tree 算法） 图片加载机制。多张">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-5c6c.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-2dca.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-3acb.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-ae5f.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-d548.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e0ccbedf-eda5-4a16-84fa-dd915bdb6770/Untitled.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-83b7.png">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1174124c-d621-4705-bb1b-390d1a55c208/Untitled.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-042b.png">
+<meta property="article:published_time" content="2023-08-25T13:05:11.369Z">
+<meta property="article:modified_time" content="2023-08-25T13:05:11.369Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-5c6c.png">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/5.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-25 21:05:11" itemprop="dateCreated datePublished" datetime="2023-08-25T21:05:11+08:00">2023-08-25</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id><a href="#" class="headerlink" title></a></h2><h2 id="酷狗一面"><a href="#酷狗一面" class="headerlink" title="酷狗一面"></a>酷狗一面</h2><ol>
+<li>自我介绍</li>
+<li>房间耗时优化是怎么优化的，起始点和结束点，总结一下 top 3 问题（记得闭环，说一下报表监控）</li>
+<li>第三方依赖和 base 库 变化是怎么实现的</li>
+<li>冒号协议是怎么做的</li>
+<li>组件化有接触过嘛，怎么实现的，为什么要 API 层。 EventBus 存在的问题</li>
+<li>Java GC 讲一下。可达性分析存在的缺点</li>
+<li>监控一个方法，怎么实现？ 1 内联 2 map （tree 算法）</li>
+<li>图片加载机制。多张规格的图片，怎么做，Lrucache 算法</li>
+<li>怎样理解同步和异步？ 同个线程可以异步嘛</li>
+<li>ArrayMap， SpareArray， HashMap （ArrayMap 发生 hash 冲突的时候，是如何处理的）</li>
+<li>有什么想问的？</li>
+</ol>
+<p>组件化 API 主要解决的问题</p>
+<ol>
+<li>解决互相依赖的问题</li>
+<li>组件完全平等</li>
+<li>功能更加清晰（ RouterPath ，对外暴露的接口，对外暴露的事件）</li>
+</ol>
+<p>同步异步理解：</p>
+<ol>
+<li>单线线程是对多线程的，对于多线程的开发语言，有一个请求就可以开一个线程处理。那，对于单线程语言，只有通过异步调用程序。【事件 (事件循环机制)， 回调】</li>
+<li>异步是对同步说的， 最大区别就是同步需要等待，异步这不需要等待</li>
+</ol>
+<p><strong>很多童鞋搞不清，如果js是单线程的，那么谁去轮询大的Event loop事件队列？答案是浏览器会有单独的线程去处理这个队列（是一种规范来的）</strong></p>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cnblogs.com/yasmi/articles/5064588.html">为什么javascript是单线程的却能让AJAX异步调用？ - 博客园</a></strong></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://juejin.cn/post/7110608332225773575">Flutter - Dart 基础（单线程异步相关概念）</a>*</strong></em></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://juejin.cn/post/6933043674343604237">Flutter 单线程的Dart为何能够流程运行UI</a>*</strong></em></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-5c6c.png" alt="image-20230823232127315"></p>
+<p>Isolate 机制</p>
+<h3 id="dex-文件与-jar-文件"><a href="#dex-文件与-jar-文件" class="headerlink" title="dex 文件与 jar 文件"></a>dex 文件与 jar 文件</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-2dca.png" alt="image-20230823232152172"></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/li0978/article/details/114981769">来，同学，坐下，谈谈对Dex文件的认识</a>*</strong></em></p>
+<p>dex 文件，相对于 jar 文件，他将所有 class 文件的常量池，方法的索引，这些整合起来存储到 dex 文件中，这样在查找字符串，class 文件的话，都会比较快，不需要一个个去遍历查找。</p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jsqfengbao/article/details/52103439">Android中dex文件的加载与优化流程</a>*</strong></em></p>
+<p>odex是OptimizedDEX的缩写，表示经过优化的dex文件。存放在&#x2F;data&#x2F;dalvik-cache目录下。由于Android程序的apk文件为zip压缩包格式，Dalvik虚拟机每次加载它们时需要从apk中读取classes.dex文件，这样会耗费很多cpu时间，而采用odex方式优化的dex文件，已经包含了加载dex必须的依赖库文件列表，Dalvik虚拟机只需检测并加载所需的依赖库即可执行相应的dex文件，这大大缩短了读取dex文件所需的时间。</p>
+<p>原文链接：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jsqfengbao/article/details/52103439">https://blog.csdn.net/jsqfengbao/article/details/52103439</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-3acb.png" alt="image-20230823232217068"></p>
+<h3 id="可达分析算法和引用计数法"><a href="#可达分析算法和引用计数法" class="headerlink" title="可达分析算法和引用计数法"></a>可达分析算法和引用计数法</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.cnblogs.com/chenchuxin/p/15256320.html">https://www.cnblogs.com/chenchuxin/p/15256320.html</a></p>
+<p>优点：解决引用计数器所不能解决的循环引用问题。缺点：</p>
+<ol>
+<li>耗时：因为需要从 <code>GC Roots</code> 开始逐个检查引用；</li>
+<li>STW：GC 过程中需要保证对象的引用关系不能发生变化，所以 GC 进行时必须停顿所有执行线程（STW：Stop The World）</li>
+</ol>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mp.weixin.qq.com/s/r163NtsVTpwkidh8gbKuMA">探索Android复杂页面管理之道-QQ音乐播放页代码演进之路</a></strong></p>
+<h2 id="高竞文化准备"><a href="#高竞文化准备" class="headerlink" title="高竞文化准备"></a>高竞文化准备</h2><p>了解</p>
+<p>作为创业公司，是比较有潜力的，生态比较健全。有游戏，电竞，语音社交，可以互相扶持补充。不会突然因为某个政策，导致公司盈利状态下降。</p>
+<p>加入的原因</p>
+<ol>
+<li>比较看好公司</li>
+<li>自己也想加入一个创业公司，跟着一起成长起来。之前也都是待在大厂里面，虽然收入还不错。但是里面机会其实已经不多了，很难有崛起的机会，想趁着年轻，试一下。</li>
+</ol>
+<p>专业规划</p>
+<ol>
+<li>前几年，加入公司，提升技术，这一块，做的还不错</li>
+<li>想升管理层或者加入一个创业公司，一起成长。</li>
+</ol>
+<h2 id="现有app所有的数据都存在sp中，启动优化的时候可以考虑拆成多个小sp，如何保证升级拆分的时候数据不丢失。"><a href="#现有app所有的数据都存在sp中，启动优化的时候可以考虑拆成多个小sp，如何保证升级拆分的时候数据不丢失。" class="headerlink" title="现有app所有的数据都存在sp中，启动优化的时候可以考虑拆成多个小sp，如何保证升级拆分的时候数据不丢失。"></a>现有app所有的数据都存在sp中，启动优化的时候可以考虑拆成多个小sp，如何保证升级拆分的时候数据不丢失。</h2><p>首先读一个配置，是否已经迁移过，没有迁移过，进行迁移，迁移完成，才将配置标记为 true。</p>
+<h2 id="一些常见的算法题目"><a href="#一些常见的算法题目" class="headerlink" title="一些常见的算法题目"></a>一些常见的算法题目</h2><p>大概是一个int数组，包含奇偶数，把基数放前面，偶数放后面. 用数组实现一个队列 找出一个二叉树中两个子节点的最近公共父节点</p>
+<p>给一个有序数列，求第二大值，不能排序</p>
+<p>第一个是两个相加；二叉树中的最大路径；</p>
+<h2 id="酷狗二面"><a href="#酷狗二面" class="headerlink" title="酷狗二面"></a>酷狗二面</h2><ul>
+<li>自我介绍</li>
+<li>介绍一下项目，主要做了哪些事情</li>
+<li>启动优化，进房间优化是怎么做的</li>
+<li>有用过什么跨平台技术嘛， flutter</li>
+<li>kotlin 协程</li>
+<li>坐了哪些提效的工具（maven 插件，CC git review 插件，apk size 比较）</li>
+<li>有做过隐私统计嘛，怎么做 （lint 扫描，第三方隐私统计）</li>
+<li>sp 是进程安全的，为什么不是进程安全的，如果让你保证进程安全，要如何实现。</li>
+<li>为什么离职</li>
+</ul>
+<h2 id="百度一面"><a href="#百度一面" class="headerlink" title="百度一面"></a>百度一面</h2><ul>
+<li>自我介绍</li>
+<li>项目经验，做了哪些，介绍一下 CC 直播</li>
+<li>启动优化是怎么做的</li>
+<li>进房间优化是怎么做的</li>
+<li>第三方监控和 base 文件监控室怎么做的</li>
+<li>handler 原理</li>
+<li>怎样检测内存泄露，线上有什么方案嘛，常见的内存泄露有哪些？</li>
+<li>有用过 OkHttp 嘛，介绍一下原理</li>
+<li>MVC， MVP， MVVN， MVI 区别及特点</li>
+</ul>
+<h2 id="百度二面"><a href="#百度二面" class="headerlink" title="百度二面"></a>百度二面</h2><ul>
+<li>自我介绍</li>
+<li>主要是问  bigo 的经历，中东国家，东南亚国家用户有什么特点</li>
+<li>怎样统计用户使用的流量</li>
+<li>如何判断用户是否处于弱网，弱网优化怎么优化</li>
+<li>webview 预加载怎么优化</li>
+<li>okhttp 优缺点，okhttp 有做过哪些优化（我说没有，主要是 TCP 仿 retrofit 改造）</li>
+<li>http 与 https</li>
+<li>kotlin 协程原理</li>
+<li>IM 界面重构（说了复杂页面组件及消息样式复用）</li>
+<li>为什么离职，主要考虑哪些</li>
+</ul>
+<h2 id="百度三面"><a href="#百度三面" class="headerlink" title="百度三面"></a>百度三面</h2><ol>
+<li>自我介绍</li>
+<li>为什么写博客，坚持五年多  （ 1 自我总结，自己写下来，印象会比较深刻，是一次自我复盘的过程 2 也可以在团队当中进行一次分享，提升自己的影响力）</li>
+<li>项目中哪些点比较难的</li>
+<li>对直播间业务有什么思考</li>
+<li>消息有序性怎么保证</li>
+<li>java 跟 kotlin 的优缺点</li>
+<li>规划，对什么方向比较感兴趣</li>
+</ol>
+<h3 id="网络优化相关"><a href="#网络优化相关" class="headerlink" title="网络优化相关"></a>网络优化相关</h3><p><strong>流量统计</strong></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://leo-wxy.github.io/2020/09/15/Android-%E6%B5%81%E9%87%8F%E7%BB%9F%E8%AE%A1/">Android-流量统计</a>*</strong></em></p>
+<p>![image-20230823232244755](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230823232244755.png)</p>
+<p><strong>如何检测弱网</strong></p>
+<p>ping 一个稳定的地址，根据时间来确定。（定时更新一下，或者请求次数错误到达一定次数的话）</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://segmentfault.com/a/1190000022781635"><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://segmentfault.com/a/1190000022781635">美团点评的移动端网络优化实践：大幅提升连接成功率、速度等</a>*</strong></em></a></p>
+<ul>
+<li>缓存，标准请求头实现和磁盘缓存</li>
+<li>连接池复用</li>
+<li>IP 直连</li>
+<li>域名收拢 （三级域名）</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-ae5f.png" alt="image-20230823232317292"></p>
+<h2 id="TcpCall-设计原理"><a href="#TcpCall-设计原理" class="headerlink" title="TcpCall 设计原理"></a>TcpCall 设计原理</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-d548.png" alt="image-20230823232354071"></p>
+<p>参数封装在 <code>RealTcpRequest</code></p>
+<p>Tcp 有一个同步方法，有一个异步方法，加回调</p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e0ccbedf-eda5-4a16-84fa-dd915bdb6770/Untitled.png" alt="Untitled"></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IInteractivePushProtocol</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TcpSend(<span class="string">&quot;43594/103&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">fetchPushSwitch</span><span class="params">()</span></span>: Observable&lt;SwitchModel&gt;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TcpSend(<span class="string">&quot;43594/104&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">reqSetPushSwitch</span><span class="params">(<span class="meta">@Filed(<span class="string">&quot;switch&quot;</span>)</span> id: <span class="type">Int</span>)</span></span>: TcpCall&lt;JSONObject&gt;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="数据加密安全问题"><a href="#数据加密安全问题" class="headerlink" title="数据加密安全问题"></a>数据加密安全问题</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/chy555chy/article/details/101533566"><em><strong>*Android 使用 sqlcipher 加密数据库*</strong></em></a></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/qq_31469589/article/details/114950653">android Jetpack Room之数据库加密</a>*</strong></em></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://itcn.blog/p/530885558.html">使用SQLCipher对SQLite数据库加密</a>*</strong></em></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://zhuanlan.zhihu.com/p/268818036">独家食用指南系列|Android端SQLCipher的攻与防新编</a>*</strong></em></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/sqlcipher/android-database-sqlcipher">https://github.com/sqlcipher/android-database-sqlcipher</a></p>
+<h3 id="两种思路"><a href="#两种思路" class="headerlink" title="两种思路"></a>两种思路</h3><h3 id="将内容加密后再写入数据库"><a href="#将内容加密后再写入数据库" class="headerlink" title="将内容加密后再写入数据库"></a>将内容加密后再写入数据库</h3><p>这种方式使用简单，在入库&#x2F;出库只需要将字段做对应的加解密操作即可，一定程度上解决了将数据赤裸裸暴露的问题。但也有很大弊端：</p>
+<ol>
+<li>这种方式并不是彻底的加密，还是可以通过数据库查看到表结构等信息。</li>
+<li>对于数据库的数据，数据都是分散的，要对所有数据都进行加解密操作会严重影响性能。</li>
+</ol>
+<h3 id="对数据库文件加密"><a href="#对数据库文件加密" class="headerlink" title="对数据库文件加密"></a>对数据库文件加密</h3><p>SQLCipher</p>
+<h2 id="SQLCipher"><a href="#SQLCipher" class="headerlink" title="SQLCipher"></a>SQLCipher</h2><p>使用256-bit AES加密，其原理和SQLiteEncrypt一样，都是实现了SQLite的加密相关接口</p>
+<blockquote>
+<p>快速只有5 - 15%的性能开销加密100%的数据库中的数据文件是加密的使用良好的安全模式(CBC模式,密钥推导)零配置和应用程序级加密OpenSSL加密库提供算法</p>
+</blockquote>
+<h3 id="加密解密过程"><a href="#加密解密过程" class="headerlink" title="加密解密过程"></a>加密解密过程</h3><p>SQLite数据库设计中考虑了安全问题并预留了加密相关的接口。但是并没有给出实现。SQLite 数据库源码中通过使用SQLITE_HAS_CODEC宏来控制是否使用数据库加密。并且预留了四个结构让用户自己实现以达到对数据库进行加密的效果。这四个接口分别是：</p>
+<ul>
+<li>sqlite3_key()： 指定数据库使用的密钥</li>
+<li>sqlite3_rekey()：为数据库重新设定密钥；</li>
+<li>sqlite3CodecGetKey()：返回数据库的当前密钥</li>
+<li>sqlite3CodecAttach()： 将密钥及页面编码函数与数据库进行关联。</li>
+</ul>
+<p>而sqlcipher就是实现这四个接口以及自己的一些接口</p>
+<p>解密的操作是以page为单位进行的(每一个page就是db文件的每1024个字节）。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-83b7.png" alt="image-20230823232529345"></p>
+<p>上图为<strong>SQLCipher</strong>的实现原理，加密流程为以下步骤：</p>
+<ul>
+<li>传入密钥，通过<strong>Rand_bytes</strong>算法生成16个字节的<strong>salt</strong>，并存储在数据库第一页的头部（<strong>SQLite</strong>的<strong>db</strong>文件，头部前<strong>16</strong>个字节固定为<strong>SQLite Format</strong>，所以可以利用文件头来存储一些数据）。</li>
+<li>通过<strong>PKCS5_PBKDF2_HMAC_SHA1</strong>算法将密钥和<strong>salt</strong>一起加密并多次迭代，生成<strong>AES加密</strong>所用的<strong>key</strong>；此处是对<strong>key</strong>的加密，即使原始的密码泄露，也无法解密数据。</li>
+<li>通过<strong>AES对称加密算法</strong>对每一页的文件内容（有效的内容，不包含文件头和<strong>reserved</strong>字段）进行加密。</li>
+<li>加密时，文件执行过<strong>AES加密</strong>后，对文件内容，通过<strong>Hmac算法</strong>，获取文件校验码，填充在<strong>page尾部</strong>（<strong>SQLite</strong>提供了<strong>reserved</strong>字段，自动在<strong>page尾部</strong>预留一段空间）。</li>
+<li>解密时，先调用<strong>Hmac算法</strong>获取文件标识码，与<strong>page尾部</strong>的数据进行对比，如果数据一致，则证明文件没有被篡改过，不然证明文件已经被篡改，则抛出异常。</li>
+</ul>
+<p>PS：以上为默认的算法，<strong>SQLCipher</strong>没有固定算法，用户可以自己设置。</p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/m0_37796683/article/details/119106967">一文看透 Kotlin 协程本质</a>*</strong></em></p>
+<h3 id="如何维持一个长连接"><a href="#如何维持一个长连接" class="headerlink" title="如何维持一个长连接"></a>如何维持一个长连接</h3><p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.52im.net/thread-209-1-1.html">微信团队原创分享：Android版微信后台保活实战分享(网络保活篇)</a>*</strong></em></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.52im.net/thread-120-1-1.html">移动端IM实践：实现Android版微信的智能心跳机制</a>*</strong></em></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.52im.net/thread-281-1-1.html">为什么说基于TCP的移动端IM仍然需要心跳保活？</a>*</strong></em></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://segmentfault.com/a/1190000040216396">MQTT 协议是个啥？这篇文章告诉你！</a>*</strong></em></p>
+<h2 id="小彭的面试题目"><a href="#小彭的面试题目" class="headerlink" title="小彭的面试题目"></a>小彭的面试题目</h2><p>1、说一下你做得最难，最有深度的项目：说了 IM 模块 2、为什么你们要用 MQTT 协议，跟其他协议比有什么区别？ 3、为什么你们要自己实现 IM，而不是用现有的第三方SDK？ 4、IM 是如何保持长连接的？ 5、IM 的过程中是如何保证安全的？ 6、如何保证本地落库的数据不会被其他 App 或用户篡改 7、TCP 是可靠的，为什么要依靠 MQTT 保持长连接 8、问了项目中埋点的实现 9、实现了新的埋点框架，旧的埋点代码如何迁移 10、你们是如何做组件化的？你在里面的角色是什么？组件是怎么拆分的 11、组件之间的通信怎么解决？ 12、插件化怎么做 13、说一下构建 apk 的过程 14、在构建的过程中怎么做字节码插桩 15、如何做 carsh 治理、如何监控 java 和 native crash 16、Native 常见的 carsh 有哪些 17、说一下 ANR 是如何产生的</p>
+<p>[<a target="_blank" rel="external nofollow noopener noreferrer" href="https://juejin.cn/post/6844903838894260238"><em><strong>*Android APK打包流程*</strong></em>]</a></p>
+<h2 id="热修复的原理"><a href="#热修复的原理" class="headerlink" title="热修复的原理"></a>热修复的原理</h2><p>tinker （将需要修复的 class 插在第一个 dex 中）</p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/qq_36282231/article/details/81026296">Multidex分包：将指定的类打包到主dex中</a>*</strong></em></p>
+<h2 id="-2"><a href="#-2" class="headerlink" title></a></h2><h2 id="拼多多一面"><a href="#拼多多一面" class="headerlink" title="拼多多一面"></a>拼多多一面</h2><ul>
+<li>自我介绍</li>
+<li>项目中的亮点（我介绍了 matrix 和 疑难杂症的解决）</li>
+<li>A 启动 B 生命周期</li>
+<li>说到 OOM，Android 中的 OOM，你是怎么解决的</li>
+<li>三台打印机，打印文件，怎样最快</li>
+<li>手写单例模式（双重判空）</li>
+</ul>
+<h2 id="java-lambda-表达式和匿名内部类"><a href="#java-lambda-表达式和匿名内部类" class="headerlink" title="java lambda 表达式和匿名内部类"></a>java lambda 表达式和匿名内部类</h2><h3 id="-3"><a href="#-3" class="headerlink" title></a></h3><p><strong>Lambda表达式通过*invokedynamic*指令实现，书写Lambda表达式不会产生新的类</strong>。如果有如下代码，编译之后只有一个class文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class MainLambda &#123; 	public static void main(String[] args) &#123; 		new Thread( 				() -&gt; System.out.println(&quot;Lambda Thread run()&quot;) 			).start();; 	&#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译之后的结果：</p>
+<p>!<a target="_blank" rel="external nofollow noopener noreferrer" href="https://raw.githubusercontent.com/objcoding/md-picture/master/img/2-Lambda.png">https://raw.githubusercontent.com/objcoding/md-picture/master/img/2-Lambda.png</a></p>
+<p>通过javap反编译命名，我们更能看出Lambda表达式内部表示的不同：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// javap -c -p MainLambda.class</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainLambda</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">public</span> static void main(java.lang.String[]);</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: new           #<span class="number">2</span>                  <span class="comment">// class java/lang/Thread</span></span><br><span class="line">       <span class="number">3</span>: dup</span><br><span class="line">       <span class="number">4</span>: invokedynamic #<span class="number">3</span>,  <span class="number">0</span>              <span class="comment">// InvokeDynamic #0:run:()Ljava/lang/Runnable; /*使用invokedynamic指令调用*/</span></span><br><span class="line">       <span class="number">9</span>: invokespecial #<span class="number">4</span>                  <span class="comment">// Method java/lang/Thread.&quot;&lt;init&gt;&quot;:(Ljava/lang/Runnable;)V</span></span><br><span class="line">      <span class="number">12</span>: invokevirtual #<span class="number">5</span>                  <span class="comment">// Method java/lang/Thread.start:()V</span></span><br><span class="line">      <span class="number">15</span>: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> static void lambda$main$<span class="number">0</span>();  <span class="comment">/*Lambda表达式被封装成主类的私有方法*/</span></span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: getstatic     #<span class="number">6</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">       <span class="number">3</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String Lambda Thread run()</span></span><br><span class="line">       <span class="number">5</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">       <span class="number">8</span>: <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>反编译之后我们发现Lambda表达式被封装成了主类的一个私有方法，并通过<em>invokedynamic</em>指令进行调用。</p>
+<h3 id="推论，this引用的意义"><a href="#推论，this引用的意义" class="headerlink" title="推论，this引用的意义"></a>推论，this引用的意义</h3><p>既然Lambda表达式不是内部类的简写，那么Lambda内部的<code>this</code>引用也就跟内部类对象没什么关系了。在Lambda表达式中<code>this</code>的意义跟在表达式外部完全一样。因此下列代码将输出两遍<code>Hello Hoolee</code>，而不是两个引用地址。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">	Runnable r1 = () -&gt; &#123; System.<span class="keyword">out</span>.println(<span class="keyword">this</span>); &#125;;</span><br><span class="line">	Runnable r2 = () -&gt; &#123; System.<span class="keyword">out</span>.println(toString()); &#125;;</span><br><span class="line">	<span class="keyword">public</span> static void main(String[] args) &#123;</span><br><span class="line">		new Hello().r1.run();</span><br><span class="line">		new Hello().r2.run();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> String toString() &#123; <span class="keyword">return</span> <span class="string">&quot;Hello Hoolee&quot;</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字节抖音一面"><a href="#字节抖音一面" class="headerlink" title="字节抖音一面"></a>字节抖音一面</h2><ul>
+<li>自我介绍</li>
+<li>项目中印象比价深的（说了 Matrix，耗时这方面）</li>
+<li>问了进房间首帧耗时 （怎么设计的，怎么找出问题，怎么优化，怎么监控，线上报表）</li>
+<li>IO 耗时操作</li>
+<li>内存泄露 leakcannary 的原理（说了原理，优缺点，leakcannary 的局限性，为什么要冻住进程</li>
+<li>算法，找出第 N 个父节点</li>
+</ul>
+<h3 id="matrix-IO-监控原理"><a href="#matrix-IO-监控原理" class="headerlink" title="matrix IO 监控原理"></a>matrix IO 监控原理</h3><p><strong>Matrix-IOCanary解析</strong></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.yorek.xyz/android/3rd-library/matrix-io/">https://blog.yorek.xyz/android/3rd-library/matrix-io/</a></p>
+<p>hprof 文件裁剪：</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.yorek.xyz/android/3rd-library/hprof-shrink/#2-resourcesarsc">https://blog.yorek.xyz/android/3rd-library/hprof-shrink/#2-resourcesarsc</a></p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1174124c-d621-4705-bb1b-390d1a55c208/Untitled.png" alt="Untitled"></p>
+<h2 id="米哈游一面"><a href="#米哈游一面" class="headerlink" title="米哈游一面"></a>米哈游一面</h2><ol>
+<li>自我介绍</li>
+<li>项目中印象最深的（我说了 matrix 和 进房间优化）</li>
+<li>IM 消息是如何设计的</li>
+<li>收发消息是如何做的</li>
+<li>如何保证有序性</li>
+<li>算法题目 （大数相乘，需要注意是有符号的）</li>
+</ol>
+<h2 id="对直播业务的思考"><a href="#对直播业务的思考" class="headerlink" title="对直播业务的思考"></a>对直播业务的思考</h2><p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://zhuanlan.zhihu.com/p/140909058">直播礼物玩法的产品设计与思考</a>*</strong></em></p>
+<p>直播的核心商业模式就是礼物分成，用户在观看直播的过程中，为主播送上花费人民币或者平台币购买的礼物，主播与平台进行一定比例的分成。</p>
+<p><strong>礼物分成和广告</strong></p>
+<p>那么，无论是推出贴合季节的礼物，还是推出各种ip的礼物，还是造一个粉丝节送礼物打榜，这些动作的本质是刺激用户消费呀，为什么之前没有聊到这个点，而是傻乎乎的把实现过程聊出来了呢？</p>
+<ul>
+<li>各种 IP</li>
+<li>节日礼物，如果是情人节这些，可以跟约会相关的，元旦这些，可以嘉年华这些，粉丝节等等</li>
+<li>情景礼物，夏天的话，大家想到的一般是沙滩和大海，那么我们可以送游艇，夏威夷椰子等等</li>
+<li>基于流量和场景孵化新业务（直播有大量的流量，可以说是一个小入口，基于此，直播平台可以孵化出一些贴合直播场景的新业务，比如天鸽互动就做起了互联网金融、游戏等等业务。未来直播平台也可以基于直播探索征婚交友)</li>
+<li>内容直播 （在线教育，音乐会这些）</li>
+</ul>
+<p>用户存在感 （社交需求和尊重需求）</p>
+<ol>
+<li>贡献榜，主播间消费可以挂榜，让用户在直播间可以更有优越感；</li>
+<li>等级体系跟消费直接挂钩，还有称号体系，超皇、皇帝、公侯伯子骑士游侠</li>
+<li>粉丝等级榜，粉丝等级与消费也直接挂钩，粉丝等级越高，说明你是老粉，在粉丝中优越感更高；</li>
+</ol>
+<p>4.主播点名挂榜，让更多人知道你，这其实是一个很神奇的广告位</p>
+<h2 id="SVGA-原理"><a href="#SVGA-原理" class="headerlink" title="SVGA 原理"></a>SVGA 原理</h2><p><em><strong>*Lottie、SVGA*</strong></em></p>
+<p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://juejin.cn/post/6844904066649194509">SVGA源码分析与优化</a>*</strong></em></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202308232308-042b.png" alt="image-20230823232554302"></p>
+<h3 id="直播平台的盈利模式"><a href="#直播平台的盈利模式" class="headerlink" title="直播平台的盈利模式"></a>直播平台的盈利模式</h3><p><em><strong>*<a target="_blank" rel="external nofollow noopener noreferrer" href="https://zhuanlan.zhihu.com/p/457827395">直播平台的13种盈利模式</a>*</strong></em></p>
+<ul>
+<li>打赏模式(常见模式）</li>
+<li>广告模式(常见模式)</li>
+<li>导购模式、电商模式</li>
+<li>付费直播、付费教育&#x2F;付费问答</li>
+<li>会员增值服务</li>
+<li>主播&#x2F;节目付费推广</li>
+</ul>
+<h2 id="印象比较深刻的"><a href="#印象比较深刻的" class="headerlink" title="印象比较深刻的"></a>印象比较深刻的</h2><ul>
+<li>APM 性能的监控，包括 IO 读写和卡顿的</li>
+<li>疑难杂症的解决：</li>
+<li>进房间速度优化，以及相应的监控</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/4.html" rel="prev" title>
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%B7%E7%8B%97%E4%B8%80%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">酷狗一面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dex-%E6%96%87%E4%BB%B6%E4%B8%8E-jar-%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">dex 文件与 jar 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%BE%BE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E5%92%8C%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">可达分析算法和引用计数法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%AB%9E%E6%96%87%E5%8C%96%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">高竞文化准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E6%9C%89app%E6%89%80%E6%9C%89%E7%9A%84%E6%95%B0%E6%8D%AE%E9%83%BD%E5%AD%98%E5%9C%A8sp%E4%B8%AD%EF%BC%8C%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96%E7%9A%84%E6%97%B6%E5%80%99%E5%8F%AF%E4%BB%A5%E8%80%83%E8%99%91%E6%8B%86%E6%88%90%E5%A4%9A%E4%B8%AA%E5%B0%8Fsp%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%8D%87%E7%BA%A7%E6%8B%86%E5%88%86%E7%9A%84%E6%97%B6%E5%80%99%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%A2%E5%A4%B1%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">现有app所有的数据都存在sp中，启动优化的时候可以考虑拆成多个小sp，如何保证升级拆分的时候数据不丢失。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE"><span class="nav-number">5.</span> <span class="nav-text">一些常见的算法题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%B7%E7%8B%97%E4%BA%8C%E9%9D%A2"><span class="nav-number">6.</span> <span class="nav-text">酷狗二面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6%E4%B8%80%E9%9D%A2"><span class="nav-number">7.</span> <span class="nav-text">百度一面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%8C%E9%9D%A2"><span class="nav-number">8.</span> <span class="nav-text">百度二面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6%E4%B8%89%E9%9D%A2"><span class="nav-number">9.</span> <span class="nav-text">百度三面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3"><span class="nav-number">9.1.</span> <span class="nav-text">网络优化相关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TcpCall-%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86"><span class="nav-number">10.</span> <span class="nav-text">TcpCall 设计原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">11.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="nav-number">12.</span> <span class="nav-text">数据加密安全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E6%80%9D%E8%B7%AF"><span class="nav-number">12.1.</span> <span class="nav-text">两种思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%86%85%E5%AE%B9%E5%8A%A0%E5%AF%86%E5%90%8E%E5%86%8D%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">12.2.</span> <span class="nav-text">将内容加密后再写入数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86"><span class="nav-number">12.3.</span> <span class="nav-text">对数据库文件加密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLCipher"><span class="nav-number">13.</span> <span class="nav-text">SQLCipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">13.1.</span> <span class="nav-text">加密解密过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%BB%B4%E6%8C%81%E4%B8%80%E4%B8%AA%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="nav-number">13.2.</span> <span class="nav-text">如何维持一个长连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E5%BD%AD%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE"><span class="nav-number">14.</span> <span class="nav-text">小彭的面试题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%83%AD%E4%BF%AE%E5%A4%8D%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">15.</span> <span class="nav-text">热修复的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-2"><span class="nav-number">16.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%BC%E5%A4%9A%E5%A4%9A%E4%B8%80%E9%9D%A2"><span class="nav-number">17.</span> <span class="nav-text">拼多多一面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">18.</span> <span class="nav-text">java lambda 表达式和匿名内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#-3"><span class="nav-number">18.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%AE%BA%EF%BC%8Cthis%E5%BC%95%E7%94%A8%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">18.2.</span> <span class="nav-text">推论，this引用的意义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E6%8A%96%E9%9F%B3%E4%B8%80%E9%9D%A2"><span class="nav-number">19.</span> <span class="nav-text">字节抖音一面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-IO-%E7%9B%91%E6%8E%A7%E5%8E%9F%E7%90%86"><span class="nav-number">19.1.</span> <span class="nav-text">matrix IO 监控原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%B3%E5%93%88%E6%B8%B8%E4%B8%80%E9%9D%A2"><span class="nav-number">20.</span> <span class="nav-text">米哈游一面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%9B%B4%E6%92%AD%E4%B8%9A%E5%8A%A1%E7%9A%84%E6%80%9D%E8%80%83"><span class="nav-number">21.</span> <span class="nav-text">对直播业务的思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVGA-%E5%8E%9F%E7%90%86"><span class="nav-number">22.</span> <span class="nav-text">SVGA 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%92%AD%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%9B%88%E5%88%A9%E6%A8%A1%E5%BC%8F"><span class="nav-number">22.1.</span> <span class="nav-text">直播平台的盈利模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B0%E8%B1%A1%E6%AF%94%E8%BE%83%E6%B7%B1%E5%88%BB%E7%9A%84"><span class="nav-number">23.</span> <span class="nav-text">印象比较深刻的</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">547k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:17</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
