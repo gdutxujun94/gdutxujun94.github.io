@@ -186,6 +186,425 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/19940.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/19940.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot+Vue 的会员制医疗预约服务管理信息系统（毕业设计，附源码，教程）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-01 13:05:55" itemprop="dateCreated datePublished" datetime="2023-04-01T13:05:55+08:00">2023-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-10 23:31:53" itemprop="dateModified" datetime="2023-04-10T23:31:53+08:00">2023-04-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br> 😁 </p>
+<p> 1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h1><p>针对会员制医疗预约服务行业的管理现状，本会员制医疗预约服务管理信息系统主要实现以下几个目标：</p>
+<p>  1.系统界面简洁，操作简便。</p>
+<p>  2.拥有精准，高效的查询功能。</p>
+<p>  3.使管理人员能够及时的获得精确的报表。</p>
+<p>  4.对数据内容的管理安全，稳定，易维护。</p>
+<p>  5.对信息全面跟踪，方便管理人员进行管理。</p>
+<p>  6.提供用户登录和修改密码等服务，加强系统安全。</p>
+<p>7.提供用户管理和数据备份，确保信息的安全性和可靠性。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（5.7版本以上即可）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3系统分析"><a href="#3系统分析" class="headerlink" title="3系统分析"></a>3系统分析</h1><h2 id="3-1需求分析"><a href="#3-1需求分析" class="headerlink" title="3.1需求分析"></a>3.1需求分析</h2><p>会员制医疗预约服务管理信息系统的作用，可以提高会员制医疗预约服务管理的工作人员的效率，协助他们对会员制医疗预约服务信息进行统一管理，为管理者提供信息储存和查询搜索系统。一个良好的会员制医疗预约服务管理信息系统可以实现对会员制医疗预约服务的精细化管理：对在线会员制医疗预约服务管理流程的全过程进行电子化操作，其主要作用是管理和控制会员制医疗预约服务所有的信息，分析库存数据，使工作人员对会员制医疗预约服务管理信息系统进行监管，根据系统所提供的相应信息，采取适当的措施，及时补救管理中的漏洞，提高在线会员制医疗预约服务管理的工作效率，使得在线会员制医疗预约服务管理变的更加系统和规范。</p>
+<h1 id="4系统总体设计"><a href="#4系统总体设计" class="headerlink" title="4系统总体设计"></a>4系统总体设计</h1><h2 id="4-1系统结构"><a href="#4-1系统结构" class="headerlink" title="4.1系统结构"></a>4.1系统结构</h2><p>会员制医疗预约服务管理信息系统，它是一个由人、电脑及其他组件构成的，一种能够收集、存储、加工、传送信息的系统。该系统可以帮助决策者找出当前急需解决的问题，然后将信息快速的反馈，使管理人员能够以最快的时间知道目前的现状，进行更进一步的计划。</p>
+<p>当前MIS系统结构目前存在两种较为流行的结构:C&#x2F;S和B&#x2F;S两种。</p>
+<p>C&#x2F;S结构的系统：C&#x2F;S结构就是客户机服务器结构，它可以法派任务到Client端和Server端来进行，充分利用两端硬件环境的优势，来降低系统的通讯的花费。客户端主要作用是处理人机交互，执行客户端应用程序，收集数据以及向服务器发送任务请求。服务器基本作用是执行后台程序，它主要对客户机的请求申请进行反馈，除此之外，它的作用还包括：数据库存储系统的共享管理、通讯管理、文件管理等等。</p>
+<p>B&#x2F;S结构的系统：这种网络结构简化了客户端，并把系统功能实现的中心集中到服务器上，在这种模式中，只需要一个浏览器就可以了。这种结构将很多的工作交于WEB服务器，只通过浏览器请求WEB服务，随后根据请求返回信息。</p>
+<p>通常在只在企业网内部使用，采用C&#x2F;S。而使用不仅限于内网的情况下使用B&#x2F;S。考虑到本管理系统的一系列需求，所以，该系统开发使用B&#x2F;S结构开发。其主要功能结构如下图所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-b3f5.png" alt="image-20230403212507726"></p>
+<h2 id="4-2数据库设计"><a href="#4-2数据库设计" class="headerlink" title="4.2数据库设计"></a>4.2数据库设计</h2><p>数据库设计是指为系统提供最优化的数据库模式，使得应用程序能够有效的存储数据，满足用户的各类需求。</p>
+<h3 id="4-2-1-数据库概念结构设计"><a href="#4-2-1-数据库概念结构设计" class="headerlink" title="4.2.1 数据库概念结构设计"></a>4.2.1 数据库概念结构设计</h3><p>概念结构设计是根据用户需求形成的。用最常的E-R方法描述数据模型进行数据库的概念设计，首先设计局部的E-R模式，最后各局部ER模式综合成一个全局模式。然后再把概念模式转换成逻辑模式。将概念设计从设计过程中独立开来，设计复杂程度降低，不受特定DBMS的限制。</p>
+<p>1.所有实体和属性的定义如下所示。</p>
+<p>医院信息管理实体属性图，如图4-2所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-08d2.png" alt="image-20230403212438613"></p>
+<p>药品信息管理实体属性图，如图4-3所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-ac06.png" alt="image-20230403212429334"></p>
+<h3 id="4-2-2数据库逻辑结构设计"><a href="#4-2-2数据库逻辑结构设计" class="headerlink" title="4.2.2数据库逻辑结构设计"></a>4.2.2数据库逻辑结构设计</h3><p>根据E-R得出数据库包涵了以下几张数据表来实现了对数据库的存储、调用。以下分别列出数据表的每个字段名、数据类型、主外键及备注。</p>
+<p>表4-1：挂号预约</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>yuyuebianhao</td>
+<td>varchar</td>
+<td>200</td>
+<td>预约编号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>gonghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>工号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yishengxingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>医生姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yiyuanmingcheng</td>
+<td>varchar</td>
+<td>200</td>
+<td>医院名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yiyuandizhi</td>
+<td>varchar</td>
+<td>200</td>
+<td>医院地址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>keshimingcheng</td>
+<td>varchar</td>
+<td>200</td>
+<td>科室名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>keshidizhi</td>
+<td>varchar</td>
+<td>200</td>
+<td>科室地址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>guahaofei</td>
+<td>varchar</td>
+<td>200</td>
+<td>挂号费</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yuyueriqi</td>
+<td>date</td>
+<td></td>
+<td>预约日期</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yuyuebeizhu</td>
+<td>varchar</td>
+<td>200</td>
+<td>预约备注</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zhanghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>账号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shoujihaoma</td>
+<td>varchar</td>
+<td>200</td>
+<td>手机号码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sfsh</td>
+<td>varchar</td>
+<td>200</td>
+<td>是否审核</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td>shhf</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>审核回复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ispay</td>
+<td>varchar</td>
+<td>200</td>
+<td>是否支付</td>
+<td></td>
+<td>未支付</td>
+</tr>
+</tbody></table>
+<p>表4-2：条形码机</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>mingcheng</td>
+<td>varchar</td>
+<td>200</td>
+<td>名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tupian</td>
+<td>varchar</td>
+<td>200</td>
+<td>图片</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zhanghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>账号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>beizhu</td>
+<td>varchar</td>
+<td>200</td>
+<td>备注</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-3：使用须知</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>biaoti</td>
+<td>varchar</td>
+<td>200</td>
+<td>标题</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>neirong</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>内容</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="5-系统详细设计"><a href="#5-系统详细设计" class="headerlink" title="5 系统详细设计"></a>5 系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>会员制医疗预约服务管理信息系统，在系统首页可以查看首页，医院信息，坐诊信息，核酸检测，疾控通知，健康资讯，就诊引导，个人中心，后台管理等内容，并进行详细操作；如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-b625.png" alt="image-20230403211124005"></p>
+<p>医院信息，在医院信息页面可以查看医院名称，医院地址，院长，成立时间，联系电话，医院简介，医院详情等内容，并进行收藏操作，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-19b8.png" alt="image-20230403211138150"></p>
+<p>坐诊信息，在坐诊信息页面可以查看医生姓名，工号，性别，医院名称，医院地址，科室名称，科室地址，挂号费，医生简介等内容，并进行预约，咨询和收藏操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
+<p>会员注册，在会员注册页面通过填写账号、密码、确认密码、姓名、身份证、手机号码等信息进行会员注册操作，如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-56fb.png" alt="image-20230403211300842"></p>
+<p>个人中心，在个人中心页面通过填写账号、密码、姓名、性别、身份证、手机号码、上传图片等内容进行更新信息，并对我的收藏进行操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-56fb.png"></p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录，管理员进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-6所示。</p>
+<p>![image-20230403211324024](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403211324024.png)</p>
+<p>管理员登录系统后，可以对首页、个人中心、会员管理、医生管理、医院信息管理、科室信息管理、坐诊信息管理、核酸检测管理、挂号预约管理、药品信息管理、诊断信息管理、处方信息管理、住院信息管理、在线咨询管理、咨询回复管理、核酸预约管理、疾控通知管理、健康资讯管理、健康档案管理、系统管理等功能进行相应的操作管理，如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-d755.png" alt="image-20230403211335423"></p>
+<p>会员管理，在会员管理页面可以对索引，账号，密码，姓名，性别，身份证，手机号码，相片等内容进行详情，修改和删除等操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-bc34.png" alt="image-20230403211346395"></p>
+<p>医生管理，在医生管理页面可以对索引，工号，医生姓名，性别，身份证，手机号码，相片，医院名称，医院地址，科室名称，科室地址等内容进行详情，修改和删除等操作，如图5-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-937f.png" alt="image-20230403211401302"></p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+<h1 id="源码下载地址-1"><a href="#源码下载地址-1" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/26254.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3241,152 +3660,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/2807.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/2807.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 开发的班级综合测评系统研究与实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-19 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-19T13:05:55+08:00">2023-03-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-03 21:18:29" itemprop="dateModified" datetime="2023-04-03T21:18:29+08:00">2023-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br>😁 </p>
-<blockquote>
-<p> 1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
-</blockquote>
-<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>传统的班级综合测评管理系统，一开始都是手工记录，然后将手工记录的文档进行存档；随着电脑的普及，班级综合测评管理演变成了手工记录后，输入电脑进行存档。这两种管理方式，对教师来说工作量大，不单要教授课程，后期的班级综合测评管理还需要花费大量时间。而且这种班级综合测评管理的方式，容易出现遗失或因为失误输入错误的信息等等。在这些基础上，我把用Springboot为框架的班级综合测评管理系统作为我的毕业设计，希望可以解决传统班级综合测评管理系统中出现的问题，简化教师的工作，也可以方便管理员进行系统化、电子化的管理。</p>
-<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>开发语言：Java</p>
-<p>框架：springboot</p>
-<p>JDK版本：JDK1.8</p>
-<p>服务器：tomcat7</p>
-<p>数据库：mysql 5.7（一定要5.7版本）</p>
-<p>数据库工具：Navicat11</p>
-<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
-<p>Maven包：Maven3.3.9</p>
-<p>浏览器：谷歌浏览器</p>
-<h1 id="3-需求分析"><a href="#3-需求分析" class="headerlink" title="3. 需求分析"></a>3. 需求分析</h1><h3 id="用户需求分析"><a href="#用户需求分析" class="headerlink" title="用户需求分析"></a>用户需求分析</h3><p>根据账号登陆进入班级综合测评管理系统，系统根据角色展示相应的功能权限。教师可以修改个人信息和密码，还可以对学生信息，综合评价等进行详情、修改、删除、测评等。超级管理员拥有系统所有功能权限，可以管理系统，管理教师和学生的信息。</p>
-<h3 id="功能需求分析"><a href="#功能需求分析" class="headerlink" title="功能需求分析"></a>功能需求分析</h3><p>根据一般班级综合测评管理系统的功能需求分析，本系统的功能模块如下：</p>
-<p>（1）在个人中心，管理员可以修改自己的用户名和登录密码。</p>
-<p>（2）在教师管理模块中，可以查看教师的信息，和进行修改、删除。</p>
-<p>（3）在学生管理模块中，可以查看学生的信息，和进行修改、删除。</p>
-<p>（4）在综合测评管理页面，管理员只有查看详情、修改、删除和查看统计图的权限，新增的权限是在教师的手上。</p>
-<h3 id="系统性能需求分析"><a href="#系统性能需求分析" class="headerlink" title="系统性能需求分析"></a>系统性能需求分析</h3><p>对系统性能进行分析，可对系统反应度、界面简洁清晰度、储存能性、易学性和稳定性进行分析；</p>
-<p>系统反应度：同时上万人在线时反应时间应该在两三秒以内，。</p>
-<p>界面简洁清晰：系统界面要求简单明了，操作简单，用户操作容易上手。</p>
-<p>储存性能高：高考志愿智能推荐系统中需要存储的信息有很多，所以对系统的存储量要求很高，因此数据库就应该很强大，才能保证信息能安全稳定的进行存储；</p>
-<p>易学性：该系统在操作上必须简单好上手，没有很多复杂的操作，只需要简单的进行学习就能操作该系统。</p>
-<p>稳定性：要求高考志愿智能推荐系统运行要稳定，界面清楚、字体清晰等。</p>
-<h1 id="4系统总体设计与实现"><a href="#4系统总体设计与实现" class="headerlink" title="4系统总体设计与实现"></a>4系统总体设计与实现</h1><h2 id="4-1总体设计"><a href="#4-1总体设计" class="headerlink" title="4.1总体设计"></a>4.1总体设计</h2><p>班级综合测评管理系统采用了结构化开发的方法。这种开发方法的优点是控制性比较强，开发过程中采用了结构化和模块化的设计思想，自顶向下，从总体到部分，合理划分系统的结构和模块。结构化开发时使用模块式开发，各模块之间互不影响，方便系统的开发与管理。 </p>
-<p>本系统的设计是基于 B&#x2F;S架构的三层体系结构，也就是浏览器和服务器结构。计算机技术发展的速度非常快，以前的设计结构都以C&#x2F;S的模式为主，也就是客户端和服务端模式。但随着网页技术的发展，越来越多的用户习惯于使用浏览器。现在的网页技术可以在浏览器中实现非常漂亮的效果，以前的单一低调的客户端页面已经无法满足用户的需求。在B&#x2F;S这种结构下，技术人员可以很轻松的设计出用户所需要的工作界面，页面代码通过浏览器进行解析展示，在浏览器中不做过多的事务逻辑的处理。主要的事务逻辑放在服务端进行处理。这样用户的电脑就不会承载过多的东西，只需要浏览器展示即可。对于开发人员也很方便进行系统的维护和升级。开发人员只需要在服务端进行系统的维护就可以了。使用Java这样的跨平台性非常好的语言，这样的开发模式更加的方便，高效。本系统合理的进行了模块划分和组合，因此由于各个模块之间基本上是相互独立的，所以每个模块都可以独立的被解释、执行、调试和修改，让繁琐的系统设计工作简单化。系统总体设计图如下图4-1所示：</p>
-<p>​                                                            <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-72be764.png" alt="image-20230317220615789"></p>
-<p>​                                                                                             </p>
-<h1 id="5-系统功能的详细设计与实现"><a href="#5-系统功能的详细设计与实现" class="headerlink" title="5 系统功能的详细设计与实现"></a>5 系统功能的详细设计与实现</h1><h2 id="5-1-管理员功能模块"><a href="#5-1-管理员功能模块" class="headerlink" title="5.1 管理员功能模块"></a>5.1 管理员功能模块</h2><p>管理员输入账号和密码，选择登录角色进行登录，管理员登录界面如图5-1所示：</p>
-<p>​                                </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-7409.png" alt="image-20230317220107033"> </p>
-<p>管理员功能：管理员登录系统后，能对首页、个人中心、学生管理、教师管理、班级管理、综合测评管理进行操作。管理员功能如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-7c5a607.png" alt="image-20230317220208913"> </p>
-<p>学生管理：在学生管理页面，可以对索引、学号、学生姓名、性别、班级、学生手机、班级、教师工号等内容进行详情、修改和删除等操作，如图5-3所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-53f97ee.png" alt="image-20230317220220548"></p>
-<p>教师管理：在教师管理页面，可以对索引、教师工号、教师姓名、性别、照片、教师电话等内容进行详情、修改和删除等操作，如图5-4所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-837f00a.png" alt="image-20230317220228906"></p>
-<p>班级管理：在班级管理页面，可以对索引、班级等内容进行修改和删除等操作，如图5-5所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-6617417.png" alt="image-20230317220244334"></p>
-<p>综合测评管理：在综合测评管理页面，可以对索引、学号、学生姓名、教师工号、教师姓名、班级、德育、智育、体育、综合成绩、录入时间等内容进行详情，修改和删除等操作，如图5-6所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-5738607.png" alt="image-20230317220254023"></p>
-<h2 id="5-2学生功能模块"><a href="#5-2学生功能模块" class="headerlink" title="5.2学生功能模块"></a>5.2学生功能模块</h2><p>学生功能：学生登录到班级综合测评管理系统后，可以对首页、个人中心、综合测评管理等进行操作，如图5-7所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-771b62d.png" alt="image-20230317220303181"></p>
-<p>个人中心：学生可以将学号、学生姓名、性别、头像、学生手机、班级、教师工号等个人信息进行修改，还能修改密码，如图5-8所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-c26ccd3.png" alt="image-20230317220312921"></p>
-<p>综合测评管理：在综合测评管理页面，可以对索引、学号、学生姓名、教师工号、教师姓名、班级、德育、智育、体育、综合成绩、录入时间等内容进行详情操作，如图5-9所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-97dac0b.png" alt="image-20230317220329628"></p>
-<h2 id="5-3教师功能模块"><a href="#5-3教师功能模块" class="headerlink" title="5.3教师功能模块"></a>5.3教师功能模块</h2><p>教师功能：教师登录到班级综合测评管理系统后，可以对首页、个人中心、学生管理、综合测评管理等进行操作，如图5-10所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-ee5abc6.png" alt="image-20230317220340892"></p>
-<p>个人中心：教师可以将教师工号、教师姓名、性别、照片、教师电话等个人信息进行修改，还能修改密码，如图5-11所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-366507a.png" alt="image-20230317220348873"></p>
-<p>学生管理：在学生管理页面，可以查看对索引、学号、学生姓名、性别、头像、学生手机、班级、教师工号等内容进行详细和综合测评等操作，如图5-12所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-a06a5f2.png" alt="image-20230317220358218"></p>
-<p>综合测评管理：在综合测评管理页面，可以对索引、学号、学生姓名、教师工号、教师姓名、班级、德育、智育、体育、综合成绩、录入时间等内容进行详情、修改和删除等操作，如图5-13所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-a5d6f24.png" alt="image-20230317220405718"></p>
-<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -3456,7 +3729,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">104</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -3516,12 +3789,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">543k</span>
+    <span title="站点总字数">549k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:13</span>
+    <span title="站点阅读时长">8:20</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
