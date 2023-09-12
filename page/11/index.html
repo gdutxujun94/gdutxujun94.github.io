@@ -186,6 +186,409 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/null.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/null.html" class="post-title-link" itemprop="url">Android 启动系统相机，相册，裁剪图片及6.0权限管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-12-08 14:10:13" itemprop="dateCreated datePublished" datetime="2016-12-08T14:10:13+08:00">2016-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-18 22:16:02" itemprop="dateModified" datetime="2021-04-18T22:16:02+08:00">2021-04-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在日常开发中，我们经常需要用到上传图片的 功能，这个时候通常有两种做法，第一种，从相机获取，第二种，从相册获取。今天这篇博客主要讲解利用系统的Intent怎样获取？</p>
+<p>主要内容如下</p>
+<ul>
+<li>怎样通过相机获取我们的图片</li>
+<li>怎样启动相册获取我们想要的图片</li>
+<li>在Android 6.0中的动态权限处理】</li>
+<li>调用系统Intent和自定义相册的优缺点对比</li>
+</ul>
+<h2 id="怎样通过相机获取我们的图片"><a href="#怎样通过相机获取我们的图片" class="headerlink" title="怎样通过相机获取我们的图片"></a>怎样通过相机获取我们的图片</h2><p>总共有两种方式，</p>
+<h3 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h3><p>第一步，通过 MediaStore.ACTION_IMAGE_CAPTURE 启动我们的相机</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">pIntent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(MediaStore.ACTION_IMAGE_CAPTURE);<span class="comment">//调用摄像头action</span></span><br><span class="line">startActivityForResult(pIntent, INTENT_CODE_IMAGE_CAPTURE1);<span class="comment">//requestcode</span></span><br></pre></td></tr></table></figure>
+
+<p>第二步，在onActivityResult进行处理，，核心代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onActivityResult</span><span class="params">(<span class="type">int</span> requestCode, <span class="type">int</span> resultCode, Intent data)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">        <span class="keyword">case</span> INTENT_CODE_IMAGE_CAPTURE1:</span><br><span class="line">            <span class="keyword">if</span> (resultCode == RESULT_OK) &#123;</span><br><span class="line">                <span class="type">Bundle</span> <span class="variable">pBundle</span> <span class="operator">=</span> data.getExtras(); <span class="comment">//从intent对象中获取数据，</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (pBundle != <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="type">Bitmap</span> <span class="variable">pBitmap</span> <span class="operator">=</span> (Bitmap) pBundle.get(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">                    <span class="keyword">if</span> (pBitmap != <span class="literal">null</span>) &#123;</span><br><span class="line">                        mIv.setImageBitmap(pBitmap);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="第二种-方式"><a href="#第二种-方式" class="headerlink" title="第二种 方式"></a>第二种 方式</h3><p>第一步，通过 MediaStore.ACTION_IMAGE_CAPTURE 启动相机，并指定 MediaStore.EXTRA_OUTPUT ，intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mFile)); 传入我们的URI，这样，最终返回的信息会存储在我们的mFile中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">startCameraWithHighBitmap</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//确定存储拍照得到的图片文件路径</span></span><br><span class="line">    <span class="keyword">if</span> (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">        mFile = <span class="keyword">new</span> <span class="title class_">File</span>(Environment.getExternalStorageDirectory(),</span><br><span class="line">                getName());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;请插入sd卡&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        mFile.createNewFile();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();</span><br><span class="line">    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">    <span class="comment">//加载Uri型的文件路径</span></span><br><span class="line">    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mFile));</span><br><span class="line">    <span class="comment">//向onActivityResult发送intent，requestCode为INTENT_CODE_IMAGE_CAPTURE2</span></span><br><span class="line">    startActivityForResult(intent, INTENT_CODE_IMAGE_CAPTURE2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>第二步：在onActivityResult进行处理，并对图片进行相应的压缩，防止在大图片的情况下发生OOM</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> INTENT_CODE_IMAGE_CAPTURE2:</span><br><span class="line">    <span class="keyword">if</span> (resultCode == RESULT_OK) &#123;</span><br><span class="line">        <span class="type">Bitmap</span> <span class="variable">bitmap</span> <span class="operator">=</span> ImageZip.decodeSampledBitmapFromFile(mFile.getAbsolutePath(),</span><br><span class="line">                mWidth, mHeight);</span><br><span class="line">        mIv.setImageBitmap(bitmap);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title function_">decodeSampledBitmapFromFile</span><span class="params">(String pathName, <span class="type">int</span> reqWidth, <span class="type">int</span> reqHeight)</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> BitmapFactory.<span class="type">Options</span> <span class="variable">options</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BitmapFactory</span>.Options();</span><br><span class="line">        options.inJustDecodeBounds = <span class="literal">true</span>;</span><br><span class="line">        BitmapFactory.decodeFile(pathName, options);</span><br><span class="line">        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);</span><br><span class="line">        options.inJustDecodeBounds = <span class="literal">false</span>;</span><br><span class="line">        <span class="type">Bitmap</span> <span class="variable">src</span> <span class="operator">=</span> BitmapFactory.decodeFile(pathName, options);</span><br><span class="line"><span class="comment">//        return createScaleBitmap(src, reqWidth, reqHeight, options.inSampleSize);</span></span><br><span class="line">        <span class="keyword">return</span> src;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">calculateInSampleSize</span><span class="params">(BitmapFactory.Options options,</span></span><br><span class="line"><span class="params">                                         <span class="type">int</span> reqWidth, <span class="type">int</span> reqHeight)</span> &#123;</span><br><span class="line">    <span class="comment">// 源图片的高度和宽度</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> options.outHeight;</span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">width</span> <span class="operator">=</span> options.outWidth;</span><br><span class="line">    <span class="type">int</span> <span class="variable">inSampleSize</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">halfHeight</span> <span class="operator">=</span> height / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">halfWidth</span> <span class="operator">=</span> width / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// Calculate the largest inSampleSize value that is a power of 2 and keeps both</span></span><br><span class="line">        <span class="comment">// height and width larger than the requested height and width.</span></span><br><span class="line">        <span class="keyword">while</span> ((halfHeight / inSampleSize) &gt; reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) &#123;</span><br><span class="line">            inSampleSize *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inSampleSize;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="两种方法的区别"><a href="#两种方法的区别" class="headerlink" title="两种方法的区别"></a>两种方法的区别</h3><p>第一种方法获取的bitmap是被缩放的bitmap，第二种方法获取的bitmap是完整的bitmap，实际使用中根据需求情况决定使用哪一种方法。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.android.com/reference/android/provider/MediaStore.html#ACTION_IMAGE_CAPTURE">官网参考地址</a></p>
+<hr>
+<h2 id="怎样启动相册获取我们想要的图片"><a href="#怎样启动相册获取我们想要的图片" class="headerlink" title="怎样启动相册获取我们想要的图片"></a>怎样启动相册获取我们想要的图片</h2><p>第一步，通过 Intent.ACTION_GET_CONTENT 这个Intent，并设置相应的type，启动相册。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(Intent.ACTION_GET_CONTENT, <span class="literal">null</span>);</span><br><span class="line">i.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, <span class="string">&quot;image/*&quot;</span>);</span><br><span class="line">startActivityForResult(i, INTENT_CODE_IMAGE_GALLERY1);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 第二步，在onActivityResult中对返回的uri数据进行处理</p>
+<ul>
+<li>需要注意的是：这里我们需要注意是不是MIUI系统，如果不是MIUI系统，我们只需要进行一下处理，就OK了</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">setPhotoForNormalSystem</span><span class="params">(Intent data)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">filePath</span> <span class="operator">=</span> getRealPathFromURI(data.getData());</span><br><span class="line">    <span class="type">Bitmap</span> <span class="variable">bitmap</span> <span class="operator">=</span> ImageZip.decodeSampledBitmapFromFile(filePath, mWidth, mHeight);</span><br><span class="line">    mIv.setImageBitmap(bitmap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 解析Intent.getdata()得到的uri为String型的filePath</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> contentUri</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getRealPathFromURI</span><span class="params">(Uri contentUri)</span> &#123;</span><br><span class="line">    String[] proj = &#123;MediaStore.Audio.Media.DATA&#125;;</span><br><span class="line">    <span class="type">Cursor</span> <span class="variable">cursor</span> <span class="operator">=</span> managedQuery(contentUri, proj, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">    <span class="type">int</span> <span class="variable">column_index</span> <span class="operator">=</span> cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);</span><br><span class="line">    cursor.moveToFirst();</span><br><span class="line">    <span class="keyword">return</span> cursor.getString(column_index);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果是MIUI系统，我们需要进行一下处理</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private void setPhotoForMiuiSystem(Intent data) &#123;</span><br><span class="line">    Uri localUri = data.getData();</span><br><span class="line">    String scheme = localUri.getScheme();</span><br><span class="line">    String imagePath = &quot;&quot;;</span><br><span class="line">    if (&quot;content&quot;.equals(scheme)) &#123;</span><br><span class="line">        String[] filePathColumns = &#123;MediaStore.Images.Media.DATA&#125;;</span><br><span class="line">        Cursor c = getContentResolver().query(localUri, filePathColumns, null, null, null);</span><br><span class="line">        c.moveToFirst();</span><br><span class="line">        int columnIndex = c.getColumnIndex(filePathColumns[0]);</span><br><span class="line">        imagePath = c.getString(columnIndex);</span><br><span class="line">        c.close();</span><br><span class="line">    &#125; else if (&quot;file&quot;.equals(scheme)) &#123;//小米4选择云相册中的图片是根据此方法获得路径</span><br><span class="line">        imagePath = localUri.getPath();</span><br><span class="line">    &#125;</span><br><span class="line">    Bitmap bitmap = ImageZip.decodeSampledBitmapFromFile(imagePath, mWidth, mHeight);</span><br><span class="line">    mIv.setImageBitmap(bitmap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>在代码中的体现如下，即判断是否是MIUI系统，对于不同的系统采用不同的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onActivityResult</span><span class="params">(<span class="type">int</span> requestCode, <span class="type">int</span> resultCode, Intent data)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">if</span> (resultCode != RESULT_OK) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">        <span class="keyword">case</span> INTENT_CODE_IMAGE_GALLERY1:</span><br><span class="line">            <span class="keyword">if</span> (SystemUtils.isMIUI()) &#123;</span><br><span class="line">                setPhotoForMiuiSystem(data);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                setPhotoForNormalSystem(data);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Android6-0动态权限管理"><a href="#Android6-0动态权限管理" class="headerlink" title="Android6.0动态权限管理"></a>Android6.0动态权限管理</h2><p>我们知道在Android6.0以上的系统，有一些权限需要动态授予 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">group:android.permission-group.CONTACTS</span><br><span class="line">  permission:android.permission.WRITE_CONTACTS</span><br><span class="line">  permission:android.permission.GET_ACCOUNTS</span><br><span class="line">  permission:android.permission.READ_CONTACTS</span><br><span class="line"></span><br><span class="line">group:android.permission-group.PHONE</span><br><span class="line">  permission:android.permission.READ_CALL_LOG</span><br><span class="line">  permission:android.permission.READ_PHONE_STATE</span><br><span class="line">  permission:android.permission.CALL_PHONE</span><br><span class="line">  permission:android.permission.WRITE_CALL_LOG</span><br><span class="line">  permission:android.permission.USE_SIP</span><br><span class="line">  permission:android.permission.PROCESS_OUTGOING_CALLS</span><br><span class="line">  permission:com.android.voicemail.permission.ADD_VOICEMAIL</span><br><span class="line"></span><br><span class="line">group:android.permission-group.CALENDAR</span><br><span class="line">  permission:android.permission.READ_CALENDAR</span><br><span class="line">  permission:android.permission.WRITE_CALENDAR</span><br><span class="line"></span><br><span class="line">group:android.permission-group.CAMERA</span><br><span class="line">  permission:android.permission.CAMERA</span><br><span class="line"></span><br><span class="line">group:android.permission-group.SENSORS</span><br><span class="line">  permission:android.permission.BODY_SENSORS</span><br><span class="line"></span><br><span class="line">group:android.permission-group.LOCATION</span><br><span class="line">  permission:android.permission.ACCESS_FINE_LOCATION</span><br><span class="line">  permission:android.permission.ACCESS_COARSE_LOCATION</span><br><span class="line"></span><br><span class="line">group:android.permission-group.STORAGE</span><br><span class="line">  permission:android.permission.READ_EXTERNAL_STORAGE</span><br><span class="line">  permission:android.permission.WRITE_EXTERNAL_STORAGE</span><br><span class="line"></span><br><span class="line">group:android.permission-group.MICROPHONE</span><br><span class="line">  permission:android.permission.RECORD_AUDIO</span><br><span class="line"></span><br><span class="line">group:android.permission-group.SMS</span><br><span class="line">  permission:android.permission.READ_SMS</span><br><span class="line">  permission:android.permission.RECEIVE_WAP_PUSH</span><br><span class="line">  permission:android.permission.RECEIVE_MMS</span><br><span class="line">  permission:android.permission.RECEIVE_SMS</span><br><span class="line">  permission:android.permission.SEND_SMS</span><br><span class="line">  permission:android.permission.READ_CELL_BROADCASTS</span><br></pre></td></tr></table></figure>
+
+<p>我们这里容易 得知读取相机需要的权限有，写sd卡权限，读取camera权限，这两个权限都需要动态授予。</p>
+<h3 id="这里我们以检查是否授予camera权限为例子讲解"><a href="#这里我们以检查是否授予camera权限为例子讲解" class="headerlink" title="这里我们以检查是否授予camera权限为例子讲解"></a>这里我们以检查是否授予camera权限为例子讲解</h3><p>第一步，在启动相机的时候检查时候已经授予camera权限，没有的话 ，请求camera权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">if (ContextCompat.checkSelfPermission(this, permission)</span><br><span class="line">        != PackageManager.PERMISSION_GRANTED) &#123;//还没有授予权限</span><br><span class="line">    if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) &#123;</span><br><span class="line">        Toast.makeText(this, &quot;您已禁止该权限，需要重新开启。&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        ActivityCompat.requestPermissions(this, new String[]&#123;permission&#125;,</span><br><span class="line">                request_camera2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;// 已经授予权限</span><br><span class="line">    startCameraWithHighBitmap();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private void startCameraWithHighBitmap() &#123;</span><br><span class="line">    //确定存储拍照得到的图片文件路径</span><br><span class="line">    if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line">        mFile = new File(Environment.getExternalStorageDirectory(),</span><br><span class="line">                getName());</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Toast.makeText(this, &quot;请插入sd卡&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        mFile.createNewFile();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Intent intent = new Intent();</span><br><span class="line">    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">    //加载Uri型的文件路径</span><br><span class="line">    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mFile));</span><br><span class="line">    //向onActivityResult发送intent，requestCode为INTENT_CODE_IMAGE_CAPTURE2</span><br><span class="line">    startActivityForResult(intent, INTENT_CODE_IMAGE_CAPTURE2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>第二步:重写onRequestPermissionsResult方法，判断是否授权成功，成功的话启动相机，核心代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,</span><br><span class="line">                                       @NonNull int[] grantResults) &#123;</span><br><span class="line">    super.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    switch (requestCode) &#123;</span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        case request_camera2:</span><br><span class="line">            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                startCameraWithHighBitmap();</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // Permission Denied</span><br><span class="line">                Toast.makeText(this, &quot;Permission Denied&quot;, Toast</span><br><span class="line">                        .LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至于检查sd卡写权限的，这里不再阐述，有兴趣的话，可以下载源码看一下。</p>
+<p>关于Android6.0动态获取权限的，可以参考这一篇博客<a target="_blank" rel="external nofollow noopener noreferrer" href="http://gudong.name/%E6%8A%80%E6%9C%AF/2015/11/10/android_m_permission.html">在Android 6.0 设备上动态获取权限</a></p>
+<hr>
+<h2 id="调用系统Intent和自定义相册的优缺点对比"><a href="#调用系统Intent和自定义相册的优缺点对比" class="headerlink" title="调用系统Intent和自定义相册的优缺点对比"></a>调用系统Intent和自定义相册的优缺点对比</h2><h3 id="调用系统Intent启动相册"><a href="#调用系统Intent启动相册" class="headerlink" title="调用系统Intent启动相册"></a>调用系统Intent启动相册</h3><p>优点： 代码简洁</p>
+<p>缺点：对于不同的手机厂商，room往往被修改了，有时候调用系统的Intent，会有一些一项不到的bug， 不能实现多张图片的选择</p>
+<h3 id="自定义相册"><a href="#自定义相册" class="headerlink" title="自定义相册"></a>自定义相册</h3><p>优点： 实现的样式可以自己定制，可以实现多张图片的选择等</p>
+<p>缺点： 代码量稍微多一些</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>综上所述，对于本地相册的功能，本人还是强烈推荐自己实现，因为采用系统的，灵活性差，更重要的是，经常会有一些 莫名其妙的bug</p>
+<p>这里给大家推荐两种实现方式，一个是鸿洋大神以前写的，一个是GitHub的开源库。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/lmj623565791/article/details/39943731">Android 超高仿微信图片选择器 图片该这么加载</a></p>
+<p>Android仿微信图片上传，可以选择多张图片，缩放预览，拍照上传等</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zfdang/android-multiple-images-selector">android-multiple-images-selector</a></p>
+<hr>
+<h2 id="裁剪图片"><a href="#裁剪图片" class="headerlink" title="裁剪图片"></a>裁剪图片</h2><p>关于裁剪图片的Intent，网上的大多数做法是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Intent <span class="title function_">cropPic</span><span class="params">(Uri imageUri)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.android.camera.action.CROP&quot;</span>);</span><br><span class="line"></span><br><span class="line">    intent.putExtra(<span class="string">&quot;crop&quot;</span>, <span class="string">&quot;true&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置x,y的比例，截图方框就按照这个比例来截 若设置为0,0，或者不设置 则自由比例截图</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;aspectX&quot;</span>, <span class="number">2</span>);</span><br><span class="line">    intent.putExtra(<span class="string">&quot;aspectY&quot;</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 裁剪区的宽和高 其实就是裁剪后的显示区域 若裁剪的比例不是显示的比例，</span></span><br><span class="line">    <span class="comment">// 则自动压缩图片填满显示区域。若设置为0,0 就不显示。若不设置，则按原始大小显示</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;outputX&quot;</span>, <span class="number">200</span>);</span><br><span class="line">    intent.putExtra(<span class="string">&quot;outputY&quot;</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不知道有啥用。。可能会保存一个比例值 需要相关文档啊</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;scale&quot;</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// true的话直接返回bitmap，可能会很占内存 不建议</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;return-data&quot;</span>, <span class="literal">false</span>);</span><br><span class="line">    <span class="comment">// 上面设为false的时候将MediaStore.EXTRA_OUTPUT即&quot;output&quot;关联一个Uri</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;output&quot;</span>, imageUri);</span><br><span class="line">    <span class="comment">// 看参数即可知道是输出格式</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;outputFormat&quot;</span>, Bitmap.CompressFormat.JPEG.toString());</span><br><span class="line">    <span class="comment">// 面部识别 这里用不上</span></span><br><span class="line">    intent.putExtra(<span class="string">&quot;noFaceDetection&quot;</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> intent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当你运行代码的时候，部分设备会报错，大致的意思是：com.android.camera.action.CROP 的Activity  not found</p>
+<p>解决方法，我们可以捕获一下异常，防止发生崩溃，并弹出吐司提醒用户不支持裁剪功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> IntentUtils.cropPic(Uri.fromFile(mF));</span><br><span class="line">    startActivityForResult(intent,req_crop);</span><br><span class="line">&#125;<span class="keyword">catch</span>(ActivityNotFoundException a)&#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">errorMessage</span> <span class="operator">=</span> <span class="string">&quot;Your device doesn&#x27;t support the crop action!&quot;</span>;</span><br><span class="line">    <span class="type">Toast</span> <span class="variable">toast</span> <span class="operator">=</span> Toast.makeText(<span class="built_in">this</span>, errorMessage, Toast.LENGTH_SHORT);</span><br><span class="line">    toast.show();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当然，github上面有两个比较好的开源库</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/jdamcd/android-crop">android-crop</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/edmodo/cropper">cropper</a></p>
+<hr>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53411790">文章首发地址CSDN：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/53411790">http://blog.csdn.net/gdutxiaoxu/article/details/53411790</a></strong></p>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="http://download.csdn.net/detail/gdutxiaoxu/9698246">源码下载地址：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="http://download.csdn.net/detail/gdutxiaoxu/9698246">http://download.csdn.net/detail/gdutxiaoxu/9698246</a></strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/ce27b25b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/ce27b25b.html" class="post-title-link" itemprop="url"> Retrofit使用教程（一）- Retrofit入门详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2016-12-08 14:04:56 / 修改时间：20:03:26" itemprop="dateCreated datePublished" datetime="2016-12-08T14:04:56+08:00">2016-12-08</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Retrofit使用教程（一）-Retrofit入门详解"><a href="#Retrofit使用教程（一）-Retrofit入门详解" class="headerlink" title="Retrofit使用教程（一）- Retrofit入门详解"></a>Retrofit使用教程（一）- Retrofit入门详解</h1><hr>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52745491">转载请注明博客地址：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52745491">http://blog.csdn.net/gdutxiaoxu/article/details/52745491</a></strong></p>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/RetrofitDemo.git">源码下载地址：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/RetrofitDemo.git">https://github.com/gdutxiaoxu/RetrofitDemo.git</a></strong></p>
+<p><strong>本人已经好久没有更新 博客了，这次更新博客打算写一下retrofit的使用教程系列的 博客，写作思路大概如下</strong></p>
+<ul>
+<li>先从retrofit的基本使用讲起;</li>
+<li>接着将retrofit结合RxJava的使用;</li>
+<li>接着讲Retrofit的封装使用，（包括错误统一处理）;</li>
+<li>有时间和能力的话会尝试研究一下retrofit的 源码.</li>
+</ul>
+<h2 id="本篇博客主要讲解以下问题"><a href="#本篇博客主要讲解以下问题" class="headerlink" title="本篇博客主要讲解以下问题"></a>本篇博客主要讲解以下问题</h2><ul>
+<li>Retrofit简介</li>
+<li>Retrofit的简单使用例子</li>
+<li>Retrofit的get请求</li>
+<li>Retrofit的put请求（提交表单数据）</li>
+<li>如何为 retrofit添加header</li>
+<li>如何提交json数据</li>
+</ul>
+<h2 id="Retrofit简介"><a href="#Retrofit简介" class="headerlink" title="Retrofit简介"></a>Retrofit简介</h2><p>Retrofit是square开源的网络请求库，底层是使用OKHttp封装的，网络请求速度很快.</p>
+<h3 id="主要有一下几种请求方法"><a href="#主要有一下几种请求方法" class="headerlink" title="主要有一下几种请求方法"></a>主要有一下几种请求方法</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@GET</td>
+<td>表示这是一个GET请求</td>
+</tr>
+<tr>
+<td>@POST</td>
+<td>表示这个一个POST请求</td>
+</tr>
+<tr>
+<td>@PUT</td>
+<td>表示这是一个PUT请求</td>
+</tr>
+<tr>
+<td>@DELETE</td>
+<td>表示这是一个DELETE请求</td>
+</tr>
+<tr>
+<td>@HEAD</td>
+<td>表示这是一个HEAD请求</td>
+</tr>
+<tr>
+<td>@OPTIONS</td>
+<td>表示这是一个OPTION请求</td>
+</tr>
+<tr>
+<td>@PATCH</td>
+<td>表示这是一个PAT请求</td>
+</tr>
+</tbody></table>
+<h3 id="各种请求注解的意思"><a href="#各种请求注解的意思" class="headerlink" title="各种请求注解的意思"></a>各种请求注解的意思</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Headers</td>
+<td>添加请求头</td>
+</tr>
+<tr>
+<td>@Path</td>
+<td>替换路径</td>
+</tr>
+<tr>
+<td>@Query</td>
+<td>替代参数值，通常是结合get请求的</td>
+</tr>
+<tr>
+<td>@FormUrlEncoded</td>
+<td>用表单数据提交</td>
+</tr>
+<tr>
+<td>@Field</td>
+<td>替换参数值，是结合post请求的</td>
+</tr>
+</tbody></table>
+<h2 id="Retrofit的简单使用例子"><a href="#Retrofit的简单使用例子" class="headerlink" title="Retrofit的简单使用例子"></a>Retrofit的简单使用例子</h2><p>要使用retrofit请求网络数据，大概可以分为以下几步</p>
+<ul>
+<li>1)添加依赖，这里以AndroidStudio为例：在build.grale添加如下依赖</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> compile <span class="string">&#x27;com.squareup.retrofit2:retrofit:2.1.0&#x27;</span></span><br><span class="line">compile <span class="string">&#x27;com.squareup.retrofit2:converter-gson:2.1.0&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2） 创建Retrofit对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Retrofit</span> <span class="variable">retrofit</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Retrofit</span>.Builder()</span><br><span class="line">        <span class="comment">//使用自定义的mGsonConverterFactory</span></span><br><span class="line">        .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">        .baseUrl(<span class="string">&quot;http://apis.baidu.com/txapi/&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line">mApi = retrofit.create(APi.class);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3）发起网络请求</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mApi = retrofit.create(APi.class);</span><br><span class="line">Call&lt;News&gt; news = mApi.getNews(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;10&quot;</span>);</span><br><span class="line">news.enqueue(<span class="keyword">new</span> <span class="title class_">Callback</span>&lt;News&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onResponse</span><span class="params">(Call&lt;News&gt; call, Response&lt;News&gt; response)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onFailure</span><span class="params">(Call&lt;News&gt; call, Throwable t)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">APi</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Headers(&quot;apikey:81bf9da930c7f9825a3c3383f1d8d766&quot;)</span></span><br><span class="line">    <span class="meta">@GET(&quot;word/word&quot;)</span></span><br><span class="line">    Call&lt;News&gt; <span class="title function_">getNews</span><span class="params">(<span class="meta">@Query(&quot;num&quot;)</span> String num,<span class="meta">@Query(&quot;page&quot;)</span>String page)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>到此一个简单的使用retrofit的网络请求就完成了。</strong>接下来我们来了解retrofit的各种请求方式。</p>
+<hr>
+<h2 id="Retrofit的get请求"><a href="#Retrofit的get请求" class="headerlink" title="Retrofit的get请求"></a>Retrofit的get请求</h2><p>加入我们想请求这样的网址：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://apis.baidu.com/txapi/world/world?num=10&page=1%EF%BC%8Cheader%E4%B8%BA%22apikey:81bf9da930c7f9825a3c3383f1d8d766%22,%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E8%BF%99%E6%A0%B7%E8%AF%B7%E6%B1%82%EF%BC%9A">http://apis.baidu.com/txapi/world/world?num=10&amp;page=1，header为&quot;apikey:81bf9da930c7f9825a3c3383f1d8d766&quot;,我们可以这样请求：</a></p>
+<p>第一步，在interface Api中 增加如下方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Headers(&quot;apikey:81bf9da930c7f9825a3c3383f1d8d766&quot;)</span></span><br><span class="line"><span class="meta">@GET(&quot;word/word&quot;)</span></span><br><span class="line">Call&lt;News&gt; <span class="title function_">getNews</span><span class="params">(<span class="meta">@Query(&quot;num&quot;)</span> String num,<span class="meta">@Query(&quot;page&quot;)</span>String page)</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>第二部，在代码里面请求</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建retrofit对象</span></span><br><span class="line"><span class="type">Retrofit</span> <span class="variable">retrofit</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Retrofit</span>.Builder()</span><br><span class="line">        <span class="comment">//使用自定义的mGsonConverterFactory</span></span><br><span class="line">        .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">        .baseUrl(<span class="string">&quot;http://apis.baidu.com/txapi/&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line"><span class="comment">// 实例化我们的mApi对象</span></span><br><span class="line">mApi = retrofit.create(APi.class); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用我们的响应的方法</span></span><br><span class="line">Call&lt;News&gt; news = mApi.getNews(number, page);</span><br><span class="line">news.enqueue(<span class="keyword">new</span> <span class="title class_">Callback</span>&lt;News&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onResponse</span><span class="params">(Call&lt;News&gt; call, Response&lt;News&gt; response)</span> &#123;</span><br><span class="line">        <span class="type">News</span> <span class="variable">body</span> <span class="operator">=</span> response.body();</span><br><span class="line">        Logger.i(<span class="string">&quot;onResponse:   =&quot;</span>+body.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onFailure</span><span class="params">(Call&lt;News&gt; call, Throwable t)</span> &#123;</span><br><span class="line">        Logger.i(<span class="string">&quot;onResponse:   =&quot;</span>+t.getMessage());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="解释说明"><a href="#解释说明" class="headerlink" title="解释说明"></a>解释说明</h3><p>假设BaseUrl是<a target="_blank" rel="external nofollow noopener noreferrer" href="http://apis.baidu.com/txapi/%E7%9A%84%E5%89%8D%E6%8F%90%E4%B8%8B">http://apis.baidu.com/txapi/的前提下</a></p>
+<ul>
+<li>1）其中 @GET(“word&#x2F;word”)会追加到baseUrl ：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://apis.baidu.com/txapi/%E7%9A%84%E5%90%8E%E9%9D%A2%EF%BC%8C%E5%8D%B3%E5%8F%98%E6%88%90%EF%BC%9Ahttp://apis.baidu.com/txapi/world/world">http://apis.baidu.com/txapi/的后面，即变成：http://apis.baidu.com/txapi/world/world</a></li>
+<li>2）@Query(“num”) String num,@Query(“page”)String page；分别对应键值的名称与值。会追加到<a target="_blank" rel="external nofollow noopener noreferrer" href="http://apis.baidu.com/txapi/world/world%E7%9A%84%E5%90%8E%E9%9D%A2%EF%BC%8C%E8%AF%B7%E6%B1%82%E7%BD%91%E5%9D%80%E5%8D%B3%E5%8F%98%E6%88%90:http://apis.baidu.com/txapi/world/world?num=10&page=1">http://apis.baidu.com/txapi/world/world的后面，请求网址即变成:http://apis.baidu.com/txapi/world/world?num=10&amp;page=1</a></li>
+<li>3）  @Headers(“apikey:81bf9da930c7f9825a3c3383f1d8d766”)是 在基础之上为 其添加响应头</li>
+<li>4）如果想继续增加参数，只需要在方法参数追加这样的形式就OK了：<br> ,@Query(“page”)String page</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Headers(&quot;apikey:81bf9da930c7f9825a3c3383f1d8d766&quot;)</span></span><br><span class="line"><span class="meta">@GET(&quot;word/word&quot;)</span></span><br><span class="line">Call&lt;News&gt; <span class="title function_">getNews</span><span class="params">(<span class="meta">@Query(&quot;num&quot;)</span> String num,<span class="meta">@Query(&quot;page&quot;)</span>String page，<span class="meta">@Query(&quot;type&quot;)</span> String type)</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>5)加入我们想要请求这样的网址<a target="_blank" rel="external nofollow noopener noreferrer" href="http://apis.baidu.com/txapi/tiyu/tiyu?num=10&page=1%EF%BC%8C,%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E8%BF%99%E6%A0%B7%E5%86%99">http://apis.baidu.com/txapi/tiyu/tiyu?num=10&amp;page=1，,我们可以这样写</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Headers(&#123;&quot;apikey:81bf9da930c7f9825a3c3383f1d8d766&quot; ,&quot;Content-Type:application/json&quot;&#125;)</span></span><br><span class="line"><span class="meta">@GET(&quot;&#123;type&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line">Call&lt;News&gt; <span class="title function_">tiYu</span><span class="params">(<span class="meta">@Path(&quot;type&quot;)</span> String type, <span class="meta">@Query(&quot;num&quot;)</span> String num,<span class="meta">@Query(&quot;page&quot;)</span>String page)</span>;</span><br><span class="line">String type=<span class="string">&quot;tiyu&quot;</span>;</span><br><span class="line">Call&lt;News&gt; news = api.tiYu(type,number, page);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="retrofit的post请求"><a href="#retrofit的post请求" class="headerlink" title="retrofit的post请求"></a>retrofit的post请求</h2><p>假如我们想要 请求这样的网址<a target="_blank" rel="external nofollow noopener noreferrer" href="http://apis.baidu.com/txapi/world/world?%E4%BB%A5post%E7%9A%84">http://apis.baidu.com/txapi/world/world?以post的</a> 方式提交这样的 数据：num&#x3D;10&amp;page&#x3D;1，我们可以写成 如下的 样子，注意post的时候必须使用@Field这种形式的注解，而不是使用@Query这种形式的注解，其他的 与get请求一样，这样只给出核心代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FormUrlEncoded</span></span><br><span class="line"><span class="meta">@Headers(&#123;&quot;apikey:81bf9da930c7f9825a3c3383f1d8d766&quot; ,&quot;Content-Type:application/json&quot;&#125;)</span></span><br><span class="line"><span class="meta">@POST(&quot;world/world&quot;)</span></span><br><span class="line">Call&lt;News&gt; <span class="title function_">postNews</span><span class="params">(<span class="meta">@Field(&quot;num&quot;)</span> String num, <span class="meta">@Field(&quot;page&quot;)</span>String page)</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="如何为retrofit添加请求头head"><a href="#如何为retrofit添加请求头head" class="headerlink" title="如何为retrofit添加请求头head"></a>如何为retrofit添加请求头head</h2><p>总共有以下几种方式</p>
+<h3 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h3><p>在OKHttpClient interceptors里面进行处理，这样添加的headKey不会覆盖掉 前面的 headKey</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">okHttpClient.interceptors().add(<span class="keyword">new</span> <span class="title class_">Interceptor</span>() &#123;  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">intercept</span><span class="params">(Interceptor.Chain chain)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">Request</span> <span class="variable">original</span> <span class="operator">=</span> chain.request();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Request customization: add request headers</span></span><br><span class="line">        Request.<span class="type">Builder</span> <span class="variable">requestBuilder</span> <span class="operator">=</span> original.newBuilder()</span><br><span class="line">                    .addHeader(<span class="string">&quot;header-key&quot;</span>, <span class="string">&quot;value1&quot;</span>)</span><br><span class="line">                    .addHeader(<span class="string">&quot;header-key&quot;</span>, <span class="string">&quot;value2&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> requestBuilder.build();</span><br><span class="line">        <span class="keyword">return</span> chain.proceed(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h3><p>同样在在OKHttpClient interceptors里面进行处理，这样添加的headKey会覆盖掉 前面的 headKey</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">okHttpClient.interceptors().add(<span class="keyword">new</span> <span class="title class_">Interceptor</span>() &#123;  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">intercept</span><span class="params">(Interceptor.Chain chain)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">Request</span> <span class="variable">original</span> <span class="operator">=</span> chain.request();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Request customization: add request headers</span></span><br><span class="line">        Request.<span class="type">Builder</span> <span class="variable">requestBuilder</span> <span class="operator">=</span> original.newBuilder()</span><br><span class="line">                .header(<span class="string">&quot;headerkey&quot;</span>, <span class="string">&quot;header-value&quot;</span>); <span class="comment">// &lt;-- this is the important line</span></span><br><span class="line"></span><br><span class="line">        <span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> requestBuilder.build();</span><br><span class="line">        <span class="keyword">return</span> chain.proceed(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h3><p>利用 retrofit自带的注解，比如我们想要添加这样的请求头：”apikey:81bf9da930c7f9825a3c3383f1d8d766” ,”Content-Type:application&#x2F;json”；则可以写成如下的 样式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Headers(&#123;&quot;apikey:81bf9da930c7f9825a3c3383f1d8d766&quot; ,&quot;Content-Type:application/json&quot;&#125;)</span></span><br><span class="line"><span class="meta">@GET(&quot;world/world&quot;)</span></span><br><span class="line">Call&lt;News&gt; <span class="title function_">getNews</span><span class="params">(<span class="meta">@Query(&quot;num&quot;)</span> String num,<span class="meta">@Query(&quot;page&quot;)</span>String page)</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="通过post提交json数据"><a href="#通过post提交json数据" class="headerlink" title="通过post提交json数据"></a>通过post提交json数据</h2><p>Post 提交JSON数据</p>
+<p>有时提交的数据量比较大时，用键值对的方式提交参数不太方便，Retrofit可以通过@Body注释，直接传递一个对象给请求主体，Retrofit通过JSON转化器，把对象映射成JSON数据。</p>
+<p>假设我们需要提交的数据为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;text&quot;</span>: <span class="string">&quot;my task title&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接口定义：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">TaskService</span> &#123;  </span><br><span class="line">    <span class="meta">@Headers(&#123;&quot;Content-Type: application/json&quot;,&quot;Accept:  application/json&quot;&#125;)</span></span><br><span class="line">    <span class="meta">@POST(&quot;/tasks&quot;)</span></span><br><span class="line">    Call&lt;Task&gt; <span class="title function_">createTask</span><span class="params">(<span class="meta">@Body</span> Task task)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>传递实体需要有Model：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Task</span> &#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="type">long</span> id;</span><br><span class="line">    <span class="keyword">private</span> String text;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Task</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Task</span><span class="params">(<span class="type">long</span> id, String text)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">        <span class="built_in">this</span>.text = text;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>客户端调用：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Task</span> <span class="variable">task</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Task</span>(<span class="number">1</span>, <span class="string">&quot;my task title&quot;</span>);  </span><br><span class="line">Call&lt;Task&gt; call = taskService.createTask(task);  </span><br><span class="line">call.enqueue(<span class="keyword">new</span> <span class="title class_">Callback</span>&lt;Task&gt;() &#123;&#125;); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这样，服务端得到的是JOSN数据：</li>
+</ul>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;text&quot;</span>: <span class="string">&quot;my task title&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>到此，这篇博客为止</p>
+<h2 id="题外话："><a href="#题外话：" class="headerlink" title="题外话："></a>题外话：</h2><p>其实retrofit在5月份实习的时候就接触了，之前为什么不写 博客了，因为网上的 使用教程很多，觉得没有必要。到后面学习的时候，发现retrofit的使用时 比较灵活的，并且使用方法也是相对较多的，于是，就写了retrofit这系列的使用博客。</p>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52745491">转载请注明博客地址：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="http://blog.csdn.net/gdutxiaoxu/article/details/52745491">http://blog.csdn.net/gdutxiaoxu/article/details/52745491</a></strong></p>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/RetrofitDemo.git">源码下载地址：</a><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxiaoxu/RetrofitDemo.git">https://github.com/gdutxiaoxu/RetrofitDemo.git</a></strong></p>
+<p><strong><a target="_blank" rel="external nofollow noopener noreferrer" href="http://square.github.io/retrofit/">参考官网地址</a><a target="_blank" rel="external nofollow noopener noreferrer" href="http://square.github.io/retrofit/">http://square.github.io/retrofit/</a></strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/aa8975a9.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1020,7 +1423,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">106</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1080,12 +1483,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">549k</span>
+    <span title="站点总字数">551k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:20</span>
+    <span title="站点阅读时长">8:21</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
