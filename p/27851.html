@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第一章 简介本次设计任务是要设计一个微信小程序学习资料销售平台，通过这个系统能够满足微信小程序学习资料销售平台的管理及用户的学习资料销售功能。系统的主要功能包括：首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等功能。 管理员可以根据系统给定的账号进行登录，登录后可以进入微信小程序学习资料销售平台对学习资料销售所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于微信小程序的学习资料销售平台，附源码、教程">
+<meta property="og:url" content="https://blog.junxu666.top/p/27851.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="第一章 简介本次设计任务是要设计一个微信小程序学习资料销售平台，通过这个系统能够满足微信小程序学习资料销售平台的管理及用户的学习资料销售功能。系统的主要功能包括：首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等功能。 管理员可以根据系统给定的账号进行登录，登录后可以进入微信小程序学习资料销售平台对学习资料销售所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a319.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a319.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-bc44.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-5538.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-5319.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-6718.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-de35.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a5fb.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-b132.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-dce4.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-f015.png">
+<meta property="article:published_time" content="2023-09-20T14:05:55.000Z">
+<meta property="article:modified_time" content="2023-09-20T16:12:50.838Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a319.png">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/27851.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>基于微信小程序的学习资料销售平台，附源码、教程 | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/27851.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于微信小程序的学习资料销售平台，附源码、教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-20 22:05:55" itemprop="dateCreated datePublished" datetime="2023-09-20T22:05:55+08:00">2023-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-21 00:12:50" itemprop="dateModified" datetime="2023-09-21T00:12:50+08:00">2023-09-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h2><p>本次设计任务是要设计一个微信小程序学习资料销售平台，通过这个系统能够满足微信小程序学习资料销售平台的管理及用户的学习资料销售功能。系统的主要功能包括：首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等功能。</p>
+<p>管理员可以根据系统给定的账号进行登录，登录后可以进入微信小程序学习资料销售平台对学习资料销售所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a319.png" alt="image-20230921001039765"></p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>前端：小程序</p>
+<p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea、微信开发者工具</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="第三章-总体设计"><a href="#第三章-总体设计" class="headerlink" title="第三章 总体设计"></a>第三章 总体设计</h2><p>根据微信小程序学习资料销售平台的功能需求，进行系统设计。</p>
+<p>前台功能：用户进入系统可以对我的首页、学习资料、购物车、我的等功能进行操作；在我的页面可以对我的收藏管理，用户充值，购物车，我的订单等进行操作。</p>
+<p>后台主要是管理员，管理员功能包括首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等；</p>
+<p>系统对这些功能进行整合，产生的功能结构图如下：</p>
+<p>​                               </p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a319.png" alt="image-20230921001039765"></p>
+<h2 id="第四章-系统功能的具体实现"><a href="#第四章-系统功能的具体实现" class="headerlink" title="第四章  系统功能的具体实现"></a>第四章  系统功能的具体实现</h2><h3 id="4-1小程序端"><a href="#4-1小程序端" class="headerlink" title="4.1小程序端"></a>4.1小程序端</h3><p>登录，用户通过输入账号和密码，并点击登录进行系统登录操作，如图4-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-bc44.png" alt="image-20230921000741819"></p>
+<p>用户注册，在用户注册页面通过填写账号、密码、确认密码、昵称、性别、手机等信息进行注册操作；如图4-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-5538.png" alt="image-20230921000749229"></p>
+<p>用户登陆小程序端，可以对首页、学习资料、购物车、我的等功能进行详细操作，如图4-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-5319.png" alt="image-20230921000800958"></p>
+<p>学习资料，在学习资料页面可以查看资料图片、资料名称、价格、资料编号、资料类型、下载链接、发布日期、资料简介等信息，用户可根据自身需要进行加入购物车、立即订购或收藏等操作管理；如图4-4所示。</p>
+<p>![image-20230921000814310](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230921000814310.png)</p>
+<p>我的订单，在我的订单页面可以查看未支付、已支付、已发货、已完成、已取消、已退款订单等内容；并对不同类型的订单进行处理。如图4-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-6718.png" alt="image-20230921000822506"></p>
+<p>用户，在我的页面可以对我的收藏管理、用户充值、购物车、我的订单等详细信息进行操作，如图4-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-de35.png" alt="image-20230921000832294"></p>
+<p>用户信息，在用户信息页面通过填写账号、密码、昵称、性别、手机等内容进行保存操作，如图4-7所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a5fb.png" alt="image-20230921000844578"></p>
+<h3 id="4-2-后台管理员功能模块"><a href="#4-2-后台管理员功能模块" class="headerlink" title="4.2 后台管理员功能模块"></a>4.2 后台管理员功能模块</h3><p>管理员登录，管理员通过输入账号、密码，并点击登录进行系统登录操作，如图4-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-b132.png" alt="image-20230921000903218"></p>
+<p>管理员登录系统后，可以对首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等功能进行相应操作，如图4-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-dce4.png" alt="image-20230921000912289"></p>
+<p>用户管理，在用户管理页面可以对索引、账号、昵称、性别、手机等内容进行详情、修改或删除等操作，如图4-10所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-f015.png" alt="image-20230921000920738"></p>
+<h2 id="第五章-源码咨询"><a href="#第五章-源码咨询" class="headerlink" title="第五章 源码咨询"></a>第五章 源码咨询</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/37306.html" rel="prev" title="Java基于微信小程序的自主购药系统">
+      <i class="fa fa-chevron-left"></i> Java基于微信小程序的自主购药系统
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/60790.html" rel="next" title="Java基于微信小程序的校园商铺平台">
+      Java基于微信小程序的校园商铺平台 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">第一章 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">第三章 总体设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">第四章  系统功能的具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%AB%AF"><span class="nav-number">4.1.</span> <span class="nav-text">4.1小程序端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E5%91%98%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 后台管理员功能模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%BA%90%E7%A0%81%E5%92%A8%E8%AF%A2"><span class="nav-number">5.</span> <span class="nav-text">第五章 源码咨询</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">567k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:35</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

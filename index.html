@@ -186,6 +186,915 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/0.html" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-25 21:00:26 / 修改时间：21:14:07" itemprop="dateCreated datePublished" datetime="2023-09-25T21:00:26+08:00">2023-09-25</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: Java基于SpringBoot 的数码论坛管理系统<br>categories: 毕业设计<br>date: 2023-09-20 18:05:55<br>tags:</p>
+<hr>
+<blockquote>
+<p>博主介绍：✌程序员徐师兄、7年大厂程序员经历。全网粉丝30W+、csdn博客专家、掘金&#x2F;华为云&#x2F;阿里云&#x2F;InfoQ等平台优质作者、专注于Java技术领域和毕业项目实战✌</p>
+</blockquote>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252109-140f.png"></p>
+<h2 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h2><p>本系统主要包括管理员和用户两个角色组成；主要包括：首页、个人中心、用户管理、分类管理、数码板块管理、数码评价管理、数码论坛管理、畅聊板块管理、系统管理等功能的管理系统。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-21dd.png" alt="image-20230925205508743"></p>
+<h2 id="第二章-技术栈"><a href="#第二章-技术栈" class="headerlink" title="第二章 技术栈"></a>第二章 技术栈</h2><p>开发语言：Java<br>框架：springboot<br>JDK版本：JDK1.8<br>服务器：tomcat7 或者 Tomcat 8<br>数据库：mysql 5.7（一定要5.7版本，8.0 有时候坑很多）<br>数据库工具：Navicat11<br>开发软件：eclipse&#x2F;myeclipse&#x2F;idea<br>Maven包：Maven3.3.9 (无强制要求)</p>
+<h2 id="第三章-具体分析"><a href="#第三章-具体分析" class="headerlink" title="第三章 具体分析"></a>第三章 具体分析</h2><p>考虑到实际生活中在数码论坛方面的需要以及对该系统认真的分析，将系统权限按管理员和用户这两类涉及用户划分。</p>
+<p>（1）系统功能需求</p>
+<p>登录系统后，主要模块包括首页、数码板块、数码评价、数码论坛、畅聊板块、新闻资讯、个人中心、后台管理等功能。系统功能用例图如图3-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-9a97.jpg" alt="img"></p>
+<p>图3-1系统功能用例图</p>
+<p>（2）管理员功能需求</p>
+<p>管理员登陆后，主要模块包括首页、个人中心、用户管理、分类管理、数码板块管理、数码评价管理、数码论坛管理、畅聊板块管理、系统管理等功能。管理员用例图如图3-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-f31b.jpg" alt="img"></p>
+<p>图3-2管理员用例图</p>
+<p>（3）用户功能需求</p>
+<p>教师登陆后，主要模块包括首页、个人中心、数码评价管理、数码论坛管理、畅聊板块管理等功能。用户用例图如图3-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-0712.jpg" alt="img"></p>
+<p>图3-3用户用例图</p>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><p>为了更好的去理清本系统整体思路，对该系统以结构图的形式表达出来，设计实现该数码论坛系统的功能结构图如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-21dd.png" alt="image-20230925205508743"></p>
+<h2 id="第五章-系统功能实现"><a href="#第五章-系统功能实现" class="headerlink" title="第五章 系统功能实现"></a>第五章 系统功能实现</h2><h3 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h3><p>数码论坛系统，在系统首页可以查看首页、数码板块、数码评价、数码论坛、畅聊板块、新闻资讯、个人中心、后台管理等内容，并进行详细操作；如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-ce76.jpg" alt="img"></p>
+<p>图5-1系统首页界面图</p>
+<p>数码板块，在数码板块页面可以查看综合评分、分类、品牌、产品定位、上市时间、点击次数等内容，并进行配置详情查看操作，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-6229.jpg" alt="img"></p>
+<p>图5-2数码板块界面图</p>
+<p>数码评价，在数码评价页面可以查看品牌、分类、评分、优点、缺点、用户账号、用户姓名、评级时间等内容，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-d87c.jpg" alt="img"></p>
+<p>图5-3数码评价界面图</p>
+<p>数码论坛，在数码论坛页面可以查看产品名称、品牌、分类、讨论类型、用户账号、用户姓名、发布时间等内容，如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-e93a.jpg" alt="img"></p>
+<p>图5-4数码论坛界面图</p>
+<p>  个人中心，在个人中心页面通过填写用户账号、密码、用户姓名、性别、年龄、上传图片、用户手机等内容进行更新信息，还可以根据需要对我的收藏进行详细操作，如图5-5所示。</p>
+<p>![img](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Group Containers&#x2F;UBF8T346G9.Office&#x2F;TemporaryItems&#x2F;msohtmlclip&#x2F;clip_image010.jpg)</p>
+<p>图5-5个人中心界面图</p>
+<h3 id="5-2-管理员功能模块"><a href="#5-2-管理员功能模块" class="headerlink" title="5.2 管理员功能模块"></a>5.2 管理员功能模块</h3><p>用户登录进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行系统操作，如图5-6所示。<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-670b.jpg" alt="img"></p>
+<p>图5-6管理员登录界面图</p>
+<p>管理员登录系统后，可以对首页、个人中心、用户管理、分类管理、数码板块管理、数码评价管理、数码论坛管理、畅聊板块管理、系统管理等功能进行相应的操作管理，如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-8bfa.jpg" alt="img"></p>
+<p>图5-7管理员功能界面图</p>
+<p>用户管理，在用户管理管理页面可以对索引、用户账号、用户姓名、性别、年龄、头像、用户手机等内容进行详情，修改和删除等操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-168b.jpg" alt="img"></p>
+<p>图5-8用户管理界面图</p>
+<p>数码板块管理，在数码板块管理页面可以对索引、产品名称、产品图片、综合评分、分类、品牌、产品定位、上市时间等内容进行详情，修改和删除等操作，如图5-9所示。<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-d139.jpg" alt="img"></p>
+<p>图5-9数码板块管理界面图</p>
+<p>数码评价管理，在数码评价管理页面可以对索引、产品名称、产品图片、品牌、分类、评分、优点、缺点、用户账号、用户姓名、评价时间等内容进行详情，修改，查看评论和删除等操作，如图5-10所示。<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-8e5b.jpg" alt="img"></p>
+<p>图5-10数码评价管理界面图</p>
+<p>数码论坛管理，在数码论坛管理页面可以对索引、产品名称、图片、品牌、分类、讨论类型、标题、用户账号、发布时间等内容进行查看，修改，查看评论和删除等操作，如图5-11所示。<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-fb9f.jpg" alt="img"></p>
+<p>图5-11数码论坛管理界面图</p>
+<h3 id="5-3-用户后台管理模块"><a href="#5-3-用户后台管理模块" class="headerlink" title="5.3 用户后台管理模块"></a>5.3 用户后台管理模块</h3><p>用户登录进入数码论坛系统后台可以对首页、个人中心、数码评价管理、数码论坛管理、畅聊板块管理等功能进行相应操作，如图5-12所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309252009-323b.jpg" alt="img"></p>
+<p>图5-12用户后台管理界面图</p>
+<h2 id="源码咨询"><a href="#源码咨询" class="headerlink" title="源码咨询"></a>源码咨询</h2><p>更多Java 项目见 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/category/java_bysj/">Java 精品项目</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxujun94/GraduationProject">Github 更多题目</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/60790.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/60790.html" class="post-title-link" itemprop="url">Java基于微信小程序的校园商铺平台</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-21 15:05:55" itemprop="dateCreated datePublished" datetime="2023-09-21T15:05:55+08:00">2023-09-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-25 21:09:56" itemprop="dateModified" datetime="2023-09-25T21:09:56+08:00">2023-09-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h2><p>今天，为大家带来的事基于微信小程序的校园商铺系统。本系统的主要意义在于，全力以赴为用户提供一个操作方便，界面简洁，信息直观的网上交易系统。使用该系统的用户，可以先浏览到最新上架的新品和最热门的产品，并可以注册成为本网站的用户，可以利用购物车选择自己想买的产品，然后向商铺提交订单，从而完成网上的交易流程。</p>
+<h2 id="第二章-技术栈"><a href="#第二章-技术栈" class="headerlink" title="第二章 技术栈"></a>第二章 技术栈</h2><p>前端：小程序</p>
+<p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea、微信开发者工具</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="第三章：总体设计"><a href="#第三章：总体设计" class="headerlink" title="第三章：总体设计"></a>第三章：总体设计</h2><p>根据校园商铺系统的功能需求，进行系统设计。</p>
+<p>前台功能：用户进入系统可以实现首页、商品信息、交流论坛、我的等进行操作；</p>
+<p>后台主要是管理员，管理员功能包括首页、个人中心、用户管理、商家管理、商品类型管理、商品信息管理、在线咨询管理、咨询回复管理、交流论坛、我的收藏管理、留言板管理、系统管理、订单管理等；</p>
+<p>系统对这些功能进行整合，产生的功能结构图如下图所示：</p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-2fa4.png" alt="image-20230923234544654"></p>
+<h2 id="第四章系统详细设计"><a href="#第四章系统详细设计" class="headerlink" title="第四章系统详细设计"></a>第四章系统详细设计</h2><h3 id="4-1-前台功能模块"><a href="#4-1-前台功能模块" class="headerlink" title="4.1 前台功能模块"></a>4.1 前台功能模块</h3><p>用户要登录微信小程序，则需要注册。在微信小程序的校园商铺系统里有两个用户可以进行登录，分别是用户和商家。用户注册：输入用户名，密码、姓名、性别、手机等信息进行用户注册；商家注册：输入账号、密码、商家姓名、性别、邮箱、联系电话等信息进行商家注册，如图4-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-5e71.png" alt="image-20230923234054866"></p>
+<p>​                                 </p>
+<p>前台登录：通过注册时输入账号、密码、选择登录的角色，进行登录，如图4-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-c751.png" alt="image-20230923234131874"></p>
+<p>商品信息：在商品信息页面，可以查看商品名称、价格、图片、商品类型、发布日期、账号、商家姓名、联系电话、点击次数、库存、商品详情等内容，也能对商品信息进行咨询，加入购物车，立即订购，评论或收藏等操作，如图4-4所示。</p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-c046.png" alt="image-20230923234430131"></p>
+<p>用户：在我的页面，可以对商品信息、在线咨询、咨询回复、用户充值、我要发贴、我的发贴、购物车、我的订单、留言板等功能进行相应的操作，如图4-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-8d1f.png" alt="image-20230923234455207"></p>
+<p>用户信息：点击用户信息，通过输入用户名、密码、姓名、性别、头像、手机等内容，点击保存来更新用户信息，也可以点击退出登录，退出系统，如图4-6所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-8d1f.png"></p>
+<h3 id="4-2后台功能模块"><a href="#4-2后台功能模块" class="headerlink" title="4.2后台功能模块"></a>4.2后台功能模块</h3><p>后台登录，通过输入账号和密码，选择角色等信息进行登录，登录到系统后台，进行相应的操作，如下图所示。 </p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-24aa.png" alt="image-20230923234218605"></p>
+<h4 id="4-2-1管理员功能模块"><a href="#4-2-1管理员功能模块" class="headerlink" title="4.2.1管理员功能模块"></a>4.2.1管理员功能模块</h4><p>登录到微信小程序校园商铺系统的后台，管理员可以对首页、个人中心、用户管理、商家管理、商品类型管理、商品信息管理、在线咨询管理、咨询回复管理、交流论坛、我的收藏管理、留言板管理、系统管理、订单管理等功能进行相应操作，如下图所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-2748.png" alt="image-20230923234234872"></p>
+<p>用户管理：在用户管理页面，可以对索引、用户名、姓名、性别、头像、手机等用户信息进行详情、修改和删除等操作，如下图所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-2748.png"></p>
+<p>商家管理：在商家管理页面，可以对索引、账号、商家姓名、性别、头像、邮箱、联系电话等商家信息进行详情、修改和删除等操作，如下图所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-fdf2.png" alt="image-20230923234253518"></p>
+<p>商品信息管理：在商品信息管理页面，可以对索引、商品名称、商品类型、图片、发布日期、账号、商家姓名、联系电话、价格、单限、库存等商品信息进行详情，修改，查看评论或删除等操作，如下图所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-d074.png" alt="image-20230923234304648"></p>
+<p>在线咨询管理：在在线咨询管理页面，可以对索引、编号、账号、商家姓名、咨询时间、用户名、姓名等信息进行详情、修改和删除等操作，如下图所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-d074.png"> </p>
+<p>咨询回复管理：在咨询回复管理页面，可以对索引、编号、用户名、姓名、回复时间、账号、商家姓名等信息进行详情、修改和删除等操作，如下图所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-9aae.png" alt="image-20230923234322691"></p>
+<p>交流论坛：在交流论坛页面，可以对索引、帖子标题、用户名、状态等信息进行详情、修改和删除等操作，如下图所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309232309-9aae.png"></p>
+<h2 id="六-源码咨询"><a href="#六-源码咨询" class="headerlink" title="六 源码咨询"></a><strong>六 源码咨询</strong></h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/category/java_bysj/">500 道Java 毕业设计精品项目</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/category/xiaochengxu/">200 道小程序毕业设计精品项目</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxujun94/GraduationProject">Github 更多题目</a></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/github/202309221509-c4055c.jpg" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/27851.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/27851.html" class="post-title-link" itemprop="url">基于微信小程序的学习资料销售平台，附源码、教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-20 22:05:55" itemprop="dateCreated datePublished" datetime="2023-09-20T22:05:55+08:00">2023-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-21 00:12:50" itemprop="dateModified" datetime="2023-09-21T00:12:50+08:00">2023-09-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h2><p>本次设计任务是要设计一个微信小程序学习资料销售平台，通过这个系统能够满足微信小程序学习资料销售平台的管理及用户的学习资料销售功能。系统的主要功能包括：首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等功能。</p>
+<p>管理员可以根据系统给定的账号进行登录，登录后可以进入微信小程序学习资料销售平台对学习资料销售所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a319.png" alt="image-20230921001039765"></p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>前端：小程序</p>
+<p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea、微信开发者工具</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="第三章-总体设计"><a href="#第三章-总体设计" class="headerlink" title="第三章 总体设计"></a>第三章 总体设计</h2><p>根据微信小程序学习资料销售平台的功能需求，进行系统设计。</p>
+<p>前台功能：用户进入系统可以对我的首页、学习资料、购物车、我的等功能进行操作；在我的页面可以对我的收藏管理，用户充值，购物车，我的订单等进行操作。</p>
+<p>后台主要是管理员，管理员功能包括首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等；</p>
+<p>系统对这些功能进行整合，产生的功能结构图如下：</p>
+<p>​                               </p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a319.png" alt="image-20230921001039765"></p>
+<h2 id="第四章-系统功能的具体实现"><a href="#第四章-系统功能的具体实现" class="headerlink" title="第四章  系统功能的具体实现"></a>第四章  系统功能的具体实现</h2><h3 id="4-1小程序端"><a href="#4-1小程序端" class="headerlink" title="4.1小程序端"></a>4.1小程序端</h3><p>登录，用户通过输入账号和密码，并点击登录进行系统登录操作，如图4-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-bc44.png" alt="image-20230921000741819"></p>
+<p>用户注册，在用户注册页面通过填写账号、密码、确认密码、昵称、性别、手机等信息进行注册操作；如图4-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-5538.png" alt="image-20230921000749229"></p>
+<p>用户登陆小程序端，可以对首页、学习资料、购物车、我的等功能进行详细操作，如图4-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-5319.png" alt="image-20230921000800958"></p>
+<p>学习资料，在学习资料页面可以查看资料图片、资料名称、价格、资料编号、资料类型、下载链接、发布日期、资料简介等信息，用户可根据自身需要进行加入购物车、立即订购或收藏等操作管理；如图4-4所示。</p>
+<p>![image-20230921000814310](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230921000814310.png)</p>
+<p>我的订单，在我的订单页面可以查看未支付、已支付、已发货、已完成、已取消、已退款订单等内容；并对不同类型的订单进行处理。如图4-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-6718.png" alt="image-20230921000822506"></p>
+<p>用户，在我的页面可以对我的收藏管理、用户充值、购物车、我的订单等详细信息进行操作，如图4-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-de35.png" alt="image-20230921000832294"></p>
+<p>用户信息，在用户信息页面通过填写账号、密码、昵称、性别、手机等内容进行保存操作，如图4-7所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-a5fb.png" alt="image-20230921000844578"></p>
+<h3 id="4-2-后台管理员功能模块"><a href="#4-2-后台管理员功能模块" class="headerlink" title="4.2 后台管理员功能模块"></a>4.2 后台管理员功能模块</h3><p>管理员登录，管理员通过输入账号、密码，并点击登录进行系统登录操作，如图4-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-b132.png" alt="image-20230921000903218"></p>
+<p>管理员登录系统后，可以对首页、个人中心、用户管理、资料类型管理、学习资料管理、系统管理、订单管理等功能进行相应操作，如图4-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-dce4.png" alt="image-20230921000912289"></p>
+<p>用户管理，在用户管理页面可以对索引、账号、昵称、性别、手机等内容进行详情、修改或删除等操作，如图4-10所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309210009-f015.png" alt="image-20230921000920738"></p>
+<h2 id="第五章-源码咨询"><a href="#第五章-源码咨询" class="headerlink" title="第五章 源码咨询"></a>第五章 源码咨询</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/37306.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/37306.html" class="post-title-link" itemprop="url">Java基于微信小程序的自主购药系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-20 18:05:55" itemprop="dateCreated datePublished" datetime="2023-09-20T18:05:55+08:00">2023-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-21 00:03:16" itemprop="dateModified" datetime="2023-09-21T00:03:16+08:00">2023-09-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h2><p>一个好的系统能将自助购药小程序管理手段提上一个新的台阶。系统内容可以随时更新，这点对于自助购药小程序拥有者来说是很重要，但这是传统的管理方式都无法做到的。自助购药小程序就可以每天更新，随时了解自助购药小程序的最新情况。</p>
+<p>自助购药小程序能够通过互联网得到广泛的、全面的宣传，让尽可能多的用户了解和熟知自助购药小程序的便捷高效，为管理者和用户提供了服务，节省人力、物力和时间，提高工作效率。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-3b1d.png" alt="image-20230920235733718"></p>
+<h2 id="第二章-技术栈"><a href="#第二章-技术栈" class="headerlink" title="第二章 技术栈"></a>第二章 技术栈</h2><p>前端：小程序</p>
+<p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea、微信开发者工具</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><p>一个完整的系统，可行性分析是必须要有的，因为他关系到系统生存问题，对开发的意义进行分析，能否通过本系统来补充线下自助购药小程序管理模式中的缺限，去解决其中的不足等，通过对本系统，不仅能使工作量不断地减少，还能使工作和管理的效率更加高。所以开发该系统能实现更大的意义和价值，系统完成后，能否达到预期效果就要通过可行性分析，分析之后，决定此系统是否开发。该自助购药小程序的开发设计中，对技术、经济、操作方面进行了可行性分析。</p>
+<h2 id="第四章系统设计"><a href="#第四章系统设计" class="headerlink" title="第四章系统设计"></a>第四章系统设计</h2><h3 id="4-1功能结构"><a href="#4-1功能结构" class="headerlink" title="4.1功能结构"></a>4.1功能结构</h3><p>为了更好的去理清本系统整体思路，对该系统以结构图的形式表达出来，设计实现该自助购药小程序的功能结构图如下所示：</p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-3b1d.png" alt="image-20230920235733718"></p>
+<p>​                           </p>
+<h3 id="4-2数据库设计"><a href="#4-2数据库设计" class="headerlink" title="4.2数据库设计"></a>4.2数据库设计</h3><h4 id="4-2-1-数据库E-x2F-R图"><a href="#4-2-1-数据库E-x2F-R图" class="headerlink" title="4.2.1 数据库E&#x2F;R图"></a>4.2.1 数据库E&#x2F;R图</h4><p>ER图是由实体及其关系构成的图，通过E&#x2F;R图可以清楚地描述系统涉及到的实体之间的相互关系。在系统中对一些主要的几个关键实体如下图：</p>
+<p>(1)用户注册E&#x2F;R图如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-e258.png" alt="image-20230920235747428"></p>
+<p>(2)药品信息E&#x2F;R图如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-0dbf.png" alt="image-20230920235759386"></p>
+<h2 id="第五章系统功能实现"><a href="#第五章系统功能实现" class="headerlink" title="第五章系统功能实现"></a>第五章系统功能实现</h2><h3 id="5-1前台功能模块"><a href="#5-1前台功能模块" class="headerlink" title="5.1前台功能模块"></a>5.1前台功能模块</h3><p>登录，用户通过输入账号和密码等信息并点击登录进行系统登录操作，如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-8a81.png" alt="image-20230920235431368"></p>
+<p>用户注册，在注册页面通过填写账号、密码、确认密码、姓名、性别、身份证、手机号码等详细信息进行注册操作；如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-2caa.png" alt="image-20230920235438552"></p>
+<p>用户登陆系统后，可以对首页、药品信息、购物车、我的等功能进行详细操作，如图5-3所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-fd1b.png" alt="image-20230920235450877"></p>
+<p>药品信息，在药品信息页面可以查看药品名称、药品图片、药品分类、药品成分、生产商、药品功效、服用方式、上架日期、商家账号、商家名称、联系手机、价格、单限、库存、药品简介等详细信息；并进行评加入购物车，立即订购，评论和收藏操作；如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-f468.png" alt="image-20230920235500570"></p>
+<p>用户功能，用户在我的页面可以对发票信息、我的收藏管理、用户充值、购物车、我的订单等详细信息进行操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-f18b.png" alt="image-20230920235511223"></p>
+<p>用户信息，在用户信息页面通过填写账号、密码、姓名、性别、身份证、手机号码、相片等详细信息进行保存或退出登录操作，如图5-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-1520.png" alt="image-20230920235519470"></p>
+<h3 id="5-2后台功能模块"><a href="#5-2后台功能模块" class="headerlink" title="5.2后台功能模块"></a>5.2后台功能模块</h3><p>管理员和商家登录，管理员和商家通过输入账号、密码，选择角色并点击登录进行系统登录操作，如图5-7所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-ee02.png" alt="image-20230920235529619"></p>
+<h4 id="5-2-1-管理员功能"><a href="#5-2-1-管理员功能" class="headerlink" title="5.2.1 管理员功能"></a>5.2.1 管理员功能</h4><p>管理员登录系统后，可以对首页、个人中心、用户管理、商家管理、药品信息管理、药品分类管理、发票信息管理、系统管理等功能进行相应操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-2fb2.png" alt="image-20230920235551964"></p>
+<p>用户管理，在用户管理页面可以对索引、账号、姓名、性别、身份证、手机号码、相片等内容进行详情，修改和删除操作，如图5-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-8c7b.png" alt="image-20230920235603991"></p>
+<p>商家管理，在商家管理页面可以对索引、商家账号、商家名称、负责人、身份证、联系手机、相片等内容进行详情，修改和删除操作，如图5-10所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-8c7b.png"></p>
+<p>药品信息管理，在药品信息管理页面可以对索引、药品名称、药品图片、药品分类、药品成分、生产商、药品功效、服用方式、上架日期、商家账号、商家名称、联系手机、价格、单限、库存等内容进行详情，修改，查看评论和删除操作，如图5-11所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309202309-aceb.png" alt="image-20230920235620445"></p>
+<h2 id="六-源码咨询"><a href="#六-源码咨询" class="headerlink" title="六 源码咨询"></a>六 源码咨询</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/52185.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/52185.html" class="post-title-link" itemprop="url">Java基于微信小程序的学习考研平台</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-19 18:05:55 / 修改时间：23:02:50" itemprop="dateCreated datePublished" datetime="2023-09-19T18:05:55+08:00">2023-09-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h1><p>本文研究了基于微信小程序一起考研学习平台，通过该系统，用户可以主动的在线学习，下载资料，解决实际的问题，提高了效率，同时加强了用户之间的相互交流沟通，促进了信息化的发展。本文研究开发的小程序是学习并上传下载的小程序，开发完成后可以为学生提供很方便的学习平台。微信小程序用户群庞大，使用简单，通过创建微信小程序应用，减少APP的下载安装，更有利于手机软件的维护。手机应用是当前的潮流，传统的管理系统的用户群逐渐减少，通过手机应用可以更加方便地完成相关事宜。对于在线学习来说，通过手机小程序学习过程更加的便捷，用户体验更好。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-49f8.png"></p>
+<h1 id="第二章、开发环境："><a href="#第二章、开发环境：" class="headerlink" title="第二章、开发环境："></a>第二章、开发环境：</h1><h2 id="后端："><a href="#后端：" class="headerlink" title="后端："></a><strong>后端：</strong></h2><p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="前端："><a href="#前端：" class="headerlink" title="前端："></a><strong>前端：</strong></h2><p>微信小程序</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a><strong>数据库：</strong></h2><p>mysql</p>
+<h1 id="第三章：-需求分析"><a href="#第三章：-需求分析" class="headerlink" title="第三章： 需求分析"></a>第三章： 需求分析</h1><p>基于微信小程序一起考研学习平台为用户提供在线学习服务，系统包括微信小程序端和后台。</p>
+<p>微信小程序端用户可以先进行注册，注册完成后，管理员审核注册信息。然后进行登录，登录之后查看文件信息，信息包普通文件、付费文件、购买下载付费文件等。科目内容在首页展示，对这些信息中，可以查看对应科目的文件，并在线评论和收藏。点开我的功能模块，修改个人信息，重新登录，查看我的收藏，我的购买历史等功能。</p>
+<p>管理员是后台的管理者，对文件的内容进行发布和审核，管理员对文件的科目分类进行管理，管理员还可以对交易信息进行管理，管理用户和发布文件的商家用户。</p>
+<h1 id="第四章-详细设计"><a href="#第四章-详细设计" class="headerlink" title="第四章 详细设计"></a>第四章 详细设计</h1><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-49f8.png" alt="image-20230919225828415"></p>
+<p>平台的客户端包括注册登录、小程序主页，文件内容搜索，查看文件，文件信息，我的收藏，评价点赞和个人中心。</p>
+<p>注册登录是小程序用户基本功能数据库，存储用户的数据，在小程序主页推荐文件信息。用户搜索文件内容，可以根据分类和关键字进行搜索。在文件页面点击下载，可以进行在线下载，其中收藏和评价点赞是针对文件内容的。评论管理是对文件的回复交流，当文件信息删除的时候，对应的评论信息也会删除，评论信息设计了评论名称、评论内容和对应的文件ID，通过文件ID进行外键关联。在个人中心模块进行密码修改或者个人信息的维护</p>
+<h1 id="第五章-系统实现"><a href="#第五章-系统实现" class="headerlink" title="第五章 系统实现"></a>第五章 系统实现</h1><h2 id="5-1-服务器功能实现"><a href="#5-1-服务器功能实现" class="headerlink" title="5.1 服务器功能实现"></a>5.1 服务器功能实现</h2><h3 id="5-1-1管理员登录"><a href="#5-1-1管理员登录" class="headerlink" title="5.1.1管理员登录"></a>5.1.1管理员登录</h3><p>使用脚本把数据库导入到mysql中，配置tomcat服务器，运行程序。其中用户登录的界面如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-a4da.png" alt="image-20230919225459341"></p>
+<p>​                               </p>
+<p>图5.1 管理员登录</p>
+<p>查询数据库中管理员的用户名和密码，最终查询成功后把信息保存在session中，Session是存储在服务器端的对象，是比较安全的一种技术，在管理端通过判断session中的十来获取用户操作权限。</p>
+<h3 id="5-1-2管理主界面"><a href="#5-1-2管理主界面" class="headerlink" title="5.1.2管理主界面"></a>5.1.2管理主界面</h3><p>主界面主要包括了系统管理菜单，通过菜单对系统功能进行管理。每一个功能包括基本的查询、添加等操作。其中主界面如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-9cfa.png" alt="image-20230919225506677"></p>
+<h3 id="5-1-3文件信息管理"><a href="#5-1-3文件信息管理" class="headerlink" title="5.1.3文件信息管理"></a>5.1.3文件信息管理</h3><p>文件管理包括文件编号、名称、类别、图片内容信息。其中文件管理如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-b9ed.png" alt="image-20230919225519154"></p>
+<p>创建一个信息录入的form表单，在form中设计文件基本信息收集栏，点击提交的时候，通过form的POST方法传递到文件Action方法中。在Action中定义插入的方法，先实例化文件实体类，将文件信息通过实体类进行设置，然后调用文件数据库操作方法，保存文件信息到数据库，然后返回成功消息。</p>
+<h3 id="5-1-4用户管理"><a href="#5-1-4用户管理" class="headerlink" title="5.1.4用户管理"></a>5.1.4用户管理</h3><p>用户管理包括用户信息查看和用户删除功能，管理员对过期的用户进行删除。并审核商家用户。其中用户管理如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-f21b.png" alt="image-20230919225532034"></p>
+<p>创建一个信息录入的form表单，在form中设计用户基本信息收集栏，点击提交的时候，通过form的POST方法传递到用户Action方法中。在Action中定义插入的方法，先实例化用户实体类，将用户信息通过实体类进行设置，然后调用用户数据库操作方法，保存用户信息到数据库，然后返回成功消息。</p>
+<p>在用户信息管理页面先通过查询条件，获取对应的用户列表，然后在用户管理页面通过标签，把所有的用户信息绑定到列表中。</p>
+<h2 id="5-2-小程序端功能实现"><a href="#5-2-小程序端功能实现" class="headerlink" title="5.2 小程序端功能实现"></a>5.2 小程序端功能实现</h2><h3 id="5-2-1用户注册"><a href="#5-2-1用户注册" class="headerlink" title="5.2.1用户注册"></a>5.2.1用户注册</h3><p>基于微信小程序一起考研学习平台的用户，必须得进行注册。如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-3104.png" alt="image-20230919225547981"></p>
+<p>使用基于微信小程序一起考研学习平台的客户端时，先要进行注册，打开用户注册的页面，用户填写所有的注册信息后，点击注册，在注册中调用JS的AJAX方法。方法中接收用户实体信息，调用服务器端的用户注册方法。在服务器端获取用户实体信息，对实体进行序列化处理，然后调用用户信息保存的service数据库操作方法，将实体内的用户信息通过SQL语句插入到数据库，返回成功的消息。</p>
+<h3 id="5-2-2用户登录"><a href="#5-2-2用户登录" class="headerlink" title="5.2.2用户登录"></a>5.2.2用户登录</h3><p>用户填写用户名及密码，正确后才能登入系统，不正确则重新登录。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-01ab.png" alt="image-20230919225602184"></p>
+<p>在服务器端获取用户实体信息，对实体进行序列化处理，然后调用用户信息查询的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，判断返回的信息是否登录成功。</p>
+<h3 id="5-2-3文件查看"><a href="#5-2-3文件查看" class="headerlink" title="5.2.3文件查看"></a>5.2.3文件查看</h3><p>用户登录后，进入系统的主界面，能够看到所有功能列表信息，包括普通文件信息，付费文件信息，订单信息，交易信息，文件收藏。其中客户端主界面如5.8所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-c862.png" alt="image-20230919225612685"></p>
+<p>点击文件列表，跳转到文件详情的界面，用户可选择进行查看。在文件详情界面，点击首页，返回到主界面。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-75ad.png" alt="image-20230919225625476"></p>
+<p>在文件页面加载时，初始化方法中，调用JS的AJAX方法。方法中接收文件实体信息，调用服务器端的文件查询方法。在服务器端获取文件实体，对实体进行序列化处理，判断查询条件，然后调用文件查询的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，把结果存储在临时集合变量中，对变量进行数据显示绑定到界面。</p>
+<h3 id="5-2-4用户购买"><a href="#5-2-4用户购买" class="headerlink" title="5.2.4用户购买"></a>5.2.4用户购买</h3><p>选择相关的文件后，在线购买，购买后在个人订单列表中，可以提交到后台。购买界面如5.10所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-d85f.png" alt="image-20230919225634168"></p>
+<p>接收购买实体信息，调用服务器端的购买查询方法。在服务器端获取购买实体，对购买实体进行序列化处理，判断查询条件，然后调用购买的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，把结果存储在临时集合变量中，对变量进行数据显示绑定到购买列表。</p>
+<p>用户购买后，商家审核，并发布文件下载地址，会员可以到购买的列表中，去下载对应的文件。</p>
+<h1 id="六-源码咨询"><a href="#六-源码咨询" class="headerlink" title="六 源码咨询"></a>六 源码咨询</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/33632.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/33632.html" class="post-title-link" itemprop="url">Java基于微信小程序的青少年心理健康科普平台</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-19 15:05:55" itemprop="dateCreated datePublished" datetime="2023-09-19T15:05:55+08:00">2023-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-25 21:15:16" itemprop="dateModified" datetime="2023-09-25T21:15:16+08:00">2023-09-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h1><p>青少年心理健康科普平台为用户提供心理医生咨询服务，系统包括微信小程序端和后台。</p>
+<p>微信小程序用户可以先进行注册，填写个人的基本信息提交到服务器，服务器把数据保存到数据库。管理员对青少年的信息进行验证后，青少年通过验证后的用户名和密码进行登录，登录之后查看健康知识。心理医生在首页展示，查看心理医生具体信息后，可以进行咨询，填写咨询信息后，医生端可以查看咨询，并进行回复。点开我的功能模块，修改个人信息，重新登录等功能。</p>
+<p>管理员是后台的管理者，对系统用户进行管理，对系统健康信息进行管理，系统管理等，发布公告推送给小程序端。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bilibili.com/video/BV1nV411A7WX/">视频演示地址</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-4d0a.png" alt="image-20230919224019313"></p>
+<h1 id="第二章、开发环境："><a href="#第二章、开发环境：" class="headerlink" title="第二章、开发环境："></a>第二章、开发环境：</h1><h2 id="后端："><a href="#后端：" class="headerlink" title="后端："></a><strong>后端：</strong></h2><p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="前端："><a href="#前端：" class="headerlink" title="前端："></a><strong>前端：</strong></h2><p>jsp</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a><strong>数据库：</strong></h2><p>mysql</p>
+<h1 id="第三章-系统设计"><a href="#第三章-系统设计" class="headerlink" title="第三章 系统设计"></a>第三章 系统设计</h1><p>青少年心理健康科普平台包括用户管理、新闻公告管理、咨询管理、健康知识、系统管理、心理测试管理、心理问答管理。</p>
+<p>用户管理包括管理员管理、心理医生管理、青少年用户管理。当前台青少年进行注册的时候，权限设为青少年。管理员用户权限设置为管理员。虽然数据存储在一个数据库表，但是在登录的时候使用权限类别进行区分，管理员用户无法通过客户端进行登录。同理，客户端用户也无法登陆管理员端。</p>
+<p>新闻公告是管理员发布健康知识的公告，信息发布后的公告在客户端浏览查看。</p>
+<p>其中系统功能结构图如4.1所示：</p>
+<p>​                                                                </p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-4d0a.png" alt="image-20230919224019313">         </p>
+<p>主要功能：</p>
+<p>青少年管理。青少年用户的注册、登录。青少年在个人中心，进行个人信息的修改和用户密码的修改，系统注销等操作。</p>
+<p>心理医生管理，管理员录入心理医生，修改心理医生信息。在前台可以查看心理医生风采，包括心理医生的介绍和个人图片信息。心理医生通过用户名和密码登录系统，管理个人信息。</p>
+<p>站内新闻管理。管理员对站内新闻信息的管理，信息保存在数据库中，通过前台查看站内新闻信息。</p>
+<p>其中图片是保存在服务器端，数据库记录对应的图片链接地址，在资源类信息保存中还可以通过二进制进行保存。本系统为了降低数据库的负荷，把图片以文件格式进行存储，这样既减轻了服务器的数据库的存储，也提高了图片数据传输的速度。青少年发布后，在管理端对数据进行管理，删除一些违法违规的记录。没有删除的记录将在客户端首页进行展示，用于其他青少年查看。青少年可以通过健康知识的分类进行搜索，不同分类对应了不同的健康知识。也可以通过关键字进行检索。</p>
+<p>更改个人信息：用户登录后可以对个人信息进行修改，确保用户信息的准确性和实效性。</p>
+<p>心理测试:为用户提供一些心理小测试，用户可以根据测试结果对自己的心理状态有一个大概的了解。</p>
+<p>健康知识：里面有各个专题的心理文章，比如人际社交、家庭关系等。</p>
+<p>心理咨询：主要是学生用户进行心理咨询。</p>
+<h1 id="第四章-效果图"><a href="#第四章-效果图" class="headerlink" title="第四章 效果图"></a>第四章 效果图</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-2777.png" alt="image-20230919224414065"></p>
+<h2 id="我的"><a href="#我的" class="headerlink" title="我的"></a>我的</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-e880.png" alt="image-20230919224357988"></p>
+<h2 id="后台界面"><a href="#后台界面" class="headerlink" title="后台界面"></a>后台界面</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-68b2.png" alt="image-20230919224458178"></p>
+<h1 id="五、-源码咨询"><a href="#五、-源码咨询" class="headerlink" title="五、 源码咨询"></a>五、 源码咨询</h1><p> v xiaoxu_9411</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/56569.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/56569.html" class="post-title-link" itemprop="url">Java基于微信小程序的电影交流平台</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-17 15:05:55" itemprop="dateCreated datePublished" datetime="2023-09-17T15:05:55+08:00">2023-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-19 23:00:37" itemprop="dateModified" datetime="2023-09-19T23:00:37+08:00">2023-09-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章：简介"><a href="#第一章：简介" class="headerlink" title="第一章：简介"></a>第一章：简介</h1><p>基于微信小程序的电影交流平台，前台功能：用户进入系统可以实现首页、电影中心、留言反馈、我的等，在我的页面可以对个人中心、我的收藏管理、留言反馈等功能进行操作；</p>
+<p>后台主要是管理员操作，管理员功能包括首页、个人中心、用户管理、电影类型管理、电影中心管理、留言反馈、系统管理等；</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-b139.png" alt="image-20230917170759911"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-924d.png" alt="image-20230917170851229"></p>
+<h1 id="第二章、开发环境："><a href="#第二章、开发环境：" class="headerlink" title="第二章、开发环境："></a>第二章、开发环境：</h1><h2 id="后端："><a href="#后端：" class="headerlink" title="后端："></a><strong>后端：</strong></h2><p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="前端："><a href="#前端：" class="headerlink" title="前端："></a><strong>前端：</strong></h2><p>微信小程序</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a><strong>数据库：</strong></h2><p>mysql</p>
+<h1 id="三、系统详细设计"><a href="#三、系统详细设计" class="headerlink" title="三、系统详细设计"></a>三、系统详细设计</h1><p>根据电影交流平台小程序的功能需求，进行系统设计。</p>
+<p>前台功能：用户进入系统可以实现首页、电影中心、留言反馈、我的等，在我的页面可以对个人中心、我的收藏管理、留言反馈等功能进行操作；</p>
+<p>后台主要是管理员操作，管理员功能包括首页、个人中心、用户管理、电影类型管理、电影中心管理、留言反馈、系统管理等；</p>
+<p>系统对这些功能进行整合，产生的功能结构图如下：</p>
+<p>​                                                                                             <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-c20b.png" alt="image-20230917171436885"></p>
+<p>​                               </p>
+<p>图3-1 系统总体结构图</p>
+<p>3.4 数据库设计与实现</p>
+<p>在每一个系统中数据库有着非常重要的作用，数据库的设计得好将会增加系统的效率以及系统各逻辑功能的实现。所以数据库的设计我们要从系统的实际需要出发，才能使其更为完美的符合系统功能的实现。</p>
+<h3 id="3-4-1-数据库概念结构设计"><a href="#3-4-1-数据库概念结构设计" class="headerlink" title="3.4.1 数据库概念结构设计"></a>3.4.1 数据库概念结构设计</h3><p>数据库的E-R图反映了实体、实体的属性和实体之间的联系。下面是各个实体以及实体的属性。</p>
+<p>电影中心实体属性图如下所示：</p>
+<p>![image-20230917171520835](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230917171520835.png) </p>
+<p>用户信息实体属性图如下所示：</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-9c93.png" alt="image-20230917171545151"></p>
+<h1 id="第四章-系统功能的具体实现"><a href="#第四章-系统功能的具体实现" class="headerlink" title="第四章  系统功能的具体实现"></a>第四章  系统功能的具体实现</h1><h2 id="4-1小程序端"><a href="#4-1小程序端" class="headerlink" title="4.1小程序端"></a>4.1小程序端</h2><p>登录，用户通过输入账号和密码，选择角色并点击登录进行系统登录操作，如图4-1所示。</p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-70ff.png" alt="image-20230917170739077"></p>
+<p>用户注册，在用户注册页面通过填写用户账号、密码、确认密码、用户姓名、性别、手机号码等信息进行注册操作；如图4-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-58d5.png" alt="image-20230917170746319"> </p>
+<p>用户登陆小程序端，可以对首页、电影中心、留言反馈、我的等功能进行详细操作，如图4-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-b139.png" alt="image-20230917170759911"></p>
+<p>电影中心，在电影中心页面可以查看电影名称、电影类型、导演、主演、封面、时长、上映日期、制片地区、评分、点击次数、电影简介等信息，并根据需要进行评论或收藏操作；如图4-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-6bf4.png" alt="image-20230917170810082"></p>
+<p>用户，在我的页面可以对个人中心、我的收藏管理、留言反馈等详细信息进行操作，如图4-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-9b48.png" alt="image-20230917170819669"></p>
+<p>用户信息，在用户信息页面通过填写用户账号、密码、用户姓名、头像、性别、手机号码等内容进行保存或退出登录操作，如图4-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-ffb1.png" alt="image-20230917170841943"></p>
+<h2 id="4-2管理员功能模块"><a href="#4-2管理员功能模块" class="headerlink" title="4.2管理员功能模块"></a>4.2管理员功能模块</h2><p>管理员登录，管理员通过输入账号、密码，并点击登录进入系统操作界面，如图4-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-924d.png" alt="image-20230917170851229"></p>
+<p>管理员登陆系统后，可以对首页、个人中心、用户管理、电影类型管理、电影中心管理、留言反馈、系统管理等功能进行相应操作，如图4-8所示。</p>
+<p> ![image-20230917170908526](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230917170908526.png)</p>
+<p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、头像、性别、手机号码、审核回复、审核状态、审核等内容进行详情、修改或删除等操作，如图4-9所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-206a.png" alt="image-20230917170915208"></p>
+<p>电影类型管理，在电影类型管理页面可以对索引、电影类型等内容进行详情，修改或删除操作，如图4-10所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-bcee.png" alt="image-20230917170944901"></p>
+<p>电影中心管理，在电影中心管理页面可以对索引、电影名称、海报、电影类型、导演、主演、时长、上映日期、制片地区、评分等内容进行详情，修改，查看评论或删除操作，如图4-11所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-2faa.png" alt="image-20230917171034521"></p>
+<p>留言反馈，在留言反馈页面可以对索引、用户名、留言内容、留言图片、回复内容、回复图片等内容进行详情，修改，回复和删除操作，如图4-12所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-9942.png" alt="image-20230917171046620"></p>
+<p>系统管理，在电影资讯页面可以对索引、标题、图片等内容进行详情，修改或删除等操作，还可以对轮播图管理进行详细操作；如图4-13所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-3c3a.png" alt="image-20230917171210217"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/41844.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -549,1615 +1458,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/43782.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/43782.html" class="post-title-link" itemprop="url">Pycharm 2023.2.1 最新激活码、破解、激活安装教程，亲测有效、持续更新</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-09-12 23:43:18 / 修改时间：23:47:43" itemprop="dateCreated datePublished" datetime="2023-09-12T23:43:18+08:00">2023-09-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Pycharm 激活, Pycharm 破解</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/43782.html">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/19093.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/19093.html" class="post-title-link" itemprop="url">IntelliJ IDEA 2023.2.1激活破解教程，详细图文，亲测可用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-09-12 23:23:09 / 修改时间：23:24:29" itemprop="dateCreated datePublished" datetime="2023-09-12T23:23:09+08:00">2023-09-12</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>时间过得飞快，充电器一拔，又得回去做打工人了。打开电脑，发现 IDEA 又更新了一个小版本，2023.2.1 版本来了，于是笔者将 IDEA 做了一波升级。至于破解方法，还是用本站之前的破解方式，亲测依然有效，可以破解到 2025 年（实际是永久激活，可放心食用），无图无真相，下面是我破解成功的截图：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309122209-bd60.png" alt="image-20230912224752958"></p>
-<p>废话不多说，和之前版本一样，笔者汇总了目前网上比较靠谱的三种破解方案（<strong>这三种都是笔者亲测成功的</strong>），小伙伴们任选其一即可：</p>
-<ul>
-<li><em>第一种【推荐】：👉激活脚本 + 激活码（全自动模式）</em>，<strong>即本文教程所写，这种方法适合最新的几个版本，具体步骤跟着本文教程一步一步来，运行一下激活脚本，一分钟即可搞定，超级简单</strong>。无图无真相，下面是我激活成功后的截图：</li>
-</ul>
-<blockquote>
-<p>PS: 此方法和下面的第二种方法的补丁原理都是暴力拦截了 IDEA 的剩余使用期网络请求，实际上等于永久激活，至于激活到哪天，在之前的 <code>2021.3.3</code> <code>2021.3.2</code> 等老版本中是可以手动配置的，比如改成激活到 2099 年。可能是太高调了，最新的版本只能显示到 2025 年, 其实效果还是一样的, 都是永久激活，可放心食用。</p>
-</blockquote>
-<ul>
-<li><em>第二种：👉破解补丁 + 激活码（需手动引用补丁）</em> ，相比较于第一种无脑执行一个激活脚本，这种方式需要手动引用破解补丁，再输入激活码。<strong>此方法同样仅适用于最新的几个版本。</strong></li>
-<li><em>第三种：👉 无限重置 IDEA 30 天试用期（适用于比较老的版本）</em> ；</li>
-</ul>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
-<li>本教程适用于 JetBrains 全系列产品，包括 IDEA、Pycharm、WebStorm、Phpstorm、Datagrip、RubyMine、CLion、AppCode 等。</li>
-<li>本教程适用 Windows&#x2F;Mac&#x2F;Linux 系统，文中以 Windows 系统为例做讲解，其他系统同样参考着本教程来就行。</li>
-</ul>
-<h2 id="第一步：下载-IDEA-安装包"><a href="#第一步：下载-IDEA-安装包" class="headerlink" title="第一步：下载 IDEA 安装包"></a>第一步：下载 IDEA 安装包</h2><p>访问 IDEA 官网，下载 IDEA 2023.2.1 版本的安装包，下载链接如下 :</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.jetbrains.com/idea/download/">https://www.jetbrains.com/idea/download/</a></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309122209-4220.jpeg" alt="下载 IDEA 2023.2.1 安装包"></p>
-<p>打开页面后，点击 <code>Download</code> 按钮, 等待 IDEA 专业版下载完毕。</p>
-<h2 id="第二步：卸载老版本-IDEA-未安装则不用管，跳过看下面步骤"><a href="#第二步：卸载老版本-IDEA-未安装则不用管，跳过看下面步骤" class="headerlink" title="第二步：卸载老版本 IDEA(未安装则不用管，跳过看下面步骤)"></a>第二步：卸载老版本 IDEA(未安装则不用管，跳过看下面步骤)</h2><p>注意，安装新版本 IDEA 之前，如果本机安装过老版本的 IDEA, <strong>需要先彻底卸载，以免两者冲突，导致破解失败。</strong></p>
-<p><img src="https://img.chajianxw.com/chajian/164604171691955" alt="破解之前，先卸载老版本 IDEA">破解之前，先卸载老版本 IDEA</p>
-<p>卸载完成后，点击 <code>Close</code> 按钮关闭弹框：</p>
-<p><img src="https://img.chajianxw.com/chajian/164604174406150" alt="卸载 IDEA 完成">卸载 IDEA 完成</p>
-<h2 id="第三步：安装-IDEA-2023-2-1-版本"><a href="#第三步：安装-IDEA-2023-2-1-版本" class="headerlink" title="第三步：安装 IDEA 2023.2.1 版本"></a>第三步：安装 IDEA 2023.2.1 版本</h2><p>卸载老版本 IDEA 完成后，双击刚刚下载好的 IDEA <code>2023.2.1</code> 版本安装包。弹框会提示选择安装路径，我这里直接选择的默认安装路径</p>
-<p><code>C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.1</code> , 然后点击 <code>Next</code> 按钮：</p>
-<p><img src="https://img.chajianxw.com/chajian/164990923263634" alt="安装 IDEA 2023.2.1 版本">安装 IDEA 2023.2.1 版本</p>
-<p>然后，勾选 <code>Create Desktop Shortcut</code> 创建 IDEA 桌面快捷启动方式，以方便后面快速打开 IDEA，再点击 <code>Next</code> 按钮 :</p>
-<p><img src="https://img.chajianxw.com/chajian/164604195273430" alt="开始安装 IDEA 2023.2.1 版本：创建快捷启动图标">开始安装 IDEA 2023.2.1 版本：创建快捷启动图标</p>
-<p>点击 <code>Install</code> 按钮，开始安装：</p>
-<p><img src="https://img.chajianxw.com/chajian/164604205048090" alt="开始安装 IDEA 2023.2.1 版本：点击 Install 按钮">开始安装 IDEA 2023.2.1 版本：点击 Install 按钮</p>
-<p>等待安装完成后，勾选 <code>Run IntellJ IDEA</code>, 点击 <code>Finish</code> 按钮即运行 IDEA :</p>
-<p><img src="https://img.chajianxw.com/chajian/164604217799832" alt="安装 IDEA 2023.2.1 版本成功">安装 IDEA 2023.2.1 版本成功</p>
-<p>IDEA 运行成功后，会弹出如下对号框，强制用户需要先登录 JetBrains 账户才能使用：</p>
-<p><img src="https://img.chajianxw.com/chajian/164403992752191" alt="IDEA 2023.2.1 版本提示需要先登录 JetBrains 账户">IDEA 2023.2.1 版本提示需要先登录 JetBrains 账户</p>
-<p><strong>不用管登录的事，点击 Exit 按钮退出对话框</strong>，准备开始破解激活。</p>
-<h2 id="第四步：破解补丁下载"><a href="#第四步：破解补丁下载" class="headerlink" title="第四步：破解补丁下载"></a>第四步：破解补丁下载</h2><p>破解补丁我放置在了网盘中，提供了多个备用链接，以防下载失效。</p>
-<blockquote>
-<p><strong>提示：破解补丁的网盘链接文末获取~</strong></p>
-<p><strong>提示：破解补丁的网盘链接文末获取~</strong></p>
-</blockquote>
-<p>补丁下载成功后，记得<strong>先解压</strong>, 解压后的目录如下, <strong>本文后面所需补丁都在下面标注的这个文件夹中</strong>：</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166614369183397" alt="IDEA 破解补丁下载">IDEA 破解补丁下载</p>
-<p>点击【方式3】文件夹 , 进入到文件夹 <code>/jetbra</code>，目录如下：</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610035609690" alt="IDEA 破解补丁文件夹最底层目录">IDEA 破解补丁文件夹最底层目录</p>
-<h2 id="第五步：开始破解"><a href="#第五步：开始破解" class="headerlink" title="第五步：开始破解"></a>第五步：开始破解</h2><h3 id="Windows-系统"><a href="#Windows-系统" class="headerlink" title="Windows 系统"></a>Windows 系统</h3><p>将上面图示的补丁的所属文件夹 <code>/jetbra</code> 复制电脑某个位置，笔者这里放置到了 <code>D:/</code> 盘根目录下:</p>
-<blockquote>
-<p>注意： <strong>补丁所属文件夹需单独存放</strong>，且<strong>放置的路径不要有中文与空格</strong>，以免 IDEA 读取补丁错误。</p>
-</blockquote>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610081036853" alt="将 IDEA 破解补丁放置到 D 盘下">将 IDEA 破解补丁放置到 D 盘下</p>
-<p>点击进入 <code>/jetbra</code> 补丁目录，再点击进入 <code>/scripts</code> 文件夹，双击执行 <code>install-current-user.vbs</code> 破解脚本：</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610106073514" alt="IDEA 破解补丁执行脚本">IDEA 破解补丁执行脚本</p>
-<blockquote>
-<p>注意：<strong>如果执行脚本被安全软件提示有风险拦截，允许执行即可。</strong></p>
-</blockquote>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610118612338" alt="IDEA 破解脚本执行后弹框提示信息">IDEA 破解脚本执行后弹框提示信息</p>
-<p>会提示安装补丁需要等待数秒。点击【<strong>确定</strong>】按钮后，过程大概 10 - 30 秒，如看到弹框提示 <code>Done</code> 时，表示激活破解成功：</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610151900684" alt="补丁执行成功后，提示 Done"></p>
-<h3 id="Mac-x2F-Linux-系统"><a href="#Mac-x2F-Linux-系统" class="headerlink" title="Mac &#x2F; Linux 系统"></a>Mac &#x2F; Linux 系统</h3><p>Mac &#x2F; Linux 系统与上面 Windows 系统一样，需将补丁所属文件 <code>/jetbra</code> 复制到某个路径，且<strong>路径不能包含空格与中文</strong>。</p>
-<p>之后，打开终端，进入到 <code>/jetbra/scripts</code> 文件夹， 执行 <code>install.sh</code> 脚本, 命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash install.sh</span><br></pre></td></tr></table></figure>
-
-<p>看到提示 <code>Done</code> , 表示激活成功。</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610205585170" alt="Mac/Linux 系统执行破解补丁成功后，提示 Done">Mac&#x2F;Linux 系统执行破解补丁成功后，提示 Done</p>
-<p>部分小伙伴 Mac&#x2F;Linux 系统执行脚本遇到如下错误：</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166799370514169" alt="Mac 执行破解脚本报错">Mac 执行破解脚本报错</p>
-<p><strong>解决方法：</strong></p>
-<p>可先执行如下命令，再执行脚本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export LC_COLLATE=&#x27;C&#x27;</span><br><span class="line">export LC_CTYPE=&#x27;C&#x27;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166799386665127" alt="img"></p>
-<h3 id="执行脚本，都干了些啥？"><a href="#执行脚本，都干了些啥？" class="headerlink" title="执行脚本，都干了些啥？"></a>执行脚本，都干了些啥？</h3><ul>
-<li><p>Windows 用户执行脚本后，脚本会自动在环境变量 -&gt; 用户变量下添加了 <code>IDEA_VM_OPTIONS</code> 变量，变量值为 <code>/jetbra</code> 文件夹下的 <code>.vmoptions</code> 参数文件绝对路径，如下所示：</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610253796353" alt="img"></p>
-<p>然后，脚本自动在 <code>idea.vmoptions</code> 文件中引用了破解补丁 ：</p>
-<p><img src="https://img.quanxiaoha.com/quanxiaoha/166610294585947" alt="img"></p>
-<blockquote>
-<p><strong>提示： 细心的小伙伴应该也发现了，本文的破解方式与文章开头《第二种 IDEA 破解方法》的区别在于，这种方式提供了自动化脚本，脚本免去了手动引入补丁的繁琐步骤，一切都由脚本来完成了。</strong></p>
-</blockquote>
-</li>
-<li><p>Mac &#x2F; Linux 用户执行脚本后，脚本会自动在当期用户环境变量文件中添加了相关参数文件，Mac &#x2F; Linux 需重启系统，以确保环境变量生效。</p>
-</li>
-</ul>
-<p>小伙伴们也可自行检查一下，如果没有自动添加这些参数，说明脚本执行没有成功。</p>
-<h2 id="第六步：重启-IDEA"><a href="#第六步：重启-IDEA" class="headerlink" title="第六步：重启 IDEA"></a>第六步：重启 IDEA</h2><p><strong>脚本执行成功后，一定要重启 IDEA ~~</strong></p>
-<p><strong>脚本执行成功后，一定要重启 IDEA ~~</strong></p>
-<h2 id="第七步：填入指定激活码完成激活"><a href="#第七步：填入指定激活码完成激活" class="headerlink" title="第七步：填入指定激活码完成激活"></a>第七步：填入指定激活码完成激活</h2><p>重新打开 IDEA 后，复制下面的激活码：</p>
-<p>6G5NXCPJZB-eyJsaWNlbnNlSWQiOiI2RzVOWENQSlpCIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBEQiIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiSUkiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOmZhbHNlfSx7ImNvZGUiOiJQUEMiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBHTyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFNXIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJQV1MiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBQUyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFJCIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJQQ1dNUCIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX1dLCJtZXRhZGF0YSI6IjAxMjAyMjA5MDJQU0FOMDAwMDA1IiwiaGFzaCI6IlRSSUFMOi0xMDc4MzkwNTY4IiwiZ3JhY2VQZXJpb2REYXlzIjo3LCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-SnRVlQQR1&#x2F;9nxZ2AXsQ0seYwU5OjaiUMXrnQIIdNRvykzqQ0Q+vjXlmO7iAUwhwlsyfoMrLuvmLYwoD7fV8Mpz9Gs2gsTR8DfSHuAdvZlFENlIuFoIqyO8BneM9paD0yLxiqxy&#x2F;WWuOqW6c1v9ubbfdT6z9UnzSUjPKlsjXfq9J2gcDALrv9E0RPTOZqKfnsg7PF0wNQ0&#x2F;d00dy1k3zI+zJyTRpDxkCaGgijlY&#x2F;LZ&#x2F;wqd&#x2F;kRfcbQuRzdJ&#x2F;JXa3nj26rACqykKXaBH5thuvkTyySOpZwZMJVJyW7B7ro&#x2F;hkFCljZug3K+bTw5VwySzJtDcQ9tDYuu0zSAeXrcv2qrOg&#x3D;&#x3D;-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU&#x2F;Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8&#x2F;COMrxRlZW5mfzo0xsK0dQGNH3UoG&#x2F;9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE&#x2F;BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5&#x2F;FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB&#x2F;R5oUlebwaTE6WZNBs+TA&#x2F;qPj+5&#x2F;we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329&#x2F;WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V&#x2F;0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ&#x2F;c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0&#x2F;&#x2F;lOmVya&#x2F;PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0&#x2F;WFPl1aw5VV&#x2F;VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH&#x2F;0onD</p>
-<p>粘贴到输入框内，点击 <code>Activate</code> 按钮，就激活成功了。</p>
-<p><img src="https://img.chajianxw.com/chajian/164412373711216" alt="输入 IDEA 破解激活码">输入 IDEA 破解激活码</p>
-<blockquote>
-<p>PS: 有部分小伙伴反应，重启 IDEA 填入激活码依然无法激活，重启系统才行，如果有小伙伴遇到这种情况，不妨试试看~</p>
-</blockquote>
-<p>激活成功后，又可以开心的 coding 了 ~</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309122209-bd60.png" alt="image-20230912224752958">IDEA 2023.2.1 版本激活破解成功</p>
-<h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><h3 id="激活成功后，不要升级-IDEA-版本"><a href="#激活成功后，不要升级-IDEA-版本" class="headerlink" title="激活成功后，不要升级 IDEA 版本"></a>激活成功后，不要升级 IDEA 版本</h3><p>官方反制手段越来越严厉，这个版本能激活，新版本大概率补丁就被限制了。所以，如果打开 IDEA 后，右下角若出现提示升级新版本，请不要升级版本。能用就行，它不香嘛！</p>
-<h3 id="激活成功后，补丁文件夹能不能删掉或者移动？"><a href="#激活成功后，补丁文件夹能不能删掉或者移动？" class="headerlink" title="激活成功后，补丁文件夹能不能删掉或者移动？"></a>激活成功后，补丁文件夹能不能删掉或者移动？</h3><p>上文中说到，执行脚本后会添加环境变量，变量值对应了你放置补丁位置的路径，删除掉或者移动，再打开 IDEA 就找不到对应文件了，激活也就失效了。放着吃灰就行，别动它。</p>
-<h2 id="激活补丁下载地址"><a href="#激活补丁下载地址" class="headerlink" title="激活补丁下载地址"></a>激活补丁下载地址</h2><blockquote>
-<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://img.chajianxw.com/chajian/164604365771068" alt="IDEA 2023.2.1破解补丁分享失败">IDEA 2023.2.1破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-</blockquote>
-<p>关注我的微信公众号 <strong>程序员徐师兄plus</strong>，回复 <strong>idea2</strong>，会自动将激活码和破解补丁发送给你</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-img/-/raw/main/gitlab/202309061609-3c1ad0.png" alt="img"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/17632.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/17632.html" class="post-title-link" itemprop="url">基于 SpringBoot+Vue 超市进销库存系统，Java 毕业设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-12 14:48:06" itemprop="dateCreated datePublished" datetime="2023-08-12T14:48:06+08:00">2023-08-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-12 23:20:17" itemprop="dateModified" datetime="2023-09-12T23:20:17+08:00">2023-09-12</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>892</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>﻿</p>
-<h1 id="一简介"><a href="#一简介" class="headerlink" title="一简介"></a>一简介</h1><p>本次设计任务是要设计一个超市进销存系统，通过这个系统能够满足超市进销存系统的管理及员工的超市进销存管理功能。系统的主要功能包括：首页、个人中心、员工管理、客户管理、供应商管理、承运商管理、仓库信息管理、商品类别管理、 商品信息管理、采购信息管理、入库信息管理、出库信息管理、销售订单管理、部门管理、岗位管理等功能。</p>
-<p>管理员可以根据系统给定的账号进行登录，登录后可以进入超市进销存系统对超市进销存所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
-<p>该系统为每一个用户都分配了一个用户账号，员工通过账号的登录可以在系统中查看超市进销存信息及对个人信息进行修改等功能。</p>
-<h1 id="2-主要技术"><a href="#2-主要技术" class="headerlink" title="2.主要技术"></a>2.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="三、系统"><a href="#三、系统" class="headerlink" title="三、系统"></a>三、系统</h1><p>根据超市进销存系统的功能需求，进行系统设计。</p>
-<p>由管理员和员工，主要功能包括首页、个人中心、员工管理、客户管理、供应商管理、承运商管理、仓库信息管理、商品类别管理、 商品信息管理、采购信息管理、入库信息管理、出库信息管理、销售订单管理、部门管理、岗位管理等功能；</p>
-<p>系统对这些功能进行整合，产生的功能结构图如下：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-8501.png" alt="image-20230422194853020"></p>
-<h1 id="第四章-系统功能的具体实现"><a href="#第四章-系统功能的具体实现" class="headerlink" title="第四章 系统功能的具体实现"></a>第四章 系统功能的具体实现</h1><h2 id="4-1-登录注册"><a href="#4-1-登录注册" class="headerlink" title="4.1 登录注册"></a>4.1 登录注册</h2><p>登录，管理员和员工通过填写用户名、密码等信息，选择角色进行登录等操作，如图4-1所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-a60b.png" alt="image-20230422195014519"></p>
-<p>员工注册；在员工注册页面中输入员工账号、密码、确认密码、员工姓名、员工电话等内容进行员工注册操作；如图4-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-bf60.png" alt="image-20230422195024199"></p>
-<h2 id="4-2-管理员功能模块"><a href="#4-2-管理员功能模块" class="headerlink" title="4.2 管理员功能模块"></a>4.2 管理员功能模块</h2><p>管理员登录进入超市进销存系统可以查看首页、个人中心、员工管理、客户管理、供应商管理、承运商管理、仓库信息管理、商品类别管理、 商品信息管理、采购信息管理、入库信息管理、出库信息管理、销售订单管理、部门管理、岗位管理等功能进行详细操作；如图4-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-bf60.png"></p>
-<p>员工管理；在员工管理页面中可以查看索引、员工账号、员工姓名、性别、员工电话、头像、部门、岗位等内容进行详情、修改或删除等操作；如图4-4所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-4b7e.png" alt="image-20230422195042068"></p>
-<p>客户管理，在客户管理页面中可以查看索引、客户编号、客户姓名、客户头像、客户电话、客户地址等内容进行详情、修改或删除等操作，如图4-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-b643.png" alt="image-20230422195053482"></p>
-<h2 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h2><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-a60b.png" alt="image-20230422195014519"></p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/5d26ebcc1a6ab5075028d1ad1d214e97.png"> </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/22763.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/22763.html" class="post-title-link" itemprop="url">基于 SpringBoot+Vue 的财务管理系统，Java 毕业设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-11 13:48:06" itemprop="dateCreated datePublished" datetime="2023-08-11T13:48:06+08:00">2023-08-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-12 23:20:17" itemprop="dateModified" datetime="2023-09-12T23:20:17+08:00">2023-09-12</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>﻿</p>
-<h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h1><p>财务管理系统的需求和管理上的不断提升，财务管理系统的潜力将无限扩大，财务管理系统在业界被广泛关注，本系统及对此进行总体分析，将财务管理信息管理的发展提供参考。财务管理系统对财务管理有着明显的带动效应，尤其对企业、公司的管理帮助更大。</p>
-<p>根据现有的模块，管理员对系统所有的信息进行管理。</p>
-<p>本文将按以下步骤进行开发；</p>
-<p> (1)绪论</p>
-<p>系统的开发背景，意义和系统状况等，详细讲述了系统的用处，对本章进行总结。</p>
-<p>(2)系统开发技术的介绍</p>
-<p>分别对java技术、Springboot框架、Mysql和B&#x2F;S进行详细介绍。</p>
-<p>(3)系统分析</p>
-<p>本章主要是对系统可行性、系统性能、还有系统功能需求进行分析。</p>
-<p>(4)系统设计</p>
-<p>对系统系统功能和数据库等进行详细讲解。</p>
-<p>(5)系统的实现</p>
-<p>主要对首页，个人中心，员工管理，部门管理，员工工资管理，工资调整管理，资产类别管理，固定资产管理，经营信息管理，序时账管理，年度利润管理，系统管理的实现。</p>
-<p>(6)系统的测试</p>
-<p>在系统编码实现后，就需要对系统进行检测，检测的方法有黑盒测试和白盒测试两种方式，本系统采用的是黑白盒测试方法对不同组的数据进行功能模块测试。</p>
-<h1 id="2-主要技术"><a href="#2-主要技术" class="headerlink" title="2.主要技术"></a>2.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="3-可行性分析"><a href="#3-可行性分析" class="headerlink" title="3. 可行性分析"></a>3. 可行性分析</h1><p>本家政服务管理平台是作为毕业设计自己开发的，所以产生的费用微乎其微，系统建成之后可能会为今后的家政服务管理提供便利，并且系统完成之后产生的维护费用也不大。综合计算，所有的开支都不大，所以家政服务管理平台在经济上是不存在问题的。</p>
-<h1 id="第四章-系统设计"><a href="#第四章-系统设计" class="headerlink" title="第四章 系统设计"></a>第四章 系统设计</h1><h2 id="4-1功能结构"><a href="#4-1功能结构" class="headerlink" title="4.1功能结构"></a>4.1功能结构</h2><p>为了更好的去理清本系统整体思路，对该系统以结构图的形式表达出来，设计实现该财务管理系统的功能结构图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221804-0f63.png" alt="image-20230422182702279"></p>
-<h2 id="4-2-数据库设计"><a href="#4-2-数据库设计" class="headerlink" title="4.2 数据库设计"></a>4.2 数据库设计</h2><h3 id="4-2-1-数据库E-x2F-R图"><a href="#4-2-1-数据库E-x2F-R图" class="headerlink" title="4.2.1 数据库E&#x2F;R图"></a>4.2.1 数据库E&#x2F;R图</h3><p>ER图是由实体及其关系构成的图，通过E&#x2F;R图可以清楚地描述系统涉及到的实体之间的相互关系。在系统中对一些主要的几个关键实体如下图：</p>
-<p>(1)员工管理E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304222204-2099.png" alt="image-20230422182714835"></p>
-<p> (2)工资调整管理E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221804-9c3d.png" alt="image-20230422182726741"></p>
-<p> (3)固定资产管理E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221804-828f.png" alt="image-20230422182738834"></p>
-<h3 id="4-2-2-数据库表"><a href="#4-2-2-数据库表" class="headerlink" title="4.2.2 数据库表"></a>4.2.2 数据库表</h3><p>数据库表的设计，如下表：</p>
-<p>表4-1：序时账</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>pingzhengdanhao</td>
-<td>varchar</td>
-<td>200</td>
-<td>凭证单号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fapiao</td>
-<td>varchar</td>
-<td>200</td>
-<td>发票</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>shouzhileixing</td>
-<td>varchar</td>
-<td>200</td>
-<td>收支类型</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhaiyao</td>
-<td>varchar</td>
-<td>200</td>
-<td>摘要</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>duifangkemu</td>
-<td>varchar</td>
-<td>200</td>
-<td>对方科目</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jine</td>
-<td>float</td>
-<td></td>
-<td>金额</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>dengjishijian</td>
-<td>date</td>
-<td></td>
-<td>登记时间</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>表4-2：用户表</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>username</td>
-<td>varchar</td>
-<td>100</td>
-<td>用户名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>password</td>
-<td>varchar</td>
-<td>100</td>
-<td>密码</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>role</td>
-<td>varchar</td>
-<td>100</td>
-<td>角色</td>
-<td></td>
-<td>管理员</td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>新增时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-</tbody></table>
-<p>表4-3：token表</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>userid</td>
-<td>bigint</td>
-<td></td>
-<td>用户id</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>username</td>
-<td>varchar</td>
-<td>100</td>
-<td>用户名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>tablename</td>
-<td>varchar</td>
-<td>100</td>
-<td>表名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>role</td>
-<td>varchar</td>
-<td>100</td>
-<td>角色</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>token</td>
-<td>varchar</td>
-<td>200</td>
-<td>密码</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>新增时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>expiratedtime</td>
-<td>timestamp</td>
-<td></td>
-<td>过期时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-</tbody></table>
-<p>表4-4：年度利润</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>niandutongji</td>
-<td>varchar</td>
-<td>200</td>
-<td>年度统计</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhuyingshouru</td>
-<td>float</td>
-<td></td>
-<td>主营收入</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhuyingyewuchengben</td>
-<td>int</td>
-<td></td>
-<td>主营业务成本</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhuyingyewushuijinjifujia</td>
-<td>int</td>
-<td></td>
-<td>主营业务税金及附加</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>qitayewulirun</td>
-<td>int</td>
-<td></td>
-<td>其他业务利润</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>yingyefeiyong</td>
-<td>int</td>
-<td></td>
-<td>营业费用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>guanlifeiyong</td>
-<td>int</td>
-<td></td>
-<td>管理费用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>caiwufeiyong</td>
-<td>int</td>
-<td></td>
-<td>财务费用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>touzishouyi</td>
-<td>int</td>
-<td></td>
-<td>投资收益</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>butieshouyi</td>
-<td>int</td>
-<td></td>
-<td>补贴收益</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>yingyewaishouru</td>
-<td>int</td>
-<td></td>
-<td>营业外收入</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>yingyewaizhichu</td>
-<td>int</td>
-<td></td>
-<td>营业外支出</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>suodeshui</td>
-<td>int</td>
-<td></td>
-<td>所得税</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jinglirun</td>
-<td>int</td>
-<td></td>
-<td>净利润</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>dengjishijian</td>
-<td>date</td>
-<td></td>
-<td>登记时间</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="第五章-系统功能实现"><a href="#第五章-系统功能实现" class="headerlink" title="第五章 系统功能实现"></a>第五章 系统功能实现</h1><p>系统登录，管理员和员工进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-1所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-693f.png" alt="image-20230422193826307"></p>
-<h2 id="5-1管理员功能模块"><a href="#5-1管理员功能模块" class="headerlink" title="5.1管理员功能模块"></a>5.1管理员功能模块</h2><p>管理员登录系统后，可以对首页，个人中心，员工管理，部门管理，员工工资管理，工资调整管理，资产类别管理，固定资产管理，经营信息管理，序时账管理，年度利润管理，系统管理等功能进行相应的操作管理，如图5-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-21c9.png" alt="image-20230422193835847"></p>
-<p>员工管理，在员工管理页面可以对索引，员工工号，员工姓名，图片，性别，部门，职位，联系方式，入职时间等内容进行详情，修改和删除等操作，如图5-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-dc16.png" alt="image-20230422193850261"></p>
-<p>部门管理，在部门管理页面可以对索引，部门等信息进行详情，修改和删除等操作，如图\d-\d.*图所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-6cfe.png" alt="image-20230422193909442"></p>
-<p>员工工资管理，在员工工资管理页面可以对索引，工资月份，员工工号，部门，基本工资，工龄补贴，加班工资，奖励，罚款，个税，社保代缴，奖惩说明，实发工资，登记时间等内容进行详情，修改，删除等操作，如图5-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-c1e1.png" alt="image-20230422193918218"></p>
-<p>工资调整管理，在工资调整管理页面可以对索引，调整原因，调整额度，调整时间，员工工号，员工姓名，部门等内容进行详情，修改，删除等操作，如图5-6所示。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/32175.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/32175.html" class="post-title-link" itemprop="url">基于 SpringBoot+Vue 在线考试系统的研究与实现，Java 毕业设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-09 13:48:06" itemprop="dateCreated datePublished" datetime="2023-08-09T13:48:06+08:00">2023-08-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-12 23:20:17" itemprop="dateModified" datetime="2023-09-12T23:20:17+08:00">2023-09-12</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>﻿</p>
-<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p>在线考试的需求和管理上的不断提升，在线考试管理的潜力将无限扩大，在线考试系统在业界被广泛关注，本系统及对此进行总体分析，将在线考试信息管理的发展提供参考。在线考试系统对在线考试有着明显的带动效应，对管理帮助更大。</p>
-<p>本系统主要包括管理员和用户两个角色组成；主要包括首页、个人中心、用户管理、教师管理、课程信息管理、班级信息管理、试题管理、在线试题管理、考试管理等功能的管理系统。</p>
-<h1 id="第二章-主要技术"><a href="#第二章-主要技术" class="headerlink" title="第二章.主要技术"></a>第二章.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><p>考虑到实际生活中在在线考试管理方面的需要以及对该系统认真的分析，将系统权限按管理员和用户这两类涉及用户划分。</p>
-<p>（1）管理员功能需求</p>
-<p>管理员登陆后，主要模块包括首页、个人中心、用户管理、教师管理、课程信息管理、班级信息管理、试题管理、在线试题管理、考试管理等功能。管理员用例图如图3-1所示。</p>
-<p>​                               </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-4d69.png" alt="image-20230421223833416"></p>
-<p>（2）用户功能需求</p>
-<p>用户登陆后，主要模块包括首页、个人中心、课程信息管理、班级信息管理、考试管理等功能。用户用例图如图3-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-ea02.png" alt="image-20230421223843917"></p>
-<h1 id="第四章-系统设计"><a href="#第四章-系统设计" class="headerlink" title="第四章 系统设计"></a>第四章 系统设计</h1><h2 id="4-1功能结构"><a href="#4-1功能结构" class="headerlink" title="4.1功能结构"></a>4.1功能结构</h2><p>为了更好的去理清本系统整体思路，对该系统以结构图的形式表达出来，设计实现该在线考试系统的功能结构图如下所示：</p>
-<p>​                                                              <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-2b63.png" alt="image-20230421223439921"></p>
-<h2 id="4-2-数据库设计"><a href="#4-2-数据库设计" class="headerlink" title="4.2 数据库设计"></a>4.2 数据库设计</h2><h3 id="4-2-1-数据库E-x2F-R图"><a href="#4-2-1-数据库E-x2F-R图" class="headerlink" title="4.2.1 数据库E&#x2F;R图"></a>4.2.1 数据库E&#x2F;R图</h3><p>ER图是由实体及其关系构成的图，通过E&#x2F;R图可以清楚地描述系统涉及到的实体之间的相互关系。在系统中对一些主要的几个关键实体如下图：</p>
-<p>(1) 课程信息E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-da9d.png" alt="image-20230421223621219"></p>
-<p> (2) 班级信息E&#x2F;R图如下所示：</p>
-<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-acb3.png" alt="image-20230421223652944"></p>
-<h3 id="4-2-2-数据库表"><a href="#4-2-2-数据库表" class="headerlink" title="4.2.2 数据库表"></a>4.2.2 数据库表</h3><p>数据库表的设计，如下表：</p>
-<p>表4-1：课程信息</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>kechengbianhao</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程编号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>kechengmingcheng</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程名称</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>kechengfenlei</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程分类</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>tupian</td>
-<td>varchar</td>
-<td>200</td>
-<td>图片</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>kechengneirong</td>
-<td>longtext</td>
-<td>4294967295</td>
-<td>课程内容</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jiaoshigonghao</td>
-<td>varchar</td>
-<td>200</td>
-<td>教师工号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jiaoshixingming</td>
-<td>varchar</td>
-<td>200</td>
-<td>教师姓名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>xueshengzhanghao</td>
-<td>varchar</td>
-<td>200</td>
-<td>学生账号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>xingming</td>
-<td>varchar</td>
-<td>200</td>
-<td>姓名</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>表4-2：课程分类</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>kechengfenlei</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程分类</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="第五章-系统功能实现"><a href="#第五章-系统功能实现" class="headerlink" title="第五章 系统功能实现"></a>第五章 系统功能实现</h1><h2 id="5-1系统登录注册"><a href="#5-1系统登录注册" class="headerlink" title="5.1系统登录注册"></a>5.1系统登录注册</h2><p>系统登录，管理员和用户进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行系统操作，如图5-1所示。</p>
-<p>​                               </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-7e97.png" alt="image-20230421224100227"></p>
-<p>用户注册，在用户注册页面通过填写学号、密码、确认密码、姓名、院系、专业、手机等内容进行注册操作，如图5-2所示。</p>
-<p> ![image-20230421224110114](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230421224110114.png) </p>
-<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录系统后，可以对首页、个人中心、用户管理、教师管理、课程信息管理、班级信息管理、试题管理、在线试题管理、考试管理等功能进行相应的操作管理，如图5-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-280c.png" alt="image-20230421224119059"></p>
-<p>用户管理，在用户管理页面可以对索引、学号、姓名、性别、院系、专业、班级、手机等内容进行详情，修改或删除操作，如图5-4所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-ca8b.png" alt="image-20230421224127578"></p>
-<p>教师管理，在教师管理页面可以对索引、教师工号、教师姓名、性别、籍贯、出生日期、所教科目、职务、联系方式等信息进行详情，修改或删除操作，如图5-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-6251.png" alt="image-20230421224137312"></p>
-<p>课程信息管理，在课程信息管理页面可以对索引、课程名称、科目类型、班级、授课老师、开课时间、结课时间、课件等内容进行详情，修改或删除操作，如图5-6所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-6a50.png" alt="image-20230421224145101"></p>
-<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-2b63.png" alt="image-20230421223439921"></p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d3ea69d51f8b69bb208f82bbe067f4c4.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/58140.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/58140.html" class="post-title-link" itemprop="url">基于 SpringBoot+Vue 的家政服务管理平台，Java 毕业设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-08 13:48:06" itemprop="dateCreated datePublished" datetime="2023-08-08T13:48:06+08:00">2023-08-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-12 23:20:17" itemprop="dateModified" datetime="2023-09-12T23:20:17+08:00">2023-09-12</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>﻿</p>
-<h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h1><p>本系统主要是设计出家政服务管理平台，基于B&#x2F;S构架，后台数据库采用了Mysql，可以使数据的查询和存储变得更加有效，可以确保家政服务管理的工作能够正常、高效的进行，从而提高工作的效率。总体的研究内容如下：</p>
-<p>a）系统的界面简洁、明了，方便用户操作。系统大量的使用控件，大大的缩短了代码的长度。系统的大部分的功能能够通过控件来实现，用户可以非常方便的完成各类操作。</p>
-<p>b）系统分前台和后台，可以同时达到管理员、用户和服务人员的不同需求。系统使用权限包括：管理员、用户和服务人员三个用户角色。主要功能包括首页、个人中心、用户管理、服务人员管理、服务信息管理、服务类型管理、服务预约管理、服务取消管理、服务分配管理、服务进度管理、评价信息管理、留言反馈、系统管理等等。</p>
-<h1 id="2-主要技术"><a href="#2-主要技术" class="headerlink" title="2.主要技术"></a>2.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="3-可行性分析"><a href="#3-可行性分析" class="headerlink" title="3. 可行性分析"></a>3. 可行性分析</h1><p>本家政服务管理平台是作为毕业设计自己开发的，所以产生的费用微乎其微，系统建成之后可能会为今后的家政服务管理提供便利，并且系统完成之后产生的维护费用也不大。综合计算，所有的开支都不大，所以家政服务管理平台在经济上是不存在问题的。</p>
-<h1 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4.系统设计"></a>4.系统设计</h1><p>  本家政服务管理平台是把IT技术用到家政服务信息的管理中，它具有标准家政服务管理平台所具备的现实生活中完整的家政服务管理过程，完全的实现了虚拟现实。它可以收集和保存用户的信息，真正的实现了节约资源、提高使用效率、处理业务的同时实现了家政服务管理平台的功能。</p>
-<p>本系统采取的原则有：</p>
-<p>a）开发采用的是B&#x2F;S模式。B&#x2F;S模式的优点是处理前台与后台时层次分明，并且符合现在大部分用户习惯的网页搜索的方法。</p>
-<p>b）运用面向对象的开发与设计思想。只有对系统的整体充分了解才能使用面向对象的技术，通过面向对象的技术可以保证系统的框架，从而使系统更加稳定，提高运行的效率。</p>
-<p>c）采用结构化的设计方法。将系统分成各个功能模块，正确的处理模块之间和模块内部的联系以及与数据库的联系，定义各模块之间的内部结构，通过对不同模块的设计和模块与模块之间关系的设计来实现整个系统的功能。</p>
-<p>d）系统的界面简单清晰。系统的界面设计简单，方便用户快速的操作使用。         </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-9f50.png" alt="image-20230421221725263"></p>
-<p>​                                </p>
-<h1 id="5系统的详细设计与实现"><a href="#5系统的详细设计与实现" class="headerlink" title="5系统的详细设计与实现"></a>5系统的详细设计与实现</h1><h2 id="5-1前台模块设计"><a href="#5-1前台模块设计" class="headerlink" title="5.1前台模块设计"></a>5.1前台模块设计</h2><p>系统首页的主要功能展示了首页、服务信息、公告信息、留言反馈、个人中心、后台管理等，用户可根据权限进行相应操作。运行结果如图5-1所示。</p>
-<p>​                               </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-199d.png" alt="image-20230421221817494"></p>
-<p>用户注册，通过填写账号、密码、确认密码、姓名、邮箱、手机号码等内容进行注册等操作，如图5-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-74d2.png" alt="image-20230421221829335"></p>
-<p>服务信息，在服务信息页面可以查看服务名称、 服务价格、服务简介、发布日期、合同信息等内容进行预约、详情或收藏等操作；如图5-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-8ded.png" alt="image-20230421221839980"></p>
-<p>个人中心，在个人中心页面中通过填写账号、密码、性别、姓名、邮箱、手机号码、图片等内容进行更新信息等操作，并可根据需要对我的收藏进行相应等操作，如图5-4所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-5a73.png" alt="image-20230421221848583"></p>
-<h2 id="5-2后台功能模块"><a href="#5-2后台功能模块" class="headerlink" title="5.2后台功能模块"></a>5.2后台功能模块</h2><p>用户进入系统前在登录页面根据要求填写用户名、密码和验证码，选择角色等信息，点击登录进行登录操作，如图5-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-5a73.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/48703.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/48703.html" class="post-title-link" itemprop="url">徐师兄精品项目分享</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-04-20 13:05:55 / 修改时间：22:41:47" itemprop="dateCreated datePublished" datetime="2023-04-20T13:05:55+08:00">2023-04-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>嗨喽，大家好，我是程序员徐师兄，大厂 7 年经验，专注于编程，提供毕业设计指导，源码交流，远程部署</p>
-<blockquote>
-<p>1、源码获取：叫 v <strong>Albert_HW07</strong> 了解</p>
-<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
-<p>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
-</blockquote>
-<h2 id="SpringBoot-Vue-毕业设计题目推荐"><a href="#SpringBoot-Vue-毕业设计题目推荐" class="headerlink" title="SpringBoot+ Vue 毕业设计题目推荐"></a>SpringBoot+ Vue 毕业设计题目推荐</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p>
-<table>
-<thead>
-<tr>
-<th>题目</th>
-<th>技术栈</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>基于 SpringBoot+Vue 的医院急诊系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的社区维修平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园新闻网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的职称评审管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线动漫信息平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的心灵治愈交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的论坛管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的闲一品</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的线上教学平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的实验室管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的教师人事档案管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的租房网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的大学生社团活动平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的垃圾分类网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品租售系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线BLOG网</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具销售电商平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的简历系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汉服推广网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的准妈妈孕期交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的点餐平台网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的医疗服务系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园博客系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的商务安全邮箱邮件收发</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的springcloud房产销售平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的人职匹配推荐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的Springboot的小区物业管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的口腔管家平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的民宿管理平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的滴答拍摄影项目</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的酒店管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的体质测试数据分析及可视化设计</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的交流互动系统(1)</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的某银行OA系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的自习室预订系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的疫情网课管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的考研资讯平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的音乐翻唱与分享平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旧物置换网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的影城管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的外卖点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的餐厅点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的新生宿舍管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园疫情防控系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的幼儿园管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的火车订票管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的毕业生信息招聘平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的二手交易平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品交易网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的网上商城购物系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的学生毕业离校系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线答疑系统文件</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-</tbody></table>
-<h2 id="毕业设计咨询"><a href="#毕业设计咨询" class="headerlink" title="毕业设计咨询"></a>毕业设计咨询</h2><p><strong>代码都是我和朋友开发的，测试过的，还有视频演示和文档的。</strong>可以保证正常运行。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p>
-<p><strong>微信Albert_HW07</strong></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303280003-7041.png"></p>
-<h2 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304202204-ebc6.png" alt="俊丰毕业设计 (3)"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2223,7 +1527,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2283,12 +1587,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">554k</span>
+    <span title="站点总字数">567k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:24</span>
+    <span title="站点阅读时长">8:35</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
