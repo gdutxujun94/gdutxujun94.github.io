@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1 简介本文讲解的是 Java基于 SpringBoot 的网上书城管理系统。网上书城管理系统，为用户随时随地查看网上书城管理系统信息提供了便捷的方法，更重要的是大大的简化了管理员管理网上书城信息的方式方法，更提供了其他想要了解网上书城信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统网上书城管理系统信息管理方法，这样的电子信息管理更为简洁方便，在网上书城管理系统维护信息反馈和处理网上书城信息意">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 毕业设计，基于 SpringBoot+Vue 的网上书城商城管理系统（毕业设计，附源码，教程）">
+<meta property="og:url" content="https://blog.junxu666.top/p/29537.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="1 简介本文讲解的是 Java基于 SpringBoot 的网上书城管理系统。网上书城管理系统，为用户随时随地查看网上书城管理系统信息提供了便捷的方法，更重要的是大大的简化了管理员管理网上书城信息的方式方法，更提供了其他想要了解网上书城信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统网上书城管理系统信息管理方法，这样的电子信息管理更为简洁方便，在网上书城管理系统维护信息反馈和处理网上书城信息意">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d32d.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-d03d.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-3886.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-4c12.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-98f2.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d32d.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d453.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-9e22.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-aecc.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-aecc.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-c76e.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d0b3.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-fb4c.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-0a9f.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-3b5a.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-fb4c.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-a15f.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-7692.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-3677.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-3677.png">
+<meta property="article:published_time" content="2023-08-02T05:05:55.000Z">
+<meta property="article:modified_time" content="2024-01-16T14:56:43.989Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d32d.png">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/29537.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java 毕业设计，基于 SpringBoot+Vue 的网上书城商城管理系统（毕业设计，附源码，教程） | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/29537.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 毕业设计，基于 SpringBoot+Vue 的网上书城商城管理系统（毕业设计，附源码，教程）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-02 13:05:55" itemprop="dateCreated datePublished" datetime="2023-08-02T13:05:55+08:00">2023-08-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-16 22:56:43" itemprop="dateModified" datetime="2024-01-16T22:56:43+08:00">2024-01-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>本文讲解的是 Java基于 SpringBoot 的网上书城管理系统。网上书城管理系统，为用户随时随地查看网上书城管理系统信息提供了便捷的方法，更重要的是大大的简化了管理员管理网上书城信息的方式方法，更提供了其他想要了解网上书城信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统网上书城管理系统信息管理方法，这样的电子信息管理更为简洁方便，在网上书城管理系统维护信息反馈和处理网上书城信息意见方面也有得天独厚的优势。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/943/">文章首发地址</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d32d.png" alt="image-20231002235558527"></p>
+<h2 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2 技术栈"></a>2 技术栈</h2><p>开发语言：Java<br>框架：springboot<br>JDK版本：JDK1.8<br>服务器：tomcat7 或者 Tomcat 8<br>数据库：mysql 5.7（一定要5.7版本，8.0 有时候坑很多）<br>数据库工具：Navicat11<br>开发软件：eclipse&#x2F;myeclipse&#x2F;idea<br>Maven包：Maven3.3.9 (无强制要求)</p>
+<h2 id="3-需求分析"><a href="#3-需求分析" class="headerlink" title="3 需求分析"></a>3 需求分析</h2><p>通过前面的功能分析可以将网上书城管理系统的功能分为管理员和用户两个部分，系统的主要功能包括首页、个人中心、用户管理、图书类型管理、图书分类管理、图书信息管理、我的收藏管理、系统管理、订单管理等内容。任何用户只要进入网站不需登录也可浏览到的信息，后台管理是针对已登录的用户看到满意的网上书城信息而设计的</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-d03d.png" alt="image-20231003000549336"></p>
+<h2 id="4-数据库设计"><a href="#4-数据库设计" class="headerlink" title="4 数据库设计"></a>4 数据库设计</h2><p>用户注册实体图如图4-1所示：</p>
+<p>​                                                                              <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-3886.png" alt="image-20231003000331891">               </p>
+<p>图书信息实体图如图4-2所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-4c12.png" alt="image-20231003000359123"></p>
+<p>购物车实体图如图4-3所示：</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-98f2.png" alt="image-20231003000411972"></p>
+<p>（3）数据库逻辑结构分析</p>
+<p>数据库概念结构设计后，可以数据库概念转化实际的数据模型，这是一种数据库的逻辑结构，就是将概念结构与支持数据库管理系统的模型相符合。具体的表设计如下所示：</p>
+<p>表4-1：配置文件</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar</td>
+<td>100</td>
+<td>配置参数名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td>varchar</td>
+<td>100</td>
+<td>配置参数值</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-2：用户</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>yonghuming</td>
+<td>varchar</td>
+<td>200</td>
+<td>用户名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mima</td>
+<td>varchar</td>
+<td>200</td>
+<td>密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingbie</td>
+<td>varchar</td>
+<td>200</td>
+<td>性别</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>touxiang</td>
+<td>varchar</td>
+<td>200</td>
+<td>头像</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>youxiang</td>
+<td>varchar</td>
+<td>200</td>
+<td>邮箱</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shouji</td>
+<td>varchar</td>
+<td>200</td>
+<td>手机</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>money</td>
+<td>float</td>
+<td></td>
+<td>余额</td>
+<td></td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h1 id="5系统详细设计"><a href="#5系统详细设计" class="headerlink" title="5系统详细设计"></a>5系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>网上书城管理系统，在系统首页可以查看首页、图书信息、公告资讯、个人中心、后台管理、购物车等内容进行详细操作，如图5-1所示。</p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d32d.png" alt="image-20231002235558527"></p>
+<p>用户注册，在用户注册页面通过填写用户名、密码、姓名、邮箱、手机等信息完成用户注册，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d453.png" alt="image-20231002235637255"></p>
+<p>  图书信息，在图书信息页面可以查看图书名称、价格、单次购买、库存、图书分类、图书类型、图片、简述、作者、出版社、点击次数、详情等详细内容，并进行添加到购物车、立即购买，评论或收藏等操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-9e22.png" alt="image-20231002235708142"></p>
+<p>个人中心，在个人中心页面通过填写用户名、密码、姓名、性别、上传图片、邮箱、手机、余额等内容进行更新信息，根据需要对我的订单，我的地址、我的收藏进行相应的操作管理，如图5-4所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-aecc.png" alt="image-20231002235725472"></p>
+<p>购物车，在购物车页面可以查看购买商品、价格、数量、总价等详细内容，并进行点击购买或删除等操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-aecc.png"></p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录系统，管理员通过输入用户名、密码，选择角色并点击登录进行系统登录操作，如图5-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-c76e.png" alt="image-20231002235852701"></p>
+<p>管理员登录系统后，可以对首页、个人中心、用户管理、图书类型管理、图书分类管理、图书信息管理、我的收藏管理、系统管理、订单管理等功能进行相应操作，如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-d0b3.png" alt="image-20231002235900533"></p>
+<p>用户管理，在用户管理页面可以对索引、用户名、姓名、性别、头像、邮箱、手机等信息进行详情，修改或删除等操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-fb4c.png" alt="image-20231002235915416"></p>
+<p>图书类型管理，在图书类型管理页面可以对索引、图书类型等信息进行修改和删除等操作，如图5-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-0a9f.png" alt="image-20231002235922028"></p>
+<p>图书分类管理，在图书分类管理页面可以对索引、图书分类信息进行修改或删除等操作，如图5-10所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-3b5a.png" alt="image-20231002235929461"></p>
+<p>图书信息管理，在图书信息管理页面可以对索引、图书名称、图书分类、图书类型、图片、简述、作者、出版社、价格、单限、库存等信息进行详情，修改、查看评论或删除等操作，如图5-11所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-fb4c.png"></p>
+<p>系统管理，在公告资讯页面可以对索引、标题、图片等信息进行详情，修改或删除等操作，还可以对轮播图管理进行详细操作；如图5-12所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-a15f.png" alt="image-20231002235947700"></p>
+<p>订单管理，在已支付订单页面可以对索引、订单编号、商品名称、商品图片、购买数量、价格&#x2F;积分、折扣价格、总价格&#x2F;总积分、折扣总价格、支付类型、状态、地址、电话、收货人、商品类型、下单时间等信息进行详情，发货或删除等操作，还可以对已退款订单，已完成订单，已发货订单，未支付订单，已取消订单进行相应的操作管理；如图5-13所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310022310-7692.png" alt="image-20231002235955709"></p>
+<h2 id="5-3用户后台功能模块"><a href="#5-3用户后台功能模块" class="headerlink" title="5.3用户后台功能模块"></a>5.3用户后台功能模块</h2><p>用户登录进入系统后台，可以对首页、个人中心、我的收藏管理、订单管理等功能进行相应操作，如图5-14所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-3677.png" alt="image-20231003000008241"></p>
+<p>个人中心，在个人信息页面通过填写用户名、姓名、性别、头像、邮箱、手机等信息进行个人信息修改操作，如图5-15所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310030010-3677.png"></p>
+<h2 id="6-推荐阅读"><a href="#6-推荐阅读" class="headerlink" title="6 推荐阅读"></a>6 推荐阅读</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/583/">微信小程序毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/41/">Java毕业设计-SpringBoot+Vue毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/584/">Java毕业设计-Java SSM+JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/585/">Java毕业设计-Java JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/616/">Android 毕业设计-项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/615/">Python 毕业设计合集</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/48703.html" rel="prev" title="徐师兄精品项目分享">
+      <i class="fa fa-chevron-left"></i> 徐师兄精品项目分享
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/31107.html" rel="next" title="Java基于 SpringBoot 的大学生租房网站的研究与实">
+      Java基于 SpringBoot 的大学生租房网站的研究与实 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">2 技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">3 需求分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">4 数据库设计</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="nav-number"></span> <span class="nav-text">5系统详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">5.1系统功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2%E7%AE%A1%E7%90%86%E5%91%98%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">5.2管理员功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3%E7%94%A8%E6%88%B7%E5%90%8E%E5%8F%B0%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">5.3用户后台功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="nav-number">4.</span> <span class="nav-text">6 推荐阅读</span></a></li></ol></li></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">587k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:53</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

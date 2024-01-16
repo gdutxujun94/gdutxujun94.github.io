@@ -186,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/2807.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/19940.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -200,7 +200,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/2807.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 开发的班级综合测评系统研究与实现</a>
+            <a href="/p/19940.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot+Vue 的会员制医疗预约服务管理信息系统（毕业设计，附源码，教程）</a>
         </h2>
 
         <div class="post-meta">
@@ -210,14 +210,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-03-19 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-19T13:05:55+08:00">2023-03-19</time>
+              <time title="创建时间：2023-04-01 13:05:55" itemprop="dateCreated datePublished" datetime="2023-04-01T13:05:55+08:00">2023-04-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-03 21:18:29" itemprop="dateModified" datetime="2023-04-03T21:18:29+08:00">2023-04-03</time>
+                <time title="修改时间：2023-04-10 23:31:53" itemprop="dateModified" datetime="2023-04-10T23:31:53+08:00">2023-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,7 +235,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -254,64 +254,337 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br>😁 </p>
-<blockquote>
+          <blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br> 😁 </p>
 <p> 1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
 </blockquote>
-<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>传统的班级综合测评管理系统，一开始都是手工记录，然后将手工记录的文档进行存档；随着电脑的普及，班级综合测评管理演变成了手工记录后，输入电脑进行存档。这两种管理方式，对教师来说工作量大，不单要教授课程，后期的班级综合测评管理还需要花费大量时间。而且这种班级综合测评管理的方式，容易出现遗失或因为失误输入错误的信息等等。在这些基础上，我把用Springboot为框架的班级综合测评管理系统作为我的毕业设计，希望可以解决传统班级综合测评管理系统中出现的问题，简化教师的工作，也可以方便管理员进行系统化、电子化的管理。</p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h1><p>针对会员制医疗预约服务行业的管理现状，本会员制医疗预约服务管理信息系统主要实现以下几个目标：</p>
+<p>  1.系统界面简洁，操作简便。</p>
+<p>  2.拥有精准，高效的查询功能。</p>
+<p>  3.使管理人员能够及时的获得精确的报表。</p>
+<p>  4.对数据内容的管理安全，稳定，易维护。</p>
+<p>  5.对信息全面跟踪，方便管理人员进行管理。</p>
+<p>  6.提供用户登录和修改密码等服务，加强系统安全。</p>
+<p>7.提供用户管理和数据备份，确保信息的安全性和可靠性。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
 <h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>开发语言：Java</p>
 <p>框架：springboot</p>
 <p>JDK版本：JDK1.8</p>
 <p>服务器：tomcat7</p>
-<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库：mysql 5.7（5.7版本以上即可）</p>
 <p>数据库工具：Navicat11</p>
 <p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
 <p>Maven包：Maven3.3.9</p>
 <p>浏览器：谷歌浏览器</p>
-<h1 id="3-需求分析"><a href="#3-需求分析" class="headerlink" title="3. 需求分析"></a>3. 需求分析</h1><h3 id="用户需求分析"><a href="#用户需求分析" class="headerlink" title="用户需求分析"></a>用户需求分析</h3><p>根据账号登陆进入班级综合测评管理系统，系统根据角色展示相应的功能权限。教师可以修改个人信息和密码，还可以对学生信息，综合评价等进行详情、修改、删除、测评等。超级管理员拥有系统所有功能权限，可以管理系统，管理教师和学生的信息。</p>
-<h3 id="功能需求分析"><a href="#功能需求分析" class="headerlink" title="功能需求分析"></a>功能需求分析</h3><p>根据一般班级综合测评管理系统的功能需求分析，本系统的功能模块如下：</p>
-<p>（1）在个人中心，管理员可以修改自己的用户名和登录密码。</p>
-<p>（2）在教师管理模块中，可以查看教师的信息，和进行修改、删除。</p>
-<p>（3）在学生管理模块中，可以查看学生的信息，和进行修改、删除。</p>
-<p>（4）在综合测评管理页面，管理员只有查看详情、修改、删除和查看统计图的权限，新增的权限是在教师的手上。</p>
-<h3 id="系统性能需求分析"><a href="#系统性能需求分析" class="headerlink" title="系统性能需求分析"></a>系统性能需求分析</h3><p>对系统性能进行分析，可对系统反应度、界面简洁清晰度、储存能性、易学性和稳定性进行分析；</p>
-<p>系统反应度：同时上万人在线时反应时间应该在两三秒以内，。</p>
-<p>界面简洁清晰：系统界面要求简单明了，操作简单，用户操作容易上手。</p>
-<p>储存性能高：高考志愿智能推荐系统中需要存储的信息有很多，所以对系统的存储量要求很高，因此数据库就应该很强大，才能保证信息能安全稳定的进行存储；</p>
-<p>易学性：该系统在操作上必须简单好上手，没有很多复杂的操作，只需要简单的进行学习就能操作该系统。</p>
-<p>稳定性：要求高考志愿智能推荐系统运行要稳定，界面清楚、字体清晰等。</p>
-<h1 id="4系统总体设计与实现"><a href="#4系统总体设计与实现" class="headerlink" title="4系统总体设计与实现"></a>4系统总体设计与实现</h1><h2 id="4-1总体设计"><a href="#4-1总体设计" class="headerlink" title="4.1总体设计"></a>4.1总体设计</h2><p>班级综合测评管理系统采用了结构化开发的方法。这种开发方法的优点是控制性比较强，开发过程中采用了结构化和模块化的设计思想，自顶向下，从总体到部分，合理划分系统的结构和模块。结构化开发时使用模块式开发，各模块之间互不影响，方便系统的开发与管理。 </p>
-<p>本系统的设计是基于 B&#x2F;S架构的三层体系结构，也就是浏览器和服务器结构。计算机技术发展的速度非常快，以前的设计结构都以C&#x2F;S的模式为主，也就是客户端和服务端模式。但随着网页技术的发展，越来越多的用户习惯于使用浏览器。现在的网页技术可以在浏览器中实现非常漂亮的效果，以前的单一低调的客户端页面已经无法满足用户的需求。在B&#x2F;S这种结构下，技术人员可以很轻松的设计出用户所需要的工作界面，页面代码通过浏览器进行解析展示，在浏览器中不做过多的事务逻辑的处理。主要的事务逻辑放在服务端进行处理。这样用户的电脑就不会承载过多的东西，只需要浏览器展示即可。对于开发人员也很方便进行系统的维护和升级。开发人员只需要在服务端进行系统的维护就可以了。使用Java这样的跨平台性非常好的语言，这样的开发模式更加的方便，高效。本系统合理的进行了模块划分和组合，因此由于各个模块之间基本上是相互独立的，所以每个模块都可以独立的被解释、执行、调试和修改，让繁琐的系统设计工作简单化。系统总体设计图如下图4-1所示：</p>
-<p>​                                                            <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-72be764.png" alt="image-20230317220615789"></p>
-<p>​                                                                                             </p>
-<h1 id="5-系统功能的详细设计与实现"><a href="#5-系统功能的详细设计与实现" class="headerlink" title="5 系统功能的详细设计与实现"></a>5 系统功能的详细设计与实现</h1><h2 id="5-1-管理员功能模块"><a href="#5-1-管理员功能模块" class="headerlink" title="5.1 管理员功能模块"></a>5.1 管理员功能模块</h2><p>管理员输入账号和密码，选择登录角色进行登录，管理员登录界面如图5-1所示：</p>
-<p>​                                </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-7409.png" alt="image-20230317220107033"> </p>
-<p>管理员功能：管理员登录系统后，能对首页、个人中心、学生管理、教师管理、班级管理、综合测评管理进行操作。管理员功能如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-7c5a607.png" alt="image-20230317220208913"> </p>
-<p>学生管理：在学生管理页面，可以对索引、学号、学生姓名、性别、班级、学生手机、班级、教师工号等内容进行详情、修改和删除等操作，如图5-3所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-53f97ee.png" alt="image-20230317220220548"></p>
-<p>教师管理：在教师管理页面，可以对索引、教师工号、教师姓名、性别、照片、教师电话等内容进行详情、修改和删除等操作，如图5-4所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-837f00a.png" alt="image-20230317220228906"></p>
-<p>班级管理：在班级管理页面，可以对索引、班级等内容进行修改和删除等操作，如图5-5所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-6617417.png" alt="image-20230317220244334"></p>
-<p>综合测评管理：在综合测评管理页面，可以对索引、学号、学生姓名、教师工号、教师姓名、班级、德育、智育、体育、综合成绩、录入时间等内容进行详情，修改和删除等操作，如图5-6所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-5738607.png" alt="image-20230317220254023"></p>
-<h2 id="5-2学生功能模块"><a href="#5-2学生功能模块" class="headerlink" title="5.2学生功能模块"></a>5.2学生功能模块</h2><p>学生功能：学生登录到班级综合测评管理系统后，可以对首页、个人中心、综合测评管理等进行操作，如图5-7所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-771b62d.png" alt="image-20230317220303181"></p>
-<p>个人中心：学生可以将学号、学生姓名、性别、头像、学生手机、班级、教师工号等个人信息进行修改，还能修改密码，如图5-8所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-c26ccd3.png" alt="image-20230317220312921"></p>
-<p>综合测评管理：在综合测评管理页面，可以对索引、学号、学生姓名、教师工号、教师姓名、班级、德育、智育、体育、综合成绩、录入时间等内容进行详情操作，如图5-9所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-97dac0b.png" alt="image-20230317220329628"></p>
-<h2 id="5-3教师功能模块"><a href="#5-3教师功能模块" class="headerlink" title="5.3教师功能模块"></a>5.3教师功能模块</h2><p>教师功能：教师登录到班级综合测评管理系统后，可以对首页、个人中心、学生管理、综合测评管理等进行操作，如图5-10所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-ee5abc6.png" alt="image-20230317220340892"></p>
-<p>个人中心：教师可以将教师工号、教师姓名、性别、照片、教师电话等个人信息进行修改，还能修改密码，如图5-11所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-366507a.png" alt="image-20230317220348873"></p>
-<p>学生管理：在学生管理页面，可以查看对索引、学号、学生姓名、性别、头像、学生手机、班级、教师工号等内容进行详细和综合测评等操作，如图5-12所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-a06a5f2.png" alt="image-20230317220358218"></p>
-<p>综合测评管理：在综合测评管理页面，可以对索引、学号、学生姓名、教师工号、教师姓名、班级、德育、智育、体育、综合成绩、录入时间等内容进行详情、修改和删除等操作，如图5-13所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-a5d6f24.png" alt="image-20230317220405718"></p>
+<h1 id="3系统分析"><a href="#3系统分析" class="headerlink" title="3系统分析"></a>3系统分析</h1><h2 id="3-1需求分析"><a href="#3-1需求分析" class="headerlink" title="3.1需求分析"></a>3.1需求分析</h2><p>会员制医疗预约服务管理信息系统的作用，可以提高会员制医疗预约服务管理的工作人员的效率，协助他们对会员制医疗预约服务信息进行统一管理，为管理者提供信息储存和查询搜索系统。一个良好的会员制医疗预约服务管理信息系统可以实现对会员制医疗预约服务的精细化管理：对在线会员制医疗预约服务管理流程的全过程进行电子化操作，其主要作用是管理和控制会员制医疗预约服务所有的信息，分析库存数据，使工作人员对会员制医疗预约服务管理信息系统进行监管，根据系统所提供的相应信息，采取适当的措施，及时补救管理中的漏洞，提高在线会员制医疗预约服务管理的工作效率，使得在线会员制医疗预约服务管理变的更加系统和规范。</p>
+<h1 id="4系统总体设计"><a href="#4系统总体设计" class="headerlink" title="4系统总体设计"></a>4系统总体设计</h1><h2 id="4-1系统结构"><a href="#4-1系统结构" class="headerlink" title="4.1系统结构"></a>4.1系统结构</h2><p>会员制医疗预约服务管理信息系统，它是一个由人、电脑及其他组件构成的，一种能够收集、存储、加工、传送信息的系统。该系统可以帮助决策者找出当前急需解决的问题，然后将信息快速的反馈，使管理人员能够以最快的时间知道目前的现状，进行更进一步的计划。</p>
+<p>当前MIS系统结构目前存在两种较为流行的结构:C&#x2F;S和B&#x2F;S两种。</p>
+<p>C&#x2F;S结构的系统：C&#x2F;S结构就是客户机服务器结构，它可以法派任务到Client端和Server端来进行，充分利用两端硬件环境的优势，来降低系统的通讯的花费。客户端主要作用是处理人机交互，执行客户端应用程序，收集数据以及向服务器发送任务请求。服务器基本作用是执行后台程序，它主要对客户机的请求申请进行反馈，除此之外，它的作用还包括：数据库存储系统的共享管理、通讯管理、文件管理等等。</p>
+<p>B&#x2F;S结构的系统：这种网络结构简化了客户端，并把系统功能实现的中心集中到服务器上，在这种模式中，只需要一个浏览器就可以了。这种结构将很多的工作交于WEB服务器，只通过浏览器请求WEB服务，随后根据请求返回信息。</p>
+<p>通常在只在企业网内部使用，采用C&#x2F;S。而使用不仅限于内网的情况下使用B&#x2F;S。考虑到本管理系统的一系列需求，所以，该系统开发使用B&#x2F;S结构开发。其主要功能结构如下图所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-b3f5.png" alt="image-20230403212507726"></p>
+<h2 id="4-2数据库设计"><a href="#4-2数据库设计" class="headerlink" title="4.2数据库设计"></a>4.2数据库设计</h2><p>数据库设计是指为系统提供最优化的数据库模式，使得应用程序能够有效的存储数据，满足用户的各类需求。</p>
+<h3 id="4-2-1-数据库概念结构设计"><a href="#4-2-1-数据库概念结构设计" class="headerlink" title="4.2.1 数据库概念结构设计"></a>4.2.1 数据库概念结构设计</h3><p>概念结构设计是根据用户需求形成的。用最常的E-R方法描述数据模型进行数据库的概念设计，首先设计局部的E-R模式，最后各局部ER模式综合成一个全局模式。然后再把概念模式转换成逻辑模式。将概念设计从设计过程中独立开来，设计复杂程度降低，不受特定DBMS的限制。</p>
+<p>1.所有实体和属性的定义如下所示。</p>
+<p>医院信息管理实体属性图，如图4-2所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-08d2.png" alt="image-20230403212438613"></p>
+<p>药品信息管理实体属性图，如图4-3所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-ac06.png" alt="image-20230403212429334"></p>
+<h3 id="4-2-2数据库逻辑结构设计"><a href="#4-2-2数据库逻辑结构设计" class="headerlink" title="4.2.2数据库逻辑结构设计"></a>4.2.2数据库逻辑结构设计</h3><p>根据E-R得出数据库包涵了以下几张数据表来实现了对数据库的存储、调用。以下分别列出数据表的每个字段名、数据类型、主外键及备注。</p>
+<p>表4-1：挂号预约</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>yuyuebianhao</td>
+<td>varchar</td>
+<td>200</td>
+<td>预约编号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>gonghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>工号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yishengxingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>医生姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yiyuanmingcheng</td>
+<td>varchar</td>
+<td>200</td>
+<td>医院名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yiyuandizhi</td>
+<td>varchar</td>
+<td>200</td>
+<td>医院地址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>keshimingcheng</td>
+<td>varchar</td>
+<td>200</td>
+<td>科室名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>keshidizhi</td>
+<td>varchar</td>
+<td>200</td>
+<td>科室地址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>guahaofei</td>
+<td>varchar</td>
+<td>200</td>
+<td>挂号费</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yuyueriqi</td>
+<td>date</td>
+<td></td>
+<td>预约日期</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yuyuebeizhu</td>
+<td>varchar</td>
+<td>200</td>
+<td>预约备注</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zhanghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>账号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shoujihaoma</td>
+<td>varchar</td>
+<td>200</td>
+<td>手机号码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sfsh</td>
+<td>varchar</td>
+<td>200</td>
+<td>是否审核</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td>shhf</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>审核回复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ispay</td>
+<td>varchar</td>
+<td>200</td>
+<td>是否支付</td>
+<td></td>
+<td>未支付</td>
+</tr>
+</tbody></table>
+<p>表4-2：条形码机</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>mingcheng</td>
+<td>varchar</td>
+<td>200</td>
+<td>名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tupian</td>
+<td>varchar</td>
+<td>200</td>
+<td>图片</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zhanghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>账号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>beizhu</td>
+<td>varchar</td>
+<td>200</td>
+<td>备注</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-3：使用须知</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>biaoti</td>
+<td>varchar</td>
+<td>200</td>
+<td>标题</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>neirong</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>内容</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="5-系统详细设计"><a href="#5-系统详细设计" class="headerlink" title="5 系统详细设计"></a>5 系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>会员制医疗预约服务管理信息系统，在系统首页可以查看首页，医院信息，坐诊信息，核酸检测，疾控通知，健康资讯，就诊引导，个人中心，后台管理等内容，并进行详细操作；如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-b625.png" alt="image-20230403211124005"></p>
+<p>医院信息，在医院信息页面可以查看医院名称，医院地址，院长，成立时间，联系电话，医院简介，医院详情等内容，并进行收藏操作，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-19b8.png" alt="image-20230403211138150"></p>
+<p>坐诊信息，在坐诊信息页面可以查看医生姓名，工号，性别，医院名称，医院地址，科室名称，科室地址，挂号费，医生简介等内容，并进行预约，咨询和收藏操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
+<p>会员注册，在会员注册页面通过填写账号、密码、确认密码、姓名、身份证、手机号码等信息进行会员注册操作，如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-56fb.png" alt="image-20230403211300842"></p>
+<p>个人中心，在个人中心页面通过填写账号、密码、姓名、性别、身份证、手机号码、上传图片等内容进行更新信息，并对我的收藏进行操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-56fb.png"></p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录，管理员进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-6所示。</p>
+<p>![image-20230403211324024](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230403211324024.png)</p>
+<p>管理员登录系统后，可以对首页、个人中心、会员管理、医生管理、医院信息管理、科室信息管理、坐诊信息管理、核酸检测管理、挂号预约管理、药品信息管理、诊断信息管理、处方信息管理、住院信息管理、在线咨询管理、咨询回复管理、核酸预约管理、疾控通知管理、健康资讯管理、健康档案管理、系统管理等功能进行相应的操作管理，如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-d755.png" alt="image-20230403211335423"></p>
+<p>会员管理，在会员管理页面可以对索引，账号，密码，姓名，性别，身份证，手机号码，相片等内容进行详情，修改和删除等操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-bc34.png" alt="image-20230403211346395"></p>
+<p>医生管理，在医生管理页面可以对索引，工号，医生姓名，性别，身份证，手机号码，相片，医院名称，医院地址，科室名称，科室地址等内容进行详情，修改和删除等操作，如图5-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-937f.png" alt="image-20230403211401302"></p>
 <h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
+<h1 id="源码下载地址-1"><a href="#源码下载地址-1" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032104-0094.png" alt="image-20230403211152622"></p>
 <p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031721-19ccfc0.png"></p>
 
       
@@ -332,7 +605,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/49037.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/26254.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -346,7 +619,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/49037.html" class="post-title-link" itemprop="url">Android、SprintBoot、SSM 部署教程</a>
+            <a href="/p/26254.html" class="post-title-link" itemprop="url">【毕业设计】基于SpringBoot+Vue毕业生信息招聘平台系统【源码+论文+演示视频+包运行成功】</a>
         </h2>
 
         <div class="post-meta">
@@ -356,14 +629,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-03-19 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-19T13:05:55+08:00">2023-03-19</time>
+              <time title="创建时间：2023-03-25 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-25T13:05:55+08:00">2023-03-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-02 15:33:06" itemprop="dateModified" datetime="2023-04-02T15:33:06+08:00">2023-04-02</time>
+                <time title="修改时间：2023-04-03 21:17:48" itemprop="dateModified" datetime="2023-04-03T21:17:48+08:00">2023-04-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -381,14 +654,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>6.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -400,46 +673,575 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[toc]</p>
-<p>嗨喽，大家好，我是程序员徐师兄，大厂 7 年经验，专注于编程，提供毕业设计指导，源码交流，远程部署。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p>
-<blockquote>
-<p><strong>1、源码获取： 查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></strong> ，或者加 v <strong>xiaoxu_9411</strong> 了解</p>
-<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
-<p>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+          <blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br> 😁 </p>
+<p> 1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br> 2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
 </blockquote>
-<h1 id="Java-SPringBoot，SSM-部署教程"><a href="#Java-SPringBoot，SSM-部署教程" class="headerlink" title="Java SPringBoot，SSM 部署教程"></a>Java SPringBoot，SSM 部署教程</h1><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>开发语言：Java</p>
-<p>框架：springboot</p>
-<p>JDK版本：JDK1.8</p>
-<p>服务器：tomcat7</p>
-<p>数据库：mysql 5.7（一定要5.7版本）</p>
-<p>数据库工具：Navicat11</p>
-<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
-<p>Maven包：Maven3.3.9</p>
-<p>浏览器：谷歌浏览器</p>
-<h2 id="部署教程"><a href="#部署教程" class="headerlink" title="部署教程"></a>部署教程</h2><p>如果你不会部署的话，可以联系我远程部署，注意是<strong>有偿的</strong></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-0f02.png" alt="img"></p>
-<h3 id="Java-配置教程"><a href="#Java-配置教程" class="headerlink" title="Java 配置教程"></a>Java 配置教程</h3><p>Java配置环境链接： <a target="_blank" rel="external nofollow noopener noreferrer" href="https://pan.baidu.com/s/1PMNIxHDu1SfYlng3BP58zg?pwd=qpke">https://pan.baidu.com/s/1PMNIxHDu1SfYlng3BP58zg?pwd=qpke</a> </p>
-<p>提取码: qpke </p>
-<h3 id="部署教程-1"><a href="#部署教程-1" class="headerlink" title="部署教程"></a>部署教程</h3><p><strong>如果您要学会调试运行，一定要去看运行教学</strong></p>
-<p>springboot程序运行教学地址：</p>
-<p>链接: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://pan.baidu.com/s/1MjF9VkFhFLliiSkYTk8SaQ?pwd=v2u4">https://pan.baidu.com/s/1MjF9VkFhFLliiSkYTk8SaQ?pwd=v2u4</a> </p>
-<p>提取码: v2u4 </p>
-<p><strong>部署教程：</strong></p>
-<p><strong>链接: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://pan.baidu.com/s/10tI5APDy4as14lDRskt4Yw?pwd=xsf5">https://pan.baidu.com/s/10tI5APDy4as14lDRskt4Yw?pwd=xsf5</a></strong></p>
-<p><strong>提取码: xsf5</strong>  </p>
-<h3 id="运行地址："><a href="#运行地址：" class="headerlink" title="运行地址："></a>运行地址：</h3><p>后台路径地址：localhost:8080&#x2F;项目名称&#x2F;admin&#x2F;dist&#x2F;index.html</p>
-<p>前台路径地址：localhost:8080&#x2F;项目名称&#x2F;front&#x2F;index.html （无前台不需要输入）</p>
-<p>管理员账号：abo   </p>
-<p>管理员密码：abo</p>
-<h1 id="Android-部署教程"><a href="#Android-部署教程" class="headerlink" title="Android 部署教程"></a>Android 部署教程</h1><h2 id="技术栈-1"><a href="#技术栈-1" class="headerlink" title="技术栈"></a>技术栈</h2><p>开发语言：Java，Kotlin</p>
-<p>JDK版本：JDK1.8，11</p>
-<p>服务器：tomcat7</p>
-<p>数据库：mysql 5.7（一定要5.7版本）</p>
-<p>数据库工具：Navicat 11以上版本即可</p>
-<p>开发软件：AndroidStudio&#x2F;idea</p>
-<p>Maven包：Maven3.3.9</p>
-<p>浏览器：谷歌浏览器</p>
+<h1 id="1、效果演示"><a href="#1、效果演示" class="headerlink" title="1、效果演示"></a>1、效果演示</h1><h1 id="2、-前言介绍"><a href="#2、-前言介绍" class="headerlink" title="2、 前言介绍"></a>2、 前言介绍</h1><p>随着社会的发展，社会的各行各业都在利用信息化时代的优势。计算机的优势和普及使得各种信息系统的开发成为必需。</p>
+<p>毕业生信息招聘平台，主要的模块包括查看管理员；首页、个人中心、企业管理、空中宣讲会管理、招聘岗位管理、毕业生管理、个人简历管理、求职信息管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、试卷管理、试题管理、管理员管理、论坛管理、系统管理、考试管理等功能。系统中管理员主要是为了安全有效地存储和管理各类信息，还可以对系统进行管理与更新维护等操作，并且对后台有相应的操作权限。</p>
+<p>要想实现毕业生信息招聘平台的各项功能，需要后台数据库的大力支持。管理员验证注册信息，收集的毕业生信息，并由此分析得出的关联信息等大量的数据都由数据库管理。本文中数据库服务器端采用了Mysql作为后台数据库，使Web与数据库紧密联系起来。在设计过程中，充分保证了系统代码的良好可读性、实用性、易扩展性、通用性、便于后期维护、操作方便以及页面简洁等特点。</p>
+<p>本系统的开发使获取毕业生信息招聘平台信息能够更加方便快捷，同时也使毕业生信息招聘平台信息变的更加系统化、有序化。系统界面较友好，易于操作。</p>
+<h1 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h1><h2 id="3-1技术可行性：技术背景"><a href="#3-1技术可行性：技术背景" class="headerlink" title="3.1技术可行性：技术背景"></a>3.1技术可行性：技术背景</h2><p>毕业生信息招聘平台是在Windows操作系统中进行开发运用的，而且目前PC机的各项性能已经可以胜任普通网站的web服务器。系统开发所使用的技术也都是自身所具有的，也是当下广泛应用的技术之一。</p>
+<p>系统的开发环境和配置都是可以自行安装的，系统使用Java开发工具，使用比较成熟的Mysql数据库进行对系统前台及后台的数据交互，根据技术语言对数据库，结合需求进行修改维护，可以使得网站运行更具有稳定性和安全性，从而完成实现网站的开发。</p>
+<p>（1）硬件可行性分析</p>
+<p>系统管理及信息分析的设计对于所使用的计算机没有什么硬性的要求，计算机只要可以正常的使用进行代码的编写及页面设计就可行，主要是对于服务器有些要求，对于平台搭建完成要上传的服务器是有一定的要求的，服务器必须选择安全性比较高的，然后就是在打开网站必须顺畅，不能停顿太长时间；性价比高；安全性高。</p>
+<p>（2）软件可行性分析</p>
+<p>开发整个系统使用的是云计算，流量的可扩展性和基于流量的智能调整云计算的优点就是流量的可扩展性和基于流量的智能调整，保障了数据信息能够得到及时的备份，整个系统可以安全有效的运行。</p>
+<p>因此，我们从两个方面进行了可行性研究，可以看出系统的开发没有问题。</p>
+<h2 id="3-2经济可行性"><a href="#3-2经济可行性" class="headerlink" title="3.2经济可行性"></a>3.2经济可行性</h2><p>在毕业生信息招聘平台开发之前所做的市场调研及与其相关的其他管理系统，都是没有任何费用的。所有的调查研究都是通过开发者自己的努力，所有的工作也都是自己亲力亲为的。在碰到自己比较难以解决的问题时，大多数是通过指导老师和同学的帮助进行相关问题的解决。所以对于毕业生信息招聘平台的开发在经济上是完全可行的，没有任何费用支出的。</p>
+<p>使用比较成熟的技术，系统是基于Java的开发，采用Mysql数据库。所以系统在开发人力、财力方面的要求不高，具有经济可行性。</p>
+<h2 id="3-3操作可行性："><a href="#3-3操作可行性：" class="headerlink" title="3.3操作可行性："></a>3.3操作可行性：</h2><p>可操作性主要是对在毕业生信息招聘平台设计完成后，毕业生的使用体验度，以及管理员可以通过系统随时管理相关的数据信息，并且对于管理员、企业、毕业生三个角色，都可以简单明了的进入到自己的系统界面，通过界面可以简单明了地操作功能模块，方便毕业生信息的操作需求和管理员管理数据信息。对于系统的操作，不需要专业人员都可以直接进行功能模块的操作管理，所以毕业生信息招聘平台的可操作性是完全可以的。本系统的操作使用的也是界面窗口进行登录，所以操作人员只要会简单的电脑操作就完全可以的。</p>
+<h2 id="3-4系统设计规则"><a href="#3-4系统设计规则" class="headerlink" title="3.4系统设计规则"></a>3.4系统设计规则</h2><p>本毕业生信息招聘平台采用Java技术，Mysql数据库开发，充分保证了系统稳定性、完整性。</p>
+<p>毕业生信息招聘平台的设计与实现的设计思想如下：</p>
+<p>1、操作简单方便、系统界面安全良好：简单明了的页面布局，方便查询管理的相关信息。</p>
+<p>2、即时可见：对毕业生信息招聘平台信息的处理将立马在对应地点可以查询到，从而实现“即时发布、即时见效”的系统功能。</p>
+<p>3、功能的完善性：可以管理管理员；首页、个人中心、企业管理、空中宣讲会管理、招聘岗位管理、毕业生管理、个人简历管理、求职信息管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、试卷管理、试题管理、管理员管理、论坛管理、系统管理、考试管理，</p>
+<p>企业；首页、个人中心、空中宣讲会管理、招聘岗位管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、试卷管理、试题管理、考试管理，</p>
+<p>毕业生；首页、个人中心、个人简历管理、求职信息管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、我的收藏管理、考试管理，</p>
+<p>前台首页；首页、空中宣讲会、招聘岗位、求职信息、论坛信息、试卷列表、招聘资讯、个人中心、后台管理模块的修改和维护操作。</p>
+<h1 id="4系统概要设计"><a href="#4系统概要设计" class="headerlink" title="4系统概要设计"></a>4系统概要设计</h1><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><p>毕业生信息招聘平台基于Web服务模式，是一个适用于Internet环境下的模型结构。只要毕业生能连上Internet,便可以在不受时间、地点的限制来使用这个系统。毕业生信息招聘平台工作原理图，如图4-1所示：</p>
+<h2 id="4-2-系统结构"><a href="#4-2-系统结构" class="headerlink" title="4.2 系统结构"></a>4.2 系统结构</h2><p>本系统架构网站系统，本系统的具体功能如下：</p>
+<p>管理员功能结构图，如图4-3所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-d5ba.gif" alt="img"></p>
+<p>毕业生功能结构图，如图4-4所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-6aa2.gif" alt="img"></p>
+<h2 id="4-3-数据库设计"><a href="#4-3-数据库设计" class="headerlink" title="4.3. 数据库设计"></a>4.3. 数据库设计</h2><h3 id="4-3-1-数据库实体"><a href="#4-3-1-数据库实体" class="headerlink" title="4.3.1 数据库实体"></a>4.3.1 数据库实体</h3><p>管理员信息图，如图4-6所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-3485.gif" alt="img"></p>
+<p>个人简历实体属性图，如图4-7所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-0150.gif" alt="img"></p>
+<p>企业管理实体属性图如图4-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-5741.gif" alt="img"></p>
+<p>招聘岗位信息实体属性图如图4-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-1b09.gif" alt="img"></p>
+<h3 id="4-3-2-数据库设计表"><a href="#4-3-2-数据库设计表" class="headerlink" title="4.3.2 数据库设计表"></a>4.3.2 数据库设计表</h3><h2 id="4-4-数据表"><a href="#4-4-数据表" class="headerlink" title="4.4 数据表"></a>4.4 数据表</h2><p>将数据库概念设计的E-R图转换为关系数据库。在关系数据库中，数据关系由数据表组成，但是表的结构表现在表的字段上。</p>
+<p>表4-1 allusers表</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>int</td>
+<td>11</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td>username</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>cx</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+</tbody></table>
+<p>表4-2：biyesheng表</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>int</td>
+<td>11</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>yonghuming</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>mima</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingbie</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>touxiang</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>zhuanye</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>shouji</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>youxiang</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+</tbody></table>
+<p>表4-3：gangweiyingpin表</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>int</td>
+<td>11</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>gangweimingcheng</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingye</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>qiyebianhao</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>qiyemingcheng</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>chengshi</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>yingpinneirong</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>qiuzhijianli</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>beizhu</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>yonghuming</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>zhuanye</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>shouji</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>sfsh</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>shhf</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+</tbody></table>
+<p>表4-4：gerenjianli表</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>int</td>
+<td>11</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>yonghuming</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingbie</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>touxiang</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>juzhushengfen</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>juzhuchengshi</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>chushengnianyue</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>gongzuoshijian</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>dangqianzhuangtai</td>
+<td>varchar</td>
+<td>10</td>
+<td>default ‘否’</td>
+</tr>
+<tr>
+<td>shouji</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>zhuanye</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>zuigaoxueli</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>jianlifujian</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+</tbody></table>
+<p>表4-5：kongzhongxuanjianghui表</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ID</td>
+<td>int</td>
+<td>11</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>qiyebianhao</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>qiyemingcheng</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>guimo</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingzhi</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>tupian</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>lianxiren</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>lianxidianhua</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xuanchuanshipin</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>bangongdizhi</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xuanjiangneirong</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+</tbody></table>
+<p>表4-6：mianshihuifu表</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>数据类型</th>
+<th>长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>int</td>
+<td>11</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>mianshibiaoti</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>mianshihuifu</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>huifufujian</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>huifushijian</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>beizhu</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>qiyebianhao</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>qiyemingcheng</td>
+<td>varchar</td>
+<td>50</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>yonghuming</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>10</td>
+<td>default ‘否’</td>
+</tr>
+<tr>
+<td>shouji</td>
+<td>varchar</td>
+<td>500</td>
+<td>default NULL</td>
+</tr>
+<tr>
+<td>sfsh</td>
+<td>varchar</td>
+<td>500</td>
+<td>default ‘否’</td>
+</tr>
+<tr>
+<td>shhf</td>
+<td>varchar</td>
+<td>500</td>
+<td>default ‘是’</td>
+</tr>
+</tbody></table>
+<h1 id="第5章系统详细设计"><a href="#第5章系统详细设计" class="headerlink" title="第5章系统详细设计"></a>第5章系统详细设计</h1><h2 id="5-1-管理员功能模块"><a href="#5-1-管理员功能模块" class="headerlink" title="5.1****管理员功能模块"></a><strong>5.1****管理员功能模块</strong></h2><p>管理员登录，管理员通过输入用户名、密码、角色等信息进行系统登录，如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-679c.jpeg" alt="img"></p>
+<p>管理员登录进入毕业生信息招聘平台可以查看首页、个人中心、企业管理、空中宣讲会管理、招聘岗位管理、毕业生管理、个人简历管理、求职信息管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、试卷管理、试题管理、管理员管理、论坛管理、系统管理、考试管理等内容，如图5-2所示。<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-9813.jpeg" alt="img"></p>
+<p>空中宣讲会管理，在空中宣讲会管理页面可以填写企业编号、企业名称、规模、性质、图片、联系人、联系电话、宣传视频、办公地址等内容，并可根据需要对空中宣讲会管理进行添加，修改或删除等操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-5d1c.jpeg" alt="img">  </p>
+<p>招聘岗位管理，在招聘岗位管理页面可以填写岗位名称、行业、岗位要求、专业要求、岗位性质、图片、薪资待遇、工作时间、城市、企业编号、企业名称、联系人、联系电话等内容，并可根据需要对招聘岗位管理进行添加，修改或删除等操作，如图5-4所示。<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-eab6.jpeg" alt="img"></p>
+<p>毕业生管理，在毕业生管理页面可以填写用户名、密码、姓名、性别、头像、专业、手机、邮箱等进行添加，修改，删除或查看详细内容等操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-0151.jpeg" alt="img"></p>
+<p>个人简历管理，在个人简历管理页面可以查看用户名、密码、姓名、性别、头像、居住省份、居住城市、出生年月、工作时间、当前状态、手机、专业、最高学历、简历附件等内容，并可根据需要对个人简历管理信息进行添加，修改，删除或详细内容等操作，如图5-6所示。<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-1856.jpeg" alt="img"></p>
+<p>信息咨询管理<br>，在信息咨询管理页面可以查看咨询标题、企业编号、企业名称、咨询日期、备注、用户名、姓名、手机、审核回复等内容，并可根据需要对信息咨询管理进行添加，修改，删除或详细内容等操作，如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-4afe.jpeg" alt="img"></p>
+<p>线上面试管理<br>，在线上面试管理页面可以查看面试标题、面试附件、企业编号、企业名称、联系电话、日期、用户名、姓名、手机、专业等内容，并可根据需要对线上面试管理进行添加，修改，删除或详细内容等操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-7c99.jpeg" alt="img"></p>
+<p>面试回复管理<br>，在面试回复管理页面可以查看面试标题、回复附件、回复时间、备注、企业名称、用户名、姓名、手机、审核回复等内容，并可根据需要对面试回复管理进行添加，修改，删除或详细内容等操作，如图5-9所示。</p>
+<h2 id="5-2企业功能模块"><a href="#5-2企业功能模块" class="headerlink" title="5.2企业功能模块"></a>5.2企业功能模块</h2><p>企业登录进入毕业生信息招聘平台可以查看首页、个人中心、空中宣讲会管理、招聘岗位管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、试卷管理、试题管理、考试管理等内容，如图5-11所示。</p>
+<p>个人信息，在个人信息页面通过填写企业编号、密码、企业名称、图片、规模、性质、联系人、联系电话等内容并可根据需要对个人信息进行查看、修改，如图5-12所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-f428.jpeg" alt="img"></p>
+<p>空中宣讲会管理，在空中宣讲会管理页面可以填写企业编号、企业名称、规模、性质、图片、联系人、联系电话、宣传视频、办公地址等内容，并可根据需要对空中宣讲会管理详细内容进行详情、修改、删除操作，如图5-13所示。</p>
+<p>招聘岗位管理，在招聘岗位管理页面可以查看岗位名称、行业、岗位要求、专业要求、岗位性质、图片、薪资待遇、工作时间、城市、企业编号、企业名称、联系人、联系电话等内容，并可根据需要对招聘岗位管理进行详情、修改、删除等操作，如图5-14所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-e335.jpeg" alt="img"></p>
+<p>信息咨询管理，在信息咨询管理页面可以查看咨询标题、企业编号、企业名称、咨询日期、备注、用户名、姓名、手机、审核回复等内容，并可根据需要对信息咨询管理进行详情等操作，如图5-15所示。</p>
+<p>线上面试管理，在线上面试管理页面可以查看面试标题、面试附件、企业编号、企业名称、联系电话、日期、用户名、姓名、手机、专业等内容，并可根据需要对线上面试管理进行详情等操作，如图5-16所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-60ce.jpeg" alt="img"></p>
+<p>考试记录，在考试记录页面可以查看用户ID、试卷、考试得分等内容，并可根据需要对考试记录进行查看详情等操作，如图5-18所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-1c31.jpeg" alt="img"></p>
+<h2 id="5-3毕业生功能模块"><a href="#5-3毕业生功能模块" class="headerlink" title="5.3毕业生功能模块"></a>5.3毕业生功能模块</h2><p>线上面试管理，在线上面试管理页面通过填写面试标题、面试附件、企业编号、企业名称、联系电话、日期、用户名、姓名、手机、专业等内容并可根据需要对线上面试管理进行详情、面试回复，如图5-20所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-7c8c.jpeg" alt="img"></p>
+<p>我的收藏管理，在我的收藏管理页面可以查看收藏ID、表名、收藏名称、收藏图片等内容，并可根据需要对我的收藏管理进行详情、删除等操作，如图5-22所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232203-f4ea.jpeg" alt="img"></p>
+<h2 id="六、源码获取"><a href="#六、源码获取" class="headerlink" title="六、源码获取"></a>六、源码获取</h2><blockquote>
+<p><strong>1、源码获取： 查看👇🏻获取联系方式👇🏻</strong></p>
+<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/u014534808/category_10711684.html">3、Python从入门到精通</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/u014534808/category_9621854.html">4、Java高并发编程入门</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://download.csdn.net/user/u014534808">6、免费资源</a></p>
+</blockquote>
 
       
     </div>
@@ -459,7 +1261,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/36460.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/6977.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -473,7 +1275,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/36460.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 开发的学生成绩管理系统</a>
+            <a href="/p/6977.html" class="post-title-link" itemprop="url">【毕业设计】基于 SpringBoot+vue 的校园二手书平台【包源码+教程+保证运行+完整源码私聊】</a>
         </h2>
 
         <div class="post-meta">
@@ -483,14 +1285,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-03-18 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-18T13:05:55+08:00">2023-03-18</time>
+              <time title="创建时间：2023-03-24 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-24T13:05:55+08:00">2023-03-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-19 17:50:22" itemprop="dateModified" datetime="2023-03-19T17:50:22+08:00">2023-03-19</time>
+                <time title="修改时间：2023-03-26 17:50:11" itemprop="dateModified" datetime="2023-03-26T17:50:11+08:00">2023-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -508,14 +1310,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -527,9 +1329,410 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id><a href="#" class="headerlink" title></a></h1><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png" alt="image-20230318225935236"></p>
-<p>学生成绩管理系统，基于 SpringBoot 开发的，功能完整，包括源码和部署教程。</p>
-<p>为用户随时随地查看学生成绩信息提供了便捷的方法，更重要的是大大的简化了管理员管理学生成绩信息的方式方法，更提供了其他想要了解学生成绩信息及运作情况以及挑选方便快捷的可靠渠道。相比于传统学生成绩管理方法，这样的电子信息管理更为简洁方便，在学生成绩管理维护信息反馈和处理学生成绩管理意见方面也有得天独厚的</p>
+          <h1 id><a href="#" class="headerlink" title></a></h1><blockquote>
+<p> <strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/u014534808/category_12245313.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><p>本次设计任务是要设计一个乐校园二手书交易管理系统，通过这个系统能够满足乐校园二手书交易的管理员及卖家用户和用户二手书交易信息管理功能。系统的主要功能包括首页、个人中心、用户管理、卖家用户管理、图书分类管理、二手图书管理、求购图书管理、求购回复管理、留言反馈、系统管理、订单管理等功能。</p>
+<p>管理员可以根据系统给定的账号进行登录，登录后可以进入乐校园二手书交易管理系统，对乐校园二手书交易管理系统所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
+<p>该系统为每一个用户都分配了一个用户账号，用户通过账号的登录可以在系统中查看乐校园二手书交易信息及对个人信息进行修改等功能。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-b850.png"></p>
+<h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2 .技术栈"></a>2 .技术栈</h1><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-需求分析"><a href="#3-需求分析" class="headerlink" title="3. 需求分析"></a>3. 需求分析</h1><p>乐校园二手书交易管理系统是三种身份的用户，主要涉及管理员，卖家用户和用户。每个身份都是操作起来都是清楚方便的。对于一些乐校园二手书交易信息,这是任何人都可以查看的，但是如果用户想进入后台进行操作,则必须是已经进行登录的用户，或者想修改乐校园二手书交易信息的话，也是需要用户为登录状态。这些用户的基本信息都由管理员对其统一管理。</p>
+<p>根据乐校园二手书交易实际过程的分析，系统有以下几个部分，其中用户注册，发布个人信息，修改个人信息；用户注册登录，发布乐校园二手书交易信息；管理员管理用户信息；一般用户只可以浏览不可以发布信息。以上业务过程从用户角度可以分为三类使用本系统的用户角色，包括管理员，卖家用户和用户。以下针对各类用户说明相应的业务过程。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-6002.jpg" alt="img"></p>
+<h1 id="4系统设计"><a href="#4系统设计" class="headerlink" title="4系统设计"></a>4系统设计</h1><h2 id="4-1数据库设计"><a href="#4-1数据库设计" class="headerlink" title="4.1数据库设计"></a>4.1数据库设计</h2><p>信息管理系统的效率和实现的效果完全取决于数据库结构设计的好坏。为了保证数据的完整性，提高数据库存储的效率，那么统一合理地设计数据库结构是必要的。数据库设计一般包括如下几个步骤：</p>
+<p>（1）根据用户需求，确定数据库信息进行保存</p>
+<p>对用户的需求分析是数据库设计的第一阶段，用户的需求调研，熟悉运作流程，系统要求，这些都是以概念模型为基础的。</p>
+<p>（2）设计数据的概念模型</p>
+<p>概念模型与数据建模用户的观点一致，用于信息世界的建模工具。通过E-R图可以清楚地描述系统涉及到的实体之间的相互关系。</p>
+<p>用户注册实体图如图4-1所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-08dc.jpg" alt="img"></p>
+<p>图4-1用户注册实体图</p>
+<p>二手图书管理实体图如图4-2所示：</p>
+<p>![img](Users&#x2F;junxu&#x2F;Library&#x2F;Group Containers&#x2F;UBF8T346G9.Office&#x2F;TemporaryItems&#x2F;msohtmlclip&#x2F;clip_image004.jpg)</p>
+<p>（3）数据库逻辑结构分析</p>
+<p>数据库概念结构设计后，可以数据库概念转化实际的数据模型，这是一种数据库的逻辑结构，就是将概念结构与支持数据库管理系统的模型相符合。具体的表设计如下所示：</p>
+<p>表4-1：联系客服</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>bigint</td>
+<td></td>
+<td>用户id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>adminid</td>
+<td>bigint</td>
+<td></td>
+<td>管理员id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ask</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>提问</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>reply</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>回复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>isreply</td>
+<td>int</td>
+<td></td>
+<td>是否回复</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-2：图书分类</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>tushufenlei</td>
+<td>varchar</td>
+<td>200</td>
+<td>图书分类</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="5系统详细设计"><a href="#5系统详细设计" class="headerlink" title="5系统详细设计"></a>5系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>乐校园二手书交易管理系统，在系统首页可以查看首页、二手图书，系统公告、留言反馈、个人中心、后台管理，购物车，联系客服等内容进行详细操作，如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-cbd2.png" alt="image-20230325231407169"></p>
+<p>图5-1系统首页界面图</p>
+<p>用户注册，在用户注册页面通过填写用户账号、密码、确认密码、用户姓名、年龄等信息完成用户注册，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-1ea0.png" alt="image-20230325231454956"></p>
+<p>图5-2用户注册界面图</p>
+<p>二手图书，在二手图书页面可以查看价格，图书分类，作者，出版社，成色，卖家账号，卖家姓名，点击次数等详细内容，并进行添加到购物车和立即购买操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-6cf3.png" alt="image-20230325231512615"></p>
+<p>图5-3二手图书界面图</p>
+<p>留言反馈，在留言反馈页面通过输入留言内容，上传图片进行立即提交或重置操作，还可以对留言信息和留言图片进行回复操作；如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-e189.png" alt="image-20230325231543987"></p>
+<p>个人中心，在个人中心页面通过填写用户账号、密码、用户姓名、性别、年龄、上传图片、余额等信息进行更新信息，根据需要对我的订单，我的地址我的收藏进行详细操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-b053.png" alt="image-20230325231556095"></p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录系统后，可以对首页、个人中心、用户管理、卖家用户管理、图书分类管理、二手图书管理、求购图书管理、求购回复管理、留言反馈、系统管理、订单管理等功能模块进行相应操作，如图5-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-b850.png" alt="image-20230325231645119"></p>
+<p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、性别、年龄、头像等信息进行详情，修改和删除等操作，如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-e189.png"></p>
+<p>卖家用户管理，在卖家用户管理页面可以对索引、卖家账号、卖家姓名、性别、卖家手机、邮箱、图片等信息进行详情，修改和删除等操作，如图5-8所示。</p>
+<h2 id="5-3-卖家用户功能模块"><a href="#5-3-卖家用户功能模块" class="headerlink" title="5.3 卖家用户功能模块"></a>5.3 卖家用户功能模块</h2><p>卖家用户登录系统后，可以对首页、个人中心、二手图书管理、求购图书管理、求购回复管理、订单管理等功能模块进行相应操作，如图5-15所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-745c.png" alt="image-20230325231753598"></p>
+<p>图5-15卖家用户功能界面图</p>
+<p>二手图书管理，在二手图书管理页面可以对索引、图书名称、图书分类、封面、作者、出版社、成色、卖家账号、卖家姓名、价格等内容进行详情，修改，查看评论和删除操作，如图5-16所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-244b.png" alt="image-20230325231802829"></p>
+<p>求购图书管理，在求购图书管理页面可以对索引、图书名称、图书分类、作者、出版社、成色要求、接受价位、发布时间、用户账号、用户姓名等内容进行详情和回复等操作，如图5-17所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303252303-ba7b.png" alt="image-20230325232555073"></p>
+<h1 id="6、源码获取"><a href="#6、源码获取" class="headerlink" title="6、源码获取"></a>6、源码获取</h1><blockquote>
+<p><strong>1、源码获取： 查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></strong> </p>
+<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
+<p>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/u014534808/category_12245313.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<p>注意，源码是收费的，如果有需要，可以通过下方二维码加我，非诚勿扰。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-0f02.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/24610.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/24610.html" class="post-title-link" itemprop="url">CLion最新激活码，激活、破解教程，亲测有效，永久激活（2023 年亲测可用）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-22 15:33:52 / 修改时间：23:36:31" itemprop="dateCreated datePublished" datetime="2023-03-22T15:33:52+08:00">2023-03-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><p>本文讲的是支持2022.3.3最新版本的CLion破解、CLion激活码、CLion安装、CLion永久激活码的最新永久激活教程，本文有mac和windows系统的CLion安装教程。</p>
+<h2 id="1-下载安装CLion"><a href="#1-下载安装CLion" class="headerlink" title="1.下载安装CLion"></a>1.下载安装CLion</h2><ul>
+<li>先去官网下载，我这里下载的是最新版本的2022.2.1，目前测试过2021以上的版本使用以下方式安装破解没问题。</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-6b61.webp" alt="CLion破解"></p>
+<ul>
+<li>安装然后打开</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-b9ed.webp" alt="CLion破解"></p>
+<ul>
+<li>我这里是全选<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-a434.webp" alt="CLion破解"></li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-a393.webp" alt="CLion破解"></p>
+<h2 id="2-下载破解工具"><a href="#2-下载破解工具" class="headerlink" title="2.下载破解工具"></a>2.下载破解工具</h2><blockquote>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-87f4.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+</blockquote>
+<p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>CLion</strong>，会自动将激活码和破解补丁发送给你</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-1809.png"></p>
+<ul>
+<li>先把CLion关闭退出。</li>
+<li>打开下载好的激活包（下载后记得不要删掉，然后安装的路径尽量不要带中文路径、删掉就会失效的）</li>
+</ul>
+<ol>
+<li>windows的样子</li>
+</ol>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-201a.webp" alt="CLion破解"><br>2. mac的样子</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-f784.webp" alt="CLion破解"></p>
+<ul>
+<li>打开scripts文件<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-6ca0.webp" alt="CLion破解"></li>
+</ul>
+<h2 id="3-windows的CLion激活"><a href="#3-windows的CLion激活" class="headerlink" title="3.windows的CLion激活"></a>3.windows的CLion激活</h2><ul>
+<li>先执行unistall-current-user.vbs,直接双击打开，此步骤是为了防止之前有过激活信息，确保当前环境变量下没有激活工具的变量信息，可先执行卸载脚本在再进行后面的激活操作，避免激活失败。<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-8e63.webp" alt="CLion破解"></li>
+<li>出现弹框done说明成功<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-daee.webp" alt="CLion破解"></li>
+<li>然后再执行install-current-user.vbs,直接双击打开即可<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-552b.webp" alt="CLion破解"></li>
+<li>这里需要等待10秒左右才会出现第二个done弹框，才是成功<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-5a23.webp" alt="CLion破解"></li>
+<li>然后再输入对应的激活码即可，文章上面扫公众号二维码获取</li>
+</ul>
+<h2 id="4-mac的CLion激活"><a href="#4-mac的CLion激活" class="headerlink" title="4.mac的CLion激活"></a>4.mac的CLion激活</h2><ul>
+<li>先打开终端</li>
+<li>先运行uninstall.sh</li>
+<li>此步骤是一键帮你去掉以前所激活过留下的东西，解决key is invalid的问题。防止激活失败</li>
+<li>然后终端输入</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sh /Users/junxu/Downloads/jihuo-tool/scripts/uninstall.sh </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-8e4a.webp" alt="CLion破解"></p>
+<ul>
+<li>这里直接把uninstall.sh拖动到终端即可。记得mac运行是</li>
+</ul>
+<p>sh xxxxx去运行.sh文件（记得sh后面加空格加路径）</p>
+<ul>
+<li>出现done说明成功。<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-f841.webp" alt="CLion破解"></li>
+<li>再执行install.sh，与上面同理，出现done，the kill xxxxx 说明成功。</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-876b.webp" alt="CLion破解"></p>
+<ul>
+<li>然后关闭CLion，重新打开CLion，输入破解码激活即可</li>
+</ul>
+<p><img src="https://chenjunan.top/img/clion/20220826144727.webp" alt="CLion破解"></p>
+<ul>
+<li>然后就成了，时间是假的，已经永久激活了，而且是官网最新版本哦，如果你重新更新了，再执行上面的操作即可。</li>
+</ul>
+<p><img src="https://chenjunan.top/img/clion/20220826144729.webp" alt="CLion破解"></p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><blockquote>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-87f4.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+</blockquote>
+<p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>CLion</strong>，会自动将激活码和破解补丁发送给你</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-1809.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/59068.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/59068.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 的智慧养老系统的研究与实现，附源码和教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-21 13:05:55 / 修改时间：21:00:38" itemprop="dateCreated datePublished" datetime="2023-03-21T13:05:55+08:00">2023-03-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><blockquote>
+<p>大家伙，我是程序员徐师兄，6 年大厂经验<br>最近跟朋友合作，捣鼓了这个毕业设计项目，源码都是可以运行起来的，里面包括源码和教程，大家感兴趣的话可以私聊我了解。<br><br><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="-1"><a href="#-1" class="headerlink" title></a></h1><h1 id="1-研究背景"><a href="#1-研究背景" class="headerlink" title="1.研究背景"></a>1.研究背景</h1><p>困扰管理层的许多问题当中,智慧养老平台一定是养老平台不敢忽视的一块。但是管理好智慧养老又面临很多麻烦需要解决,例如有几个方面:第一,往往人数都比较多,如何保证能够管理到每一老人;第二,如何在工作琐碎,记录繁多的情况下将智慧养老的当前情况反应给智慧养老领导相关部门决策等。在此情况下开发一款智慧养老平台，于是乎变得非常合乎时宜。</p>
+<p>经过网上调查和搜集数据,我们可以发现智慧养老方面的系统并不是相当普及,智慧养老方面的可以有许多改进。实际上如今信息化成为一个未来的趋势或者可以说在当前现代化的城市典范中,信息化已经成为主流,开发一个智慧养老平台一方面的可能会更合乎时宜,另一方面来说也可以提高智慧养老方面的效率给相关部门人的工作带来一定的便利。</p>
 <h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p>
 <p>框架：springboot</p>
 <p>JDK版本：JDK1.8</p>
@@ -539,23 +1742,163 @@
 <p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
 <p>Maven包：Maven3.3.9</p>
 <p>浏览器：谷歌浏览器</p>
-<h1 id="3-系统流程分析"><a href="#3-系统流程分析" class="headerlink" title="3. 系统流程分析"></a>3. 系统流程分析</h1><p>系统登录流程图，如图所示：</p>
-<h3 id="-1"><a href="#-1" class="headerlink" title></a><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-0621.png" alt="image-20230318230347954"></h3><p>添加信息流程图，如图所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-424f.png" alt="image-20230318230357794"> </p>
-<h3 id="-2"><a href="#-2" class="headerlink" title></a></h3><p>删除信息流程图，如图所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ea85.png" alt="image-20230318230412281"></p>
-<h1 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4 系统设计"></a>4 系统设计</h1><h2 id="4-1-系统设计主要功能"><a href="#4-1-系统设计主要功能" class="headerlink" title="4.1 系统设计主要功能"></a>4.1 系统设计主要功能</h2><p>通过市场调研及咨询研究，了解了使用者及管理者的使用需求，于是制定了管理员、学生和教师等模块。其功能结构图如下图4-1所示：</p>
-<p>​                                                                                             <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-53c4503.png" alt="image-20230318225715442"></p>
-<h2 id="4-2-数据库设计"><a href="#4-2-数据库设计" class="headerlink" title="4.2 数据库设计"></a>4.2 数据库设计</h2><h3 id="4-2-1-数据库设计规范"><a href="#4-2-1-数据库设计规范" class="headerlink" title="4.2.1 数据库设计规范"></a>4.2.1 数据库设计规范</h3><p>数据可设计要遵循职责分离原则，即在设计时应该要考虑系统独立性，即每个系统之间互不干预不能混乱数据表和系统关系。</p>
-<p>数据库命名也要遵循一定规范，否则容易混淆，数据库字段名要尽量做到与表名类似，多使用小写英文字母和下划线来命名并尽量使用简单单词。</p>
-<h3 id="4-2-2-E-R图"><a href="#4-2-2-E-R图" class="headerlink" title="4.2.2 E-R图"></a>4.2.2 E-R图</h3><p>综合成绩管理E-R图，如图4-2所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-e026c38.png" alt="image-20230318225734542"></p>
-<p>学生信息E-R图，如图4-3所示：</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-285d0c0.png" alt="image-20230318225754593"></p>
-<p>教师信息E-R图如图4-4所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031822-5db88cb.png" alt="image-20230318225815822"></p>
-<h3 id="4-2-3-数据表"><a href="#4-2-3-数据表" class="headerlink" title="4.2.3 数据表"></a>4.2.3 数据表</h3><p>本系统采用的是MySQL数据库存储数据，系统中使用到的主要数据表的具体展示部分如下所示。</p>
-<p>表4-1：综合成绩</p>
+<h1 id="3-系统分析"><a href="#3-系统分析" class="headerlink" title="3.系统分析"></a>3.系统分析</h1><p>考虑到实际生活中智慧养老平台方面的需要以及对该平台认真的分析,将系统权限按管理员和老人这两类涉及用户划分。</p>
+<p>(a) 管理员；管理员使用本系统涉到的功能主要有：首页、个人中心、老人管理、亲属管理、每日健康管理、既往病史管理、活动分类管理、活动信息管理、商品类型管理、便利店管理、商品购买管理、劳工管理、服务类型管理、服务项目管理、服务购买管理、紧急求助管理、礼品发放管理、积分增加管理、系统管理等功能。管理员用例图如图3-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-4d05.jpg" alt="img"></p>
+<p> (b)老人；进入系统可以实现首页、养老平台、电影信息、个人中心、后台管理等功能。老人用例图如图3-2所示。</p>
+<p><strong><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-4983.jpg" alt="img"></strong></p>
+<h1 id="4系统设计"><a href="#4系统设计" class="headerlink" title="4系统设计"></a>4系统设计</h1><h2 id="4-1-软件功能模块设计"><a href="#4-1-软件功能模块设计" class="headerlink" title="4.1 软件功能模块设计"></a>4.1 软件功能模块设计</h2><p>网站整体功能如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-3c18.jpg" alt="img"></p>
+<p>图 4-1 系统功能模块图</p>
+<h2 id="4-2数据库设计与实现"><a href="#4-2数据库设计与实现" class="headerlink" title="4.2数据库设计与实现"></a>4.2数据库设计与实现</h2><p>在每一个系统中数据库有着非常重要的作用，数据库的设计得好将会增加系统的效率以及系统各逻辑功能的实现。所以数据库的设计我们要从系统的实际需要出发，才能使其更为完美的符合系统功能的实现。</p>
+<h1 id="5系统详细设计"><a href="#5系统详细设计" class="headerlink" title="5系统详细设计"></a>5系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>智慧养老平台，在系统首页可以查看首页、活动信息、便利店、劳工、服务项目、个人中心、后台管理等内容，并进行详细操作；如图5-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-f50f.png" alt="image-20230320212319187"></p>
+<p>活动信息，在活动信息页面中可以查看活动标题、活动分类、开始时间、结束时间、活动地点等内容进行收藏等操作，如图5-2所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-f544.png" alt="image-20230320212542564"></p>
+<p>便利店，在便利店页面可以查看商品名称、生产地、数量、单价、商品分类等内容进行详情或收藏等操作，如图5-3所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-6118.png" alt="image-20230320212606306"></p>
+<p>服务项目，在服务项目页面可以查看项目名称、项目类型、项目价格、劳工姓名等内容进行详情或收藏等操作，如图5-4所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-0e55.png" alt="image-20230320212924499"></p>
+<p>  个人中心，在个人中心页面通过填写老人账号、密码、老人姓名、性别、年龄、图片、老人手机、积分、老人地址等内容进行更新信息等操作，并可以根据我的收藏进行相应的操作，如图5-5所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-22bc.png" alt="image-20230320212628744"></p>
+<p>图5-5个人中心界面图</p>
+<h2 id="5-2后台登录功能"><a href="#5-2后台登录功能" class="headerlink" title="5.2后台登录功能"></a>5.2后台登录功能</h2><p>管理员和老人进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-6所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-0370.png" alt="image-20230320212938061"></p>
+<h3 id="5-2-1管理员功能"><a href="#5-2-1管理员功能" class="headerlink" title="5.2.1管理员功能"></a>5.2.1管理员功能</h3><p>管理员登录系统后，可以对首页、个人中心、老人管理、亲属管理、每日健康管理、既往病史管理、活动分类管理、活动信息管理、商品类型管理、便利店管理、商品购买管理、劳工管理、服务类型管理、服务项目管理、服务购买管理、紧急求助管理、礼品发放管理、积分增加管理、系统管理等功能进行相应的操作管理，如图5-7所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-3a77.png" alt="image-20230320212953466"></p>
+<p>老人管理，在老人管理页面可以对索引、老人账号、老人姓名、性别、年龄、照片、老人手机、积分、老人地址等内容进行详情、礼品发放、积分增加、修改或删除等操作，如图5-8所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-5acc.png" alt="image-20230320213014834"></p>
+<p>亲属管理，在亲属管理页面可以对索引、老人账号、亲属姓名、性别、联系方式、与老人关系等内容进行详情、修改或删除等操作，如图5-9所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-19bd.png" alt="image-20230320213031763"></p>
+<p>每日健康管理，在每日健康管理页面可以对索引、老人账号、老人姓名、性别、年龄、体温、血压、心跳、健康报告、添加时间等内容进行详情、修改或删除等操作，如图5-10所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-cff8.png" alt="image-20230320213050169"></p>
+<p>既往病史管理，在既往病史管理页面可以对索引、老人账号、老人姓名、性别、年龄、登记时间等内容进行详情、修改或删除等操作，如图5-11所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-29fb.png" alt="image-20230320213135047"></p>
+<p>活动信息管理，在活动信息管理页面中可以对索引、活动标题、封面、活动分类、开始时间、结束时间、活动地点等内容进行详情、修改或删除等操作，如图5-12所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-6e7a.png" alt="image-20230320213145806"></p>
+<p>便利店管理，在便利店管理页面中可以对索引、商品编号、商品名称、出生地、数量、单价、商品分类、商品图片等内容进行详情、进货、修改或删除等操作，如图5-13所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202103-7b45.png" alt="image-20230320213159740"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/3615.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/3615.html" class="post-title-link" itemprop="url">【毕业设计】基于SpringBoot+Vue高校校园点餐系统【源码(完整源码请私聊)+论文+包运行成功】</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-21 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-21T13:05:55+08:00">2023-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-26 17:47:47" itemprop="dateModified" datetime="2023-03-26T17:47:47+08:00">2023-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><blockquote>
+<p><strong>您好，我是<a href="https://blog.junxu666.top/p/57317.html">程序员徐师兄</a>，感谢您阅读本文，欢迎一键三连哦</strong>。<br>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/u014534808/category_12245313.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<p>[toc]</p>
+<h1 id="1、效果演示"><a href="#1、效果演示" class="headerlink" title="1、效果演示"></a>1、效果演示</h1><h1 id="2、-前言介绍"><a href="#2、-前言介绍" class="headerlink" title="2、 前言介绍"></a>2、 前言介绍</h1><p>网络的快速发展从根本上更改了世界各组织的管理方式，自二十世纪九十年代开始，我国的学校等单位就设想可以通过互联网系统来进行管理信息。由于以前存在各方面的原因，比如网络普及度低、用户不接受、互联网的相关法律法规也不够完善、开发技术也不够成熟等，阻碍了互联网在各大机构中的发展速度。进入二十一世纪以后，我国经济有了快速的发展，限制机构管理的各个难题逐一被解决，国内各大机构都加入到了电子信息化的管理模式中来。</p>
+<p>以往的高校校园点餐系统相关信息管理，都是工作人员手工统计。这种方式不但时效性低，而且需要查找和变更的时候很不方便。随着科学的进步，技术的成熟，计算机信息化也日新月异的发展，社会也已经深刻的认识，计算机功能非常的强大，计算机已经进入了人类社会发展的各个领域，并且发挥着十分重要的作用。本系统利用网络沟通、计算机信息存储管理，有着与传统的方式所无法替代的优点。比如计算检索速度特别快、可靠性特别高、存储容量特别大、保密性特别好、可保存时间特别长、成本特别低等。在工作效率上，能够得到极大地提高，延伸至服务水平也会有好的收获，有了网络，在线高校校园点餐系统的各方面的管理更加科学和系统，更加规范和简便。</p>
+<h1 id="3、主要技术"><a href="#3、主要技术" class="headerlink" title="3、主要技术"></a>3、主要技术</h1><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4 系统设计"></a><strong>4 系统设计</strong></h1><h2 id="4-1-系统概述"><a href="#4-1-系统概述" class="headerlink" title="4.1 系统概述"></a><strong>4.1 系统概述</strong></h2><p>进过系统的分析后，就开始记性系统的设计，系统设计包含总体设计和详细设计。总体设计只是一个大体的设计，经过了总体设计，我们能够划分出系统的一些东西，例如文件、文档、数据等。而且我们通过总体设计，大致可以划分出了程序的模块，以及功能。但是只是一个初步的分类，并没有真正的实现。</p>
+<p>整体设计，只是一个初步设计，而且，对于一个项目，我们可以进行多个整体设计，通过对比，包括性能的对比、成本的对比、效益的对比，来最终确定一个最优的设计方案，选择优秀的整体设计可以降低开发成本，增加公司效益，从这一点来讲，整体设计还是非常重要的。</p>
+<p>高校校园点餐系统工作原理图如图4-1所示：</p>
+<p>图4-1 系统工作原理图</p>
+<h2 id="4-2-系统结构设计"><a href="#4-2-系统结构设计" class="headerlink" title="4.2 系统结构设计"></a><strong>4.2 系统结构设计</strong></h2><p>系统架构图属于系统设计阶段，系统架构图只是这个阶段一个产物，系统的总体架构决定了整个系统的模式，是系统的基础。高校校园点餐系统的整体结构设计如图4-2所示。</p>
+<p>图4-2 系统结构图</p>
+<h2 id="4-3数据库设计"><a href="#4-3数据库设计" class="headerlink" title="4.3数据库设计"></a><strong>4.3数据库设计</strong></h2><p>数据库是计算机信息系统的基础。目前，电脑系统的关键与核心部分就是数据库。数据库开发的优劣对整个系统的质量和速度有着直接影响。</p>
+<h3 id="4-3-1-数据库设计原则"><a href="#4-3-1-数据库设计原则" class="headerlink" title="4.3.1 数据库设计原则"></a><strong>4.3.1 数据库设计原则</strong></h3><p>数据库的概念结构设计采用实体—联系（E-R）模型设计方法。E-R模型法的组成元素有：实体、属性、联系，E-R模型用E-R图表示，是提示用户工作环境中所涉及的事物，属性则是对实体特性的描述。在系统设计当中数据库起着决定性的因素。下面设计出这几个关键实体的实体—关系图。</p>
+<h3 id="4-3-2-数据库实体"><a href="#4-3-2-数据库实体" class="headerlink" title="4.3.2 数据库实体"></a><strong>4.3.2 数据库实体</strong></h3><p>数据模型中的实体（Entity），也称为实例，对应现实世界中可区别于其他对象的“事件”或“事物”。例如，学校中的每个学生，家里中的每个家具。</p>
+<p>本系统的E-R图如下图所示：</p>
+<p>1、用户信息实体图如图4-3所示：</p>
+<p>图4-3用户信息实体图</p>
+<p>2、食堂信息实体图如图4-4所示：</p>
+<p>图4-4食堂信息实体图</p>
+<p>3、留言板信息实体图如图4-5所示：</p>
+<p>图4-5留言板信息实体图</p>
+<h3 id="4-3-3-数据库表设计"><a href="#4-3-3-数据库表设计" class="headerlink" title="4.3.3 数据库表设计"></a><strong>4.3.3 数据库表设计</strong></h3><p>数据库的表信息属于设计的一部分，下面介绍数据库中的各个表的详细信息。</p>
+<p>表名：shitang</p>
+<p>功能：食堂表</p>
 <table>
 <thead>
 <tr>
@@ -579,201 +1922,1064 @@
 <td>addtime</td>
 <td>timestamp</td>
 <td></td>
-<td>创建时间</td>
+<td>新增时间</td>
 <td></td>
 <td>CURRENT_TIMESTAMP</td>
 </tr>
 <tr>
-<td>xuehao</td>
+<td>shitanghao</td>
 <td>varchar</td>
-<td>200</td>
-<td>学号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>xueshengxingming</td>
-<td>varchar</td>
-<td>200</td>
-<td>学生姓名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>banji</td>
-<td>varchar</td>
-<td>200</td>
-<td>班级</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>xueyechengji</td>
-<td>float</td>
-<td></td>
-<td>学业成绩</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>deyuchengji</td>
-<td>float</td>
-<td></td>
-<td>德育成绩</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>tiyusuzhi</td>
-<td>float</td>
-<td></td>
-<td>体育素质</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhiyusuzhi</td>
-<td>float</td>
-<td></td>
-<td>智育素质</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zongfen</td>
-<td>float</td>
-<td></td>
-<td>总分</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>xuenian</td>
-<td>varchar</td>
-<td>200</td>
-<td>学年</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>dengjishijian</td>
-<td>datetime</td>
-<td></td>
-<td>登记时间</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jiaoshigonghao</td>
-<td>varchar</td>
-<td>200</td>
-<td>教师工号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jiaoshixingming</td>
-<td>varchar</td>
-<td>200</td>
-<td>教师姓名</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>表4-2：学生</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>xuehao</td>
-<td>varchar</td>
-<td>200</td>
-<td>学号</td>
+<td>100</td>
+<td>食堂号</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>mima</td>
 <td>varchar</td>
-<td>200</td>
+<td>100</td>
 <td>密码</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>touxiang</td>
+<td>shitangming</td>
 <td>varchar</td>
-<td>200</td>
-<td>头像</td>
+<td>100</td>
+<td>食堂名</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>xueshengxingming</td>
+<td>guanliyuan</td>
 <td>varchar</td>
 <td>200</td>
-<td>学生姓名</td>
+<td>管理员</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shitangzhaopian</td>
+<td>varchar</td>
+<td>100</td>
+<td>食堂照片</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>weishengdengji</td>
+<td>varchar</td>
+<td>200</td>
+<td>卫生等级</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>lianxidianhua</td>
+<td>varchar</td>
+<td>200</td>
+<td>联系电话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shitangdizhi</td>
+<td>varchar</td>
+<td>200</td>
+<td>食堂地址</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表名：shitangcaidan</p>
+<p>功能：食堂菜单表</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>shitanghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>食堂号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shitangming</td>
+<td>varchar</td>
+<td>200</td>
+<td>食堂名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>caipin</td>
+<td>varchar</td>
+<td>200</td>
+<td>菜品</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>caixi</td>
+<td>varchar</td>
+<td>200</td>
+<td>菜系</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tupian</td>
+<td>varchar</td>
+<td>200</td>
+<td>图片</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fenliang</td>
+<td>varchar</td>
+<td>200</td>
+<td>分量</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shicai</td>
+<td>varchar</td>
+<td>200</td>
+<td>食材</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shitangdizhi</td>
+<td>varchar</td>
+<td>200</td>
+<td>食堂订单</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xiangqing</td>
+<td>varchar</td>
+<td>200</td>
+<td>详情</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表名：xiaoxiliuyan</p>
+<p>功能：消息留言表</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>zhanghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>账号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jiaose</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>角色</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shitanghao</td>
+<td>varchar</td>
+<td>200</td>
+<td>食堂号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shitangming</td>
+<td>varchar</td>
+<td>200</td>
+<td>食堂名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dingdanhao</td>
+<td>varchar</td>
+<td>200</td>
+<td>订单号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>peisongfen</td>
+<td>varchar</td>
+<td>200</td>
+<td>配送分</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>baozhuangfen</td>
+<td>varchar</td>
+<td>200</td>
+<td>包装分</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>caipinfen</td>
+<td>varchar</td>
+<td>200</td>
+<td>菜品分</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shijian</td>
+<td>varchar</td>
+<td>200</td>
+<td>时间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jianyi</td>
+<td>varchar</td>
+<td>200</td>
+<td>建议</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sfsh</td>
+<td>varchar</td>
+<td>200</td>
+<td>是否审核</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shhf</td>
+<td>varchar</td>
+<td>200</td>
+<td>审核回复</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表名：caixifenlei</p>
+<p>功能：菜系分类表</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>caixi</td>
+<td>varchar</td>
+<td>200</td>
+<td>菜系</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表名：yonghu</p>
+<p>功能：用户表</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>新增时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>zhanghao</td>
+<td>varchar</td>
+<td>100</td>
+<td>账号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mima</td>
+<td>varchar</td>
+<td>100</td>
+<td>密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>100</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jiaose</td>
+<td>varchar</td>
+<td>100</td>
+<td>角色</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>xingbie</td>
 <td>varchar</td>
-<td>200</td>
+<td>100</td>
 <td>性别</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>shoujihaoma</td>
+<td>nianling</td>
 <td>varchar</td>
-<td>200</td>
-<td>手机号码</td>
+<td>100</td>
+<td>年龄</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shouji</td>
+<td>varchar</td>
+<td>100</td>
+<td>手机</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>youxiang</td>
 <td>varchar</td>
-<td>200</td>
+<td>100</td>
 <td>邮箱</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>banji</td>
+<td>zhaopian</td>
 <td>varchar</td>
-<td>200</td>
-<td>班级</td>
+<td>100</td>
+<td>照片</td>
 <td></td>
 <td></td>
 </tr>
 </tbody></table>
-<p>表4-3：用户表</p>
+<h1 id="5统详细设计"><a href="#5统详细设计" class="headerlink" title="5统详细设计"></a><strong>5统详细设计</strong></h1><h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="5-1前台首页功能模块"><a href="#5-1前台首页功能模块" class="headerlink" title="5.1前台首页功能模块"></a>5.1前台首页功能模块</h2><p>高校校园点餐系统，在系统首页可以查看首页、食堂菜单、新闻资讯、留言反馈、我的、跳转到后台、购物车等内容，如图5-1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/eed94c3bfe59aaa674fa55adf4b0f127.png"></p>
+<p>图5-1前台首页功能界面图</p>
+<p>用户注册、用户登录，在用户注册页面可以填写账号、密码、姓名、角色、性别、年龄、手机、邮箱等信息进行用户注册、登录，如图5-2所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5359e68816eca2fa1f4bfbeb1638a361.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b85c046c466361bb8fba182e239c23c2.png"></p>
+<p>图5-2用户注册、登录界面图</p>
+<p>食堂菜单，在食堂菜单页面通过填写食堂号、食堂名、菜品、菜系、图片、分量、食材、食堂地址、详情、价格、座位总数等信息进行添加到购物车、立即预定、点我收藏等操作，如图5-3所示。在我的地址页面通过填写联系人、手机号码、默认地址、选择地址等信息进行添加或重置操作，如图5-4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5bf28f985679b72ac601ed65be8d07da.png"></p>
+<p>图5-3食堂菜单界面图</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/afe0acd73ef62d2d8eba187bd88d0561.png"></p>
+<p>图5-4我的地址界面图</p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录，通过填写输入用户名、密码进行登录，如图5-5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5a4ea6ee773f665b9f341bc7378e5c05.png"></p>
+<p>图5-5管理员登录界面图</p>
+<p>管理员登录进入高校校园点餐系统可以查看个人中心、用户管理、食堂管理、食堂菜单管理、菜系分类管理、消息留言管理、留言板管理、系统管理、订单管理等信息。</p>
+<p>用户管理，在用户管理页面中可以通过填写账号、密码、姓名、角色、性别、年龄、手机、邮箱、照片、余额等内容进行查看、修改、删除等操作，如图5-6所示。</p>
+<p>食堂管理，在食堂管理页面中可以查看食食堂号、密码、食堂名、管理员、食堂照片、卫生等级、联系电话、食堂地址、余额等信息，并可根据需要对已有食堂管理进行查看、修改、删除等操作，如图5-7所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6d58231fa7576ba5e7636c99dd0c3c81.png"></p>
+<p>图5-6用户管理界面图</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6d547740a43ebf752a5f2e725c1dff54.png"></p>
+<p>图5-7食堂管理界面图</p>
+<p>菜系分类管理，在菜系分类管理页面中可以查看菜系等信息，并可根据需要对已有菜系分类管理进行修改或删除等操作，如图5-8所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/72e441d33996379586aca514e82a590a.png"></p>
+<p>图5-8菜系分类管理界面图</p>
+<p>消息留言管理，在消息留言管理页面中可以查看账号、姓名、角色、食堂号、食堂名、订单号、配送分、包装分、菜品分、时间、建议、是否审核、审核回复等信息，并可根据需要对已有消息留言管理进行审核、查看、修改或删除等详细操作，如图5-9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/427f94d4ff5108f365cc1df04fe49308.png"></p>
+<p>图5-9消息留言管理界面图</p>
+<p>留言板管理，在留言板管理页面中可以查看留言人id<br>、用户名、留言内容、回复内容等内容，并且根据需要对已有留言板管理进行查看、回复、修改或删除等详细操作，如图5-10所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/aad35b2680053711c1c57d64ed2c0f7e.png"></p>
+<p>图5-10留言板管理界面图</p>
+<p>美食资讯管理，在美食资讯管理页面中可以查看标题、简介、图片、内容等内容，并且根据需要对已有美食资讯管理进行查看、修改或删除等详细操作，如图5-11所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/39e0920863a4257bc545218de7b93181.png"></p>
+<p>图5-11美食资讯管理界面图</p>
+<p>订单管理，在订单管理页面中可以查看订单编号、商品表名、用户ID、商品ID、商品名称、商品图片、购买数量、价格&#x2F;积分、折扣价格、总价格&#x2F;总积分、折扣总价格、</p>
+<p>支付类型、状态、地址等内容，并且根据需要对已有订单管理进行查看，修改或删除等详细操作，如图5-12所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6ff2886dd0b7bcf96fc29eb195206a8a.png"></p>
+<p>图5-12订单管理界面图</p>
+<h2 id="5-3食堂功能模块"><a href="#5-3食堂功能模块" class="headerlink" title="5.3食堂功能模块"></a>5.3食堂功能模块</h2><p>食堂登录进入高校校园点餐系统可以查看个人中心、食堂菜单管理、菜系分类管理、消息留言管理、订单管理等内容。</p>
+<p>食堂菜单管理，在食堂菜单管理页面中通过填写食堂号、食堂名、菜品、菜系、图片、分量、食材、食堂地址、详情、价格、座位总数、已选座位[用号隔开]等信息，还可以根据需要对食堂菜单管理进行查看、修改、删除等操作，如图5-13所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6f1db5b8f651013af52636448e3ecaa8.png"></p>
+<p>图5-13食堂菜单管理界面图</p>
+<p>菜系分类管理，在菜系分类管理页面中可以填写菜系等信息，并且根据需要对已有菜系分类管理进行修改、删除等其他详细操作，如图5-14所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c8113bf35238cd67324a1a7c268a7fe0.png"></p>
+<p>图5-14菜系分类管理界面图</p>
+<p>订单管理，在订单管理页面中通过填写订单编号、商品表名、用户ID、商品ID、商品名称、商品图片、购买数量、价格&#x2F;积分、折扣价格、总价格&#x2F;总积分、折扣总价格、</p>
+<p>支付类型、状态、地址等内容进行查看、发货等操作，如图5-15所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ee77b9e2ca771a03c8d8eaff4e35b0de.png"></p>
+<p>图5-15订单管理界面图</p>
+<h2 id="5-4用户功能模块"><a href="#5-4用户功能模块" class="headerlink" title="5.4用户功能模块"></a>5.4用户功能模块</h2><p>用户登录进入高校校园点餐系统可以查看个人中心、消息留言管理、我的收藏管理、订单管理等内容。</p>
+<p>消息留言管理，在消息留言管理页面中通过填写账号、姓名、角色、食堂号、食堂名、订单号、配送分、包装分、菜品分、时间、建议、是否审核、审核回复等信息，还可以根据需要对消息留言管理进行查看、修改、删除等操作，如图5-16所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/60843b01e0d8dc79c3087809e0d23417.png"></p>
+<p>图5-16消息留言管理界面图</p>
+<p>订单管理，在订单管理页面中可以查看订单编号、商品表名、用户ID、商品ID、商品名称、商品图片、购买数量、价格&#x2F;积分、折扣价格、总价格&#x2F;总积分、折扣总价格、</p>
+<p>支付类型、状态、地址等信息，并且根据需要对已有订单管理进行查看等其他详细操作，如图5-17所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8eee3fcadb4ca540a7d022593cad0817.png"></p>
+<p>图5-17订单管理界面图</p>
+<h1 id="6、源码获取"><a href="#6、源码获取" class="headerlink" title="6、源码获取"></a>6、源码获取</h1><blockquote>
+<p><strong>1、源码获取： 查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></strong> </p>
+<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
+<p>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/u014534808/category_12245313.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<p>注意，源码是收费的，如果有需要，可以通过下方二维码加我，非诚勿扰。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-0f02.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/25948.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/25948.html" class="post-title-link" itemprop="url">Rider 最新激活码，激活、破解教程，亲测有效，永久激活（2023 年亲测可用）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-20 15:33:52" itemprop="dateCreated datePublished" datetime="2023-03-20T15:33:52+08:00">2023-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-22 23:24:57" itemprop="dateModified" datetime="2023-03-22T23:24:57+08:00">2023-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><p>本文讲的是支持2022.3.3最新版本的Rider破解、Rider激活码、Rider安装、Rider永久激活码的最新永久激活教程，本文有mac和windows系统的Rider安装教程。</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title></a></h3><h2 id="1-下载安装Rider"><a href="#1-下载安装Rider" class="headerlink" title="1.下载安装Rider"></a>1.下载安装Rider</h2><ul>
+<li>先去官网下载，我这里下载的是最新版本的2022.2.2。测试过2021以上的版本都没有问题。</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-bd21.webp" alt="Rider破解"></p>
+<ul>
+<li>安装然后打开</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-35ca.webp" alt="Rider破解"></p>
+<ul>
+<li>我这里是全选<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-ef55.webp" alt="Rider破解"></li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-008a.webp" alt="Rider破解"></p>
+<h2 id="2-下载破解工具"><a href="#2-下载破解工具" class="headerlink" title="2.下载破解工具"></a>2.下载破解工具</h2><blockquote>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-87f4.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+</blockquote>
+<p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>Rider</strong>，会自动将激活码和破解补丁发送给你</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-1809.png"></p>
+<ul>
+<li>先把Rider关闭退出。</li>
+<li>打开下载好的激活包（下载后记得不要删掉，然后安装的路径尽量不要带中文路径、删掉就会失效的）</li>
+</ul>
+<ol>
+<li>windows的样子</li>
+</ol>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-79c8.webp" alt="Rider破解"><br>2. mac的样子</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-6237.webp" alt="Rider破解"></p>
+<ul>
+<li>打开scripts文件<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-2a44.webp" alt="Rider破解"></li>
+</ul>
+<h2 id="3-windows的Rider激活"><a href="#3-windows的Rider激活" class="headerlink" title="3.windows的Rider激活"></a>3.windows的Rider激活</h2><ul>
+<li>先执行unistall-current-user.vbs,直接双击打开，此步骤是为了防止之前有过激活信息，确保当前环境变量下没有激活工具的变量信息，可先执行卸载脚本在再进行后面的激活操作，避免激活失败。<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-6114.webp" alt="Rider破解"></li>
+<li>出现弹框done说明成功<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-c930.webp" alt="Rider破解"></li>
+<li>然后再执行install-current-user.vbs,直接双击打开即可<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-d4c5.webp" alt="Rider破解"></li>
+<li>这里需要等待10秒左右才会出现第二个done弹框，才是成功<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-045f.webp" alt="Rider破解"></li>
+<li>然后再输入对应的激活码即可，文章上面扫公众号二维码获取</li>
+</ul>
+<h2 id="4-mac的Rider激活"><a href="#4-mac的Rider激活" class="headerlink" title="4.mac的Rider激活"></a>4.mac的Rider激活</h2><ul>
+<li>先打开终端</li>
+<li>先运行uninstall.sh</li>
+<li>此步骤是一键帮你去掉以前所激活过留下的东西，解决key is invalid的问题。防止激活失败</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">sh /Users/junxu/Downloads/jihuo-tool/scripts/uninstall.sh </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-619f.webp" alt="Rider破解"></p>
+<ul>
+<li>这里直接把uninstall.sh拖动到终端即可。记得mac运行是</li>
+</ul>
+<p>sh xxxxx去运行.sh文件（记得sh后面加空格加路径）</p>
+<ul>
+<li>出现done说明成功。<br><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-50f6.webp" alt="Rider破解"></li>
+<li>再执行install.sh，与上面同理，出现done，the kill xxxxx 说明成功。</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-9d12.webp" alt="Rider破解"></p>
+<ul>
+<li>然后关闭Rider，重新打开Rider，输入破解码激活即可</li>
+</ul>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-b821.webp" alt="Rider破解"></p>
+<ul>
+<li>然后就成了，时间是假的，已经永久激活了，而且是官网最新版本哦，如果你重新更新了，再执行上面的操作即可。</li>
+</ul>
+<h2 id="激活补丁下载地址"><a href="#激活补丁下载地址" class="headerlink" title="激活补丁下载地址"></a>激活补丁下载地址</h2><blockquote>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-87f4.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+</blockquote>
+<p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>Rider</strong>，会自动将激活码和破解补丁发送给你</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303222303-1809.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/10525.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/10525.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 开发的留守儿童系统的研究与实现，附源码和教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-20 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-20T13:05:55+08:00">2023-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-23 22:22:16" itemprop="dateModified" datetime="2023-03-23T22:22:16+08:00">2023-03-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><blockquote>
+<p>大家伙，我是程序员徐师兄，6 年大厂经验<br>最近跟朋友合作，捣鼓了这个毕业设计项目，源码都是可以运行起来的，里面包括源码和教程，大家感兴趣的话可以私聊我了解。<br><br><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+<h1 id="1-研究背景"><a href="#1-研究背景" class="headerlink" title="1.研究背景"></a>1.研究背景</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-4c82.png" alt="image-20230320232434235"></p>
+<p>以往的留守儿童爱心的管理，一般都是纸质文件来管理留守儿童爱心信息，传统的管理方式已经无法满足现代人们的需求；使用留守儿童爱心网站, 首先可以大幅提高留守儿童爱心信息检索，只需输入留守儿童爱心相关信息就能在数秒内反馈想要的结果；其次可存储大量的留守儿童爱心信息，同时留守儿童爱心信息安全性有更高的保障；这些优点大大提高运营效率并节省运营成本。因此，开发留守儿童爱心网站对留守儿童爱心信息进行有效的管理是很必要的，不仅提高了留守儿童爱心管理效率，增加了用户信息安全性，方便及时反馈信息给管理员，增加了与管理员之间的互动交流，更能提高用户的体验强度。</p>
+<p>本系统为了数据库结构的灵活性所以打算采用MySQL来设计数据库，而java技术，B&#x2F;S架构则保证了较高的平台适应性。本文主要介绍了本系统的开发背景，所要完成的功能和开发的过程，主要说明了系统设计的重点、设计思想。</p>
+<h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-系统分析"><a href="#3-系统分析" class="headerlink" title="3.系统分析"></a>3.系统分析</h1><p>经过大学四年的学习，已经掌握了JAVA、Mysql数据库等方面的编程技巧和方法，对于这些技术该有的软硬件配置也是齐全的，能够满足开发的需要。</p>
+<p>本留守儿童爱心网站采用的是Mysql作为数据库，可以绝对地保证用户数据的安全；可以与Mysql数据库进行无缝连接。</p>
+<p>所以，留守儿童爱心网站在技术上是可以实施的。</p>
+<h1 id="4系统设计"><a href="#4系统设计" class="headerlink" title="4系统设计"></a>4系统设计</h1><p>留守儿童爱心网站的主要功能的结构如图4-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-8266.jpg" alt="img"></p>
+<h1 id="5系统的详细设计与实现"><a href="#5系统的详细设计与实现" class="headerlink" title="5系统的详细设计与实现"></a>5系统的详细设计与实现</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>系统首页的主要功能展示了首页、宣传新闻、志愿活动、爱心捐赠、个人中心、后台管理等信息，进行相应操作。运行结果如图5-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-958a.jpg" alt="img"></p>
+<p>宣传新闻，在宣传新闻页面中可以查看新闻标题、发布时间、发布人等内容进行评论或提交等操作，如图5-2所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-b9ed.png" alt="image-20230320232046837"></p>
+<p>志愿活动，在志愿活动页面可以查看活动名称、活动编号、活动地点、开始时间、结束时间、联系方式等内容进行活动报名等操作；如图5-3所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-88f6.png" alt="image-20230320232102450"></p>
+<p>爱心捐赠，在爱心捐赠页面中可以查看捐赠标题、发布时间、机构名称、 捐赠地点、微信账号、微信用户名等内容进行捐赠内容等操作，如图5-4所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-fb3b.png" alt="image-20230320232112264"></p>
+<p>用户注册，在用户注册页面中通过填写用户账号、密码、确认密码、用户姓名、年龄、用户手机等内容进行注册等操作如图5-6所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-a1b4.png" alt="image-20230320232145736"></p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-7所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-1d94.png" alt="image-20230320232156403"></p>
+<p>管理员登录系统后，可以对首页、个人中心、用户管理、宣传新闻管理、志愿活动管理、爱心捐赠管理、旧物捐赠管理、活动报名管理、系统管理等功能进行相应的操作管理，如图5-8所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-f3a9.png" alt="image-20230320232205112"></p>
+<p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、性别、年龄、头像、用户手机等内容进行详情、修改或删除等操作，如图5-9所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-af8a.png" alt="image-20230320232219156"></p>
+<p>宣传新闻管理，在宣传新闻管理页面可以对索引、新闻标题、封面图片、发布时间、发布人等内容进行详情、查看评论、修改或删除等操作，如图5-10所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303202303-e71d.png" alt="image-20230320232232144"></p>
+<h1 id="6、源码获取"><a href="#6、源码获取" class="headerlink" title="6、源码获取"></a>6、源码获取</h1><blockquote>
+<p><strong>1、源码获取： 查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></strong> </p>
+<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
+<p>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/u014534808/category_12245313.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/59935.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/59935.html" class="post-title-link" itemprop="url">2023 RubyMine 最新激活教程、亲测有效，永久激活</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-19 15:33:52" itemprop="dateCreated datePublished" datetime="2023-03-19T15:33:52+08:00">2023-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-21 23:32:54" itemprop="dateModified" datetime="2023-03-21T23:32:54+08:00">2023-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文讲的是支持2022.2.3最新版本的RubyMine破解、RubyMine激活码、RubyMine安装、RubyMine永久激活码的最新永久激活教程，本文有mac和windows系统的RubyMine安装教程。</p>
+<h2 id="1-下载安装RubyMine"><a href="#1-下载安装RubyMine" class="headerlink" title="1.下载安装RubyMine"></a>1.下载安装RubyMine</h2><ul>
+<li>先去官网下载，我这里下载的是最新版本的2022.2.1，测试过2021、2022.2.1、2022.2.2、2022.2.3的版本均可使用以下教程破解。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-f933.webp" alt="RubyMine破解"></p>
+<ul>
+<li>安装然后打开</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-76ac.webp" alt="RubyMine破解"></p>
+<ul>
+<li>我这里是全选<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-3115.webp" alt="RubyMine破解"></li>
+</ul>
+<p><img src="https://chenjunan.top/img/rubymine/20220826144800.webp" alt="RubyMine破解"></p>
+<h2 id="2-下载破解工具"><a href="#2-下载破解工具" class="headerlink" title="2.下载破解工具"></a>2.下载破解工具</h2><blockquote>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+</blockquote>
+<p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>RubyMine</strong>，会自动将激活码和破解补丁发送给你</p>
+<ul>
+<li>先把RubyMine关闭退出。</li>
+<li>打开下载好的激活包（下载后记得不要删掉，然后安装的路径尽量不要带中文路径、删掉就会失效的）</li>
+</ul>
+<h3 id="windows的样子"><a href="#windows的样子" class="headerlink" title="windows的样子"></a>windows的样子</h3><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-5c7d.webp" alt="RubyMine破解"></p>
+<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="mac的样子"><a href="#mac的样子" class="headerlink" title="mac的样子"></a>mac的样子</h3><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-0d4f.webp" alt="RubyMine破解"></p>
+<ul>
+<li>打开scripts文件<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-2317.webp" alt="RubyMine破解"></li>
+</ul>
+<h2 id="3-windows的RubyMine激活"><a href="#3-windows的RubyMine激活" class="headerlink" title="3.windows的RubyMine激活"></a>3.windows的RubyMine激活</h2><ul>
+<li>先执行unistall-current-user.vbs,直接双击打开，此步骤是为了防止之前有过激活信息，确保当前环境变量下没有激活工具的变量信息，可先执行卸载脚本在再进行后面的激活操作，避免激活失败。<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-ba02.webp" alt="RubyMine破解"></li>
+<li>出现弹框done说明成功<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-6f3b.webp" alt="RubyMine破解"></li>
+<li>然后再执行install-current-user.vbs,直接双击打开即可<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-1e93.webp" alt="RubyMine破解"></li>
+<li>这里需要等待10秒左右才会出现第二个done弹框，才是成功<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-b6f6.webp" alt="RubyMine破解"></li>
+<li>然后再输入对应的激活码即可，文章上面扫公众号二维码获取</li>
+</ul>
+<h2 id="4-mac的RubyMine激活"><a href="#4-mac的RubyMine激活" class="headerlink" title="4.mac的RubyMine激活"></a>4.mac的RubyMine激活</h2><ul>
+<li>先打开终端</li>
+<li>先运行uninstall.sh</li>
+<li>此步骤是一键帮你去掉以前所激活过留下的东西，解决key is invalid的问题。防止激活失败</li>
+<li>然后终端输入</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sh /Users/chen23/Downloads/jihuo-tool/scripts/uninstall.sh </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-4ada.webp" alt="RubyMine破解"></p>
+<ul>
+<li>这里直接把uninstall.sh拖动到终端即可。记得mac运行是</li>
+</ul>
+<p>sh xxxxx去运行.sh文件（记得sh后面加空格加路径）</p>
+<ul>
+<li>出现done说明成功。<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-a59a.webp" alt="RubyMine破解"></li>
+<li>再执行install.sh，与上面同理，出现done，the kill xxxxx 说明成功。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-84da.webp" alt="RubyMine破解"></p>
+<ul>
+<li>然后关闭RubyMine，重新打开RubyMine，输入破解码激活即可</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303212203-6958.webp" alt="RubyMine破解"></p>
+<ul>
+<li>然后就成了，时间是假的，已经永久激活了，而且是官网最新版本哦，如果你重新更新了，再执行上面的操作即可。</li>
+</ul>
+<p><img src="https://chenjunan.top/img/rubymine/20220826144806.webp" alt="RubyMine破解"></p>
+<h2 id="激活码"><a href="#激活码" class="headerlink" title="激活码"></a>激活码</h2><p>Q2AJCW53PE-eyJsaWNlbnNlSWQiOiJRMkFKQ1c1M1BFIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlJNIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjpmYWxzZX0seyJjb2RlIjoiUFdTIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJQUkIiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBDV01QIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfV0sIm1ldGFkYXRhIjoiMDEyMDIyMDkwMlBTQU4wMDAwMDUiLCJoYXNoIjoiVFJJQUw6NDA1MTEyNjE5IiwiZ3JhY2VQZXJpb2REYXlzIjo3LCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-aPzOhosQS2wKjDd+az9MTUKLm3XarDs+2uAYs6LysK1DzwzKCMsXpd5Ci3dPc6hJmlL0+pW+P0h7+4ytG3ZFk38oYv4qm1NpOjeXVMyW9I2&#x2F;JM508J3RqzG+NQvuxkojBuzOLBP8uDLMUcGSVbANMgNWbzu4u9cQdwaKqxZd6lweU2PnCe8gfJpHxrJxDRJ24+S1o14aYhFLo8LhZCfj91KNDA3gyu82OyPU2jwfDgxEj5DHyBTaQsspJA4RfSie&#x2F;6vO7RRPLaDT91eGTzIlpPSsiBA4OtypIjqJSXrMaBFhVbAE9x3eWeV6EziCaVua69BKn0zkXYqCzgLWJbpVmw&#x3D;&#x3D;-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU&#x2F;Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8&#x2F;COMrxRlZW5mfzo0xsK0dQGNH3UoG&#x2F;9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE&#x2F;BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5&#x2F;FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB&#x2F;R5oUlebwaTE6WZNBs+TA&#x2F;qPj+5&#x2F;we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329&#x2F;WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V&#x2F;0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ&#x2F;c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0&#x2F;&#x2F;lOmVya&#x2F;PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0&#x2F;WFPl1aw5VV&#x2F;VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH&#x2F;0onD</p>
+<h2 id="激活补丁下载地址"><a href="#激活补丁下载地址" class="headerlink" title="激活补丁下载地址"></a>激活补丁下载地址</h2><blockquote>
+<p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">IDEA 2022.3.2破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
+</blockquote>
+<p>关注我的微信公众号 <strong>徐公</strong>，回复 <strong>RubyMine</strong>，会自动将激活码和破解补丁发送给你</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230211154134.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/64078.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/64078.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 开发的家乡特色菜系统的研究与实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-19 13:05:55 / 修改时间：17:50:22" itemprop="dateCreated datePublished" datetime="2023-03-19T13:05:55+08:00">2023-03-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id><a href="#" class="headerlink" title></a></h1><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-5e82.png" alt="image-20230318232308154"></p>
+<p>家乡特色推荐系统，基于 SpringBoot 开发的，功能完整，包括源码和部署教程。可用于毕业设计和课程设计</p>
+<p>本次设计任务是要设计一个家乡特色推荐系统，通过这个系统能够满足家乡特色文章的管理功能。系统的主要功能包括首页，个人中心，用户管理，文章分类管理，文章分享管理，系统管理等。</p>
+<p>管理员可以根据系统给定的账号进行登录，登录后可以进入家乡特色推荐系统，对所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
+<p>该系统为每一个用户都分配了一个用户账号，用户通过账号的登录可以在系统中查看家乡特色文章信息及对个人信息进行修改等功能</p>
+<h1 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2. 技术栈"></a>2. 技术栈</h1><p>开发语言：Java</p>
+<p>框架：springboot</p>
+<p>JDK版本：JDK1.8</p>
+<p>服务器：tomcat7</p>
+<p>数据库：mysql 5.7（一定要5.7版本）</p>
+<p>数据库工具：Navicat11</p>
+<p>开发软件：eclipse&#x2F;myeclipse&#x2F;idea</p>
+<p>Maven包：Maven3.3.9</p>
+<p>浏览器：谷歌浏览器</p>
+<h1 id="3-系统流程分析"><a href="#3-系统流程分析" class="headerlink" title="3. 系统流程分析"></a>3. 系统流程分析</h1><p>家乡特色推荐系统是两种身份的用户，主要涉及管理员和用户。每个身份都是操作起来都是清楚方便的。对于一些家乡特色文章信息，这是任何人都可以查看的，但是如果用户想进入后台进行操作，则必须是已经进行登录的用户，或者想修改家乡特色文章信息的话，也是需要用户为登录状态。这些用户的基本信息都由管理员对其统一管理。</p>
+<p>根据家乡特色文章实际过程的分析，网站有以下几个部分，其中用户注册，发布个人信息，修改个人信息；用户注册登录，发布家乡特色文章信息；管理员管理用户信息。以上业务过程从用户角度可以分为两类使用本系统的用户角色，包括管理员和用户。以下针对各类用户说明相应的业务过程。</p>
+<p>系统用例图如下图3-2所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-8e36.jpg" alt="img"></p>
+<h1 id="4系统设计"><a href="#4系统设计" class="headerlink" title="4系统设计"></a>4系统设计</h1><p>家乡特色菜管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></p>
+<h2 id="4-1数据库设计"><a href="#4-1数据库设计" class="headerlink" title="4.1数据库设计"></a>4.1数据库设计</h2><p>信息管理系统的效率和实现的效果完全取决于数据库结构设计的好坏。为了保证数据的完整性，提高数据库存储的效率，那么统一合理地设计数据库结构是必要的。数据库设计一般包括如下几个步骤：</p>
+<p>（1）根据用户需求，确定数据库信息进行保存</p>
+<p>对用户的需求分析是数据库设计的第一阶段，用户的需求调研，熟悉小区运作流程，系统要求，这些都是以概念模型为基础的。</p>
+<p>（2）设计数据的概念模型</p>
+<p>概念模型与数据建模用户的观点一致，用于信息世界的建模工具。通过E-R图可以清楚地描述系统涉及到的实体之间的相互关系。</p>
+<p>用户注册实体图如图4-1所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-3c05.jpg" alt="img"></p>
+<p>图4-1用户注册实体图</p>
+<p>文章分享实体图如图4-2所示：</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-e473.jpg" alt="img"></p>
+<p>图4-2文章分享实体图</p>
+<p>（3）数据库逻辑结构分析</p>
+<p>数据库概念结构设计后，可以数据库概念转化实际的数据模型，这是一种数据库的逻辑结构，就是将概念结构与支持数据库管理系统的模型相符合。具体的表设计如下所示：</p>
+<p>表4-1：用户表</p>
 <table>
 <thead>
 <tr>
@@ -826,7 +3032,7 @@
 <td>CURRENT_TIMESTAMP</td>
 </tr>
 </tbody></table>
-<p>表4-4：token表</p>
+<p>表4-2：token表</p>
 <table>
 <thead>
 <tr>
@@ -903,7 +3109,7 @@
 <td>CURRENT_TIMESTAMP</td>
 </tr>
 </tbody></table>
-<p>表4-5：教师</p>
+<p>表4-3：收藏表</p>
 <table>
 <thead>
 <tr>
@@ -932,18 +3138,270 @@
 <td>CURRENT_TIMESTAMP</td>
 </tr>
 <tr>
-<td>jiaoshigonghao</td>
-<td>varchar</td>
-<td>200</td>
-<td>教师工号</td>
+<td>userid</td>
+<td>bigint</td>
+<td></td>
+<td>用户id</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>mima</td>
+<td>refid</td>
+<td>bigint</td>
+<td></td>
+<td>收藏id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tablename</td>
 <td>varchar</td>
 <td>200</td>
-<td>密码</td>
+<td>表名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar</td>
+<td>200</td>
+<td>收藏名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>picture</td>
+<td>varchar</td>
+<td>200</td>
+<td>收藏图片</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>varchar</td>
+<td>200</td>
+<td>类型(1:收藏,21:赞,22:踩)</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>inteltype</td>
+<td>varchar</td>
+<td>200</td>
+<td>推荐类型</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-4：资讯信息</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>title</td>
+<td>varchar</td>
+<td>200</td>
+<td>标题</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>introduction</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>简介</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>picture</td>
+<td>varchar</td>
+<td>200</td>
+<td>图片</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>content</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>内容</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-5：文章分享评论表</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>refid</td>
+<td>bigint</td>
+<td></td>
+<td>关联表id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>userid</td>
+<td>bigint</td>
+<td></td>
+<td>用户id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>varchar</td>
+<td>200</td>
+<td>用户名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>content</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>评论内容</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>reply</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>回复内容</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-6：配置文件</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar</td>
+<td>100</td>
+<td>配置参数名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td>varchar</td>
+<td>100</td>
+<td>配置参数值</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>表4-7：用户</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>yonghuming</td>
+<td>varchar</td>
+<td>200</td>
+<td>用户名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
 <td></td>
 <td></td>
 </tr>
@@ -956,10 +3414,10 @@
 <td></td>
 </tr>
 <tr>
-<td>jiaoshixingming</td>
+<td>mima</td>
 <td>varchar</td>
 <td>200</td>
-<td>教师姓名</td>
+<td>密码</td>
 <td></td>
 <td></td>
 </tr>
@@ -972,991 +3430,221 @@
 <td></td>
 </tr>
 <tr>
-<td>shoujihaoma</td>
+<td>shouji</td>
 <td>varchar</td>
 <td>200</td>
-<td>手机号码</td>
+<td>手机</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>youxiang</td>
+<td>sfsh</td>
 <td>varchar</td>
 <td>200</td>
-<td>邮箱</td>
+<td>是否审核</td>
 <td></td>
-<td></td>
+<td>否</td>
 </tr>
 <tr>
-<td>zhiwu</td>
-<td>varchar</td>
-<td>200</td>
-<td>职务</td>
+<td>shhf</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>审核回复</td>
 <td></td>
 <td></td>
 </tr>
 </tbody></table>
-<h1 id="5-系统实现"><a href="#5-系统实现" class="headerlink" title="5 系统实现"></a>5 系统实现</h1><p>登录，管理员、学生和教师通过输入用户名，密码，选择角色信息，点击登录进入系统操作进行操作，如图5-1所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-e1e3.png" alt="image-20230318225935236"></p>
-<h2 id="5-1管理员功能模块"><a href="#5-1管理员功能模块" class="headerlink" title="5.1管理员功能模块"></a>5.1管理员功能模块</h2><p>管理员登录进入学生成绩管理系统可以查看首页、个人中心、学生管理、教师管理、班级管理、综合成绩管理等内容进行详细操作，如图5-6所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182203-87b9.png" alt="image-20230318225951226"></p>
-<p>学生管理，在学生管理页面可以对索引、学号、头像、学生姓名、性别、手机号码、邮箱、班级等内容进行详情，修改或删除等操作，如图5-2所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-4a39.png" alt="image-20230318230015169"></p>
-<p>教师管理，在教师管理页面可以对索引、教师工号、头像、教师姓名、性别、手机号码、邮箱、职务等内容进行详情，修改或删除等操作，如图5-3所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-7342.png" alt="image-20230318230038503"></p>
-<p>综合成绩管理，在综合成绩管理页面可以对索引、学号、学生姓名、班级、学业成绩、德育成绩、体育素质、智育素质、总分、学年、登记时间、教师工号、教师姓名等内容进行详情，修改或删除等操作，如图5-4所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ca1b.png" alt="image-20230318230054743"></p>
-<h2 id="5-2学生功能模块"><a href="#5-2学生功能模块" class="headerlink" title="5.2学生功能模块"></a>5.2学生功能模块</h2><p>学生登录进入学生成绩管理系统可以查看首页、个人中心、综合成绩管理等内容进行详细操作，如图5-5所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-910a.png" alt="image-20230318230119277"></p>
-<p>个人中心，在个人信息页面通过填写学号、头像、学生姓名、性别、手机号码、邮箱、班级等内容进行个人信息修改操作，如图5-6所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-6642.png" alt="image-20230318230133157"></p>
-<h2 id="5-3教师功能模块"><a href="#5-3教师功能模块" class="headerlink" title="5.3教师功能模块"></a>5.3教师功能模块</h2><p>教师登录进入学生成绩管理系统可以查看首页、个人中心、综合成绩管理等内容进行详细操作，如图5-7所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-beac.png" alt="image-20230318230151602"></p>
-<p>个人中心，在个人信息页面通过填写教师工号、头像、教师姓名、性别、手机号码、邮箱、职务等内容进行个人信息修改操作，如图5-8所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-68ae.png" alt="image-20230318230203862"></p>
-<p>综合成绩管理，在综合成绩管理页面可以对索引、学号、学生姓名、班级、学业成绩、德育成绩、体育素质、智育素质、总分、学年、登记时间、教师工号、教师姓名等内容进行详情，修改或删除等操作，如图5-9所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-779e.png" alt="image-20230318230216724"></p>
-<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p>大学生体质测试管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></p>
+<p>表4-8：文章分享</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>biaoti</td>
+<td>varchar</td>
+<td>200</td>
+<td>标题</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tupian</td>
+<td>varchar</td>
+<td>200</td>
+<td>图片</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>wenzhangfenlei</td>
+<td>varchar</td>
+<td>200</td>
+<td>文章分类</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jianshu</td>
+<td>varchar</td>
+<td>200</td>
+<td>简述</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>wenzhangxiangqing</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>文章详情</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fabushijian</td>
+<td>datetime</td>
+<td></td>
+<td>发布时间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>yonghuming</td>
+<td>varchar</td>
+<td>200</td>
+<td>用户名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xingming</td>
+<td>varchar</td>
+<td>200</td>
+<td>姓名</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sfsh</td>
+<td>varchar</td>
+<td>200</td>
+<td>是否审核</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td>shhf</td>
+<td>longtext</td>
+<td>4294967295</td>
+<td>审核回复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>clicktime</td>
+<td>datetime</td>
+<td></td>
+<td>最近点击时间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>clicknum</td>
+<td>int</td>
+<td></td>
+<td>点击次数</td>
+<td></td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>表4-9：文章分类</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+<th>字段说明</th>
+<th>主键</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>bigint</td>
+<td></td>
+<td>主键</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>addtime</td>
+<td>timestamp</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+<td>CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+<td>wenzhangfenlei</td>
+<td>varchar</td>
+<td>200</td>
+<td>文章分类</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="4-2系统整体设计"><a href="#4-2系统整体设计" class="headerlink" title="4.2系统整体设计"></a>4.2系统整体设计</h2><h3 id="4-2-1系统设计思想"><a href="#4-2-1系统设计思想" class="headerlink" title="4.2.1系统设计思想"></a>4.2.1系统设计思想</h3><p>系统确定了各项需求，完成了系统的分析和数据库的设计，它就可以根据网站的特点决定网站的发展模式，才能实现代码。通过对网站的分析，这个网站是属于一个小项目，所完成的功能相对简单，就是对数据的基本操作。从而决定采用B&#x2F;S开发模式。该模型的基本过程是：当用户访问网站的浏览器，或从用户向服务器发送请求时，通过接收请求，然后调用数据访问逻辑运算如比，将结果返回给将结果返回到用户通过浏览器。</p>
+<p>使用开发的模型时，我们要把一些常用的，可以重复使用了java技术。当用户浏览网页，很多网页上的信息是从数据库动态删除，这就要求网页必须有数据库操作的能力，如连接数据库和数据表，更新。一个网站包含多个相同的网页，实现数据库操作功能的、代码就需要在不一样的网页中重复的被使用，这样不仅降低了工作的效率，一般也会给维护带来较大的麻烦。为了弥补这一缺陷，功能代码应该在java中完整的数据库操作，可以使用在每一个页面上。</p>
+<h3 id="4-2-2系统流程图"><a href="#4-2-2系统流程图" class="headerlink" title="4.2.2系统流程图"></a>4.2.2系统流程图</h3><p>下图是用户进入这个家乡特色推荐系统后，基本的操作流程。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-c873.jpg" alt="img"></p>
+<h1 id="5系统详细设计"><a href="#5系统详细设计" class="headerlink" title="5系统详细设计"></a>5系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>家乡特色推荐系统，在系统首页可以查看首页，文章分享，资讯信息，个人中心，后台管理等内容进行详细操作，如图5-1所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-9e97.png" alt="image-20230318232239205"></p>
+<p>用户注册，在用户注册页面通过填写用户名，密码，确认密码，姓名，手机等信息完成用户注册，如图5-2所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-c91a.png" alt="image-20230318232323236"></p>
+<p>文章分享，在文章分享页面可以查看文章分类，简述，发布时间，用户名，姓名，点击次数等详细内容，并进行评论和收藏操作，如图5-3所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-5e82.png" alt="image-20230318232308154"></p>
+<p>个人中心，在个人中心页面通过填写用户名，姓名，图片，密码，性别，手机等信息进行更新信息，根据需要对我的收藏进行详细操作，如图5-4所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ac07.jpg" alt="img"></p>
+<p>图5-4个人中心界面图</p>
+<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录，进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-5所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-8484.jpg" alt="img"></p>
+<p>图5-5管理员登录界面图</p>
+<p>管理员登录系统后，可以对首页，个人中心，用户管理，文章分类管理，文章分享管理，系统管理等功能模块进行相应操作，如图5-6所示。</p>
+<p>![img](Users&#x2F;junxu&#x2F;Library&#x2F;Group Containers&#x2F;UBF8T346G9.Office&#x2F;TemporaryItems&#x2F;msohtmlclip&#x2F;clip_image012.jpg)</p>
+<p>图5-6管理员功能界面图</p>
+<p>用户管理，在用户管理页面可以对索引，用户名，姓名，头像，性别，手机，审核回复，审核状态，审核等信息进行详情，修改和删除等操作，如图5-7所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-530e.jpg" alt="img"></p>
+<p>图5-7用户管理界面图</p>
+<p>文章分类管理，在文章分类管理页面可以对索引，文章分类等内容进行详情，修改和删除等操作，如图5-8所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-aabc.jpg" alt="img"></p>
+<p>图5-8文章分类管理界面图</p>
+<p>文章分享管理，在文章分享管理页面可以对索引，标题，图片，文章分类，简述，发布时间，用户名，姓名，审核回复，审核状态等内容进行详情，修改，查看评论和删除操作，如图5-9所示。</p>
+<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/202303182303-ce97.jpg" alt="img"></p>
+<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p>家乡特色菜管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击查看<a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">源码地址</a></p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/90bda718d3bc9e51222a8eeda424c435.png" alt="image-20230318230216724"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/40130.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/40130.html" class="post-title-link" itemprop="url">2023 GoLand  最新下载、激活、破解教程、亲测有效，永久激活</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-13 15:33:52" itemprop="dateCreated datePublished" datetime="2023-03-13T15:33:52+08:00">2023-03-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-14 23:07:34" itemprop="dateModified" datetime="2023-03-14T23:07:34+08:00">2023-03-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id><a href="#" class="headerlink" title></a></h1><h1 id="GoLand破解安装激活最新教程（附破解工具及激活码）"><a href="#GoLand破解安装激活最新教程（附破解工具及激活码）" class="headerlink" title="GoLand破解安装激活最新教程（附破解工具及激活码）"></a>GoLand破解安装激活最新教程（附破解工具及激活码）</h1><p>本文讲的是支持2022.3.2最新版本的GoLand破解、GoLand激活码、GoLand安装、GoLand永久激活码的最新永久激活教程，本文有mac和windows系统的GoLand安装教程。</p>
-<h2 id="1-下载安装GoLand"><a href="#1-下载安装GoLand" class="headerlink" title="1.下载安装GoLand"></a>1.下载安装GoLand</h2><p>先去官网下载，我这里下载的是最新版本的2022.2.2，测试过2021以上的版本均可使用以下教程破解。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-a6099a.webp" alt="GoLand破解"></p>
-<p>安装然后打开</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-e711df.webp" alt="GoLand破解"></p>
-<p>我这里是全选<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-d2ef67.webp" alt="GoLand破解"></p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-b26848.webp" alt="GoLand破解"></p>
-<h2 id="2-下载破解工具"><a href="#2-下载破解工具" class="headerlink" title="2.下载破解工具"></a>2.下载破解工具</h2><p>  为了防止爬虫，因此 **扫描关注微信公众号【徐公】获取，输入 **GoLand 获取。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230211154134.png"></p>
-<ol>
-<li>windows的样子</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-942b7c.webp" alt="GoLand破解"><br>2. mac的样子</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-1d6b67.webp" alt="GoLand破解"></p>
-<ul>
-<li>打开scripts文件<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-12c117.webp" alt="GoLand破解"></li>
-</ul>
-<h2 id="3-windows的GoLand激活"><a href="#3-windows的GoLand激活" class="headerlink" title="3.windows的GoLand激活"></a>3.windows的GoLand激活</h2><ul>
-<li><p>先执行unistall-current-user.vbs,直接双击打开，此步骤是为了防止之前有过激活信息，确保当前环境变量下没有激活工具的变量信息，可先执行卸载脚本在再进行后面的激活操作，避免激活失败。<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-79da4b.webp" alt="GoLand破解"></p>
-</li>
-<li><p>出现弹框done说明成功<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031421-7ded4d.webp" alt="GoLand破解"></p>
-</li>
-<li><p>然后再执行install-current-user.vbs,直接双击打开即可<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031422-2eee53.webp" alt="GoLand破解"></p>
-</li>
-<li><p>这里需要等待10秒左右才会出现第二个done弹框，才是成功<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031422-fcbefa.webp" alt="GoLand破解"></p>
-</li>
-<li><p>然后再输入对应的激活码即可，文章上面扫公众号二维码获取</p>
-</li>
-</ul>
-<p>JZFLGE21ND-eyJsaWNlbnNlSWQiOiJKWkZMR0UyMU5EIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBHTyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFdTIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJHTyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6ZmFsc2V9LHsiY29kZSI6IlBDV01QIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfV0sIm1ldGFkYXRhIjoiMDEyMDIyMDkwMlBTQU4wMDAwMDUiLCJoYXNoIjoiVFJJQUw6LTE1NTI3NDEyNzIiLCJncmFjZVBlcmlvZERheXMiOjcsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0&#x3D;-cQoXljKE7uBjoI23ZBPd84P89vQAaprVvVhxj1&#x2F;nSOABUZKPZMCs6p2id5WKBP1n0EoPHykvzd0y7QcdcO2hxNwbaBRZxpPFuuMigGazrrt+zSd9+UlFXmtcseFTXlWn7Jw2qqp7WSVQlj+o3gf2Gic9&#x2F;Vp2pAmIajMGdFDsXcHbYUrLwTRVtFkNtggtsqh0AVS8xhzLuXMzGXJsqEEWPZCKMEjy0bURm&#x2F;FQvrRC&#x2F;gIptJzuybSb&#x2F;neqKmvxZefX1lhe98igS3tZsL&#x2F;E+hsQK7ueXVSP2AuuVEz&#x2F;6qHYknPS7K4UluWpd+ktIxTcHjIykK1tlWlwTsupZTxnvXFWQA&#x3D;&#x3D;-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU&#x2F;Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8&#x2F;COMrxRlZW5mfzo0xsK0dQGNH3UoG&#x2F;9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAV8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE&#x2F;BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5&#x2F;FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB&#x2F;R5oUlebwaTE6WZNBs+TA&#x2F;qPj+5&#x2F;we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329&#x2F;WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V&#x2F;0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ&#x2F;c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0&#x2F;&#x2F;lOmVya&#x2F;PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0&#x2F;WFPl1aw5VV&#x2F;VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH&#x2F;0onD</p>
-<h2 id="4-mac的GoLand激活"><a href="#4-mac的GoLand激活" class="headerlink" title="4.mac的GoLand激活"></a>4.mac的GoLand激活</h2><ul>
-<li><p>先打开终端</p>
-</li>
-<li><p>先运行uninstall.sh</p>
-</li>
-<li><p>此步骤是一键帮你去掉以前所激活过留下的东西，解决key is invalid的问题。防止激活失败</p>
-</li>
-<li><p>然后终端输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh /Users/chen23/Downloads/jihuo-tool/scripts/uninstall.sh </span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031422-316831.webp" alt="GoLand破解"></p>
-<ul>
-<li>这里直接把uninstall.sh拖动到终端即可。记得mac运行是</li>
-</ul>
-<p>sh xxxxx去运行.sh文件（记得sh后面加空格加路径）</p>
-<ul>
-<li><p>出现done说明成功。<br><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031422-58946a.webp" alt="GoLand破解"></p>
-</li>
-<li><p>再执行install.sh，与上面同理，出现done，the kill xxxxx 说明成功。</p>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031422-77ae8c.webp" alt="GoLand破解"></p>
-<ul>
-<li>然后关闭GoLand，重新打开GoLand，输入破解码激活即可</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031422-7ef494.webp" alt="GoLand破解"></p>
-<ul>
-<li>然后就成了，时间是假的，已经永久激活了，而且是官网最新版本哦，如果你重新更新了，再执行上面的操作即可。</li>
-</ul>
-<p><img src="https://chenjunan.top/img/goland/20220826144711.webp" alt="GoLand破解"></p>
-<h2 id="软件下载地址："><a href="#软件下载地址：" class="headerlink" title="软件下载地址："></a>软件下载地址：</h2><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-<p>在微信公众号 【<strong>徐公</strong>】，回复 <strong>goland</strong> 即可获取下载地址</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/020220230219163502.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/58663.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/58663.html" class="post-title-link" itemprop="url">termius macos 破解版，激活版下载，永久激活，亲测可用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-11 15:33:52" itemprop="dateCreated datePublished" datetime="2023-03-11T15:33:52+08:00">2023-03-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-12 11:00:01" itemprop="dateModified" datetime="2023-03-12T11:00:01+08:00">2023-03-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>675</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>termius 是一款非常值得推荐的 SSH&#x2F;SFTP 跨平台终端工具，其十分亮眼的功能是可以上传文件夹，这是其他几款终端工具都不具备的，比如说 macOS 自带的终端、号称 21 世纪最强终端的 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://tobebetterjavaer.com/gongju/warp.html">wrapopen in new window</a>、完全开源的 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://tobebetterjavaer.com/gongju/tabby.html">tabbyopen in new window</a>、<a target="_blank" rel="external nofollow noopener noreferrer" href="https://tobebetterjavaer.com/gongju/windterm.html">WindTermopen in new window</a>。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031210-7aaabe.png" alt="img"></p>
-<p>不过，termius 分为基础版和 Pro版，基础版不收费，但功能少，Pro 版功能多但收费。</p>
-<p>于是怎么破解它就很关键了，之前折腾了 1 个小时，终于搞定，这里记录一下，免得以后再需要的时候找不到方法。</p>
-<p>首先，需要下载绿色版的 termius。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031210-ab3ae7.png" alt="img"></p>
-<p>这里设置一个门槛，需要微信搜索 <strong>徐公</strong>关注我的公众号，在后台回复 <strong>termius</strong> 获取。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/020220230219163502.png"></p>
-<p>下载后安装，如果打开的时候提示不安全，根据提示信息去谷歌一下就行了。执行命令如下。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xattr -r -d com.apple.quarantine /Applications/Termius.app</span><br></pre></td></tr></table></figure>
-
-<p>需要输入本机密码给权限。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031210-0d2893.png" alt="img"></p>
-<p>完事后重新打开 termius，如果提示有付费的问题，直接关闭重新开一下就好了，不用管，不是必选项。</p>
-<h2 id="激活码获取"><a href="#激活码获取" class="headerlink" title="激活码获取"></a>激活码获取</h2><p>PS: 密钥没有直接贴出来，是为了拒绝一部分白嫖党，因为有的人即便是你帮了他他还骂你，所以我把密钥放在了公众号里，这样我既可以帮助到那些信赖我的人，同时也可以给公众号涨涨粉，两全其美，不丢人。</p>
-<p>需要的小伙伴，扫描下方公众号二维码，或者关注公众号： <strong>徐公</strong>，回复关键字：<strong>termius</strong> 即可免费无套路获取，持续更新中~</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/020220230219163502.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/25684.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/25684.html" class="post-title-link" itemprop="url">Pads 9.5 下载安装教程，激活破解教程，亲测可用，永久激活</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-09 10:38:08" itemprop="dateCreated datePublished" datetime="2023-03-09T10:38:08+08:00">2023-03-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-03 23:02:40" itemprop="dateModified" datetime="2023-04-03T23:02:40+08:00">2023-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A1%AC%E4%BB%B6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件常用软件</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="软件下载："><a href="#软件下载：" class="headerlink" title="软件下载："></a>软件下载：</h2><p><strong>安装前须知</strong>：</p>
-<p>1.安装全程须断开电脑网络，否则安装不成功；</p>
-<p>2.解压和安装前先关闭360、电脑管家等所有杀毒软件，防止误杀license文件，导致安装失败；</p>
-<p>3.PADS9.5适用于WIN7&#x2F;10(64位)系统，亲测可用！</p>
-<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-<p>在微信公众号 【<strong>硬件工程师</strong>】，回复 <strong>pads</strong> 即可获取下载地址</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-a3d2.png" alt="image-20230307000909729"></p>
-<h3 id="PADS9-5-WIN10-64-位安装步骤："><a href="#PADS9-5-WIN10-64-位安装步骤：" class="headerlink" title="PADS9.5 WIN10 64****位安装步骤："></a><strong>PADS9.5 WIN10 64****位安装步骤</strong>：</h3><p>1.先使用“百度网盘客户端”下载PADS_9.5安装包到电脑磁盘英文路径文件夹下，并解压缩，然后找到PADS9.5_mib.exe，鼠标右击选择【以管理员身份运行】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-1.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-df2d.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>2.正在加载中，稍等片刻</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-2.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032304-7266.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>3.点击【NEXT】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-3.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-3dd2.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>4.点击【Skip】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-4.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-07a9.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>5.点击【Agree】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-5.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-b15e.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>6.点击【Modify】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-6.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-46d6.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>7.点击【Product Selection】，进行自定义安装</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-7.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-d0c2.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>8.选择需要安装的软件（或插件），如果只进行PCB设计推荐勾选安装下图中的几个软件，需要其他的软件也可以勾选，但注意：不要安装Server Services！</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-8.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032304-8c7e.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>9.先点击【Target Path】选项卡，选择软件安装路径，默认安装在C盘，点击【Browse】可更改软件安装路径，注意：安装路径文件夹名称不能含有中文字符！小编这里将软件安装在D盘MentorGraphics文件夹下（需提前在D盘根目录下新建名为MentorGraphics文件夹），然后点击【Done】</p>
-<p><strong>温馨提示</strong>：请记住软件安装路径，后续操作需要用到。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-9-1.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-8b50.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-9-2.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-fb40.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>10.点击【Install】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-10.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-70db.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>11.正在安装中，这个过程大概需要10分钟左右的时间，请耐心等待</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-11.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-8b89.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>12.安装完成，先勾选“ at a later time”，然后点击【Done】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-12.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-a9c2.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>13.返回软件初始安装包，双击打开LICENSE文件夹</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-13.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-10ad.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>14.然后找到MentorKG.exe，将其复制粘贴到软件安装目录文件夹下（见第9步），如小编安装路径D:\MentorGraphics</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-14.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032304-06c5.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>15.找到上一步粘贴到安装目录下的MentorKG.exe，鼠标右击选择【以管理员身份运行】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-15.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032304-8a4e.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>16.弹出如下界面，稍等片刻界面会自动跳转</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-16.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-27b5.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>17.自动进入LICENSE文件界面，点击【文件】→【另存为】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-17.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-6140.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>18.将LICENSE文件保存到软件的安装目录中（见第9步），如小编安装路径是D:\MentorGraphics</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-18.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-4f74.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>19.返回电脑桌面，鼠标右击“此电脑”图标（不同系统该图标名称不尽相同）选择【属性】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-19.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-ebd6.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>20.点击【高级属性设置】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-20.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-55ea.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>21.点击【环境变量】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-21.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-3482.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>22.点击【新建】，然后添加变量名：MGLS_LICENSE_FILE，变量值：D:\MentorGraphics\LICENSE.TXT（第14步保存LICENSE文件的路径），然后点击【确定】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-22.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032304-402d.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>23.返回电脑桌面，找到PADS Layout图标，鼠标右击选择【以管理员身份运行】</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-23.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-c6f1.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<p>24.打开PADS9.5，软件界面如下：</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.zhanshaoyi.com/wp-content/uploads/2019/07/952-24.png"><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-4297.png" alt="PADS 9.5安装教程和破解方法(附LICENSE文件)"></a></p>
-<h2 id="软件下载地址："><a href="#软件下载地址：" class="headerlink" title="软件下载地址："></a>软件下载地址：</h2><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-<p>在微信公众号 【<strong>硬件工程师</strong>】，回复 <strong>pads</strong> 即可获取下载地址</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304032204-bbed.png" alt="image-20230307000909729"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/47210.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/47210.html" class="post-title-link" itemprop="url">Cadence Allegro 2023 激活、破解下载教程，永久激活，亲测可用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-03-09 00:38:08 / 修改时间：23:56:46" itemprop="dateCreated datePublished" datetime="2023-03-09T00:38:08+08:00">2023-03-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A1%AC%E4%BB%B6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件常用软件</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>Cadence Allegro and OrCAD 2022破解版</strong>是一款包括各种设计原理图、模拟和分析电子电路的程序。这是最好的、最专业的电子电路仿真分析和电子设计自动化软件。提供Cadence PCB原理图和PCB布局解决方案，可与Allegro PCB布局无缝双向集成，实现实时数据同步和高效的电路板设计环境。以及Cadence Allegro高级IC封装设计解决方案，约束驱动的先进单模和多模封装基板布局，强大的功能以及直观的操作界面得到了广大用户的喜爱，带来提高的生产力和经济效益，本次提供了Cadence Allegro and OrCAD 2022全新破解版本，欢迎需要此款工具的朋友前来下载使用。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030923-823246.jpg" alt="img"></p>
-<h3 id="Cadence-Allegro-and-OrCAD概述"><a href="#Cadence-Allegro-and-OrCAD概述" class="headerlink" title="Cadence Allegro and OrCAD概述"></a>Cadence Allegro and OrCAD概述</h3><p>Cadence Allegro系统互连平台能够跨集成电路、封装和PCB协同设计高性能互连。应用平台的协同设计方法，工程师可以迅速优化I&#x2F;O缓冲器之间和跨集成电路、封装和PCB的系统互联。该方法能避免硬件返工并降低硬件成本和缩短设计周期。约束驱动的Allegro流程包括高级功能用于设计捕捉、信号完整性和物理实现。由于它还得到Cadence Encounter与Virtuoso平台的支持，Allegro协同设计方法使得高效的设计链协同成为现实。</p>
-<p>Cadence OrCAD产品以其直观的操作界面以及强大的功能而深受广大电子工程师们的喜爱。作为世界上使用最广泛的EDA软件，早在上个世纪八十年代起，OrCAD就开始为上百万的电子工程师个体以及企业团队提供全套的设计工具，它通过所有工具之间的无缝集成，以其前所未有的生产力为个人和企业带来了巨大的经济效益。 而OrCAD最新版本17.0很好的沿袭了这些传统。</p>
-<p>Cadence Allegro和OrCAD产品直接与Windows集成；产品支持Windows支持的硬件和外围设备。可以从微软的网页上获得Windows正式支持的硬件和外设的列表。</p>
-<p>这些产品需要更新Windows目录中的特定微软库。你必须使用单机或客户端安装Cadence软件。你可能无法在不安装的情况下指向该软件。</p>
-<h3 id="安装激活教程"><a href="#安装激活教程" class="headerlink" title="安装激活教程"></a>安装激活教程</h3><p>1、在本站下载并解压，如图所示</p>
-<p>下载方式，在微信公众号<strong>硬件工程师</strong>，回复 <strong>Cadence</strong> 即可获取下载地址</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030923-4c40d0.jpg" alt="img"></p>
-<p>2、安装程序， 勾选 接受</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030923-5c5c4a.jpg" alt="img"></p>
-<p>3、安装设置</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030923-4dcf9e.jpg" alt="img"></p>
-<p>4、安装完成，将crack中的CadenceLicensePatcherWin.exe复制到安装目录中，管理员身份运行，选择安装目录并点击patch进行修补破解</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030923-909092.jpg" alt="img"></p>
-<h2 id="软件下载地址："><a href="#软件下载地址：" class="headerlink" title="软件下载地址："></a>软件下载地址：</h2><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-<p>在微信公众号 【<strong>硬件工程师</strong>】，回复 <strong>Cadence</strong> 即可获取下载地址</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030923-4405f0.png" alt="image-20230307000909729"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/5233.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/5233.html" class="post-title-link" itemprop="url">Altium Designer 22 中文版最新激活码，激活、破解教程，永久激活，亲测可用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-09 00:00:08" itemprop="dateCreated datePublished" datetime="2023-03-09T00:00:08+08:00">2023-03-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-13 23:02:28" itemprop="dateModified" datetime="2023-03-13T23:02:28+08:00">2023-03-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A1%AC%E4%BB%B6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">硬件常用软件</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>altium designer22</strong>是一款由Altium开发团队全新推出的简单易用，与时俱进，功能强大的PCB设计软件，可以方便用户快速完成各类原理图的设计操作。用户可以完全掌控设计过程，提高整个设计团队的生产力和工作效率，节省总体成本、缩短产品上市时间，助您一直处于新科技的最前沿。</p>
-<p>相比于旧版，新版altium designer22添加了许多的功能以及进行了全面的优化，它包括了强大的功能，能够可帮助确保用户的PCB设计已准备好进行制造，即使是最复杂的电路板，也可以毫不费力地优化您的设计，其中新的PCB技术感知功能也能够使用户轻松地对影响设计制造的关键PCB特征进行建模，总而言之就是使用新版软件，用户现在可以将各种新的电路板特性建模到您的设计中，包括沉孔&#x2F;埋头孔、IPC-4561通孔类型等。在这里可以完美的支持自定义多边形、电路板开孔、实时规则检查、设计复用以及尺寸自动测量，甚至还为用户配备了直观高效的用户界面，帮助你更好的实现自己的设计工作。</p>
-<p>ps：小编带来的是<strong>altium designer22中文版</strong>，内附有补丁文件，能够完美的激活软件，详细的教程请参考本文操作步骤，需要的朋友可下载试试！</p>
-<h3 id="软件特色"><a href="#软件特色" class="headerlink" title="软件特色"></a>软件特色</h3><p>1、设计环境：通过设计过程的各个方面互连，显着提高生产力，包括原理图，PCB，文档和模拟。<br>2、制造设计：学习并应用设计制造(DFM)方法，确保您的PCB设计每次都能正常运行，可靠且可制造。<br>3、切换很容易：使用业内最强大的翻译工具轻松迁移您的遗留信息-如果没有这些翻译工具，我们的成长将无法实现。<br>4、刚柔结合设计：以全3D设计刚柔结合并确认3D组件，外壳组件和PCB间隙满足所有机械要求。<br>5、PCB设计：通过受控元件放置和原理图与PCB之间的完全同步，轻松地在电路板布局上操纵物体。<br>6、原理图设计：通过一个内聚，易于导航的用户界面中的分层原理图和设计重用，更快，更高效地设计顶级电子设备。<br>7、制造业产出：体验管理数据的优雅，并通过无缝，简化的文档功能为发布做好准备。<br>8、互联的多板装配：多板之间的连接关系管理和增强的3D引擎使您可以实时呈现设计模型和多板装配情况 – 显示更快速，更直观，更逼真。<br>9、时尚的用户界面体验：全新的，紧凑的用户界面提供了一个全新而直观的环境，并进行了优化，可以实现无与伦比的设计工作流可视化。<br>10、强大的PCB设计：利用64位CPU的架构优势和多线程任务优化使您能够比以前更快地设计和发布大型复杂的电路板。<br>11、快速、高质量的布线：视觉约束和用户指导的互动结合使您能够跨板层进行复杂的拓扑结构布线 – 以计算机的速度布线，以人的智慧保证质量。<br>12、实时的BOM管理：链接到BOM的最新供应商元件信息使您能够根据自己的时间表做出有根据的设计决策<br>13、简化的PCB文档处理流程：在一个单一的，紧密的设计环境中记录所有装配和制造视图，并通过链接的源数据进行一键更新。</p>
-<h3 id="altium-designer22安装教程"><a href="#altium-designer22安装教程" class="headerlink" title="altium designer22安装教程"></a>altium designer22安装教程</h3><h3 id="下载地址："><a href="#下载地址：" class="headerlink" title="下载地址："></a>下载地址：</h3><p>公众号<strong>硬件工程师</strong>，回复 <strong>altium designer</strong>，即可获取。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030700-f02d6f.png" alt="image-20230307000909729"></p>
-<p>提示：安装全过程必须断掉电脑网络，否则容易出现安装失败的问题！！！</p>
-<p>1、在本站下载解压，得到补丁文件和原程序</p>
-<p>2、双击运行”Installer.Exe”程序进入软件安装向导，点击next进行下一步。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031322-83331c.jpeg" alt="img"></p>
-<p>3、在Select language栏下拉列表中选择“Chinese”语言，然后勾选安装许可协议，再点击Next。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-223aa0.jpeg" alt="img"></p>
-<p>4、按默认目录进行安装，当然，用户也可自行选择软件安装路径，然后耐心等到软件安装，直到显示完成，记住这里取消勾选不要运行软件，直接退出向导即可；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-77d6f5.jpeg" alt="img"></p>
-<p>5、接下来将补丁文件下的“shfolder.dll”复制到源程序安装目录下；<br>安装目录【C:\Program Files\Altium\AD22】</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-d07ba2.jpeg" alt="img"></p>
-<p>6、因为没有在创建桌面快捷方式，所以可以在电脑左下角搜索并打开软件，点击界面中的【Add standalone license file】；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-78426c.jpeg" alt="img"></p>
-<p>7、将会弹出一个窗口，然后打开软件初始安装包ad211 unis licewnses文件夹，找到AD20-Sandy.alf文件，单击选中它后再点击打开；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-83f1fe.jpeg" alt="img"></p>
-<p>8、软件将会自动显示软件许可有效期至2030年，表示已经成功激活，可免费使用所有功能；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-403c86.jpeg" alt="img"></p>
-<p>9、接下来进行汉化，点击右上角的齿轮图标，找到General页面，勾选“Use localized resources”，将会弹出一个界面，依次选择OK就可以了；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-5a9726.jpeg" alt="img"></p>
-<p>10、至此，以上就是altium designer22中文破解版软件安装教程，希望能对用户有帮助。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-38d7eb.jpeg" alt="img"></p>
-<h3 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h3><p>1、当我们在软件中找不到所需要的元件的时候,就的需要自己去画,我们以下面的器件为例；</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-fe53d4.jpeg" alt="img"></p>
-<p>2、首先新建一个原理图库</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-c5891b.jpeg" alt="img"></p>
-<p>3、找到画笔画出一个器件大小的矩形框</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-9c78a4.jpeg" alt="img"></p>
-<p>4、添加引脚</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-525d32.jpeg" alt="img"></p>
-<p>5、按Tab键修改参数</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-4e65be.jpeg" alt="img"></p>
-<p>6、第一个引脚就画出来了</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-adc114.jpeg" alt="img"></p>
-<p>7、重复以上继续画其他的引脚</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-daf475.jpeg" alt="img"></p>
-<p>8、点击保存</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-39f0a6.jpeg" alt="img"></p>
-<p>9、点击库</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-915149.jpeg" alt="img"></p>
-<p>10、找到刚刚保存的原理图库</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-ba2093.jpeg" alt="img"></p>
-<p>11、放到原理图，完成器件的绘制</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-3a8230.jpeg" alt="img"></p>
-<h3 id="怎么删除元件？"><a href="#怎么删除元件？" class="headerlink" title="怎么删除元件？"></a>怎么删除元件？</h3><p>1、进入altium designer首页，点击File。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-6a0a64.jpeg" alt="img"></p>
-<p>2、进入FILe菜单，点击open，打开你要修改的pcb文件。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-50f792.jpeg" alt="img"></p>
-<p>3、进入pcb文件编辑界面，点击菜单tools。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-f59324.jpeg" alt="img"></p>
-<p>4、进入tools工具栏点击UN-Route–all。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-af77d0.jpeg" alt="img"></p>
-<p>5、系统提示是否重布线，包括以前锁定的规则，点击yes。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-e57d3d.jpeg" alt="img"></p>
-<p>6、布线全部删除，元件保持原来的位置。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-326fb9.jpeg" alt="img"></p>
-<ul>
-<li><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031323-bd2c1f.jpeg" alt="img"></li>
-</ul>
-<h2 id="软件下载地址："><a href="#软件下载地址：" class="headerlink" title="软件下载地址："></a>软件下载地址：</h2><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-<p>在微信公众号 【<strong>硬件工程师</strong>】，回复 <strong>altium designer</strong> 即可获取下载地址</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030700-f02d6f.png" alt="image-20230307000909729"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/6619.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6619.html" class="post-title-link" itemprop="url">Java 毕业设计，基于 SpringBoot 的大学生体质测试管理系统，附源码和论文</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-08 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-08T13:05:55+08:00">2023-03-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-17 22:20:33" itemprop="dateModified" datetime="2023-03-17T22:20:33+08:00">2023-03-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本次设计任务是要设计一个大学生体质测试管理系统，通过这个系统能够满足大学生体质测试管理系统功能。系统的主要功能包括首页、个人中心、用户管理、教师管理、体质测试管理、测试报告管理、测试成绩管理、留言板、系统管理等功能。</p>
-<p>管理员可以根据系统给定的账号进行登录，登录后可以进入大学生体质测试管理系统对大学生体质测试所有模块进行管理。包括查看和修改自己的个人信息以及登录密码，用户信息等。</p>
-<p>该系统为每一个用户都分配了一个用户账号，用户通过账号的登录可以在系统中查看大学生体质测试信息及对个人信息进行修改等功能</p>
-<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><h2 id="系统首页模块"><a href="#系统首页模块" class="headerlink" title="系统首页模块"></a>系统首页模块</h2><p>大学生体质测试管理系统，在系统首页可以查看首页、体质测试、公告资讯、留言板、个人中心、后台管理等内容进行详细操作，如图5-1所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-913c263.jpg" alt="img"></p>
-<p>体质测试，在体质测试页面可以查看测试名称、测试编号、测试说明、测试文件、发布日期、教师工号等内容进行测试等操作，如图5-2所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-a59780a.jpg" alt="img"></p>
-<p>用户注册，通过填写用户账号、密码、确认密码、用户姓名、班级、联系方式等内容进行注册等操作，如图5-3所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-2724673.png" alt="image-20230317205150346"></p>
-<p>个人中心，在个人中心页面通过填写用户账号、密码、用户姓名、性别、班级、联系方式、图片等内容进行更新信息等操作；如图5-4所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-6a776c2.jpg" alt="img"></p>
-<h2 id="管理员功能模块"><a href="#管理员功能模块" class="headerlink" title="管理员功能模块"></a>管理员功能模块</h2><p>管理员登录，管理员通过输入用户，密码，选择角色等信息进行系统登录，如图5-5所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-92be09f.png" alt="image-20230317205208469"></p>
-<p>管理员登录进入大学生体质测试管理系统可以查看首页、个人中心、用户管理、教师管理、体质测试管理、测试报告管理、测试成绩管理、留言板、系统管理等内容进行详细操作，如图5-6所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-200827b.png" alt="image-20230317205224419"></p>
-<p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、性别、班级、联系方式、头像等内容详情、修改或删除等操作，如图5-7所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-cd7e4fa.png" alt="image-20230317205236107"></p>
-<p>体质测试管理，在体质测试管理页面可以对索引、测试编号、测试名称、测试文件、图片、发布日期、教师工号、教师姓名等内容进行详情、修改或删除等操作，如图5-8所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-02f0cb6.png" alt="image-20230317205250642"></p>
-<p>教师管理，在教师管理页面可以对教师工号、教师姓名、性别、职称、联系电话、头像等内容进行详情、修改或删除等操作，如图5-9所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-90afac1.jpg" alt="img"></p>
-<p>测试报告管理，在测试报告管理页面可以对索引、测试编号、测试名称、教师工号、教师姓名、报告文件、提交日期、用户账号、用户姓名、班级等内容进行详情、修改或删除等详细的操作，如图5-10所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-216bb91.jpg" alt="img"></p>
-<p>测试成绩管理，在测试成绩管理页面可以对索引、测试编号、、测试名称、教师工号、教师姓名、测试评分、测试评级、评分时间、用户账号、用户姓名、班级等内容进行详情、修改或删除等详细的操作，如图5-11所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-062394c.png" alt="image-20230317205311842"></p>
-<p>留言板，在留言板页面可以对索引、用户名、留言内容、留言图片、回复内容、回复图片等内容进行详情、修改、回复或删除等操作，如图5-12所示。</p>
-<p>![image-20230317205320908](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230317205320908.png)</p>
-<p>系统管理，在公告资讯页面中可以对索引、标题、图片等内容进行详情、修改或删除等操作，也可以对轮播图管理进行相应的操作，如图5-13所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-04bbf5e.jpg" alt="img"></p>
-<h2 id="用户功能模块"><a href="#用户功能模块" class="headerlink" title="用户功能模块"></a>用户功能模块</h2><p>用户进入大学生体质测试管理系统可以查看首页、个人中心、测试报告管理、测试成绩管理等内容进行详细操作，如图5-14所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-664ea83.jpg" alt="img"></p>
-<p>测试报告管理，在测试报告管理页面中可以对索引、测试编号、测试名称、教师工号、教师姓名、报告文件、提交日期、用户账号、用户姓名、班级等内容进行详情或删除等详细的操作，如图5-15所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-22f9d30.png" alt="image-20230317205336485"></p>
-<h2 id="教师功能模块"><a href="#教师功能模块" class="headerlink" title="教师功能模块"></a>教师功能模块</h2><p>教师注册，通过填写教师工号、密码、确认密码、教师姓名、职称、联系电话等内容进行注册，如图5-16所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-f378ae9.png" alt="image-20230317205348250"></p>
-<p>进入教师页面中可以查看首页、个人中心、体质测试管理、测试报告管理、测试成绩管理等内容进行相应的操作，如图5-17所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-927cf46.jpg" alt="img"></p>
-<p>体质测试管理，在体质测试管理页面中可以对索引、测试编号、测试名称、测试文件、图片、发布日期、教师工号、教师姓名等内容进行详细等操作，如图5-18所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-f64885b.png" alt="image-20230317205408348"></p>
-<p>测试报告管理，在测试报告管理页面中可以对索引、测试编号、测试名称、教师工号、教师姓名、报告文件、提交日期、用户账号、用户姓名、班级等内容进行详细等操作，如图5-19所示。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031720-69a7548.jpg" alt="img"></p>
-<h1 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h1><p>本系统使用MYSQL 作为系统的数据库，设计用户注册表、文件上传的表等等。</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-ee331fb.png" alt="image-20230317222012165"></p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031722-bb83d18.png" alt="image-20230317222027521"></p>
-<h1 id="部分源码"><a href="#部分源码" class="headerlink" title="部分源码"></a>部分源码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 测试报告</span><br><span class="line"> * </span><br><span class="line"> * @author </span><br><span class="line"> * @email </span><br><span class="line"> * @date 2022-03-11 14:04:32</span><br><span class="line"> */</span><br><span class="line">public interface CeshibaogaoDao extends BaseMapper&lt;CeshibaogaoEntity&gt; &#123;</span><br><span class="line">	</span><br><span class="line">	List&lt;CeshibaogaoVO&gt; selectListVO(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line">	CeshibaogaoVO selectVO(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line">	List&lt;CeshibaogaoView&gt; selectListView(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line"></span><br><span class="line">	List&lt;CeshibaogaoView&gt; selectListView(Pagination page,@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line">	CeshibaogaoView selectView(@Param(&quot;ew&quot;) Wrapper&lt;CeshibaogaoEntity&gt; wrapper);</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p>大学生体质测试管理系统包括前后端的所有代码，还有论文，如果有需要的话，可以点击这里咨询</p>
-<p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://note.youdao.com/s/H1qh4lhu">计算机毕业设计</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/16317.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/16317.html" class="post-title-link" itemprop="url">Multisim 14 激活、破解、下载教程，亲测可用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-08 13:05:55" itemprop="dateCreated datePublished" datetime="2023-03-08T13:05:55+08:00">2023-03-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-17 21:38:38" itemprop="dateModified" datetime="2023-03-17T21:38:38+08:00">2023-03-17</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id><a href="#" class="headerlink" title></a></h1><p>Multisim是一款功能强大、操作流畅的专业仿真工具，适用于板级模拟&#x2F;数字电路板设计工作，提供电路原理图图形输入、电路硬件描述语言输入，具有丰富的仿真分析能力。拥有专业版和教学版，深受国内外教师、科研人员和工程师的认可，可以说是行业一流和非常先进的SPICE模拟标准环境。它具有所见即所得设计环境、动态显示元素、交互式仿真界面、三维效果仿真电路等特点，可以帮助教师、研究人员和设计人员分析模拟、数字和电力电子电力。此外，它还具有主动分析模式，让用户更快速地得到仿真和运行分析的结果，单片机教学，采用数字逻辑结构，完成模拟电路系统和单片机，探头，电压，电流和功率通过新的电压，电路，电源与数字探头视觉交互仿真结果。</p>
-<p><strong>PS：本站为大家带来的是Multisim 14【附安装教程】免费破解版免费下载，欢迎大家前来下载安装~</strong></p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023031600-a3711f.png" alt="仿真软件multisim13"></p>
-<h2 id="Multisim-14新特性："><a href="#Multisim-14新特性：" class="headerlink" title="Multisim 14新特性："></a><strong>Multisim 14新特性：</strong></h2><hr>
-<p>1、采用快速原料图搭建功能，缩短设计时间。</p>
-<p>使用55,000个经制造商验证的组件和30个模拟台式仪器，快速构建、分析和迭代电路设计。</p>
-<ol start="2">
-<li>使用先进的分析功能，更早地定义电路。</li>
-</ol>
-<p>使用20个易于配置的高级分析功能，减少了昂贵的原型迭代，并促进了设计缺陷和低效率的早期检测。</p>
-<p>3.轻松地将原理图移植到PCB原型</p>
-<p>设计和电路模拟之间的切换和快速的PCB原型验证-无缝集成到Ultiboard只需点击几下鼠标。</p>
-<h2 id="Multisim-14基本功能："><a href="#Multisim-14基本功能：" class="headerlink" title="Multisim 14基本功能："></a><strong>Multisim 14基本功能：</strong></h2><hr>
-<p>1、原理图搭建功能</p>
-<p>2、仿真功能</p>
-<p>3、分析</p>
-<p><img src="https://img.yutu.cn/ueditor/image/2022/20220115/1642237019155070.png" alt="multisim软件实验报告"></p>
-<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><p>软件和破解补丁下载地址：微信公众号 【<strong>硬件工程师</strong>】，回复 <strong>Multisim</strong>，即可获取，亲测可用</p>
-<p>1 右键以管理员身份运行程序</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/e04942193a4ffc1fce941b215b8ae569.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>2 点击确定</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/4bc3ec6facff2bd31ff0d930d8ce2006.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>3 点击Unzip</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/16b8d652dab070d1535965dcf35ef72b.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>4 点击确定</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/126f7eaae492e630d9e3269da0894db8.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>5 点击Install NI</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/8ebfa498a06e5c6574b7c78204492dab.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>6  full name与organization信息任意填写，点击Next</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/c3821aec336fdf44e6a4c1cb0e8a8800.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>  full name与organization信息任意填写，点击Next</p>
-<p>7 点击否</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/f4d600c7819083cc1d72e9d44f6310c6.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>8 选择安装目录，点击Next</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/843127b07ea9a4b640cf3fb4b9197f8c.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>9 点击Next</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/7c16ba1ae4b9e5fdfe2f9b224f1608ba.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>10 点击Next</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/5435c035a2bb3b6f6f26ced3091d7931.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>11 选择“I accept……”点击Next</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/748612ef802d7a66789ae91a3eb48ddb.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>12 点击Next</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/108440d2f96a0b29ecb251f307207070.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>13 等待安装即可</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/5de19b9c18d3f091ceddf9da731c5118.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>14 点击Next</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/0468b5ff8929b99d64a7f0247b804c86.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>15 点击Restart Later</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/592085d19dc35e142feefab7a009e020.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>16 右键以管理员身份运行</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/aaa3da25c3894be82f77a35dcfe29b0b.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>  回到安装包文件夹，右键以管理员身份运行</p>
-<p>17 找到Base该项，右击找到Activate点击确定</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/24963a0aacc517ae63f427169cb26d22.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>18 找到Full Edition该项，右击找到Activate点击确定</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/94e3c92d6b90d7316477b22e8646ef43.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>19 找到Power Pro Edition该项，右击找到Activate点击确定</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/b9419020258973696f6e89edcc983dde.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>  找到Power Pro Edition该项，右击找到Activate点击确定</p>
-<p>20 找到Full Edition该项，右击找到Activate点击确定</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/5dcfeda3195b94bf97c83b06b8092687.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>21 找到Power Pro Edition该项，右击找到Activate点击确定</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/a64c15a239d802a2a6e81ea999cef58f.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>22 复制安装包中chinese汉化包到软件安装目录</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/ad5dae8787e32c7438036fc10b8d4968.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>  复制安装包中chinese汉化包到软件安装目录（默认是C:\Program Files (x86)\National Insteuments\Circuit Design 12.0\stringfiles）</p>
-<p>23 点击开始菜单栏，找到NI Ultiboard 14.0打开</p>
-<p><img src="https://img.yutu.cn/soft/2021/20210708/00499c48a69e34e0569d1388a27716cc.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<p>24 破解和汉化完成，打开软件开始使用<img src="https://img.yutu.cn/soft/2021/20210708/1325a720262bd7726132ad7aac89e951.png" alt="Multisim 14【附安装教程】免费破解版安装图文教程、破解注册方法"></p>
-<h2 id="软件下载"><a href="#软件下载" class="headerlink" title="软件下载"></a>软件下载</h2><p>PS: 破解补丁页面<strong>提取人数过多</strong>，<strong>导致分享的百度网盘链接容易被封</strong>：<img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030621-38e9a6.jpeg" alt="IDEA 2022.3.2破解补丁分享失败">破解补丁分享失败蛋疼ing，为限制人数，目前暂不提供页面直接提取，<strong>改为从笔者公众号提取</strong>。</p>
-<p>软件和破解补丁下载地址：微信公众号 【<strong>硬件工程师</strong>】，回复 <strong>Multisim</strong>，即可获取，亲测可用</p>
-<p><img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic_2023/master/03/2023030700-f02d6f.png" alt="image-20230307000909729"></p>
 
       
     </div>
@@ -1975,7 +3663,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2041,14 +3729,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">124</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -2092,7 +3780,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -2101,12 +3789,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">567k</span>
+    <span title="站点总字数">587k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:35</span>
+    <span title="站点阅读时长">8:53</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

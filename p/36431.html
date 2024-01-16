@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Java 基于 SpringBoot 的考研咨询、考研论坛平">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基于 SpringBoot 的考研咨询、考研论坛平">
+<meta property="og:url" content="https://blog.junxu666.top/p/36431.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="Java 基于 SpringBoot 的考研咨询、考研论坛平">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-fc64.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-06b8.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-799f.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-bac4.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-1ca4.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-44f8.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-7fa8.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-fc64.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-80fc.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-96cc.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-dfdd.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-cabe.png">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-e7d3.png">
+<meta property="article:published_time" content="2023-12-04T16:48:08.000Z">
+<meta property="article:modified_time" content="2024-01-16T14:53:47.424Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-fc64.png">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/36431.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java 基于 SpringBoot 的考研咨询、考研论坛平 | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/36431.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 基于 SpringBoot 的考研咨询、考研论坛平
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-12-05 00:48:08" itemprop="dateCreated datePublished" datetime="2023-12-05T00:48:08+08:00">2023-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-16 22:53:47" itemprop="dateModified" datetime="2024-01-16T22:53:47+08:00">2024-01-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+            <div class="post-description">Java 基于 SpringBoot 的考研咨询、考研论坛平</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>考研资讯平台，在系统当中学生可以根据不同的信息来实现该网站的考研资讯平台信息的管理。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.zhihu.com/zvideo/1689668081801216000">视频演示地址</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.zhihu.com/zvideo/1689668081801216000">视频演示地址</a></p>
+<p>系统主要分为前台和后台。主要包括学生前台：首页、考研资讯、报考指南、资料信息、论坛信息、我的、跳转到后台、购物车、客服，</p>
+<p>管理员：首页、个人中心、考研资讯管理、学生管理、报考指南管理、资料信息管理、资料分类管理、论坛管理、系统管理、订单管理</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-fc64.png" alt="img"></p>
+<h2 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2 技术栈"></a>2 技术栈</h2><p>开发语言：Java<br>框架：springboot<br>JDK版本：JDK1.8<br>服务器：tomcat7 或者 Tomcat 8<br>数据库：mysql 5.7（一定要5.7版本，8.0 有时候坑很多）<br>数据库工具：Navicat11<br>开发软件：eclipse&#x2F;myeclipse&#x2F;idea<br>Maven包：Maven3.3.9 (无强制要求)</p>
+<h2 id="3-需求分析"><a href="#3-需求分析" class="headerlink" title="3 需求分析"></a>3 需求分析</h2><p>本课题要求实现一套考研资讯平台，系统主要分为前台和后台。主要包括学生前台：首页、考研资讯、报考指南、资料信息、论坛信息、我的、跳转到后台、购物车、客服，<br>管理员：首页、个人中心、考研资讯管理、学生管理、报考指南管理、资料信息管理、资料分类管理、论坛管理、系统管理、订单管理，<br>学生后台：首页、个人中心、我的收藏管理、订单管理等功能。<br>学生前台用例需求如图3-1所示：</p>
+<h2 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4 系统设计"></a>4 系统设计</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-06b8.png" alt="img"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-799f.png" alt="img"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-bac4.png" alt="img"></p>
+<h2 id="5-系统效果图"><a href="#5-系统效果图" class="headerlink" title="5 系统效果图"></a>5 系统效果图</h2><h3 id="5-1学生前台功能模块"><a href="#5-1学生前台功能模块" class="headerlink" title="5.1学生前台功能模块"></a>5.1学生前台功能模块</h3><p>5.1.2首页</p>
+<p>在系统首页可以查看首页、考研资讯、报考指南、资料信息、论坛信息、我的、跳转到后台、购物车、客服等内容，如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-1ca4.png" alt="image-20230930154322873"></p>
+<p> 5.1.3 学生注册</p>
+<p>在学生注册页面通过填写学号、密码、学生姓名、专业、班级、手机、邮箱等信息完成学生注册，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-44f8.png" alt="img"></p>
+<p>5.1.4登录</p>
+<p>在登录页面可以填账号、密码等详细内容进行登录，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-7fa8.png" alt="img"></p>
+<h3 id="5-2登录设计实现"><a href="#5-2登录设计实现" class="headerlink" title="5.2登录设计实现"></a>5.2登录设计实现</h3><p>学生和管理员输入个人的账号和密码登录系统，这时候我们所对于这个系统的数据库来进行一些相关信息的查找，假如我们对输入的账号和密码不正确的时候，数据库就会自动提示出错误的信息，同时提示用户要从新输入正确的信息。网站登录效果图如图5-5、5-6所示：</p>
+<p>![img](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Group Containers&#x2F;UBF8T346G9.Office&#x2F;TemporaryItems&#x2F;msohtmlclip&#x2F;clip_image005.png)</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-fc64.png" alt="img"></p>
+<h3 id="5-3-后台系统实现"><a href="#5-3-后台系统实现" class="headerlink" title="5.3 后台系统实现"></a>5.3 后台系统实现</h3><h4 id="5-3-1管理员模块"><a href="#5-3-1管理员模块" class="headerlink" title="5.3.1管理员模块"></a>5.3.1管理员模块</h4><p>管理员主要管理：首页、个人中心、考研资讯管理、学生管理、报考指南管理、资料信息管理、资料分类管理、论坛管理、系统管理、订单管理等内容。具体管理员管理效果如下图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-80fc.png" alt="img"></p>
+<h4 id="5-3-2考研资讯管理"><a href="#5-3-2考研资讯管理" class="headerlink" title="5.3.2考研资讯管理"></a>5.3.2考研资讯管理</h4><p>管理员登录系统后台以后可以对考研资讯管理进行修改、删除以及对考研资讯管理进行查看等操作，具体的运行效果图如下图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-96cc.png" alt="img"></p>
+<h4 id="5-3-3学生管理"><a href="#5-3-3学生管理" class="headerlink" title="5.3.3学生管理"></a>5.3.3学生管理</h4><p>管理员进入后台对学生管理信息进行查看、修改、删除等操作，学生管理功能效果图如图5-9所示。</p>
+<p>  <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-dfdd.png" alt="img"></p>
+<h4 id="5-3-4报考指南管理"><a href="#5-3-4报考指南管理" class="headerlink" title="5.3.4报考指南管理"></a>5.3.4报考指南管理</h4><p>管理员可以对报考指南管理信息进行修改、查看、删除等操作。报考指南管理效果图如下图5-10所示：</p>
+<p>![img](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Group Containers&#x2F;UBF8T346G9.Office&#x2F;TemporaryItems&#x2F;msohtmlclip&#x2F;clip_image010.png)</p>
+<h4 id="5-3-5资料信息管理"><a href="#5-3-5资料信息管理" class="headerlink" title="5.3.5资料信息管理"></a>5.3.5资料信息管理</h4><p>管理员可以对资料信息管理信息进行删除、修改、添加等具体的操作。资料信息管理效果图如下图5-11所示：</p>
+<p>![img](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Group Containers&#x2F;UBF8T346G9.Office&#x2F;TemporaryItems&#x2F;msohtmlclip&#x2F;clip_image011.png)</p>
+<h4 id="5-3-6资料分类管理"><a href="#5-3-6资料分类管理" class="headerlink" title="5.3.6资料分类管理"></a>5.3.6资料分类管理</h4><p>管理员可以对资料分类管理信息进行添加、查看、删除、修改等操作。资料分类管理效果图如5-12所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-cabe.png" alt="img"></p>
+<h4 id="5-3-7论坛管理"><a href="#5-3-7论坛管理" class="headerlink" title="5.3.7论坛管理"></a>5.3.7论坛管理</h4><p>管理员可以对论坛管理信息进行添加、查看、删除、修改等操作。论坛管理效果图如5-13所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301509-e7d3.png" alt="img"></p>
+<h2 id="源码咨询"><a href="#源码咨询" class="headerlink" title="源码咨询"></a>源码咨询</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/583/">微信小程序毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/41/">Java毕业设计-SpringBoot+Vue毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/584/">Java毕业设计-Java SSM+JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/585/">Java毕业设计-Java JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/616/">Android 毕业设计-项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/615/">Python 毕业设计合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/category/java_bysj/">Java 精品项目</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxujun94/GraduationProject">Github 更多题目</a> </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/37884.html" rel="prev" title="基于微信小程序的党员之家系统">
+      <i class="fa fa-chevron-left"></i> 基于微信小程序的党员之家系统
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/9717.html" rel="next" title="Java 基于 SpringBoot的教师人事档案管理系统">
+      Java 基于 SpringBoot的教师人事档案管理系统 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">2 技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">3 需求分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">4 系统设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%B3%BB%E7%BB%9F%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">5 系统效果图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1%E5%AD%A6%E7%94%9F%E5%89%8D%E5%8F%B0%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">5.1.</span> <span class="nav-text">5.1学生前台功能模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2%E7%99%BB%E5%BD%95%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.2.</span> <span class="nav-text">5.2登录设计实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 后台系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%9D%97"><span class="nav-number">5.3.1.</span> <span class="nav-text">5.3.1管理员模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2%E8%80%83%E7%A0%94%E8%B5%84%E8%AE%AF%E7%AE%A1%E7%90%86"><span class="nav-number">5.3.2.</span> <span class="nav-text">5.3.2考研资讯管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-3%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86"><span class="nav-number">5.3.3.</span> <span class="nav-text">5.3.3学生管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-4%E6%8A%A5%E8%80%83%E6%8C%87%E5%8D%97%E7%AE%A1%E7%90%86"><span class="nav-number">5.3.4.</span> <span class="nav-text">5.3.4报考指南管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-5%E8%B5%84%E6%96%99%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86"><span class="nav-number">5.3.5.</span> <span class="nav-text">5.3.5资料信息管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-6%E8%B5%84%E6%96%99%E5%88%86%E7%B1%BB%E7%AE%A1%E7%90%86"><span class="nav-number">5.3.6.</span> <span class="nav-text">5.3.6资料分类管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-7%E8%AE%BA%E5%9D%9B%E7%AE%A1%E7%90%86"><span class="nav-number">5.3.7.</span> <span class="nav-text">5.3.7论坛管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%92%A8%E8%AF%A2"><span class="nav-number">6.</span> <span class="nav-text">源码咨询</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">587k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:53</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -186,6 +186,769 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/52185.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/52185.html" class="post-title-link" itemprop="url">Java基于微信小程序的学习考研平台</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-19 18:05:55" itemprop="dateCreated datePublished" datetime="2023-09-19T18:05:55+08:00">2023-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-25 21:15:26" itemprop="dateModified" datetime="2023-09-25T21:15:26+08:00">2023-09-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h1><p>本文研究了基于微信小程序一起考研学习平台，通过该系统，用户可以主动的在线学习，下载资料，解决实际的问题，提高了效率，同时加强了用户之间的相互交流沟通，促进了信息化的发展。本文研究开发的小程序是学习并上传下载的小程序，开发完成后可以为学生提供很方便的学习平台。微信小程序用户群庞大，使用简单，通过创建微信小程序应用，减少APP的下载安装，更有利于手机软件的维护。手机应用是当前的潮流，传统的管理系统的用户群逐渐减少，通过手机应用可以更加方便地完成相关事宜。对于在线学习来说，通过手机小程序学习过程更加的便捷，用户体验更好。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-49f8.png"></p>
+<h1 id="第二章、开发环境："><a href="#第二章、开发环境：" class="headerlink" title="第二章、开发环境："></a>第二章、开发环境：</h1><h2 id="后端："><a href="#后端：" class="headerlink" title="后端："></a><strong>后端：</strong></h2><p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="前端："><a href="#前端：" class="headerlink" title="前端："></a><strong>前端：</strong></h2><p>微信小程序</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a><strong>数据库：</strong></h2><p>mysql</p>
+<h1 id="第三章：-需求分析"><a href="#第三章：-需求分析" class="headerlink" title="第三章： 需求分析"></a>第三章： 需求分析</h1><p>基于微信小程序一起考研学习平台为用户提供在线学习服务，系统包括微信小程序端和后台。</p>
+<p>微信小程序端用户可以先进行注册，注册完成后，管理员审核注册信息。然后进行登录，登录之后查看文件信息，信息包普通文件、付费文件、购买下载付费文件等。科目内容在首页展示，对这些信息中，可以查看对应科目的文件，并在线评论和收藏。点开我的功能模块，修改个人信息，重新登录，查看我的收藏，我的购买历史等功能。</p>
+<p>管理员是后台的管理者，对文件的内容进行发布和审核，管理员对文件的科目分类进行管理，管理员还可以对交易信息进行管理，管理用户和发布文件的商家用户。</p>
+<h1 id="第四章-详细设计"><a href="#第四章-详细设计" class="headerlink" title="第四章 详细设计"></a>第四章 详细设计</h1><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-49f8.png" alt="image-20230919225828415"></p>
+<p>平台的客户端包括注册登录、小程序主页，文件内容搜索，查看文件，文件信息，我的收藏，评价点赞和个人中心。</p>
+<p>注册登录是小程序用户基本功能数据库，存储用户的数据，在小程序主页推荐文件信息。用户搜索文件内容，可以根据分类和关键字进行搜索。在文件页面点击下载，可以进行在线下载，其中收藏和评价点赞是针对文件内容的。评论管理是对文件的回复交流，当文件信息删除的时候，对应的评论信息也会删除，评论信息设计了评论名称、评论内容和对应的文件ID，通过文件ID进行外键关联。在个人中心模块进行密码修改或者个人信息的维护</p>
+<h1 id="第五章-系统实现"><a href="#第五章-系统实现" class="headerlink" title="第五章 系统实现"></a>第五章 系统实现</h1><h2 id="5-1-服务器功能实现"><a href="#5-1-服务器功能实现" class="headerlink" title="5.1 服务器功能实现"></a>5.1 服务器功能实现</h2><h3 id="5-1-1管理员登录"><a href="#5-1-1管理员登录" class="headerlink" title="5.1.1管理员登录"></a>5.1.1管理员登录</h3><p>使用脚本把数据库导入到mysql中，配置tomcat服务器，运行程序。其中用户登录的界面如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-a4da.png" alt="image-20230919225459341"></p>
+<p>​                               </p>
+<p>图5.1 管理员登录</p>
+<p>查询数据库中管理员的用户名和密码，最终查询成功后把信息保存在session中，Session是存储在服务器端的对象，是比较安全的一种技术，在管理端通过判断session中的十来获取用户操作权限。</p>
+<h3 id="5-1-2管理主界面"><a href="#5-1-2管理主界面" class="headerlink" title="5.1.2管理主界面"></a>5.1.2管理主界面</h3><p>主界面主要包括了系统管理菜单，通过菜单对系统功能进行管理。每一个功能包括基本的查询、添加等操作。其中主界面如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-9cfa.png" alt="image-20230919225506677"></p>
+<h3 id="5-1-3文件信息管理"><a href="#5-1-3文件信息管理" class="headerlink" title="5.1.3文件信息管理"></a>5.1.3文件信息管理</h3><p>文件管理包括文件编号、名称、类别、图片内容信息。其中文件管理如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-b9ed.png" alt="image-20230919225519154"></p>
+<p>创建一个信息录入的form表单，在form中设计文件基本信息收集栏，点击提交的时候，通过form的POST方法传递到文件Action方法中。在Action中定义插入的方法，先实例化文件实体类，将文件信息通过实体类进行设置，然后调用文件数据库操作方法，保存文件信息到数据库，然后返回成功消息。</p>
+<h3 id="5-1-4用户管理"><a href="#5-1-4用户管理" class="headerlink" title="5.1.4用户管理"></a>5.1.4用户管理</h3><p>用户管理包括用户信息查看和用户删除功能，管理员对过期的用户进行删除。并审核商家用户。其中用户管理如下所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-f21b.png" alt="image-20230919225532034"></p>
+<p>创建一个信息录入的form表单，在form中设计用户基本信息收集栏，点击提交的时候，通过form的POST方法传递到用户Action方法中。在Action中定义插入的方法，先实例化用户实体类，将用户信息通过实体类进行设置，然后调用用户数据库操作方法，保存用户信息到数据库，然后返回成功消息。</p>
+<p>在用户信息管理页面先通过查询条件，获取对应的用户列表，然后在用户管理页面通过标签，把所有的用户信息绑定到列表中。</p>
+<h2 id="5-2-小程序端功能实现"><a href="#5-2-小程序端功能实现" class="headerlink" title="5.2 小程序端功能实现"></a>5.2 小程序端功能实现</h2><h3 id="5-2-1用户注册"><a href="#5-2-1用户注册" class="headerlink" title="5.2.1用户注册"></a>5.2.1用户注册</h3><p>基于微信小程序一起考研学习平台的用户，必须得进行注册。如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-3104.png" alt="image-20230919225547981"></p>
+<p>使用基于微信小程序一起考研学习平台的客户端时，先要进行注册，打开用户注册的页面，用户填写所有的注册信息后，点击注册，在注册中调用JS的AJAX方法。方法中接收用户实体信息，调用服务器端的用户注册方法。在服务器端获取用户实体信息，对实体进行序列化处理，然后调用用户信息保存的service数据库操作方法，将实体内的用户信息通过SQL语句插入到数据库，返回成功的消息。</p>
+<h3 id="5-2-2用户登录"><a href="#5-2-2用户登录" class="headerlink" title="5.2.2用户登录"></a>5.2.2用户登录</h3><p>用户填写用户名及密码，正确后才能登入系统，不正确则重新登录。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-01ab.png" alt="image-20230919225602184"></p>
+<p>在服务器端获取用户实体信息，对实体进行序列化处理，然后调用用户信息查询的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，判断返回的信息是否登录成功。</p>
+<h3 id="5-2-3文件查看"><a href="#5-2-3文件查看" class="headerlink" title="5.2.3文件查看"></a>5.2.3文件查看</h3><p>用户登录后，进入系统的主界面，能够看到所有功能列表信息，包括普通文件信息，付费文件信息，订单信息，交易信息，文件收藏。其中客户端主界面如5.8所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-c862.png" alt="image-20230919225612685"></p>
+<p>点击文件列表，跳转到文件详情的界面，用户可选择进行查看。在文件详情界面，点击首页，返回到主界面。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-75ad.png" alt="image-20230919225625476"></p>
+<p>在文件页面加载时，初始化方法中，调用JS的AJAX方法。方法中接收文件实体信息，调用服务器端的文件查询方法。在服务器端获取文件实体，对实体进行序列化处理，判断查询条件，然后调用文件查询的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，把结果存储在临时集合变量中，对变量进行数据显示绑定到界面。</p>
+<h3 id="5-2-4用户购买"><a href="#5-2-4用户购买" class="headerlink" title="5.2.4用户购买"></a>5.2.4用户购买</h3><p>选择相关的文件后，在线购买，购买后在个人订单列表中，可以提交到后台。购买界面如5.10所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-d85f.png" alt="image-20230919225634168"></p>
+<p>接收购买实体信息，调用服务器端的购买查询方法。在服务器端获取购买实体，对购买实体进行序列化处理，判断查询条件，然后调用购买的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，把结果存储在临时集合变量中，对变量进行数据显示绑定到购买列表。</p>
+<p>用户购买后，商家审核，并发布文件下载地址，会员可以到购买的列表中，去下载对应的文件。</p>
+<h1 id="六-源码咨询"><a href="#六-源码咨询" class="headerlink" title="六 源码咨询"></a>六 源码咨询</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/33632.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/33632.html" class="post-title-link" itemprop="url">Java基于微信小程序的青少年心理健康科普平台</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-19 15:05:55" itemprop="dateCreated datePublished" datetime="2023-09-19T15:05:55+08:00">2023-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-25 21:15:26" itemprop="dateModified" datetime="2023-09-25T21:15:26+08:00">2023-09-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章-简介"><a href="#第一章-简介" class="headerlink" title="第一章 简介"></a>第一章 简介</h1><p>青少年心理健康科普平台为用户提供心理医生咨询服务，系统包括微信小程序端和后台。</p>
+<p>微信小程序用户可以先进行注册，填写个人的基本信息提交到服务器，服务器把数据保存到数据库。管理员对青少年的信息进行验证后，青少年通过验证后的用户名和密码进行登录，登录之后查看健康知识。心理医生在首页展示，查看心理医生具体信息后，可以进行咨询，填写咨询信息后，医生端可以查看咨询，并进行回复。点开我的功能模块，修改个人信息，重新登录等功能。</p>
+<p>管理员是后台的管理者，对系统用户进行管理，对系统健康信息进行管理，系统管理等，发布公告推送给小程序端。</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.bilibili.com/video/BV1nV411A7WX/">视频演示地址</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-4d0a.png" alt="image-20230919224019313"></p>
+<h1 id="第二章、开发环境："><a href="#第二章、开发环境：" class="headerlink" title="第二章、开发环境："></a>第二章、开发环境：</h1><h2 id="后端："><a href="#后端：" class="headerlink" title="后端："></a><strong>后端：</strong></h2><p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="前端："><a href="#前端：" class="headerlink" title="前端："></a><strong>前端：</strong></h2><p>jsp</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a><strong>数据库：</strong></h2><p>mysql</p>
+<h1 id="第三章-系统设计"><a href="#第三章-系统设计" class="headerlink" title="第三章 系统设计"></a>第三章 系统设计</h1><p>青少年心理健康科普平台包括用户管理、新闻公告管理、咨询管理、健康知识、系统管理、心理测试管理、心理问答管理。</p>
+<p>用户管理包括管理员管理、心理医生管理、青少年用户管理。当前台青少年进行注册的时候，权限设为青少年。管理员用户权限设置为管理员。虽然数据存储在一个数据库表，但是在登录的时候使用权限类别进行区分，管理员用户无法通过客户端进行登录。同理，客户端用户也无法登陆管理员端。</p>
+<p>新闻公告是管理员发布健康知识的公告，信息发布后的公告在客户端浏览查看。</p>
+<p>其中系统功能结构图如4.1所示：</p>
+<p>​                                                                </p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-4d0a.png" alt="image-20230919224019313">         </p>
+<p>主要功能：</p>
+<p>青少年管理。青少年用户的注册、登录。青少年在个人中心，进行个人信息的修改和用户密码的修改，系统注销等操作。</p>
+<p>心理医生管理，管理员录入心理医生，修改心理医生信息。在前台可以查看心理医生风采，包括心理医生的介绍和个人图片信息。心理医生通过用户名和密码登录系统，管理个人信息。</p>
+<p>站内新闻管理。管理员对站内新闻信息的管理，信息保存在数据库中，通过前台查看站内新闻信息。</p>
+<p>其中图片是保存在服务器端，数据库记录对应的图片链接地址，在资源类信息保存中还可以通过二进制进行保存。本系统为了降低数据库的负荷，把图片以文件格式进行存储，这样既减轻了服务器的数据库的存储，也提高了图片数据传输的速度。青少年发布后，在管理端对数据进行管理，删除一些违法违规的记录。没有删除的记录将在客户端首页进行展示，用于其他青少年查看。青少年可以通过健康知识的分类进行搜索，不同分类对应了不同的健康知识。也可以通过关键字进行检索。</p>
+<p>更改个人信息：用户登录后可以对个人信息进行修改，确保用户信息的准确性和实效性。</p>
+<p>心理测试:为用户提供一些心理小测试，用户可以根据测试结果对自己的心理状态有一个大概的了解。</p>
+<p>健康知识：里面有各个专题的心理文章，比如人际社交、家庭关系等。</p>
+<p>心理咨询：主要是学生用户进行心理咨询。</p>
+<h1 id="第四章-效果图"><a href="#第四章-效果图" class="headerlink" title="第四章 效果图"></a>第四章 效果图</h1><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-2777.png" alt="image-20230919224414065"></p>
+<h2 id="我的"><a href="#我的" class="headerlink" title="我的"></a>我的</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-e880.png" alt="image-20230919224357988"></p>
+<h2 id="后台界面"><a href="#后台界面" class="headerlink" title="后台界面"></a>后台界面</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309192209-68b2.png" alt="image-20230919224458178"></p>
+<h1 id="五、-源码咨询"><a href="#五、-源码咨询" class="headerlink" title="五、 源码咨询"></a>五、 源码咨询</h1><p> v xiaoxu_9411</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/56569.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/56569.html" class="post-title-link" itemprop="url">Java基于微信小程序的电影交流平台</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-17 15:05:55" itemprop="dateCreated datePublished" datetime="2023-09-17T15:05:55+08:00">2023-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-25 21:15:26" itemprop="dateModified" datetime="2023-09-25T21:15:26+08:00">2023-09-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章：简介"><a href="#第一章：简介" class="headerlink" title="第一章：简介"></a>第一章：简介</h1><p>基于微信小程序的电影交流平台，前台功能：用户进入系统可以实现首页、电影中心、留言反馈、我的等，在我的页面可以对个人中心、我的收藏管理、留言反馈等功能进行操作；</p>
+<p>后台主要是管理员操作，管理员功能包括首页、个人中心、用户管理、电影类型管理、电影中心管理、留言反馈、系统管理等；</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-b139.png" alt="image-20230917170759911"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-924d.png" alt="image-20230917170851229"></p>
+<h1 id="第二章、开发环境："><a href="#第二章、开发环境：" class="headerlink" title="第二章、开发环境："></a>第二章、开发环境：</h1><h2 id="后端："><a href="#后端：" class="headerlink" title="后端："></a><strong>后端：</strong></h2><p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="前端："><a href="#前端：" class="headerlink" title="前端："></a><strong>前端：</strong></h2><p>微信小程序</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a><strong>数据库：</strong></h2><p>mysql</p>
+<h1 id="三、系统详细设计"><a href="#三、系统详细设计" class="headerlink" title="三、系统详细设计"></a>三、系统详细设计</h1><p>根据电影交流平台小程序的功能需求，进行系统设计。</p>
+<p>前台功能：用户进入系统可以实现首页、电影中心、留言反馈、我的等，在我的页面可以对个人中心、我的收藏管理、留言反馈等功能进行操作；</p>
+<p>后台主要是管理员操作，管理员功能包括首页、个人中心、用户管理、电影类型管理、电影中心管理、留言反馈、系统管理等；</p>
+<p>系统对这些功能进行整合，产生的功能结构图如下：</p>
+<p>​                                                                                             <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-c20b.png" alt="image-20230917171436885"></p>
+<p>​                               </p>
+<p>图3-1 系统总体结构图</p>
+<p>3.4 数据库设计与实现</p>
+<p>在每一个系统中数据库有着非常重要的作用，数据库的设计得好将会增加系统的效率以及系统各逻辑功能的实现。所以数据库的设计我们要从系统的实际需要出发，才能使其更为完美的符合系统功能的实现。</p>
+<h3 id="3-4-1-数据库概念结构设计"><a href="#3-4-1-数据库概念结构设计" class="headerlink" title="3.4.1 数据库概念结构设计"></a>3.4.1 数据库概念结构设计</h3><p>数据库的E-R图反映了实体、实体的属性和实体之间的联系。下面是各个实体以及实体的属性。</p>
+<p>电影中心实体属性图如下所示：</p>
+<p>![image-20230917171520835](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230917171520835.png) </p>
+<p>用户信息实体属性图如下所示：</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-9c93.png" alt="image-20230917171545151"></p>
+<h1 id="第四章-系统功能的具体实现"><a href="#第四章-系统功能的具体实现" class="headerlink" title="第四章  系统功能的具体实现"></a>第四章  系统功能的具体实现</h1><h2 id="4-1小程序端"><a href="#4-1小程序端" class="headerlink" title="4.1小程序端"></a>4.1小程序端</h2><p>登录，用户通过输入账号和密码，选择角色并点击登录进行系统登录操作，如图4-1所示。</p>
+<p>​                               <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-70ff.png" alt="image-20230917170739077"></p>
+<p>用户注册，在用户注册页面通过填写用户账号、密码、确认密码、用户姓名、性别、手机号码等信息进行注册操作；如图4-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-58d5.png" alt="image-20230917170746319"> </p>
+<p>用户登陆小程序端，可以对首页、电影中心、留言反馈、我的等功能进行详细操作，如图4-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-b139.png" alt="image-20230917170759911"></p>
+<p>电影中心，在电影中心页面可以查看电影名称、电影类型、导演、主演、封面、时长、上映日期、制片地区、评分、点击次数、电影简介等信息，并根据需要进行评论或收藏操作；如图4-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-6bf4.png" alt="image-20230917170810082"></p>
+<p>用户，在我的页面可以对个人中心、我的收藏管理、留言反馈等详细信息进行操作，如图4-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-9b48.png" alt="image-20230917170819669"></p>
+<p>用户信息，在用户信息页面通过填写用户账号、密码、用户姓名、头像、性别、手机号码等内容进行保存或退出登录操作，如图4-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-ffb1.png" alt="image-20230917170841943"></p>
+<h2 id="4-2管理员功能模块"><a href="#4-2管理员功能模块" class="headerlink" title="4.2管理员功能模块"></a>4.2管理员功能模块</h2><p>管理员登录，管理员通过输入账号、密码，并点击登录进入系统操作界面，如图4-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-924d.png" alt="image-20230917170851229"></p>
+<p>管理员登陆系统后，可以对首页、个人中心、用户管理、电影类型管理、电影中心管理、留言反馈、系统管理等功能进行相应操作，如图4-8所示。</p>
+<p> ![image-20230917170908526](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230917170908526.png)</p>
+<p>用户管理，在用户管理页面可以对索引、用户账号、用户姓名、头像、性别、手机号码、审核回复、审核状态、审核等内容进行详情、修改或删除等操作，如图4-9所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-206a.png" alt="image-20230917170915208"></p>
+<p>电影类型管理，在电影类型管理页面可以对索引、电影类型等内容进行详情，修改或删除操作，如图4-10所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-bcee.png" alt="image-20230917170944901"></p>
+<p>电影中心管理，在电影中心管理页面可以对索引、电影名称、海报、电影类型、导演、主演、时长、上映日期、制片地区、评分等内容进行详情，修改，查看评论或删除操作，如图4-11所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-2faa.png" alt="image-20230917171034521"></p>
+<p>留言反馈，在留言反馈页面可以对索引、用户名、留言内容、留言图片、回复内容、回复图片等内容进行详情，修改，回复和删除操作，如图4-12所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-9942.png" alt="image-20230917171046620"></p>
+<p>系统管理，在电影资讯页面可以对索引、标题、图片等内容进行详情，修改或删除等操作，还可以对轮播图管理进行详细操作；如图4-13所示。</p>
+<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171709-3c3a.png" alt="image-20230917171210217"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/41844.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/41844.html" class="post-title-link" itemprop="url">Java基于微信小程序的快递管理系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-17 13:05:55 / 修改时间：17:01:12" itemprop="dateCreated datePublished" datetime="2023-09-17T13:05:55+08:00">2023-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章：简介"><a href="#第一章：简介" class="headerlink" title="第一章：简介"></a>第一章：简介</h1><p>基于微信小程序的快递柜管理系统，主要功能模块划分为用户管理、驿站管理、快递柜管理、取件管理。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-d28e.png" alt="img"></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-8603.png" alt="img"></p>
+<h1 id="第二章、-开发环境："><a href="#第二章、-开发环境：" class="headerlink" title="第二章、*开发环境：*"></a>第二章、<em><strong>*开发环境：*</strong></em></h1><h2 id="后端："><a href="#后端：" class="headerlink" title="后端："></a><strong>后端：</strong></h2><p>开发语言：Java</p>
+<p>框架：ssm，mybatis</p>
+<p>JDK版本：JDK1.8</p>
+<p>数据库：mysql 5.7+</p>
+<p>数据库工具：Navicat11+</p>
+<p>开发软件：eclipse&#x2F;idea</p>
+<p>Maven包：Maven3.6</p>
+<p>部署容器：tomcat7+</p>
+<h2 id="前端："><a href="#前端：" class="headerlink" title="前端："></a><strong>前端：</strong></h2><p>jsp</p>
+<h2 id="数据库："><a href="#数据库：" class="headerlink" title="数据库："></a><strong>数据库：</strong></h2><p>mysql</p>
+<h1 id="第三章-系统设计"><a href="#第三章-系统设计" class="headerlink" title="第三章 系统设计"></a>第三章 系统设计</h1><h2 id="3-3-系统功能设计"><a href="#3-3-系统功能设计" class="headerlink" title="3.3 系统功能设计"></a>3.3 系统功能设计</h2><p>结合前文对快递柜管理系统微信小程序的需求分析，将该快递柜管理系统微信小程序的主要功能模块划分为用户管理、驿站管理、快递柜管理、取件管理等。</p>
+<h3 id="3-3-1-用户注册模块"><a href="#3-3-1-用户注册模块" class="headerlink" title="3.3.1 用户注册模块"></a>3.3.1 用户注册模块</h3><p>使用快递柜管理系统微信小程序时，需要先进行登录，登录的账号是通过注册信息后获取，其中注册流程图如图3.2所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-3166.png" alt="img"></p>
+<p>图3-2 快递柜管理系统微信小程序注册流程图</p>
+<p>用户注册时先输入个人的基本信息，为了获取个人的基本内容，尽量多的涉及个人信息字段，如联系方式、性别、生日等，并验证输入的信息是否正确，通过验证后，发送请求到服务器端，服务器端对注册的字段进行验证，通过验证后将信息保存到服务器数据库中，然后返回一个状态，小程序端得到注册成功的状态后，提示用户注册成功，完成注册。</p>
+<h3 id="3-3-2-用户登录模块"><a href="#3-3-2-用户登录模块" class="headerlink" title="3.3.2 用户登录模块"></a>3.3.2 用户登录模块</h3><p>用户登录是管理系统必不可少的功能之一，防止非授权用户的破坏。流程图如图3-3所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-4a41.png" alt="img"></p>
+<p>图3-3 快递柜管理系统微信小程序登录流程图</p>
+<p>在登录页面输入账号和密码，如果没有输入，点击登录将提示用户的账号和密码是必填项，通过必填验证之后，调用服务器端的登录方法，服务器对登录内容进行验证通过后，调用service层的数据库查询，判断该用户是否存在数据库中，验证通过后返回一个状态，小程序根据状态来确定是否跳转到主界面。</p>
+<h3 id="3-3-3-驿站管理模块"><a href="#3-3-3-驿站管理模块" class="headerlink" title="3.3.3 驿站管理模块"></a>3.3.3 驿站管理模块</h3><p>管理员登录后，录入驿站信息。包括地址、编号、说明、照片等信息。其中驿站数据管理的流程如3-4所示：</p>
+<p>![img](Users&#x2F;junxu&#x2F;Library&#x2F;Group Containers&#x2F;UBF8T346G9.Office&#x2F;TemporaryItems&#x2F;msohtmlclip&#x2F;clip_image006.png)</p>
+<h1 id="第4章-系统实现"><a href="#第4章-系统实现" class="headerlink" title="第4章 系统实现"></a>第4章 系统实现</h1><h2 id="4-1-服务器管理员功能实现"><a href="#4-1-服务器管理员功能实现" class="headerlink" title="4.1 服务器管理员功能实现"></a>4.1 服务器管理员功能实现</h2><h3 id="4-1-1-管理员登录功能实现"><a href="#4-1-1-管理员登录功能实现" class="headerlink" title="4.1.1 管理员登录功能实现"></a>4.1.1 管理员登录功能实现</h3><p>管理员登录界面设计如下图4-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-d28e.png" alt="img"></p>
+<p>图 4-1 管理员登录界面</p>
+<p>用户登录页面，通过div进行页面的布局，使用form表单设计了用户名和密码输入框，并通过button按钮进行form表单的提交，信息提交到control的后台方法中，该方法首先判断用户的权限，如果是管理员用户，使用管理员的service方法查询该管理员账号密码是否正确，并将管理员信息保存在session对象中。</p>
+<h3 id="4-1-2-用户管理功能实现"><a href="#4-1-2-用户管理功能实现" class="headerlink" title="4.1.2 用户管理功能实现"></a>4.1.2 用户管理功能实现</h3><p>用户管理界面设计如下图4.2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-4759.png" alt="img"></p>
+<p>图 4.2 用户管理界面</p>
+<p>管理员点击“添加”按钮，出现添加页面。在添加页面，管理员输入用户名称、选择用户类别，点击“保存”，将该条用户信息录入数据库中。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-ecbe.png" alt="img"></p>
+<p>图 4.3 用户添加界面</p>
+<p>在用户录入页面，通过DIV进行页面的布局，Form表单收集用户基本信息，点击button按钮后提交form到后台用户保存事件中，业务层调用前台输入的用户实体对象，并将model实体进行保存，通过持久层的用户保存方法提交到数据库中，然后返回到用户列表页面。在列表页面查询用户信息，并将用户数据保存在集合中，用户列表页面使用Java的标签，通过foreach循环显示在界面，在列表中通过点击修改和删除进行数据的管理，点击修改的时候，跳转到后台编辑的页面，该方法获取用户输入的修改信息，并调用Service层的数据库修改方法，修改完成后再返回列表页面刷新集合。用户删除方法和修改方法流程类似。</p>
+<h3 id="4-1-3-驿站管理功能实现"><a href="#4-1-3-驿站管理功能实现" class="headerlink" title="4.1.3 驿站管理功能实现"></a>4.1.3 驿站管理功能实现</h3><p>驿站管理界面设计如下图4.4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-a2d2.png" alt="img"></p>
+<p>图 4-4驿站管理界面</p>
+<p>在驿站录入页面，通过DIV进行页面的布局，Form表单收集驿站基本信息，点击button按钮后提交form到后台驿站保存事件中，业务层调用前台输入的驿站实体对象，并将model实体进行保存，通过持久层的驿站保存方法提交到数据库中，然后返回到驿站列表页面。在列表页面查询驿站信息，并将驿站数据保存在集合中，驿站列表页面使用Java的标签，通过foreach循环显示在界面，在列表中通过点击修改和删除进行数据的管理，点击修改的时候，跳转到后台编辑的页面，该方法获取驿站输入的修改信息，并调用Service层的数据库修改方法，修改完成后再返回列表页面刷新集合。驿站删除方法和修改方法流程类似。</p>
+<h3 id="4-1-4-快递管理功能实现"><a href="#4-1-4-快递管理功能实现" class="headerlink" title="4.1.4 快递管理功能实现"></a>4.1.4 快递管理功能实现</h3><p>管理员成功登录后台管理界面，选择“快递管理”，出现系统快递列表。在快递管理页面，管理员可以查询及删除信息。</p>
+<p>快递管理界面设计如下图4.5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-42d3.png" alt="img"></p>
+<p>图 4-5 快递管理界面</p>
+<p>在快递录入页面，通过DIV进行页面的布局，Form表单收集快递基本信息，点击button按钮后提交form到后台快递保存事件中，业务层调用前台输入的快递实体对象，并将model实体进行保存，通过持久层的快递保存方法提交到数据库中，然后返回到快递列表页面。在列表页面查询快递信息，并将快递数据保存在集合中，快递列表页面使用Java的标签，通过foreach循环显示在界面，在列表中通过点击修改和删除进行数据的管理，点击修改的时候，跳转到后台编辑的页面，该方法获取快递输入的修改信息，并调用Service层的数据库修改方法，修改完成后再返回列表页面刷新集合。快递删除方法和修改方法流程类似。</p>
+<h2 id="4-2-客户端功能实现"><a href="#4-2-客户端功能实现" class="headerlink" title="4.2 客户端功能实现"></a>4.2 客户端功能实现</h2><h3 id="4-2-1-登录管理实现"><a href="#4-2-1-登录管理实现" class="headerlink" title="4.2.1 登录管理实现"></a>4.2.1 登录管理实现</h3><p>快递柜管理系统微信小程序运行服务器后，才能运行客户端，客户端需要调用服务器的方法才能执行。其中登录的界面设计如下图4-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-9fc1.png" alt="img"></p>
+<p>图 4-6 登录界面</p>
+<p>打开会员登录的页面，用户填写所有的登录信息后，点击登录，在登录中调用JS的AJAX方法。方法中接收用户实体信息，调用服务器端的用户登录方法。在服务器端获取用户实体信息，对实体进行序列化处理，然后调用用户信息查询的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，判断返回的信息是否登录成功。</p>
+<p>用户登录成功的主界面为：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-0b0c.png" alt="img"></p>
+<p>图 4-7 登录主界面</p>
+<p>通过点击主界面列表，完成各功能的操作。因为功能较多，下面列举了系统关键的几个功能点进行实现说明。</p>
+<h3 id="4-2-2-个人中心功能实现"><a href="#4-2-2-个人中心功能实现" class="headerlink" title="4.2.2 个人中心功能实现"></a>4.2.2 个人中心功能实现</h3><p>个人中心包括用户的登录、修改密码、个人信息、以及注销等模块。</p>
+<p>用户个人信息界面设计如下图4-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-4d22.png" alt="img"></p>
+<p>图 4-8用户个人信息界面</p>
+<p>​    在个人信息修改中调用JS的AJAX方法。方法中接收用户实体信息，调用服务器端的用户个人信息修改方法。在服务器端获取用户实体信息，对实体进行序列化处理，然后调用用户信息保存的service数据库操作方法，将实体内的会员信息通过SQL语句插入到数据库，并返回一个成功标识的Json对象，在客户端解析Json。判断返回的信息是否修改成功并提供给用户，这样就实现了用户修改的完整流程。</p>
+<h3 id="4-2-3-驿站查看功能实现"><a href="#4-2-3-驿站查看功能实现" class="headerlink" title="4.2.3 驿站查看功能实现"></a>4.2.3 驿站查看功能实现</h3><p>点击驿站信息，跳转到驿站信息页面，包括地址、图片等信息。驿站界面设计如下图4-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-8603.png" alt="img"></p>
+<p>图 4-9快递驿站界面</p>
+<p>​    在驿站信息页面加载时，初始化方法中，调用JS的AJAX方法。方法中接收驿站实体信息，调用服务器端的驿站查询方法。在服务器端获取驿站实体，对实体进行序列化处理，判断查询条件，然后调用驿站查询的service数据库操作方法，将查询结果通过Json对象进行返回，在客户端解析Json，把结果存储在临时集合变量中，对变量进行数据显示绑定到界面。</p>
+<h3 id="4-2-4-快递取件管理功能实现"><a href="#4-2-4-快递取件管理功能实现" class="headerlink" title="4.2.4 快递取件管理功能实现"></a>4.2.4 快递取件管理功能实现</h3><p>点击我要取件，跳转到我要取件中，填写取件信息，然后进行提交。管理员对取件状态进行管理。其中取件订单界面设计如下图4-10所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309171609-5f45.png" alt="img"></p>
+<p>图 4-10取件列表信息界面</p>
+<p>通过ajax方法调用服务器端方法，在服务器端方法中，查询数据库的取件信息，然后返回json数据。小程序对返回的信息通过循环显示取件数据。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/41063.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/41063.html" class="post-title-link" itemprop="url">Windows Navicat Premium 15、 Navicat 16 激活、破解教程，亲测有效</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-13 09:48:08 / 修改时间：00:17:38" itemprop="dateCreated datePublished" datetime="2023-09-13T09:48:08+08:00">2023-09-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+</blockquote>
+<p>本文讲的是Windows Navicat Premium 15、 Navicat 16 激活、破解教程，亲测有效。</p>
+<p><strong>Navicat premium</strong>非常功能强大的多连接数据库管理工具，我们这款软件就是提供了简单数据库开发的基本和必需的功能，可以为专业开发人员提供满足他们所有特定需求的功能，而且对于刚接触数据库服务器的用户来说也很容易学习。用于商业用途，并支持 mysql、MariaDB、sql server、PostgreSQL、oracle 和 sqlite 数据库。</p>
+<h2 id="Windows-Navicat-Premium-15、-Navicat-16-激活、破解教程，亲测有效"><a href="#Windows-Navicat-Premium-15、-Navicat-16-激活、破解教程，亲测有效" class="headerlink" title="Windows Navicat Premium 15、 Navicat 16 激活、破解教程，亲测有效"></a>Windows Navicat Premium 15、 Navicat 16 激活、破解教程，亲测有效</h2><h3 id><a href="#" class="headerlink" title></a><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-fb29.png"></h3><h2 id="资源下载链接"><a href="#资源下载链接" class="headerlink" title="资源下载链接"></a>资源下载链接</h2><p>关注微信公众号<strong>【程序员徐师兄 plus】</strong>，回复 <strong>navicat</strong>，即可获取</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-img/-/raw/main/gitlab/202309061609-3c1ad0.png" alt="img"></p>
+<h2 id="破解教程"><a href="#破解教程" class="headerlink" title="破解教程"></a><strong>破解教程</strong></h2><p><strong>在开始前，建议先断开本地网络！！！建议先断开本地网络！！！建议先断开本地网络！！！</strong></p>
+<ol>
+<li>解压缩navicat_premium_cxy521.com.rar，压缩包中包括了32位和64位，请根据自己的电脑选择安装</li>
+</ol>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-225c.png"></p>
+<p>3.一直下一步，中间会有个提示设置路径的地方，可以修改路径，不建议c盘，会影响电脑允许速度，然后继续一直下一步，直到安装完成</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-85b4.png"></p>
+<p>4.安装完成后不要运行navicat premium15，将“Navicat Keygen Patch v5.6.0.zip”解压出来（<strong>提示：360安全卫士等杀毒软件可能会误报，最好激活前先关闭杀软</strong>）；</p>
+<p>将Navicat Keygen Patch v5.6.0.exe复制到<strong>Navicat Premium 15安装目录下</strong>，右键选择“以管理员身份运行”</p>
+<p>5.注册机打开后，Patch勾选Backup、Host，选择Navicat v15，然后点击Patch按钮</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-dbad.png"></p>
+<p>过一会就会有个navicat.exe – x64 -&gt; Cracked!.的弹窗，点击“确定”</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-c192.png"></p>
+<p>然后回到注册机，确保以下几个选项是对应的</p>
+<p>License为Enterprise</p>
+<p>Products为Premium</p>
+<p>Languages为Simplified Chinese（简体中文，其它语言版本请自选）</p>
+<p>Resale Version为Site license</p>
+<p>Your Name和Your Organization可以任意填写或者默认</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-9b1c.png" alt="image-20230327214732141"></p>
+<p>上面几项设置好后，点击“Generate”，会自动生成一个注册码，如下图</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-ec61.png"></p>
+<p>6.这个时候就可以打开navicat premium15，将上面生成的注册码复制到注册窗口中（注册窗在头部“帮助”选项下面），点击激活，</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-5cc4.png" alt="image-20230327214756813"></p>
+<p>会提示因为激活服务器暂时不可使用…..我们选择“手动激活”</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-e800.png"></p>
+<p>会生成一个请求码</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-a205.png"></p>
+<p>7.将请求码复制到注册机中的Request Code框中，然后点击Generate按钮</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-23c2.png"></p>
+<p>Activation Code框中会生成一个激活码</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-ec4f.png"></p>
+<p>8.将上面的激活码复制到手动激活窗口中，并点击“激活”</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303272103-5205.png"></p>
+<p>这个时候就会弹出Navicat 现已激活！！！</p>
+<p>恭喜，到这里小伙伴们就激活成功啦！！如果经济允许，还是希望大家可以支持一下正版！！！</p>
+<p>附上正版购买地址 <a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.navicat.com.cn/download/navicat-premium">http://www.navicat.com.cn/download/navicat-premium</a></p>
+<p>关注微信公众号<strong>【程序员徐师兄 plus】</strong>，回复 <strong>navicat</strong>，即可获取</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-img/-/raw/main/gitlab/202309061609-3c1ad0.png" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/53971.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/53971.html" class="post-title-link" itemprop="url">Navicat Premium  macOS 永久激活、破解，绿色安装，亲测真实有效</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-13 00:48:08 / 修改时间：00:17:38" itemprop="dateCreated datePublished" datetime="2023-09-13T00:48:08+08:00">2023-09-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%B4%E8%A7%A3-%E6%BF%80%E6%B4%BB%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">破解/激活教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>359</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>嗨喽，大家好，这篇文章主要讲解是 Navicat Premium 的激活，破解教程，仅供学习使用，禁止商用，如有侵权，请联系作者删除</p>
+</blockquote>
+<p>Navicat 16 macOS 永久破解，软件已集成破解文件于一体，不需要注册机，只需下载安装即可完美激活，从而无限制使用软件中所有的功能服务，亲测真实有效，下面提供安装使用教程供大家参考！</p>
+<h3 id="破解版安装教程"><a href="#破解版安装教程" class="headerlink" title="破解版安装教程"></a>破解版安装教程</h3><p>1、关注公众号：<strong>程序员徐师兄 plus</strong> 回复 <strong>navicat</strong> 即可获取 Navicat 16 macOS 永久破解包</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-img/-/raw/main/gitlab/202309061609-3c1ad0.png" alt="img"></p>
+<p>2、下载得到 navicat 16 MacOS.dmg 压缩</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309130009-5781.jpg" alt="img"></p>
+<p>3、解压后，如下图所示：将左侧的【Navicat Premium 】拉到右侧应用程序中</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309130009-e179.jpg" alt="img"></p>
+<p>4、软件拷贝中，请耐心等待完成</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309130009-7fdd.jpg" alt="img"></p>
+<p>5、进入应用程序，navicat 16 已经集成破解补丁，双击运行即可打开软件，破解完成</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309130009-df9d.jpg" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/43782.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -450,6 +1213,139 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/9893.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/9893.html" class="post-title-link" itemprop="url">基于 SpringBoot 的学生考勤管理系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-09 13:05:55" itemprop="dateCreated datePublished" datetime="2023-09-09T13:05:55+08:00">2023-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-16 22:58:13" itemprop="dateModified" datetime="2024-01-16T22:58:13+08:00">2024-01-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id><a href="#" class="headerlink" title></a></h2><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>本文讲解的是 Java基于 SpringBoot 的学生考勤系统。学生考勤管理系统能做到的不仅是大大简化管理员的信息管理工作，在提高学生考勤管理效率的同时还能缩减开支，更能在数字化的平面网络上将学生考勤管理最好的一面展示给客户和潜在客户，而这个系统在带给学生考勤管理全新用户信息管理统计和分类的同时，还成为日后学生考勤管理制定管理方式的重要数据参考</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/946/">文章首发地址</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-2f9f.png" alt="image-20231004115439670"></p>
+<h2 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2 技术栈"></a>2 技术栈</h2><p>开发语言：Java<br>框架：springboot<br>JDK版本：JDK1.8<br>服务器：tomcat7 或者 Tomcat 8<br>数据库：mysql 5.7（一定要5.7版本，8.0 有时候坑很多）<br>数据库工具：Navicat11<br>开发软件：eclipse&#x2F;myeclipse&#x2F;idea<br>Maven包：Maven3.3.9 (无强制要求)</p>
+<h2 id="3-功能分析"><a href="#3-功能分析" class="headerlink" title="3 功能分析"></a>3 功能分析</h2><p>本课题要求实现一套学生考勤管理系统，系统主要包括（管理员，教师和学生）三个模块等功能。</p>
+<p>（1）管理员用例图如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041410-b000.png" alt="image-20231004142621248"></p>
+<p>（2）教师用例图如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041410-9ccf.png" alt="image-20231004142632728"></p>
+<p>（3）学生用例图如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041410-0b32.png" alt="image-20231004142645809"></p>
+<h2 id="4-ER-图"><a href="#4-ER-图" class="headerlink" title="4 ER 图"></a>4 ER 图</h2><p>考勤信息管理E&#x2F;R图，如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-df97.png" alt="image-20231004115758491"></p>
+<p>学生E&#x2F;R图，如下所示：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-c595.png" alt="image-20231004115810768"></p>
+<p>图4-3学生E&#x2F;R图</p>
+<h2 id="5-系统实现"><a href="#5-系统实现" class="headerlink" title="5 系统实现"></a>5 系统实现</h2><h3 id="5-1系统登录注册"><a href="#5-1系统登录注册" class="headerlink" title="5.1系统登录注册"></a>5.1系统登录注册</h3><p>系统登录，用户在登录页面通过填写用户名，密码，选择相对应的角色等信息进行登录操作；如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-2f9f.png" alt="image-20231004115439670"></p>
+<p>学生注册，在学生注册页面通过填写学号，密码，确认密码，姓名，年级，专业，班级，手机等信息进行注册操作；如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-47ef.png" alt="image-20231004115448318"></p>
+<h3 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h3><p>管理员登录进入系统可以查看首页，个人中心，学生管理，教师管理，班级信息管理，课程信息管理，签到信息管理，考勤信息管理，请假信息管理，考勤统计管理等功能，并进行详细操作，如图5-3所示。</p>
+<p>![image-20231004115456521](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20231004115456521.png) </p>
+<p>学生管理；在学生管理页面中可以查看索引，学号，姓名，性别，年级，专业，班级，手机，照片等内容，并进行详情，统计考勤，修改和删除操作；如图5-4所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-0381.png" alt="image-20231004115507195"></p>
+<p>教师管理；在教师管理页面中可以查看索引，教师工号，教师姓名，性别，职称，手机，邮箱，照片等内容，并进行详情，修改和删除操作；如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-0381.png"> </p>
+<p>班级信息管理；在班级信息管理页面中可以查看索引，班级号，班级名称，班级图片，所属院系，所属专业，班主任，班级人数等内容，并进行排课程表，修改和删除操作；如图5-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-eeeb.png" alt="image-20231004115534272"></p>
+<p>考勤信息管理；在考勤信息管理页面中可以查看索引，班级名称，课程号，课程名称，课程类别，周次，上课日，节次，教师工号，教师姓名，签到状态，截止时间，学号，姓名，签到时间等内容，并进行修改和删除操作；如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-eeeb.png"></p>
+<h3 id="5-3教师功能模块"><a href="#5-3教师功能模块" class="headerlink" title="5.3教师功能模块"></a>5.3教师功能模块</h3><p>教师登录进入系统可以查看首页，个人中心，学生管理，班级信息管理，课程信息管理，签到信息管理，考勤信息管理，请假信息管理，考勤统计管理等功能，并根据需要进行详细操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-81b7.png" alt="image-20231004115557292"></p>
+<p>学生管理；在学生管理页面中可以查看索引，学号，姓名，性别，年级，专业，班级，手机，照片等内容，并进行详情，统计考勤操作；如图5-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-42bb.png" alt="image-20231004115625907"></p>
+<p>课程信息管理；在课程信息管理页面中可以查看索引，班级名称，课程号，课程名称，课程类别，图片，周次，上课日，节次等内容，并进行发起签到操作；如图5-10所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-42bb.png"></p>
+<p>请假信息管理；在请假信息管理页面中可以查看索引，班级名称，课程号，课程名称，课程类别，周次，上课日，节次，教师工号，教师姓名，请假原因，学号，姓名，请假时间，审核回复，审核状态，审核等内容；如图5-11所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-4461.png" alt="image-20231004115651195"></p>
+<h3 id="5-4学生功能模块"><a href="#5-4学生功能模块" class="headerlink" title="5.4学生功能模块"></a>5.4学生功能模块</h3><p>学生登录进入系统可以查看首页，个人中心，班级信息管理，课程信息管理，签到信息管理，考勤信息管理，请假信息管理，考勤统计管理等功能，并根据需要进行详细操作，如图5-12所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202310041110-9b2c.png" alt="image-20231004115703659"></p>
+<h2 id="6-推荐阅读"><a href="#6-推荐阅读" class="headerlink" title="6 推荐阅读"></a>6 推荐阅读</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/583/">微信小程序毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/41/">Java毕业设计-SpringBoot+Vue毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/584/">Java毕业设计-Java SSM+JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/585/">Java毕业设计-Java JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/616/">Android 毕业设计-项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/615/">Python 毕业设计合集</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/17632.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -565,2048 +1461,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/22763.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/22763.html" class="post-title-link" itemprop="url">基于 SpringBoot+Vue 的财务管理系统，Java 毕业设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-11 13:48:06" itemprop="dateCreated datePublished" datetime="2023-08-11T13:48:06+08:00">2023-08-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-12 23:20:17" itemprop="dateModified" datetime="2023-09-12T23:20:17+08:00">2023-09-12</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>﻿</p>
-<h1 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h1><p>财务管理系统的需求和管理上的不断提升，财务管理系统的潜力将无限扩大，财务管理系统在业界被广泛关注，本系统及对此进行总体分析，将财务管理信息管理的发展提供参考。财务管理系统对财务管理有着明显的带动效应，尤其对企业、公司的管理帮助更大。</p>
-<p>根据现有的模块，管理员对系统所有的信息进行管理。</p>
-<p>本文将按以下步骤进行开发；</p>
-<p> (1)绪论</p>
-<p>系统的开发背景，意义和系统状况等，详细讲述了系统的用处，对本章进行总结。</p>
-<p>(2)系统开发技术的介绍</p>
-<p>分别对java技术、Springboot框架、Mysql和B&#x2F;S进行详细介绍。</p>
-<p>(3)系统分析</p>
-<p>本章主要是对系统可行性、系统性能、还有系统功能需求进行分析。</p>
-<p>(4)系统设计</p>
-<p>对系统系统功能和数据库等进行详细讲解。</p>
-<p>(5)系统的实现</p>
-<p>主要对首页，个人中心，员工管理，部门管理，员工工资管理，工资调整管理，资产类别管理，固定资产管理，经营信息管理，序时账管理，年度利润管理，系统管理的实现。</p>
-<p>(6)系统的测试</p>
-<p>在系统编码实现后，就需要对系统进行检测，检测的方法有黑盒测试和白盒测试两种方式，本系统采用的是黑白盒测试方法对不同组的数据进行功能模块测试。</p>
-<h1 id="2-主要技术"><a href="#2-主要技术" class="headerlink" title="2.主要技术"></a>2.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="3-可行性分析"><a href="#3-可行性分析" class="headerlink" title="3. 可行性分析"></a>3. 可行性分析</h1><p>本家政服务管理平台是作为毕业设计自己开发的，所以产生的费用微乎其微，系统建成之后可能会为今后的家政服务管理提供便利，并且系统完成之后产生的维护费用也不大。综合计算，所有的开支都不大，所以家政服务管理平台在经济上是不存在问题的。</p>
-<h1 id="第四章-系统设计"><a href="#第四章-系统设计" class="headerlink" title="第四章 系统设计"></a>第四章 系统设计</h1><h2 id="4-1功能结构"><a href="#4-1功能结构" class="headerlink" title="4.1功能结构"></a>4.1功能结构</h2><p>为了更好的去理清本系统整体思路，对该系统以结构图的形式表达出来，设计实现该财务管理系统的功能结构图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221804-0f63.png" alt="image-20230422182702279"></p>
-<h2 id="4-2-数据库设计"><a href="#4-2-数据库设计" class="headerlink" title="4.2 数据库设计"></a>4.2 数据库设计</h2><h3 id="4-2-1-数据库E-x2F-R图"><a href="#4-2-1-数据库E-x2F-R图" class="headerlink" title="4.2.1 数据库E&#x2F;R图"></a>4.2.1 数据库E&#x2F;R图</h3><p>ER图是由实体及其关系构成的图，通过E&#x2F;R图可以清楚地描述系统涉及到的实体之间的相互关系。在系统中对一些主要的几个关键实体如下图：</p>
-<p>(1)员工管理E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304222204-2099.png" alt="image-20230422182714835"></p>
-<p> (2)工资调整管理E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221804-9c3d.png" alt="image-20230422182726741"></p>
-<p> (3)固定资产管理E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221804-828f.png" alt="image-20230422182738834"></p>
-<h3 id="4-2-2-数据库表"><a href="#4-2-2-数据库表" class="headerlink" title="4.2.2 数据库表"></a>4.2.2 数据库表</h3><p>数据库表的设计，如下表：</p>
-<p>表4-1：序时账</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>pingzhengdanhao</td>
-<td>varchar</td>
-<td>200</td>
-<td>凭证单号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fapiao</td>
-<td>varchar</td>
-<td>200</td>
-<td>发票</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>shouzhileixing</td>
-<td>varchar</td>
-<td>200</td>
-<td>收支类型</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhaiyao</td>
-<td>varchar</td>
-<td>200</td>
-<td>摘要</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>duifangkemu</td>
-<td>varchar</td>
-<td>200</td>
-<td>对方科目</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jine</td>
-<td>float</td>
-<td></td>
-<td>金额</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>dengjishijian</td>
-<td>date</td>
-<td></td>
-<td>登记时间</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>表4-2：用户表</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>username</td>
-<td>varchar</td>
-<td>100</td>
-<td>用户名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>password</td>
-<td>varchar</td>
-<td>100</td>
-<td>密码</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>role</td>
-<td>varchar</td>
-<td>100</td>
-<td>角色</td>
-<td></td>
-<td>管理员</td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>新增时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-</tbody></table>
-<p>表4-3：token表</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>userid</td>
-<td>bigint</td>
-<td></td>
-<td>用户id</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>username</td>
-<td>varchar</td>
-<td>100</td>
-<td>用户名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>tablename</td>
-<td>varchar</td>
-<td>100</td>
-<td>表名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>role</td>
-<td>varchar</td>
-<td>100</td>
-<td>角色</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>token</td>
-<td>varchar</td>
-<td>200</td>
-<td>密码</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>新增时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>expiratedtime</td>
-<td>timestamp</td>
-<td></td>
-<td>过期时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-</tbody></table>
-<p>表4-4：年度利润</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>niandutongji</td>
-<td>varchar</td>
-<td>200</td>
-<td>年度统计</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhuyingshouru</td>
-<td>float</td>
-<td></td>
-<td>主营收入</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhuyingyewuchengben</td>
-<td>int</td>
-<td></td>
-<td>主营业务成本</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>zhuyingyewushuijinjifujia</td>
-<td>int</td>
-<td></td>
-<td>主营业务税金及附加</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>qitayewulirun</td>
-<td>int</td>
-<td></td>
-<td>其他业务利润</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>yingyefeiyong</td>
-<td>int</td>
-<td></td>
-<td>营业费用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>guanlifeiyong</td>
-<td>int</td>
-<td></td>
-<td>管理费用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>caiwufeiyong</td>
-<td>int</td>
-<td></td>
-<td>财务费用</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>touzishouyi</td>
-<td>int</td>
-<td></td>
-<td>投资收益</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>butieshouyi</td>
-<td>int</td>
-<td></td>
-<td>补贴收益</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>yingyewaishouru</td>
-<td>int</td>
-<td></td>
-<td>营业外收入</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>yingyewaizhichu</td>
-<td>int</td>
-<td></td>
-<td>营业外支出</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>suodeshui</td>
-<td>int</td>
-<td></td>
-<td>所得税</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jinglirun</td>
-<td>int</td>
-<td></td>
-<td>净利润</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>dengjishijian</td>
-<td>date</td>
-<td></td>
-<td>登记时间</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="第五章-系统功能实现"><a href="#第五章-系统功能实现" class="headerlink" title="第五章 系统功能实现"></a>第五章 系统功能实现</h1><p>系统登录，管理员和员工进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-1所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-693f.png" alt="image-20230422193826307"></p>
-<h2 id="5-1管理员功能模块"><a href="#5-1管理员功能模块" class="headerlink" title="5.1管理员功能模块"></a>5.1管理员功能模块</h2><p>管理员登录系统后，可以对首页，个人中心，员工管理，部门管理，员工工资管理，工资调整管理，资产类别管理，固定资产管理，经营信息管理，序时账管理，年度利润管理，系统管理等功能进行相应的操作管理，如图5-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-21c9.png" alt="image-20230422193835847"></p>
-<p>员工管理，在员工管理页面可以对索引，员工工号，员工姓名，图片，性别，部门，职位，联系方式，入职时间等内容进行详情，修改和删除等操作，如图5-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-dc16.png" alt="image-20230422193850261"></p>
-<p>部门管理，在部门管理页面可以对索引，部门等信息进行详情，修改和删除等操作，如图\d-\d.*图所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-6cfe.png" alt="image-20230422193909442"></p>
-<p>员工工资管理，在员工工资管理页面可以对索引，工资月份，员工工号，部门，基本工资，工龄补贴，加班工资，奖励，罚款，个税，社保代缴，奖惩说明，实发工资，登记时间等内容进行详情，修改，删除等操作，如图5-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304221904-c1e1.png" alt="image-20230422193918218"></p>
-<p>工资调整管理，在工资调整管理页面可以对索引，调整原因，调整额度，调整时间，员工工号，员工姓名，部门等内容进行详情，修改，删除等操作，如图5-6所示。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/32175.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/32175.html" class="post-title-link" itemprop="url">基于 SpringBoot+Vue 在线考试系统的研究与实现，Java 毕业设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-09 13:48:06" itemprop="dateCreated datePublished" datetime="2023-08-09T13:48:06+08:00">2023-08-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-12 23:20:17" itemprop="dateModified" datetime="2023-09-12T23:20:17+08:00">2023-09-12</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>﻿</p>
-<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p>在线考试的需求和管理上的不断提升，在线考试管理的潜力将无限扩大，在线考试系统在业界被广泛关注，本系统及对此进行总体分析，将在线考试信息管理的发展提供参考。在线考试系统对在线考试有着明显的带动效应，对管理帮助更大。</p>
-<p>本系统主要包括管理员和用户两个角色组成；主要包括首页、个人中心、用户管理、教师管理、课程信息管理、班级信息管理、试题管理、在线试题管理、考试管理等功能的管理系统。</p>
-<h1 id="第二章-主要技术"><a href="#第二章-主要技术" class="headerlink" title="第二章.主要技术"></a>第二章.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><p>考虑到实际生活中在在线考试管理方面的需要以及对该系统认真的分析，将系统权限按管理员和用户这两类涉及用户划分。</p>
-<p>（1）管理员功能需求</p>
-<p>管理员登陆后，主要模块包括首页、个人中心、用户管理、教师管理、课程信息管理、班级信息管理、试题管理、在线试题管理、考试管理等功能。管理员用例图如图3-1所示。</p>
-<p>​                               </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-4d69.png" alt="image-20230421223833416"></p>
-<p>（2）用户功能需求</p>
-<p>用户登陆后，主要模块包括首页、个人中心、课程信息管理、班级信息管理、考试管理等功能。用户用例图如图3-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-ea02.png" alt="image-20230421223843917"></p>
-<h1 id="第四章-系统设计"><a href="#第四章-系统设计" class="headerlink" title="第四章 系统设计"></a>第四章 系统设计</h1><h2 id="4-1功能结构"><a href="#4-1功能结构" class="headerlink" title="4.1功能结构"></a>4.1功能结构</h2><p>为了更好的去理清本系统整体思路，对该系统以结构图的形式表达出来，设计实现该在线考试系统的功能结构图如下所示：</p>
-<p>​                                                              <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-2b63.png" alt="image-20230421223439921"></p>
-<h2 id="4-2-数据库设计"><a href="#4-2-数据库设计" class="headerlink" title="4.2 数据库设计"></a>4.2 数据库设计</h2><h3 id="4-2-1-数据库E-x2F-R图"><a href="#4-2-1-数据库E-x2F-R图" class="headerlink" title="4.2.1 数据库E&#x2F;R图"></a>4.2.1 数据库E&#x2F;R图</h3><p>ER图是由实体及其关系构成的图，通过E&#x2F;R图可以清楚地描述系统涉及到的实体之间的相互关系。在系统中对一些主要的几个关键实体如下图：</p>
-<p>(1) 课程信息E&#x2F;R图如下所示：</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-da9d.png" alt="image-20230421223621219"></p>
-<p> (2) 班级信息E&#x2F;R图如下所示：</p>
-<p> <img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-acb3.png" alt="image-20230421223652944"></p>
-<h3 id="4-2-2-数据库表"><a href="#4-2-2-数据库表" class="headerlink" title="4.2.2 数据库表"></a>4.2.2 数据库表</h3><p>数据库表的设计，如下表：</p>
-<p>表4-1：课程信息</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>kechengbianhao</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程编号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>kechengmingcheng</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程名称</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>kechengfenlei</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程分类</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>tupian</td>
-<td>varchar</td>
-<td>200</td>
-<td>图片</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>kechengneirong</td>
-<td>longtext</td>
-<td>4294967295</td>
-<td>课程内容</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jiaoshigonghao</td>
-<td>varchar</td>
-<td>200</td>
-<td>教师工号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>jiaoshixingming</td>
-<td>varchar</td>
-<td>200</td>
-<td>教师姓名</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>xueshengzhanghao</td>
-<td>varchar</td>
-<td>200</td>
-<td>学生账号</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>xingming</td>
-<td>varchar</td>
-<td>200</td>
-<td>姓名</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>表4-2：课程分类</p>
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>字段说明</th>
-<th>主键</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>bigint</td>
-<td></td>
-<td>主键</td>
-<td>主键</td>
-<td></td>
-</tr>
-<tr>
-<td>addtime</td>
-<td>timestamp</td>
-<td></td>
-<td>创建时间</td>
-<td></td>
-<td>CURRENT_TIMESTAMP</td>
-</tr>
-<tr>
-<td>kechengfenlei</td>
-<td>varchar</td>
-<td>200</td>
-<td>课程分类</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="第五章-系统功能实现"><a href="#第五章-系统功能实现" class="headerlink" title="第五章 系统功能实现"></a>第五章 系统功能实现</h1><h2 id="5-1系统登录注册"><a href="#5-1系统登录注册" class="headerlink" title="5.1系统登录注册"></a>5.1系统登录注册</h2><p>系统登录，管理员和用户进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行系统操作，如图5-1所示。</p>
-<p>​                               </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-7e97.png" alt="image-20230421224100227"></p>
-<p>用户注册，在用户注册页面通过填写学号、密码、确认密码、姓名、院系、专业、手机等内容进行注册操作，如图5-2所示。</p>
-<p> ![image-20230421224110114](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230421224110114.png) </p>
-<h2 id="5-2管理员功能模块"><a href="#5-2管理员功能模块" class="headerlink" title="5.2管理员功能模块"></a>5.2管理员功能模块</h2><p>管理员登录系统后，可以对首页、个人中心、用户管理、教师管理、课程信息管理、班级信息管理、试题管理、在线试题管理、考试管理等功能进行相应的操作管理，如图5-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-280c.png" alt="image-20230421224119059"></p>
-<p>用户管理，在用户管理页面可以对索引、学号、姓名、性别、院系、专业、班级、手机等内容进行详情，修改或删除操作，如图5-4所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-ca8b.png" alt="image-20230421224127578"></p>
-<p>教师管理，在教师管理页面可以对索引、教师工号、教师姓名、性别、籍贯、出生日期、所教科目、职务、联系方式等信息进行详情，修改或删除操作，如图5-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-6251.png" alt="image-20230421224137312"></p>
-<p>课程信息管理，在课程信息管理页面可以对索引、课程名称、科目类型、班级、授课老师、开课时间、结课时间、课件等内容进行详情，修改或删除操作，如图5-6所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-6a50.png" alt="image-20230421224145101"></p>
-<h1 id="源码下载地址"><a href="#源码下载地址" class="headerlink" title="源码下载地址"></a>源码下载地址</h1><p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-2b63.png" alt="image-20230421223439921"></p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d3ea69d51f8b69bb208f82bbe067f4c4.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/58140.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/58140.html" class="post-title-link" itemprop="url">基于 SpringBoot+Vue 的家政服务管理平台，Java 毕业设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-08 13:48:06" itemprop="dateCreated datePublished" datetime="2023-08-08T13:48:06+08:00">2023-08-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-12 23:20:17" itemprop="dateModified" datetime="2023-09-12T23:20:17+08:00">2023-09-12</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>﻿</p>
-<h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h1><p>本系统主要是设计出家政服务管理平台，基于B&#x2F;S构架，后台数据库采用了Mysql，可以使数据的查询和存储变得更加有效，可以确保家政服务管理的工作能够正常、高效的进行，从而提高工作的效率。总体的研究内容如下：</p>
-<p>a）系统的界面简洁、明了，方便用户操作。系统大量的使用控件，大大的缩短了代码的长度。系统的大部分的功能能够通过控件来实现，用户可以非常方便的完成各类操作。</p>
-<p>b）系统分前台和后台，可以同时达到管理员、用户和服务人员的不同需求。系统使用权限包括：管理员、用户和服务人员三个用户角色。主要功能包括首页、个人中心、用户管理、服务人员管理、服务信息管理、服务类型管理、服务预约管理、服务取消管理、服务分配管理、服务进度管理、评价信息管理、留言反馈、系统管理等等。</p>
-<h1 id="2-主要技术"><a href="#2-主要技术" class="headerlink" title="2.主要技术"></a>2.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="3-可行性分析"><a href="#3-可行性分析" class="headerlink" title="3. 可行性分析"></a>3. 可行性分析</h1><p>本家政服务管理平台是作为毕业设计自己开发的，所以产生的费用微乎其微，系统建成之后可能会为今后的家政服务管理提供便利，并且系统完成之后产生的维护费用也不大。综合计算，所有的开支都不大，所以家政服务管理平台在经济上是不存在问题的。</p>
-<h1 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4.系统设计"></a>4.系统设计</h1><p>  本家政服务管理平台是把IT技术用到家政服务信息的管理中，它具有标准家政服务管理平台所具备的现实生活中完整的家政服务管理过程，完全的实现了虚拟现实。它可以收集和保存用户的信息，真正的实现了节约资源、提高使用效率、处理业务的同时实现了家政服务管理平台的功能。</p>
-<p>本系统采取的原则有：</p>
-<p>a）开发采用的是B&#x2F;S模式。B&#x2F;S模式的优点是处理前台与后台时层次分明，并且符合现在大部分用户习惯的网页搜索的方法。</p>
-<p>b）运用面向对象的开发与设计思想。只有对系统的整体充分了解才能使用面向对象的技术，通过面向对象的技术可以保证系统的框架，从而使系统更加稳定，提高运行的效率。</p>
-<p>c）采用结构化的设计方法。将系统分成各个功能模块，正确的处理模块之间和模块内部的联系以及与数据库的联系，定义各模块之间的内部结构，通过对不同模块的设计和模块与模块之间关系的设计来实现整个系统的功能。</p>
-<p>d）系统的界面简单清晰。系统的界面设计简单，方便用户快速的操作使用。         </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-9f50.png" alt="image-20230421221725263"></p>
-<p>​                                </p>
-<h1 id="5系统的详细设计与实现"><a href="#5系统的详细设计与实现" class="headerlink" title="5系统的详细设计与实现"></a>5系统的详细设计与实现</h1><h2 id="5-1前台模块设计"><a href="#5-1前台模块设计" class="headerlink" title="5.1前台模块设计"></a>5.1前台模块设计</h2><p>系统首页的主要功能展示了首页、服务信息、公告信息、留言反馈、个人中心、后台管理等，用户可根据权限进行相应操作。运行结果如图5-1所示。</p>
-<p>​                               </p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-199d.png" alt="image-20230421221817494"></p>
-<p>用户注册，通过填写账号、密码、确认密码、姓名、邮箱、手机号码等内容进行注册等操作，如图5-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-74d2.png" alt="image-20230421221829335"></p>
-<p>服务信息，在服务信息页面可以查看服务名称、 服务价格、服务简介、发布日期、合同信息等内容进行预约、详情或收藏等操作；如图5-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-8ded.png" alt="image-20230421221839980"></p>
-<p>个人中心，在个人中心页面中通过填写账号、密码、性别、姓名、邮箱、手机号码、图片等内容进行更新信息等操作，并可根据需要对我的收藏进行相应等操作，如图5-4所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-5a73.png" alt="image-20230421221848583"></p>
-<h2 id="5-2后台功能模块"><a href="#5-2后台功能模块" class="headerlink" title="5.2后台功能模块"></a>5.2后台功能模块</h2><p>用户进入系统前在登录页面根据要求填写用户名、密码和验证码，选择角色等信息，点击登录进行登录操作，如图5-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304212204-5a73.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/48703.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/48703.html" class="post-title-link" itemprop="url">徐师兄精品项目分享</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-04-20 13:05:55 / 修改时间：22:41:47" itemprop="dateCreated datePublished" datetime="2023-04-20T13:05:55+08:00">2023-04-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>嗨喽，大家好，我是程序员徐师兄，大厂 7 年经验，专注于编程，提供毕业设计指导，源码交流，远程部署</p>
-<blockquote>
-<p>1、源码获取：叫 v <strong>Albert_HW07</strong> 了解</p>
-<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
-<p>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
-</blockquote>
-<h2 id="SpringBoot-Vue-毕业设计题目推荐"><a href="#SpringBoot-Vue-毕业设计题目推荐" class="headerlink" title="SpringBoot+ Vue 毕业设计题目推荐"></a>SpringBoot+ Vue 毕业设计题目推荐</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p>
-<table>
-<thead>
-<tr>
-<th>题目</th>
-<th>技术栈</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>基于 SpringBoot+Vue 的医院急诊系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的社区维修平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园新闻网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的职称评审管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线动漫信息平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的心灵治愈交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的论坛管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的闲一品</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的线上教学平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的实验室管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的教师人事档案管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的租房网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的大学生社团活动平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的垃圾分类网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品租售系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线BLOG网</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具销售电商平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的简历系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汉服推广网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的准妈妈孕期交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的点餐平台网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的医疗服务系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园博客系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的商务安全邮箱邮件收发</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的springcloud房产销售平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的人职匹配推荐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的Springboot的小区物业管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的口腔管家平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的民宿管理平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的滴答拍摄影项目</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的酒店管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的体质测试数据分析及可视化设计</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的交流互动系统(1)</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的某银行OA系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的自习室预订系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的疫情网课管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的考研资讯平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的音乐翻唱与分享平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旧物置换网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的影城管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的外卖点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的餐厅点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的新生宿舍管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园疫情防控系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的幼儿园管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的火车订票管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的毕业生信息招聘平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的二手交易平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品交易网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的网上商城购物系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的学生毕业离校系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线答疑系统文件</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-</tbody></table>
-<h2 id="毕业设计咨询"><a href="#毕业设计咨询" class="headerlink" title="毕业设计咨询"></a>毕业设计咨询</h2><p><strong>代码都是我和朋友开发的，测试过的，还有视频演示和文档的。</strong>可以保证正常运行。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p>
-<p><strong>微信Albert_HW07</strong></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303280003-7041.png"></p>
-<h2 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h2><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304202204-ebc6.png" alt="俊丰毕业设计 (3)"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/57317.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/57317.html" class="post-title-link" itemprop="url">徐师兄 2023 年精品项目分享</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-04-20 13:05:55 / 修改时间：22:41:45" itemprop="dateCreated datePublished" datetime="2023-04-20T13:05:55+08:00">2023-04-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>嗨喽，大家好，我是程序员徐师兄，大厂 7 年经验，专注于编程，提供毕业设计指导，源码交流，远程部署</p>
-<blockquote>
-<p>1、源码获取：叫 v <strong>xiaoxu_9411</strong> 了解</p>
-<p><strong>2、精彩专栏推荐订阅：在下方专栏👇🏻</strong></p>
-<p>😁<br>1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">Java 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a><br>2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 毕业设计专栏，毕业季咱们不慌忙，几百款毕业设计等你选。</a></p>
-</blockquote>
-<h2 id="SpringBoot-Vue-毕业设计题目推荐"><a href="#SpringBoot-Vue-毕业设计题目推荐" class="headerlink" title="SpringBoot+ Vue 毕业设计题目推荐"></a>SpringBoot+ Vue 毕业设计题目推荐</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p>
-<table>
-<thead>
-<tr>
-<th>题目</th>
-<th>技术栈</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>基于 SpringBoot+Vue 的医院急诊系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的社区维修平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园新闻网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的职称评审管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线动漫信息平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的心灵治愈交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的论坛管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的闲一品</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的线上教学平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的实验室管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的教师人事档案管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的租房网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的大学生社团活动平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的垃圾分类网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品租售系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线BLOG网</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具销售电商平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的简历系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汉服推广网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的准妈妈孕期交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的点餐平台网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的医疗服务系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园博客系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的商务安全邮箱邮件收发</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的springcloud房产销售平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的人职匹配推荐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的Springboot的小区物业管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的口腔管家平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的民宿管理平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的滴答拍摄影项目</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的酒店管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的体质测试数据分析及可视化设计</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的交流互动系统(1)</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的某银行OA系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的自习室预订系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的疫情网课管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的考研资讯平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的音乐翻唱与分享平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旧物置换网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的影城管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的外卖点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的餐厅点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的新生宿舍管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园疫情防控系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的幼儿园管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的火车订票管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的毕业生信息招聘平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的二手交易平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品交易网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的网上商城购物系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的学生毕业离校系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线答疑系统文件</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-</tbody></table>
-<h2 id="毕业设计咨询"><a href="#毕业设计咨询" class="headerlink" title="毕业设计咨询"></a>毕业设计咨询</h2><p><strong>代码都是我和朋友开发的，测试过的，还有视频演示和文档的。</strong>可以保证正常运行。</p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.mdnice.com/writing/29abe11ca4de4536a7dfdaa339a227e0">100 套基于 SpringBoot+Vue 毕业设计项目（含源码+毕业设计论文）</a></p>
-<p><strong>微信Albert_HW07</strong></p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303280003-7041.png"></p>
-<h2 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h2><p>v : xiaoxu_9411</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304202204-fa62.png" alt="徐师兄毕业设计 (1)"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/41316.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/41316.html" class="post-title-link" itemprop="url">300 套 SpringBoot+Vue 毕业设计题目推荐，附源码和教程，保证可用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-04-14 13:05:55" itemprop="dateCreated datePublished" datetime="2023-04-14T13:05:55+08:00">2023-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-17 21:48:57" itemprop="dateModified" datetime="2023-04-17T21:48:57+08:00">2023-04-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id><a href="#" class="headerlink" title></a></h1><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/JasonXu94/article/details/130177195?spm=1001.2014.3001.5501">npm，yarn使用，npm ,yarn 更换使用国内镜像源</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/JasonXu94/article/details/130123572?spm=1001.2014.3001.5501">idea运行SSM项目及启动（tomcat），详细图解</a></p>
-<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/JasonXu94/article/details/130123375?spm=1001.2014.3001.5501">SSM 框架原理简介及解析</a></p>
-<p><a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-<p>大家好，我是程序员徐师兄，六年大厂经验，最近，有部分小伙伴问我，快毕业了，毕业设计有什么选题推荐吗？</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-42bb.png" alt="在这里插入图片描述"></p>
-<p>其实，计算机专业的毕业设计有许多课题可以选择，假如你想要获得比较好的分数成绩的话，或者是想要新颖一点，那就需要重点的学习和参考一下各种新的开发技术，如目前的spring boot mysql ssm框架等，安卓，小程序方面。</p>
-<p>虽然对本科生的毕业设计没有明确的创新要求，但如果能将新技术与行业相结合，将会在毕业设计的过程中获得更多的收获。</p>
-<p>目前，大数据的技术体系已经成熟，在毕业设计的过程中，可以专注于网站，系统，小程序，安卓方面的相关的主题。网站，系统，小程序，安卓的工业应用场景很多。例如，网站，系统，小程序，安卓等诸多领域有大量的整合点，也有很多成熟的案例可以参与。也比较容易答辩。</p>
-<p>更多的选题也可以参考下面为大家准备的，都有源码+数据库，详情<strong>可以加 v xiaoxu_9411 了解</strong></p>
-<h2 id="SpringBoot-Vue-毕业设计题目推荐"><a href="#SpringBoot-Vue-毕业设计题目推荐" class="headerlink" title="SpringBoot+ Vue 毕业设计题目推荐"></a>SpringBoot+ Vue 毕业设计题目推荐</h2><table>
-<thead>
-<tr>
-<th>题目</th>
-<th>技术栈</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>基于 SpringBoot+Vue 的医院急诊系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的社区维修平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园新闻网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的职称评审管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线动漫信息平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的心灵治愈交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的论坛管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的闲一品</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的线上教学平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的实验室管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的教师人事档案管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的租房网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的大学生社团活动平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的垃圾分类网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品租售系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线BLOG网</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具销售电商平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的简历系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汉服推广网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的准妈妈孕期交流平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的点餐平台网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的医疗服务系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园博客系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的商务安全邮箱邮件收发</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的springcloud房产销售平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的人职匹配推荐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的Springboot的小区物业管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的口腔管家平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的民宿管理平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的滴答拍摄影项目</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的酒店管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的汽车租赁系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的体质测试数据分析及可视化设计</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的家具网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的交流互动系统(1)</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的某银行OA系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的自习室预订系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的疫情网课管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的考研资讯平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旅游管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的音乐翻唱与分享平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的旧物置换网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的影城管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的外卖点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的餐厅点餐系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的新生宿舍管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园疫情防控系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的幼儿园管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的火车订票管理系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的毕业生信息招聘平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的二手交易平台</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的校园闲置物品交易网站</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的网上商城购物系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的学生毕业离校系统</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-<tr>
-<td>基于 SpringBoot+Vue 的在线答疑系统文件</td>
-<td>SpringBoot+Vue+MySql</td>
-</tr>
-</tbody></table>
-<h2 id="项目效果图"><a href="#项目效果图" class="headerlink" title="项目效果图"></a>项目效果图</h2><h3 id="校园交友"><a href="#校园交友" class="headerlink" title="校园交友"></a>校园交友</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-f99f.png" alt="img"></p>
-<h3 id="幼儿园管理系统"><a href="#幼儿园管理系统" class="headerlink" title="幼儿园管理系统"></a>幼儿园管理系统</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-6e46.png" alt="image-20230415153854963"></p>
-<h3 id="酒店管理系统"><a href="#酒店管理系统" class="headerlink" title="酒店管理系统"></a>酒店管理系统</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304170004-c6bd.png" alt="image-20230415153936468"></p>
-<h3 id="智慧外贸平台"><a href="#智慧外贸平台" class="headerlink" title="智慧外贸平台"></a>智慧外贸平台</h3><p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304172104-2537.png" alt="image-20230415154111089"></p>
-<h2 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h2><blockquote>
-<p> 1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">200 套 Java 精品项目</a><br> 2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 200 套  精品项目</a></p>
-<p> 3.<a href="https://blog.junxu666.top/p/57317.html">源码咨询</a></p>
-</blockquote>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202303232303-0f02.png" alt="img"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/13785.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="徐公">
-      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程序员徐公">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/13785.html" class="post-title-link" itemprop="url">【毕业设计】基于 Java+ SpringBoot+Vue 的藏区特产销售系统【源码(完整源码请私聊)+论文+包运行成功】</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-04-11 13:05:55" itemprop="dateCreated datePublished" datetime="2023-04-11T13:05:55+08:00">2023-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-17 00:08:28" itemprop="dateModified" datetime="2023-04-17T00:08:28+08:00">2023-04-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>9.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id><a href="#" class="headerlink" title></a></h1><blockquote>
-<p>大家好，我是程序员徐师兄，六年大厂经验, 今天为大家带来的事基于 Java+ SpringBoot+Vue 的藏区特产销售系统，<strong>源码获取方式见文章底部</strong></p>
-</blockquote>
-<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>本次设计任务是要设计一个藏区特产销售平台，通过这个系统能够满足藏区特产销售管理的管理功能。系统的主要包括首页、个人中心、用户管理、特产信息管理、特产分类管理、特产分类管理、特产评分管理、系统管理、订单管理等功能。</p>
-<p>管理员可以根据系统给定的账号进行登录，登录后可以进入藏区特产销售平台对所有模块进行管理。包括查看和修改自己的个人信息以及登录密码。</p>
-<p>该系统为每一个用户都分配了一个用户账号，用户通过账号的登录可以在系统中查看藏区特产销售管理信息及对个人信息进行修改等功能。</p>
-<p>![image-20230416232719387](&#x2F;Users&#x2F;junxu&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230416232719387.png)</p>
-<h1 id="2-主要技术"><a href="#2-主要技术" class="headerlink" title="2.主要技术"></a>2.主要技术</h1><table>
-<thead>
-<tr>
-<th>技术名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Springboot</td>
-<td>后端框架</td>
-</tr>
-<tr>
-<td>Vue</td>
-<td>前端框架</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>数据库</td>
-</tr>
-</tbody></table>
-<h1 id="3-功能分析"><a href="#3-功能分析" class="headerlink" title="3 功能分析"></a>3 功能分析</h1><p>考虑到实际生活中在藏区特产销售管理方面的需要以及对该系统认真的分析，将系统权限按管理员和用户这两类涉及用户划分。</p>
-<p>（1）管理员功能需求</p>
-<p>管理员登陆后，主要模块包括首页、个人中心、用户管理、特产信息管理、特产分类管理、特产分类管理、特产评分管理、系统管理、订单管理等功能。管理员用例图如图3-1所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-b9f2.png" alt="image-20230416232255981"></p>
-<p>（2）用户功能需求</p>
-<p>用户登陆后，主要模块包括首页、特产信息、特产资讯、个人中心、购物车、在线客服等功能。用户用例图如图3-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-a91e.png" alt="image-20230416232246467"></p>
-<h1 id="4-系统分析"><a href="#4-系统分析" class="headerlink" title="4 系统分析"></a>4 系统分析</h1><p>系统设计是把本系统的各项功能需求进行细化，而转换为软件系统表示的一个设计过程，在对目标系统的研究分析之后，做出整个系统平台的总体规划，进而对用例中各个对象进一步地合理精细设计。为降低整个系统的复杂度，而使其更加便于修改，提高代码的可读性，我们会将系统模块化，模块间保持相对独立，且每个模块只完成一个子功能，并且与其他模块通过简单的接口链接，即高内聚低耦合原则，而使整个系统能够拥有一个高性能的结构，这边是系统概要设计最重要的目的。在之前的需求分析的基础上，本藏区特产销售平台结构，如下图4-1所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-4f8c.png" alt="image-20230416232330164"></p>
-<h1 id="5系统实现"><a href="#5系统实现" class="headerlink" title="5系统实现"></a>5系统实现</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>进入藏区特产销售平台页面中可以查看首页、特产信息、特产资讯、个人中心、购物车、在线客服等内容，进行详细的操作，如图5-1所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-160c.png" alt="image-20230416231950913"></p>
-<p>图5-1系统首页界面图</p>
-<p>特产信息，在特产信息页面中可以查看特产名称、价格、单次购买、库存、特产类型、规格、点击次数等内容进行购买、评论或收藏等操作如图5-2所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-bb0f.png" alt="image-20230416232000956"></p>
-<p>图5-2特产信息界面图</p>
-<p>个人中心，在个人中心页面中通过填写账号、密码、姓名、性别、手机、图片、余额等内容进行更新信息等操作，并可以根据我的订单、我的地址或我的收藏进行相应的操作，如图5-3所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-ed9c.png" alt="image-20230416232022365"></p>
-<p>图5-3个人中心界面图</p>
-<p>购物车，在购物车页面中可以查看购买商品、价格、 数量、总价等内容，进行删除或购买等操作，如图5-4所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-99d5.png" alt="image-20230416232052434"></p>
-<p>图5-4购物车界面图</p>
-<p>用户注册，在用户注册页面中通过填写账号、密码、确认密码、姓名、手机等内容进行注册等操作，如图5-5所示。</p>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-3db1.png" alt="image-20230416232037294"></p>
-<h1 id="六、代码参考"><a href="#六、代码参考" class="headerlink" title="六、代码参考"></a>六、代码参考</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br></pre></td><td class="code"><pre><span class="line">package com.controller;</span><br><span class="line"></span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Calendar;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line"></span><br><span class="line">import com.utils.ValidatorUtils;</span><br><span class="line">import org.apache.commons.lang3.StringUtils;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.format.annotation.DateTimeFormat;</span><br><span class="line">import org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line">import com.baomidou.mybatisplus.mapper.EntityWrapper;</span><br><span class="line">import com.baomidou.mybatisplus.mapper.Wrapper;</span><br><span class="line">import com.annotation.IgnoreAuth;</span><br><span class="line"></span><br><span class="line">import com.entity.BanjixinxiEntity;</span><br><span class="line">import com.entity.view.BanjixinxiView;</span><br><span class="line"></span><br><span class="line">import com.service.BanjixinxiService;</span><br><span class="line">import com.service.TokenService;</span><br><span class="line">import com.utils.PageUtils;</span><br><span class="line">import com.utils.R;</span><br><span class="line">import com.utils.MD5Util;</span><br><span class="line">import com.utils.MPUtil;</span><br><span class="line">import com.utils.CommonUtil;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 班级信息</span><br><span class="line"> * 后端接口</span><br><span class="line"> * @author </span><br><span class="line"> * @email </span><br><span class="line"> * @date 2021-03-18 15:04:00</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/banjixinxi&quot;)</span><br><span class="line">public class BanjixinxiController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private BanjixinxiService banjixinxiService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 后端列表</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/page&quot;)</span><br><span class="line">    public R page(@RequestParam Map&lt;String, Object&gt; params,BanjixinxiEntity banjixinxi,</span><br><span class="line">		HttpServletRequest request)&#123;</span><br><span class="line">		String tableName = request.getSession().getAttribute(&quot;tableName&quot;).toString();</span><br><span class="line">		if(tableName.equals(&quot;jiaoshi&quot;)) &#123;</span><br><span class="line">			banjixinxi.setGonghao((String)request.getSession().getAttribute(&quot;username&quot;));</span><br><span class="line">		&#125;</span><br><span class="line">        EntityWrapper&lt;BanjixinxiEntity&gt; ew = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">		PageUtils page = banjixinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, banjixinxi), params), params));</span><br><span class="line"></span><br><span class="line">        return R.ok().put(&quot;data&quot;, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 前端列表</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/list&quot;)</span><br><span class="line">    public R list(@RequestParam Map&lt;String, Object&gt; params,BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">        EntityWrapper&lt;BanjixinxiEntity&gt; ew = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">		PageUtils page = banjixinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, banjixinxi), params), params));</span><br><span class="line">        return R.ok().put(&quot;data&quot;, page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">     * 列表</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/lists&quot;)</span><br><span class="line">    public R list( BanjixinxiEntity banjixinxi)&#123;</span><br><span class="line">       	EntityWrapper&lt;BanjixinxiEntity&gt; ew = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">      	ew.allEq(MPUtil.allEQMapPre( banjixinxi, &quot;banjixinxi&quot;)); </span><br><span class="line">        return R.ok().put(&quot;data&quot;, banjixinxiService.selectListView(ew));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	 /**</span><br><span class="line">     * 查询</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/query&quot;)</span><br><span class="line">    public R query(BanjixinxiEntity banjixinxi)&#123;</span><br><span class="line">        EntityWrapper&lt; BanjixinxiEntity&gt; ew = new EntityWrapper&lt; BanjixinxiEntity&gt;();</span><br><span class="line"> 		ew.allEq(MPUtil.allEQMapPre( banjixinxi, &quot;banjixinxi&quot;)); </span><br><span class="line">		BanjixinxiView banjixinxiView =  banjixinxiService.selectView(ew);</span><br><span class="line">		return R.ok(&quot;查询班级信息成功&quot;).put(&quot;data&quot;, banjixinxiView);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /**</span><br><span class="line">     * 后端详情</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span><br><span class="line">    public R info(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">        BanjixinxiEntity banjixinxi = banjixinxiService.selectById(id);</span><br><span class="line">        return R.ok().put(&quot;data&quot;, banjixinxi);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 前端详情</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span><br><span class="line">    public R detail(@PathVariable(&quot;id&quot;) Long id)&#123;</span><br><span class="line">        BanjixinxiEntity banjixinxi = banjixinxiService.selectById(id);</span><br><span class="line">        return R.ok().put(&quot;data&quot;, banjixinxi);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 后端保存</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/save&quot;)</span><br><span class="line">    public R save(@RequestBody BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">    	banjixinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());</span><br><span class="line">    	//ValidatorUtils.validateEntity(banjixinxi);</span><br><span class="line">        banjixinxiService.insert(banjixinxi);</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 前端保存</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/add&quot;)</span><br><span class="line">    public R add(@RequestBody BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">    	banjixinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());</span><br><span class="line">    	//ValidatorUtils.validateEntity(banjixinxi);</span><br><span class="line">        banjixinxiService.insert(banjixinxi);</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 修改</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/update&quot;)</span><br><span class="line">    public R update(@RequestBody BanjixinxiEntity banjixinxi, HttpServletRequest request)&#123;</span><br><span class="line">        //ValidatorUtils.validateEntity(banjixinxi);</span><br><span class="line">        banjixinxiService.updateById(banjixinxi);//全部更新</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 删除</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/delete&quot;)</span><br><span class="line">    public R delete(@RequestBody Long[] ids)&#123;</span><br><span class="line">        banjixinxiService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">        return R.ok();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 提醒接口</span><br><span class="line">     */</span><br><span class="line">	@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span><br><span class="line">	public R remindCount(@PathVariable(&quot;columnName&quot;) String columnName, HttpServletRequest request, </span><br><span class="line">						 @PathVariable(&quot;type&quot;) String type,@RequestParam Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">		map.put(&quot;column&quot;, columnName);</span><br><span class="line">		map.put(&quot;type&quot;, type);</span><br><span class="line">		</span><br><span class="line">		if(type.equals(&quot;2&quot;)) &#123;</span><br><span class="line">			SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">			Calendar c = Calendar.getInstance();</span><br><span class="line">			Date remindStartDate = null;</span><br><span class="line">			Date remindEndDate = null;</span><br><span class="line">			if(map.get(&quot;remindstart&quot;)!=null) &#123;</span><br><span class="line">				Integer remindStart = Integer.parseInt(map.get(&quot;remindstart&quot;).toString());</span><br><span class="line">				c.setTime(new Date()); </span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(&quot;remindstart&quot;, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			if(map.get(&quot;remindend&quot;)!=null) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(&quot;remindend&quot;).toString());</span><br><span class="line">				c.setTime(new Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(&quot;remindend&quot;, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;BanjixinxiEntity&gt; wrapper = new EntityWrapper&lt;BanjixinxiEntity&gt;();</span><br><span class="line">		if(map.get(&quot;remindstart&quot;)!=null) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(&quot;remindstart&quot;));</span><br><span class="line">		&#125;</span><br><span class="line">		if(map.get(&quot;remindend&quot;)!=null) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(&quot;remindend&quot;));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		String tableName = request.getSession().getAttribute(&quot;tableName&quot;).toString();</span><br><span class="line">		if(tableName.equals(&quot;jiaoshi&quot;)) &#123;</span><br><span class="line">			wrapper.eq(&quot;gonghao&quot;, (String)request.getSession().getAttribute(&quot;username&quot;));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		int count = banjixinxiService.selectCount(wrapper);</span><br><span class="line">		return R.ok().put(&quot;count&quot;, count);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="七、源码获取"><a href="#七、源码获取" class="headerlink" title="七、源码获取"></a>七、源码获取</h1><blockquote>
-<p> 1.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12197453.html">200 套 Java 精品项目</a><br> 2.<a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.csdn.net/jasonxu94/category_12191368.html">Python 200 套  精品项目</a></p>
-<p> 3.<a href="https://blog.junxu666.top/p/57317.html">源码咨询</a>，叫 v xiaoxu_9411</p>
-</blockquote>
-<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202304162304-d969.png" alt="image-20230415160655333"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2672,14 +1530,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">124</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -2723,7 +1581,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -2732,12 +1590,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">567k</span>
+    <span title="站点总字数">587k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:35</span>
+    <span title="站点阅读时长">8:53</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.junxu666.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false,"limit":10000},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1 简介本大学生租房系统使用简洁的框架结构，专门用于用户浏览首页，房屋信息，房屋评价，公告资讯，个人中心，后台管理，意见反馈等信息，对个人信息进行修改等，以及系统管理员对首页，个人中心，房主管理，用户管理，房屋类型管理，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等的操作。房主对首页，个人中心，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等的操作。系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基于 SpringBoot 的大学生租房网站的研究与实">
+<meta property="og:url" content="https://blog.junxu666.top/p/31107.html">
+<meta property="og:site_name" content="程序员徐公">
+<meta property="og:description" content="1 简介本大学生租房系统使用简洁的框架结构，专门用于用户浏览首页，房屋信息，房屋评价，公告资讯，个人中心，后台管理，意见反馈等信息，对个人信息进行修改等，以及系统管理员对首页，个人中心，房主管理，用户管理，房屋类型管理，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等的操作。房主对首页，个人中心，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等的操作。系">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-c36e.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-c36e.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-bfbd.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-e764.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-0558.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-f95c.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-e8b1.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-8a1f.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-2b02.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-4caf.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-8b5a.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-83c3.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-e04b.jpg">
+<meta property="og:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-ab4a.jpg">
+<meta property="article:published_time" content="2023-08-08T05:05:55.000Z">
+<meta property="article:modified_time" content="2024-01-16T14:57:18.436Z">
+<meta property="article:author" content="徐公">
+<meta property="article:tag" content="Android, Android 学习, 黑马视频, Java, Java 视频, 面试, Android 面试, 面试经验, idea, pycharm, idea 激活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-c36e.jpg">
+
+<link rel="canonical" href="https://blog.junxu666.top/p/31107.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java基于 SpringBoot 的大学生租房网站的研究与实 | 程序员徐公</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="程序员徐公" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">程序员徐公</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">微信公众号：【徐公】</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.junxu666.top/p/31107.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="徐公">
+      <meta itemprop="description" content="「Android学习+面试指南」助你升职加薪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员徐公">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java基于 SpringBoot 的大学生租房网站的研究与实
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-08 13:05:55" itemprop="dateCreated datePublished" datetime="2023-08-08T13:05:55+08:00">2023-08-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-16 22:57:18" itemprop="dateModified" datetime="2024-01-16T22:57:18+08:00">2024-01-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+              <span class="post-meta-divider">|</span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>本大学生租房系统使用简洁的框架结构，专门用于用户浏览首页，房屋信息，房屋评价，公告资讯，个人中心，后台管理，意见反馈等信息，对个人信息进行修改等，以及系统管理员对首页，个人中心，房主管理，用户管理，房屋类型管理，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等的操作。房主对首页，个人中心，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等的操作。系统具有方便性、灵活性、应用性。本大学生租房系统设计使用简洁的框架结构，让管理员，房主和用户登录后的进行相关的操作</p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.zhihu.com/zvideo/1689668081801216000">视频演示地址</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.zhihu.com/zvideo/1689668081801216000">视频演示地址</a></p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-c36e.jpg" alt="img"></p>
+<h2 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2 技术栈"></a>2 技术栈</h2><p>开发语言：Java<br>框架：springboot<br>JDK版本：JDK1.8<br>服务器：tomcat7 或者 Tomcat 8<br>数据库：mysql 5.7（一定要5.7版本，8.0 有时候坑很多）<br>数据库工具：Navicat11<br>开发软件：eclipse&#x2F;myeclipse&#x2F;idea<br>Maven包：Maven3.3.9 (无强制要求)</p>
+<h2 id="3-需求分析"><a href="#3-需求分析" class="headerlink" title="3 需求分析"></a>3 需求分析</h2><p>本次的毕业设计主要就是在基于Java语言平台下设计并开发一个大学生租房系统软件。运用当前Google提供的Java来实现对大学生租房信息查询。当然使用的数据库是Mysql。尽管没有面向对象的数据库的作用强大，但是在Java开发上还是比较的灵活和方便的。系统功能主要介绍以下几点：</p>
+<p>l 欢迎界面功能</p>
+<p>欢迎界面是在运行该软件时的第一个要显示的界面，出现在菜单界面之前。主要就是显示欢迎使用大学生租房系统。只要用户开启该软件，就会首先出来欢迎界面。</p>
+<p>l 主界面菜单选项功能</p>
+<p>主界面是该软件的第一个真正意义上的可操作界面，来响应用户的第一步的操作。主要就是让用户进行选择功能，即大学生租房信息查询的选择。界面的主要需求就是简单明了，在加上清新明目的背景图片，一定会给用户视觉上的快感。主界面这里拒绝那些繁琐的操作，给用户以方便。</p>
+<h2 id="4-系统设计"><a href="#4-系统设计" class="headerlink" title="4 系统设计"></a>4 系统设计</h2><p>根据大学生租房系统的功能需求，进行系统设计。</p>
+<p>前台功能：进入系统可以实现首页，房屋信息，房屋评价，公告资讯，个人中心，后台管理，意见反馈等功能进行操作；</p>
+<p>后台主要是管理员，房主和用户，主要功能包括首页，个人中心，房主管理，用户管理，房屋类型管理，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等。</p>
+<p>系统对这些功能进行整合，产生的功能结构图如下：</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-c36e.jpg" alt="img"></p>
+<h1 id="5-系统详细设计"><a href="#5-系统详细设计" class="headerlink" title="5 系统详细设计"></a>5 系统详细设计</h1><h2 id="5-1系统功能模块"><a href="#5-1系统功能模块" class="headerlink" title="5.1系统功能模块"></a>5.1系统功能模块</h2><p>大学生租房系统，在系统首页可以查看首页，房屋信息，房屋评价，公告资讯，个人中心，后台管理，意见反馈等内容，并进行详细操作；如图5-1所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-bfbd.jpg" alt="img"></p>
+<p>用户注册，在用户注册页面通过填写用户名，密码，确认密码，姓名，手机，身份证等信息进行注册操作，如图5-2所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-e764.jpg" alt="img"></p>
+<p>房屋信息，在房屋信息页面可以查看房屋类型，地区，位置，朝向，楼层，楼号，房屋面积，房屋设施，房屋状态，房屋租金，房主账号，房主姓名等内容，并可以进行预约看房，定金留房等操作，如图5-3所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-0558.jpg" alt="img"></p>
+<h2 id="5-2管理员模块"><a href="#5-2管理员模块" class="headerlink" title="5.2管理员模块"></a>5.2管理员模块</h2><p>登录，进入系统前在登录页面根据要求填写用户名和密码，选择角色等信息，点击登录进行登录操作，如图5-5所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-f95c.jpg" alt="img"></p>
+<p>管理员登录系统后，可以对首页，个人中心，房主管理，用户管理，房屋类型管理，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等功能进行相应的操作，如图5-6所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-e8b1.jpg" alt="img"></p>
+<p>房主管理，在房主管理页面可以对索引，房主账号，房主姓名，性别，照片，联系电话，身份证等内容进行详情，修改和删除等操作，如图5-7所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-8a1f.jpg" alt="img"></p>
+<p>用户管理，在用户管理页面可以对索引，用户名，姓名，性别，头像，手机，身份证等信息进行详情，修改和删除操作，如图5-8所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-2b02.jpg" alt="img"></p>
+<p>房屋信息管理，在房屋信息管理页面可以对 索引，房屋名称，房屋类型，图片，地区，位置，朝向，楼层，楼号，房屋面积，房屋设施，房屋状态，房屋租金，房主账号，房主姓名，联系电等内容进行详情，修改和删除操作，如图5-9所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-4caf.jpg" alt="img"></p>
+<h2 id="5-3房主功能模块"><a href="#5-3房主功能模块" class="headerlink" title="5.3房主功能模块"></a>5.3房主功能模块</h2><p>房主登录进入大学生租房系统可以对首页，个人中心，房屋信息管理，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理等功能进行相应操作，如图5-11所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-8b5a.jpg" alt="img"></p>
+<h2 id="5-4用户功能模块"><a href="#5-4用户功能模块" class="headerlink" title="5.4用户功能模块"></a>5.4用户功能模块</h2><p>用户登录进入大学生租房系统可以对首页，个人中心，预约看房管理，定金留房管理，租赁订单管理，房屋评价管理，消息提醒管理，我的收藏管理等功能进行相应操作，如图5-14所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-83c3.jpg" alt="img"></p>
+<p>预约看房管理，在预约看房管理页面可以对索引，房屋名称，房屋类型，房屋图片，房主账号，联系电话，看房时间，预约备注，用户名，手机，审核回复，审核状态等内容进行详情操作，如图5-15所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-e04b.jpg" alt="img"></p>
+<p>定金留房管理，在定金留房管理页面可以对索引，房屋名称，房屋类型，房屋图片，定金金额，下单日期，房主账号，房屋租金，租赁状态，留言备注，用户名，手机，是否支付等内容进行详情，租赁下单等操作，如图5-16所示。</p>
+<p><img src="https://gitlab.com/gdutxiaoxu/blog-pic/raw/main/gitlab/202309301809-ab4a.jpg" alt="img"></p>
+<p>​                                           </p>
+<h2 id="源码咨询"><a href="#源码咨询" class="headerlink" title="源码咨询"></a>源码咨询</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/583/">微信小程序毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/41/">Java毕业设计-SpringBoot+Vue毕业设计项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/584/">Java毕业设计-Java SSM+JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/585/">Java毕业设计-Java JSP 项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/616/">Android 毕业设计-项目合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/article/615/">Python 毕业设计合集</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://it1314.top/category/java_bysj/">Java 精品项目</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/gdutxujun94/GraduationProject">Github 更多题目</a> </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/29537.html" rel="prev" title="Java 毕业设计，基于 SpringBoot+Vue 的网上书城商城管理系统（毕业设计，附源码，教程）">
+      <i class="fa fa-chevron-left"></i> Java 毕业设计，基于 SpringBoot+Vue 的网上书城商城管理系统（毕业设计，附源码，教程）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/58140.html" rel="next" title="基于 SpringBoot+Vue 的家政服务管理平台，Java 毕业设计">
+      基于 SpringBoot+Vue 的家政服务管理平台，Java 毕业设计 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">2 技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">3 需求分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">4 系统设计</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="nav-number"></span> <span class="nav-text">5 系统详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">5.1系统功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">5.2管理员模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3%E6%88%BF%E4%B8%BB%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">5.3房主功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4%E7%94%A8%E6%88%B7%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">4.</span> <span class="nav-text">5.4用户功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%92%A8%E8%AF%A2"><span class="nav-number">5.</span> <span class="nav-text">源码咨询</span></a></li></ol></li></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">徐公</p>
+  <div class="site-description" itemprop="description">「Android学习+面试指南」助你升职加薪</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+      <div>
+      </div>
+
+      <div class="wechat_OA">
+        <br>
+        <span>公众号回复 <b>“黑马”</b> 两字，可以领取 Android 学习视频，回复 <b>“徐公666”</b>，可以获取简历模板，带你走进大厂</span>
+        <br>
+          <!-- 这里添加你的二维码图片 -->
+        <img src="https://raw.githubusercontent.com/gdutxiaoxu/blog_pic/master/23/0220230217232713.png">
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐公</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">587k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:53</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
